@@ -5,7 +5,7 @@ using UnityEngine;
 public class Constellation : MonoBehaviour {
 
     public GameObject star;
-    public int numStars = 1; // number of stars to spawn
+    public int numStars = 12; // number of stars to spawn
 
     void Start()
     {
