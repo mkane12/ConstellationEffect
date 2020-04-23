@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Constellation : MonoBehaviour {
+public class Sky : MonoBehaviour {
 
     public GameObject star;
     public int numStars = 12; // number of stars to spawn

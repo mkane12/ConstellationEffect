@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
   numStars: 12
+  lifespan: 30
 --- !u!23 &446230658
 MeshRenderer:
   m_ObjectHideFlags: 0

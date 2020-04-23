@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4704598173486272}
   - component: {fileID: 33053666390826422}
-  - component: {fileID: 114602777152411604}
   - component: {fileID: 23062351781620278}
+  - component: {fileID: 114864050853013294}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -83,7 +83,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838518309684516}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114602777152411604
+--- !u!114 &114864050853013294
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initPos: {x: 0, y: 0, z: 0}
-  targetPos: {x: 0, y: 0, z: 0}
+  targetPos: {x: 1, y: 1, z: 0}
   size: 0
-  velocity: {x: 0, y: 0, z: 0}
+  velocity: 2
+  lifespan: 30
