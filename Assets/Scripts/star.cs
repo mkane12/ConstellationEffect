@@ -8,13 +8,28 @@ public class star : MonoBehaviour
     public int size; // size of the star
     public float velocity; // velocity of the star
     public float lifespan = 30.0f; // number of seconds star lasts
-    public float acceleration = -0.5f; // rate of deceleration of star
+    public float acceleration = -1.0f; // rate of deceleration of star
+
+    // these variables are for cycling through texture map
+    // Reference: https://www.youtube.com/watch?v=cMiY6svKt-s
+    public int columns = 4;
+    public int rows = 2;
+    public int fps = 8;
+    private int index;
+    private Vector2 tileSize;
+    private Vector2 offset;
+    private Renderer renderer;
+
+    private void Start()
+    {
+        renderer = GetComponent<Renderer>();
+    }
 
     // called just once for script
     void Awake()
     {
         targetPos = new Vector3(Random.Range(-10.0f, 10.0f), 
-            Random.Range(-10.0f, 10.0f), transform.position.z);
+            Random.Range(-10.0f, 10.0f), transform.position.z - 1.0f);
         velocity = Random.Range(10.0f, 30.0f);
         Destroy(gameObject, lifespan);
     }
@@ -22,8 +37,21 @@ public class star : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float step = velocity * Time.deltaTime 
-            + acceleration * Mathf.Pow(Time.deltaTime, 2.0f);
+        // calculate index for texture iteration
+        index = (int)(Time.time * fps);
+        index = index % (columns * rows);
+        tileSize = new Vector2(1.0f / columns, 1.0f / rows);
+        // split into horizontal and vertical indices
+        var uIndex = index % rows;
+        var vIndex = index / rows;
+        // build offset
+        offset = new Vector2(uIndex * tileSize.x,
+            1.0f - tileSize.y - vIndex * tileSize.y);
+
+        renderer.material.SetTextureOffset("_MainTex", offset);
+        renderer.material.SetTextureScale("_MainTex", tileSize);
+
+        float step = velocity * Time.deltaTime + acceleration * Mathf.Pow(Time.deltaTime, 2.0f);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
 
     }
