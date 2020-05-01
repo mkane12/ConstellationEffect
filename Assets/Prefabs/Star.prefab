@@ -97,8 +97,9 @@ MonoBehaviour:
   targetPos: {x: 1, y: 1, z: 0}
   size: 0
   velocity: 2
-  lifespan: 30
+  lifespan: 2
   acceleration: -0.5
+  fadeTime: 0.1
   columns: 4
   rows: 2
   fps: 5
