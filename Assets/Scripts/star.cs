@@ -14,8 +14,9 @@ public class star : MonoBehaviour
     // Reference: https://www.youtube.com/watch?v=cMiY6svKt-s
     public int columns = 4;
     public int rows = 2;
-    public int fps = 5;
+    public int fps = 8;
     private int index;
+    private float delay;
     private Vector2 tileSize;
     private Vector2 offset;
     private Renderer renderer;
@@ -25,6 +26,10 @@ public class star : MonoBehaviour
         // make each star have a random size
         size = Random.Range(1, 3);
         transform.localScale *= size;
+
+        // start index with random offset so twinkling is scattered
+        delay = Random.Range(0.0f, 1.0f);
+
         renderer = GetComponent<Renderer>();
     }
 
@@ -41,8 +46,9 @@ public class star : MonoBehaviour
     void Update()
     {
         // calculate index for texture iteration
-        // add random time offset, so starts twinkle at varying rates
-        index = (int)(Time.time * fps) % (columns * rows);
+        // add random time offset, so stars twinkle at varying rates
+        index = (int)(Time.time * fps * delay); 
+        index = index % (columns * rows);
         tileSize = new Vector2(1.0f / columns, 1.0f / rows);
         // split into horizontal and vertical indices
         var uIndex = index % rows;
