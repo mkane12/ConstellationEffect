@@ -132,24 +132,20 @@ public class Star : StateMachine
         transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
     }
 
-    // function for star to fade away after lifetime
     private void UpdateDie()
     {
-        //var color = renderer.material.color;
-        //while (renderer.material.color.a >= 0)
-        //{
-        //    renderer.material.color.a -= 0.01f;
-        //= new Color(color.r, color.g, color.b, color.a - 0.01f);
-        //color = renderer.material.color;
-        //Debug.Log(color.a);
-        //}
-        /*while (color.a >= 0)
+        float alpha = Mathf.Lerp(1, 0, 
+            (Time.timeSinceLevelLoad - initializationTime) / fadeTime);
+        // need better way to calculate alpha
+        Debug.Log(alpha);
+        renderer.material.color = new Color(
+            renderer.material.color.r,
+            renderer.material.color.g,
+            renderer.material.color.b,
+            alpha);
+        if(renderer.material.color.a <= 0.01)
         {
-            // something wonky here causes unity to crash
-            //renderer.material.color = new Color(color.r, color.g, color.b, color.a - 
-            //    (fadeTime * (Time.deltaTime - lifespan)));
-            Debug.Log(color.a);
-        }*/
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
