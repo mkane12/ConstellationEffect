@@ -5,14 +5,14 @@ using UnityEngine;
 // TODO Davis: maybe add variations in colors of stars
 // TODO Davis: blend between frames in sprite sheet instead of jump
 
-public class star : MonoBehaviour
+public class star : StateMachineBehaviour
 {
     public Vector3 targetPos; // target position of the star
     public int size; // size of the star
     public float velocity; // velocity of the star
-    public float lifespan = 30.0f; // number of seconds star lasts
+    public float lifespan = 2.0f; // number of seconds star lasts
     public float acceleration = -1.0f; // rate of deceleration of star
-    public float fadeTime = 0.1f; // time for star to fade
+    public float fadeTime = 1.0f; // time for star to fade
 
     // these variables are for cycling through texture map
     // Reference: https://www.youtube.com/watch?v=cMiY6svKt-s
@@ -29,7 +29,7 @@ public class star : MonoBehaviour
     private Renderer renderer;
 
     // called just once for script; first thing called once game object is created
-    // ***still called even if script disabled
+    // > still called even if script disabled
     void Awake()
     {
         // TODO Davis: create new class starProperties/starManager with variables for these hardcoded numbers
@@ -58,6 +58,9 @@ public class star : MonoBehaviour
         // > See the teamLab Unity Frameworks
 
         renderer = GetComponent<Renderer>();
+
+        // calls Fade() after lifespan seconds elapsed
+        Invoke("Fade", lifespan);
     }
 
     // Update is called once per frame
@@ -86,26 +89,26 @@ public class star : MonoBehaviour
 
         float step = velocity * Time.deltaTime + acceleration * Mathf.Pow(Time.deltaTime, 2.0f);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
-
-        if (Time.deltaTime >= lifespan)
-        {
-            // TODO: Fade() is never called
-            Fade();
-            Destroy(gameObject);
-        }
     }
 
     // function for star to fade away after lifetime
     void Fade()
     {
-        Debug.Log("we're in Fade");
-        var color = renderer.material.color;
-        while (color.a >= 0)
+        //var color = renderer.material.color;
+        while (renderer.material.color.a >= 0)
         {
-            renderer.material.color = new Color(color.r, color.g, color.b, color.a - 
-                (fadeTime * (Time.deltaTime)));
-            Debug.Log(color.a);
+            renderer.material.color.a -= 0.01f;
+                //= new Color(color.r, color.g, color.b, color.a - 0.01f);
+            //color = renderer.material.color;
+            //Debug.Log(color.a);
         }
+        /*while (color.a >= 0)
+        {
+            // something wonky here causes unity to crash
+            //renderer.material.color = new Color(color.r, color.g, color.b, color.a - 
+            //    (fadeTime * (Time.deltaTime - lifespan)));
+            Debug.Log(color.a);
+        }*/
         Destroy(gameObject);
     }
 }
