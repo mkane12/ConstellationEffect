@@ -1,0 +1,4 @@
+[submodule "Assets/Packages/TeamLabUnityFramework"]
+	path = Assets/Packages/TeamLabUnityFramework
+	url = https://github.com/team-lab/TeamLabUnityFramework.git
+	branch = stable
