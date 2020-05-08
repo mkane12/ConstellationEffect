@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sky : MonoBehaviour {
 
-    public GameObject star;
+    public GameObject Star;
     public int numStars = 1; // number of stars to spawn
 
     void Start()
@@ -21,7 +21,7 @@ public class Sky : MonoBehaviour {
         {
             for (int i = 0; i < numStars; i++)
             {
-                Instantiate(star, hit.point, Quaternion.identity);
+                Instantiate(Star, hit.point, Quaternion.identity);
             }
         }
 

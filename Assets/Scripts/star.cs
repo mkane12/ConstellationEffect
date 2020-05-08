@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TeamLab.Unity;
 
 // TODO Davis: maybe add variations in colors of stars
 // TODO Davis: blend between frames in sprite sheet instead of jump
 
-public class star : StateMachineBehaviour
+// About StateMachine
+// > protected variables accessible by subclasses -> Star has access to StateMachine
+// > virtual functions = subclass can redefine function as needed
+
+public class Star : StateMachine
 {
     public Vector3 targetPos; // target position of the star
     public int size; // size of the star
     public float velocity; // velocity of the star
-    public float lifespan = 2.0f; // number of seconds star lasts
+    public float lifespan = 5.0f; // number of seconds star lasts
     public float acceleration = -1.0f; // rate of deceleration of star
     public float fadeTime = 1.0f; // time for star to fade
+    private float initializationTime; // time when star was initialized
 
     // these variables are for cycling through texture map
     // Reference: https://www.youtube.com/watch?v=cMiY6svKt-s
@@ -26,6 +32,13 @@ public class star : StateMachineBehaviour
     private Vector2 tileSize;
     private Vector2 offset;
 
+    public enum StarState : int
+    {
+        Born = 1,
+        Live = 2,
+        Die = 3
+    }
+
     private Renderer renderer;
 
     // called just once for script; first thing called once game object is created
@@ -37,10 +50,14 @@ public class star : StateMachineBehaviour
         targetPos = new Vector3(Random.Range(-10.0f, 10.0f),
             Random.Range(-10.0f, 10.0f), transform.position.z - 1.0f);
         velocity = Random.Range(10.0f, 30.0f);
+
+        // set initial state to born
+        SetState((int)StarState.Born);
+        Debug.Log("in born state");
     }
 
     // Below only called if script enabled
-    private void Start()
+    protected override void Start()
     {
         // make each star have a random size
         size = Random.Range(1, 3);
@@ -49,23 +66,16 @@ public class star : StateMachineBehaviour
         // start index with random offset so twinkling is scattered
         delay = Random.Range(0.0f, 1.0f);
 
-        // prep star to be destroyed
-        // TODO Davis: generally prefer to avoid Coroutines
-        // > If there are too many going on at once, it can cause problems
-        // > Dangerous to keep calling Coroutines repeatedly - if a GO is destroyed, have to manually disable coroutines
-        // > Look into State Machines
-        // > Look into switch statements -> used with State Machines
-        // > See the teamLab Unity Frameworks
+        initializationTime = Time.timeSinceLevelLoad; // establish time at which object was instantiated
 
         renderer = GetComponent<Renderer>();
-
-        // calls Fade() after lifespan seconds elapsed
-        Invoke("Fade", lifespan);
     }
 
-    // Update is called once per frame
-    void Update()
+    // called once per frame in StateMachine's Update() function
+    protected override void StateUpdateCallback()
     {
+        // Twinkle should happen regardless of state
+
         // TODO Davis: move some of this to helper function in new texture class
         // TODO Davis: don't call "new" in update functions; performance issue with cleaning up after that
         // calculate index for texture iteration
@@ -87,21 +97,52 @@ public class star : StateMachineBehaviour
         renderer.material.SetTextureOffset("_MainTex", offset);
         renderer.material.SetTextureScale("_MainTex", tileSize);
 
+        // call method depending on current state
+        switch (GetStateID())
+        {
+            case (int)StarState.Born:
+                // Born state: move from initPos to targetPos
+                UpdateBorn();
+                // check if current position is close enough to target position
+                if (Vector3.Distance(transform.position, targetPos) <= 0.01)
+                {
+                    // if it's close enough, exit born state, enter live state
+                    SetState((int)StarState.Live);
+                    Debug.Log("in live state");
+                }
+                break;
+            case (int)StarState.Live:
+                // Live state: wait until lifespan is elapsed
+                // once we are outside of lifespan
+                if (Time.timeSinceLevelLoad - initializationTime >= lifespan)
+                {
+                    SetState((int)StarState.Die);
+                    Debug.Log("in die state");
+                }
+                break;
+            case (int)StarState.Die:
+                UpdateDie();
+                break;
+        }
+    }
+
+    private void UpdateBorn()
+    {
         float step = velocity * Time.deltaTime + acceleration * Mathf.Pow(Time.deltaTime, 2.0f);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
     }
 
     // function for star to fade away after lifetime
-    void Fade()
+    private void UpdateDie()
     {
         //var color = renderer.material.color;
-        while (renderer.material.color.a >= 0)
-        {
-            renderer.material.color.a -= 0.01f;
-                //= new Color(color.r, color.g, color.b, color.a - 0.01f);
-            //color = renderer.material.color;
-            //Debug.Log(color.a);
-        }
+        //while (renderer.material.color.a >= 0)
+        //{
+        //    renderer.material.color.a -= 0.01f;
+        //= new Color(color.r, color.g, color.b, color.a - 0.01f);
+        //color = renderer.material.color;
+        //Debug.Log(color.a);
+        //}
         /*while (color.a >= 0)
         {
             // something wonky here causes unity to crash

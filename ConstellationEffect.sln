@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstellationEffect", "ConstellationEffect.csproj", "{56E2063B-4592-7BEC-FC95-9FC14F3475B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstellationEffect.Editor", "ConstellationEffect.Editor.csproj", "{4FCBDA01-B6B9-7123-7506-366728FB097E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +13,6 @@ Global
 		{56E2063B-4592-7BEC-FC95-9FC14F3475B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56E2063B-4592-7BEC-FC95-9FC14F3475B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56E2063B-4592-7BEC-FC95-9FC14F3475B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4FCBDA01-B6B9-7123-7506-366728FB097E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FCBDA01-B6B9-7123-7506-366728FB097E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FCBDA01-B6B9-7123-7506-366728FB097E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FCBDA01-B6B9-7123-7506-366728FB097E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

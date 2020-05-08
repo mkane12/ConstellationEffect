@@ -282,7 +282,7 @@
       <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>Assets/Packages/TeamLabUnityFramework/Scripts/File/Json/Newtonsoft.Json.dll</HintPath>
+      <HintPath>Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/File/Json/Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -292,33 +292,35 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Packages\TeamLabUnityFramework\Scripts\Editor\PlayModeFullScreen.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Editor\PlayModeFullScreen.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\Editor\HiddenGameObjectTools.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Packages\TeamLabUnityFramework\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Shaders\PhotoshopMath.cginc" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Shaders\UVChecker.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Packages\UVCheckerImageEffect\ProjectSettings\ProjectVersion.txt" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Scripts\Graphics\ImageEffects\FadeEdgeX\FadeEdgeX.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Scripts\Graphics\ImageEffects\FadeEdgeY\FadeEdgeY.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Scripts\Graphics\ImageEffects\FadeRect.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Scripts\Graphics\Texture\FractalGenerator\FractalGenerator.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Scripts\Scene\SceneLoadFromCommandLine\readme.txt" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Scripts\UVandRealWorldMapperNT\UVAndRealWorldMapperNT.cginc" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Scripts\UVandRealWorldMapperNT\sample\UVMapExample_GPUFractal.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\Libs\CoonsCurve.cginc" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\Libs\Easing.cginc" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\Libs\Noise.cginc" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\Libs\PhotoshopMath.cginc" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\Libs\Random.cginc" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\Libs\Transform.cginc" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\SolidColorGlobal.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\SolidColorRect.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\TextureFlipY.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\TextureInvertR.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\TextureView.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\TextureViewWithUVMapping.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\Shaders\TextureViewWithUVMappingOtherNode.shader" />
-    <None Include="Assets\Packages\TeamLabUnityFramework\version.txt" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\Spotlight.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeX\FadeEdgeX.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeY\FadeEdgeY.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeRect.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\FractalGenerator\FractalGenerator.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneLoadFromCommandLine\readme.txt" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\UVAndRealWorldMapperNT.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\UVMapExample_GPUFractal.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\CoonsCurve.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Easing.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Noise.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\PhotoshopMath.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Random.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Transform.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\LineToCircle.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColor.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColorGlobal.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColorNoAlphaBlend.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureFlipY.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureInvertR.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureView.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewBlendOff.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMapping.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMappingOtherNode.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\version.txt" />
     <None Include="Assets\Shaders\starShader.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
