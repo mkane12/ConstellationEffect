@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
-  numStars: 12
+  numStars: 1
 --- !u!1 &995421624
 GameObject:
   m_ObjectHideFlags: 0

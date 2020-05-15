@@ -58,34 +58,16 @@ public class Star : StateMachine
 
         // start index with random offset so twinkling is scattered
         delay = Random.Range(0.0f, 1.0f);
+
+        // helper method called for each star on instantiation
+        TextureHelper.NewStarTex(renderer, delay);
     }
 
     // called once per frame in StateMachine's Update() function
     protected override void StateUpdateCallback()
     {
-        TextureHelper.Twinkle(this, delay, renderer);
-
-        /*// Twinkle should happen regardless of state
-        // TODO Davis: move some of this to helper function in new texture class
-        // TODO Davis: don't call "new" in update functions; performance issue with cleaning up after that
-        // calculate index for texture iteration
-        // add random time offset, so stars twinkle at varying rates
-        index = (int)(Time.time * fps * delay);
-        index = index % (columns * rows);
-        tileSize = new Vector2(1.0f / columns, 1.0f / rows);
-        // split into horizontal and vertical indices
-        var uIndex = index % rows;
-        var vIndex = index / rows;
-        // build offset
-        // TODO Davis: how to update this without calling new
-        offset = new Vector2(uIndex * tileSize.x,
-            1.0f - tileSize.y - vIndex * tileSize.y);
-
-        // TODO Davis: only pass new value to shader when it's changed rather than pass every frame
-        // > cache previous value sent to shader, then check if new value is different before passing
-        // TODO Davis: cache id number for shader instead of forcing it to look up id from string every time
-        renderer.material.SetTextureOffset("_MainTex", offset);
-        renderer.material.SetTextureScale("_MainTex", tileSize);*/
+        // Twinkle should happen regardless of state
+        TextureHelper.Twinkle(this);
 
         // call method depending on current state
         switch (GetStateID())

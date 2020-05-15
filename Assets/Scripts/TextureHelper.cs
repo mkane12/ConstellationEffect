@@ -11,41 +11,51 @@ using UnityEngine;
 // Static class with static methods will be held indefinitely for life of the program
 public static class TextureHelper {
 
-    // TODO Davis: Rather than have separate tex____ for texture variables, create new class textureData, textureHelper, whatever
+    // Rather than have separate tex____ for texture variables, create new class textureData, textureHelper, whatever
     // > Adds uniformity to code; can add helper functions to class
+
     // these variables are for cycling through texture map
     // Reference: https://www.youtube.com/watch?v=cMiY6svKt-s
-
     public static int columns = 4;
     public static int rows = 2;
     public static int fps = 8;
     private static int index;
-    private static Vector2 tileSize;
-    private static Vector2 offset;
+    private static Vector2 tileSize = new Vector2(1.0f / columns, 1.0f / rows);
+    private static Vector2 offset = new Vector2(tileSize.x, tileSize.y);
+    private static float delay;
 
-    public static void Twinkle(Star star, float delay, Renderer renderer)
+    private static Renderer renderer;
+
+    // this method is mostly to set valeus that will not change for a given star over its lifetime
+    public static void NewStarTex(Renderer r, float d)
     {
-        // Twinkle should happen regardless of state
-        // TODO Davis: move some of this to helper function in new texture class
-        // TODO Davis: don't call "new" in update functions; performance issue with cleaning up after that
+        renderer = r;
+        renderer.material.SetTextureScale("_MainTex", tileSize);
+
+        delay = d;
+    }
+
+    // TODO: Issue when another star is made, old star stops twinkling
+    public static void Twinkle(Star star)
+    {
+        int prevIndex = index;
+
         // calculate index for texture iteration
         // add random time offset, so stars twinkle at varying rates
         index = (int)(Time.time * fps * delay);
         index = index % (columns * rows);
-        tileSize = new Vector2(1.0f / columns, 1.0f / rows);
         // split into horizontal and vertical indices
         var uIndex = index % rows;
         var vIndex = index / rows;
         // build offset
-        // TODO Davis: how to update this without calling new
-        offset = new Vector2(uIndex * tileSize.x,
-            1.0f - tileSize.y - vIndex * tileSize.y);
+        offset.x = uIndex * tileSize.x;
+        offset.y = 1.0f - tileSize.y - vIndex * tileSize.y;
 
-        // TODO Davis: only pass new value to shader when it's changed rather than pass every frame
-        // > cache previous value sent to shader, then check if new value is different before passing
-        // TODO Davis: cache id number for shader instead of forcing it to look up id from string every time
-        renderer.material.SetTextureOffset("_MainTex", offset);
-        renderer.material.SetTextureScale("_MainTex", tileSize);
+        if(prevIndex != index)
+        {
+            // TODO Davis: cache id number for shader instead of forcing it to look up id from string every time
+            renderer.material.SetTextureOffset("_MainTex", offset);
+        }
     }
 
 }
