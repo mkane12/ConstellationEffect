@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4704598173486272}
   - component: {fileID: 33053666390826422}
   - component: {fileID: 23062351781620278}
-  - component: {fileID: 114864050853013294}
+  - component: {fileID: 114991130923611854}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -83,7 +83,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838518309684516}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114864050853013294
+--- !u!114 &114991130923611854
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -91,15 +91,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838518309684516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 324b01da260888f4f8aac5914fcefdb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d1cbd331f96e744f8651f63041df2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPos: {x: 1, y: 1, z: 0}
+  _stateID: -1
+  debugGoToState:
+    state: -1
+    goNow: 0
+  targetPos: {x: 0, y: 0, z: 0}
   size: 0
-  velocity: 2
-  lifespan: 2
-  acceleration: -0.5
-  fadeTime: 0.1
+  velocity: 0
+  lifespan: 5
+  acceleration: -1
+  timeToFade: 5
   columns: 4
   rows: 2
-  fps: 5
+  fps: 8

@@ -17,7 +17,8 @@ public class Star : StateMachine
     public float velocity; // velocity of the star
     public float lifespan = 5.0f; // number of seconds star lasts
     public float acceleration = -1.0f; // rate of deceleration of star
-    public float fadeTime = 1.0f; // time for star to fade
+    public float timeToFade = 5.0f; // time for star to fade
+    private float timeInFade = 0f; // timer for star in Die state
     private float initializationTime; // time when star was initialized
 
     // these variables are for cycling through texture map
@@ -113,7 +114,7 @@ public class Star : StateMachine
                 break;
             case (int)StarState.Live:
                 // Live state: wait until lifespan is elapsed
-                // once we are outside of lifespan
+                // once we are outside of lifespan, switch to Die state
                 if (Time.timeSinceLevelLoad - initializationTime >= lifespan)
                 {
                     SetState((int)StarState.Die);
@@ -134,16 +135,18 @@ public class Star : StateMachine
 
     private void UpdateDie()
     {
-        float alpha = Mathf.Lerp(1, 0, 
-            (Time.timeSinceLevelLoad - initializationTime) / fadeTime);
-        // need better way to calculate alpha
+        timeInFade += Time.deltaTime; // counter for time spent in this method
+
+        // alpha goes from 1 to 0 over roughly timeToFade
+        float alpha = Mathf.Lerp(1, 0, timeInFade / timeToFade);
         Debug.Log(alpha);
-        renderer.material.color = new Color(
-            renderer.material.color.r,
-            renderer.material.color.g,
-            renderer.material.color.b,
-            alpha);
-        if(renderer.material.color.a <= 0.01)
+
+        // try to change material as alpha updates
+        // TODO: this seems to be problem area. alpha goes from 1 to 0 as planned, but no change is visible.
+        renderer.material.SetFloat("_Transparency", alpha);
+
+        // if alpha is low enough, destroy the star
+        if (renderer.material.color.a <= 0.01)
         {
             Destroy(gameObject);
         }
