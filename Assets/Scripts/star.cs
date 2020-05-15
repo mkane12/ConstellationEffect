@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TeamLab.Unity;
 
-// TODO Davis: maybe add variations in colors of stars
-// TODO Davis: blend between frames in sprite sheet instead of jump
+// TODO (visual) Davis: maybe add variations in colors of stars
+// TODO (visual) Davis: blend between frames in sprite sheet instead of jump
 
 // About StateMachine
 // > protected variables accessible by subclasses -> Star has access to StateMachine
@@ -20,18 +20,6 @@ public class Star : StateMachine
     public float timeToFade = 5.0f; // time for star to fade
     private float timeInFade = 0f; // timer for star in Die state
     private float initializationTime; // time when star was initialized
-
-    // these variables are for cycling through texture map
-    // Reference: https://www.youtube.com/watch?v=cMiY6svKt-s
-    // TODO Davis: Rather than have separate tex____ for texture variables, create new class textureData, textureHelper, whatever
-    // > Adds uniformity to code; can add helper functions to class
-    public int columns = 4;
-    public int rows = 2;
-    public int fps = 8;
-    private int index;
-    private float delay;
-    private Vector2 tileSize;
-    private Vector2 offset;
 
     public enum StarState : int
     {
@@ -54,7 +42,6 @@ public class Star : StateMachine
 
         // set initial state to born
         SetState((int)StarState.Born);
-        Debug.Log("in born state");
     }
 
     // Below only called if script enabled
@@ -64,19 +51,20 @@ public class Star : StateMachine
         size = Random.Range(1, 3);
         transform.localScale *= size;
 
-        // start index with random offset so twinkling is scattered
-        delay = Random.Range(0.0f, 1.0f);
-
         initializationTime = Time.timeSinceLevelLoad; // establish time at which object was instantiated
 
         renderer = GetComponent<Renderer>();
+
+        // start index with random offset so twinkling is scattered
+        // TODO: should be able to get rid of this delay = Random.Range(0.0f, 1.0f);
     }
 
     // called once per frame in StateMachine's Update() function
     protected override void StateUpdateCallback()
     {
-        // Twinkle should happen regardless of state
+        TextureHelper.Twinkle(this, renderer);
 
+        /*// Twinkle should happen regardless of state
         // TODO Davis: move some of this to helper function in new texture class
         // TODO Davis: don't call "new" in update functions; performance issue with cleaning up after that
         // calculate index for texture iteration
@@ -96,7 +84,7 @@ public class Star : StateMachine
         // > cache previous value sent to shader, then check if new value is different before passing
         // TODO Davis: cache id number for shader instead of forcing it to look up id from string every time
         renderer.material.SetTextureOffset("_MainTex", offset);
-        renderer.material.SetTextureScale("_MainTex", tileSize);
+        renderer.material.SetTextureScale("_MainTex", tileSize);*/
 
         // call method depending on current state
         switch (GetStateID())
@@ -109,7 +97,6 @@ public class Star : StateMachine
                 {
                     // if it's close enough, exit born state, enter live state
                     SetState((int)StarState.Live);
-                    Debug.Log("in live state");
                 }
                 break;
             case (int)StarState.Live:
@@ -118,7 +105,6 @@ public class Star : StateMachine
                 if (Time.timeSinceLevelLoad - initializationTime >= lifespan)
                 {
                     SetState((int)StarState.Die);
-                    Debug.Log("in die state");
                 }
                 break;
             case (int)StarState.Die:
@@ -140,10 +126,8 @@ public class Star : StateMachine
         // alpha goes from 1 to 0 over roughly timeToFade
         float alpha = Mathf.Lerp(1, 0, timeInFade / timeToFade);
         // TODO: keeps printing alpha even after object Destroyed
-        Debug.Log(alpha);
 
         // try to change material as alpha updates
-        // TODO: this seems to be problem area. alpha goes from 1 to 0 as planned, but no change is visible.
         renderer.material.SetFloat("_Transparency", alpha);
 
         // if alpha is low enough, destroy the star
