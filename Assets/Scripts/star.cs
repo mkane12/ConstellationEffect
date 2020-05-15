@@ -139,6 +139,7 @@ public class Star : StateMachine
 
         // alpha goes from 1 to 0 over roughly timeToFade
         float alpha = Mathf.Lerp(1, 0, timeInFade / timeToFade);
+        // TODO: keeps printing alpha even after object Destroyed
         Debug.Log(alpha);
 
         // try to change material as alpha updates
