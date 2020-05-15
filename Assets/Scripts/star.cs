@@ -28,6 +28,7 @@ public class Star : StateMachine
         Die = 3
     }
 
+    private float delay;
     private Renderer renderer;
 
     // called just once for script; first thing called once game object is created
@@ -56,13 +57,13 @@ public class Star : StateMachine
         renderer = GetComponent<Renderer>();
 
         // start index with random offset so twinkling is scattered
-        // TODO: should be able to get rid of this delay = Random.Range(0.0f, 1.0f);
+        delay = Random.Range(0.0f, 1.0f);
     }
 
     // called once per frame in StateMachine's Update() function
     protected override void StateUpdateCallback()
     {
-        TextureHelper.Twinkle(this, renderer);
+        TextureHelper.Twinkle(this, delay, renderer);
 
         /*// Twinkle should happen regardless of state
         // TODO Davis: move some of this to helper function in new texture class

@@ -20,12 +20,10 @@ public static class TextureHelper {
     public static int rows = 2;
     public static int fps = 8;
     private static int index;
-    // start index with random offset so twinkling is scattered
-    public static float delay = Random.Range(0.0f, 1.0f);
     private static Vector2 tileSize;
     private static Vector2 offset;
 
-    public static void Twinkle(Star star, Renderer renderer)
+    public static void Twinkle(Star star, float delay, Renderer renderer)
     {
         // Twinkle should happen regardless of state
         // TODO Davis: move some of this to helper function in new texture class
