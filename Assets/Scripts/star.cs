@@ -10,6 +10,8 @@ using TeamLab.Unity;
 // > protected variables accessible by subclasses -> Star has access to StateMachine
 // > virtual functions = subclass can redefine function as needed
 
+    // DON'T REFERENCE A MESH, LET SOMETHING ELSE MAKE A MESH INTO POINTS
+
 public class Star : StateMachine
 {
     public Vector3 targetPos; // target position of the star
@@ -30,6 +32,7 @@ public class Star : StateMachine
 
     private float delay;
     private Renderer renderer;
+    private TextureHelper tex;
 
     // called just once for script; first thing called once game object is created
     // > still called even if script disabled
@@ -37,6 +40,9 @@ public class Star : StateMachine
     {
         // TODO Davis: create new class starProperties/starManager with variables for these hardcoded numbers
         // > as a brand new .cs file
+        // > For your star manager class, I believe a singleton design pattern would be more appropriate than a static class.
+        // > In team lab unity frameworks, there is a helpful base class for making singletons. SingletonMonoBehaviour.cs
+        
         targetPos = new Vector3(Random.Range(-10.0f, 10.0f),
             Random.Range(-10.0f, 10.0f), transform.position.z - 1.0f);
         velocity = Random.Range(10.0f, 30.0f);
@@ -60,14 +66,15 @@ public class Star : StateMachine
         delay = Random.Range(0.0f, 1.0f);
 
         // helper method called for each star on instantiation
-        TextureHelper.NewStarTex(renderer, delay);
+        tex = new TextureHelper();
+        tex.NewStarTex(renderer, delay);
     }
 
     // called once per frame in StateMachine's Update() function
     protected override void StateUpdateCallback()
     {
         // Twinkle should happen regardless of state
-        TextureHelper.Twinkle(this);
+        tex.Twinkle();
 
         // call method depending on current state
         switch (GetStateID())
