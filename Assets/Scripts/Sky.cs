@@ -5,14 +5,14 @@ using UnityEngine;
 public class Sky : MonoBehaviour {
 
     public GameObject Star;
-    public int numStars = 1; // number of stars to spawn
+    public int numStars = 12; // number of stars to spawn
 
     void Start()
     {
     }
 
-    // call on click
-    void OnMouseDown()
+// call on click
+void OnMouseDown()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();

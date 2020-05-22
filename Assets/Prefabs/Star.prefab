@@ -104,6 +104,5 @@ MonoBehaviour:
   lifespan: 5
   acceleration: -1
   timeToFade: 5
-  columns: 4
-  rows: 2
-  fps: 8
+  ConstellationShape: {fileID: 1485106389048978, guid: 123d362de403f8d4e9d76f29cff3ae1b,
+    type: 2}

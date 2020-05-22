@@ -141,7 +141,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
-  numStars: 1
+  numStars: 12
 --- !u!1 &995421624
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,3 +359,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1463832375
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4020639892847970, guid: 123d362de403f8d4e9d76f29cff3ae1b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020639892847970, guid: 123d362de403f8d4e9d76f29cff3ae1b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020639892847970, guid: 123d362de403f8d4e9d76f29cff3ae1b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7.9225273
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020639892847970, guid: 123d362de403f8d4e9d76f29cff3ae1b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020639892847970, guid: 123d362de403f8d4e9d76f29cff3ae1b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020639892847970, guid: 123d362de403f8d4e9d76f29cff3ae1b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020639892847970, guid: 123d362de403f8d4e9d76f29cff3ae1b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020639892847970, guid: 123d362de403f8d4e9d76f29cff3ae1b, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 123d362de403f8d4e9d76f29cff3ae1b, type: 2}
+  m_IsPrefabParent: 0

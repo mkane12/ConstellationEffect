@@ -33,6 +33,9 @@ public class Star : StateMachine
     private float delay;
     private Renderer renderer;
     private TextureHelper tex;
+    private EdgeHelper edge;
+
+    public GameObject ConstellationShape;
 
     // called just once for script; first thing called once game object is created
     // > still called even if script disabled
@@ -42,9 +45,8 @@ public class Star : StateMachine
         // > as a brand new .cs file
         // > For your star manager class, I believe a singleton design pattern would be more appropriate than a static class.
         // > In team lab unity frameworks, there is a helpful base class for making singletons. SingletonMonoBehaviour.cs
-        
-        targetPos = new Vector3(Random.Range(-10.0f, 10.0f),
-            Random.Range(-10.0f, 10.0f), transform.position.z - 1.0f);
+        //var boundary = EdgeHelper.GetEdges();
+        //targetPos = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-10.0f, 10.0f), transform.position.z - 1.0f);
         velocity = Random.Range(10.0f, 30.0f);
 
         // set initial state to born
@@ -68,6 +70,13 @@ public class Star : StateMachine
         // helper method called for each star on instantiation
         tex = new TextureHelper();
         tex.NewStarTex(renderer, delay);
+
+        // Get random position on mesh
+        MeshFilter mf = (MeshFilter)ConstellationShape.GetComponent("MeshFilter");
+        Mesh mesh = mf.sharedMesh;
+        edge = new EdgeHelper();
+        targetPos = edge.GetRandomPointOnMesh(mesh);
+        Debug.Log(targetPos);
     }
 
     // called once per frame in StateMachine's Update() function

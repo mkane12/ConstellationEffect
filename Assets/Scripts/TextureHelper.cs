@@ -7,8 +7,8 @@ using UnityEngine;
 // Following Utility Class Unity tutorial: 
 // > https://learn.unity.com/tutorial/utility-helper-classes#5cefd11aedbc2a3ea1318b3b
 
-// Make a static class; can't inherit from anything; just static methods to be used
 // Static class with static methods will be held indefinitely for life of the program
+// > BUT there can't be one per instance of object - static class applies to all instances, so not helpful here
 public class TextureHelper
 {
 
@@ -29,7 +29,7 @@ public class TextureHelper
         {
             return new Vector2(1.0f / columns, 1.0f / rows);
         }
-       }
+    }
     private Vector2 offset;
     private float delay;
 
@@ -47,7 +47,6 @@ public class TextureHelper
         delay = d;
     }
 
-    // TODO: Issue when another star is made, old star stops twinkling
     public void Twinkle()
     {
         int prevIndex = index;
