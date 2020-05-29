@@ -59,6 +59,7 @@ public class EdgeHelper
             s = 1 - s;
         }
         //and then turn them back to a Vector3
+        // BUT this doesn't account for Mesh's scale
         Vector3 pointOnMesh = a + r * (b - a) + s * (c - a);
         return pointOnMesh;
 

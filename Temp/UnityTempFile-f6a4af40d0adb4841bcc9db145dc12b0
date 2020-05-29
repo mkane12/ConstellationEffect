@@ -180,6 +180,7 @@
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/StateMachine/StateMachine.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/StateMachine/TimeStateMachineDefinition.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/StateMachine/TimeStateMachineInstance.cs
+Assets/Scripts/EdgeHelper.cs
 Assets/Scripts/Sky.cs
 Assets/Scripts/Star.cs
 Assets/Scripts/TextureHelper.cs
