@@ -31,9 +31,19 @@ public class Sky : MonoBehaviour {
             {
                 GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
                 Star star = s.GetComponent<Star>();
-                // multiply by scale of constellation shape and move by transform
-                star.targetPos = Vector3.Scale(edge.GetRandomPointOnMesh(mesh), ConstellationShape.transform.localScale) 
-                    + ConstellationShape.transform.position;
+                // multiply by scale of constellation shape, move by transform, then rotate
+                Vector3 meshPos = edge.GetRandomPointOnMesh(mesh);
+
+                // scale by scale
+                meshPos = Vector3.Scale(meshPos, ConstellationShape.transform.localScale);
+
+                // rotate by rotation
+                meshPos = ConstellationShape.transform.rotation * meshPos;
+                
+                // transform by position
+                meshPos = meshPos + ConstellationShape.transform.position;
+
+                star.targetPos = meshPos;
             }
         }
 

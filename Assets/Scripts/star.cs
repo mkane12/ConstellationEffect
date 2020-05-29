@@ -15,7 +15,7 @@ using TeamLab.Unity;
 public class Star : StateMachine
 {
     public Vector3 targetPos; // target position of the star
-    public int size; // size of the star
+    public float size; // size of the star
     public float velocity; // velocity of the star
     public float lifespan = 5.0f; // number of seconds star lasts
     public float acceleration = -1.0f; // rate of deceleration of star
@@ -53,7 +53,7 @@ public class Star : StateMachine
     protected override void Start()
     {
         // make each star have a random size
-        size = Random.Range(1, 3);
+        size = Random.Range(0.1f, 1.0f);
         transform.localScale *= size;
 
         initializationTime = Time.timeSinceLevelLoad; // establish time at which object was instantiated
