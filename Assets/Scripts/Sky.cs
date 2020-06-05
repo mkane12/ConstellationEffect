@@ -13,7 +13,7 @@ public class Sky : MonoBehaviour {
     List<GameObject> constellationList = new List<GameObject>();
     public GameObject Ursa;
     public GameObject Leo;
-    public GameObject Prefab3;
+    public GameObject Tiger;
 
     void Start()
     {
@@ -23,6 +23,7 @@ public class Sky : MonoBehaviour {
         // Add GameObjects to constellationList
         constellationList.Add(Ursa);
         constellationList.Add(Leo);
+        constellationList.Add(Tiger);
     }
 
     // call on click
@@ -33,11 +34,9 @@ public class Sky : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit))
         {
-            int index = 1;//UnityEngine.Random.Range(0, constellationList.Count - 1);
-            Debug.Log("index = " +index);
+            int index = UnityEngine.Random.Range(0, constellationList.Count - 1);
 
             GameObject ConstellationShape = constellationList[index];
-            Debug.Log("shape = " + ConstellationShape);
 
             // instantiate new constellation
             GameObject c = Instantiate(ConstellationShape, 

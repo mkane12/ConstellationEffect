@@ -215,7 +215,7 @@ MonoBehaviour:
   numStars: 295
   Ursa: {fileID: 1134085668177424, guid: 44e7b51d1548867498b7dac60bc1b1a4, type: 2}
   Leo: {fileID: 1161317567041834, guid: 76b7818b6f5d0eb41bb5bf23418a8fb9, type: 2}
-  Prefab3: {fileID: 0}
+  Tiger: {fileID: 1845759704096782, guid: 77fccd90ff0c2d741ae72788cd502dca, type: 2}
 --- !u!1 &995421624
 GameObject:
   m_ObjectHideFlags: 0
