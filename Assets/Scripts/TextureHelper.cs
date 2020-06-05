@@ -23,7 +23,6 @@ public class TextureHelper
     private int index;
     // don't necessarily know what columns or rows will be, but this will always return tileSize even if values changed
     // > especially good for relationships between variables
-    // > TODO Jasper: look up encapsulation (get, set)
     private Vector2 tileSize {
         get
         {
@@ -34,6 +33,8 @@ public class TextureHelper
     private float delay;
 
     private Renderer renderer;
+    // get cache id for shader property _MainTex - slightly more efficient than searching every time
+    private int mtid = Shader.PropertyToID("_MainTex");
 
     // this method is mostly to set valeus that will not change for a given star over its lifetime
     public void NewStarTex(Renderer r, float d)
@@ -67,8 +68,7 @@ public class TextureHelper
         // only update renderer when index has actually changed
         if(prevIndex != index)
         {
-            // TODO Davis: cache id number for shader instead of forcing it to look up id from string every time
-            renderer.material.SetTextureOffset("_MainTex", offset);
+            renderer.material.SetTextureOffset(mtid, offset);
         }
     }
 

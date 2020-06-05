@@ -53,7 +53,7 @@ public class Star : StateMachine
     protected override void Start()
     {
         // make each star have a random size
-        size = Random.Range(0.1f, 1.0f);
+        size = Random.Range(0.5f, 2.0f);
         transform.localScale *= size;
 
         initializationTime = Time.timeSinceLevelLoad; // establish time at which object was instantiated

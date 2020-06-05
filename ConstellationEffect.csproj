@@ -286,7 +286,7 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\TimeStateMachineDefinition.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\TimeStateMachineInstance.cs" />
-    <Compile Include="Assets\Scripts\EdgeHelper.cs" />
+    <Compile Include="Assets\Scripts\MeshHelper.cs" />
     <Compile Include="Assets\Scripts\Sky.cs" />
     <Compile Include="Assets\Scripts\Star.cs" />
     <Compile Include="Assets\Scripts\TextureHelper.cs" />

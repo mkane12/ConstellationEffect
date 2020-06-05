@@ -6,10 +6,10 @@ public class Sky : MonoBehaviour {
 
     public GameObject Star;
     public int numStars = 12; // number of stars to spawn
-    private EdgeHelper edge;
-    private Mesh mesh;
+    private MeshHelper edge;
 
     //make public list of GameObjects for constellations
+    // TODO: had wanted to do this in MeshHelper, but then couldn't set prefabs... what do?
     List<GameObject> constellationList = new List<GameObject>();
     public GameObject Ursa;
     public GameObject Leo;
@@ -18,7 +18,7 @@ public class Sky : MonoBehaviour {
     void Start()
     {
         // Get random position on mesh
-        edge = new EdgeHelper();
+        edge = new MeshHelper();
 
         // Add GameObjects to constellationList
         constellationList.Add(Ursa);
@@ -34,18 +34,14 @@ public class Sky : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit))
         {
-            int index = UnityEngine.Random.Range(0, constellationList.Count);
 
-            GameObject ConstellationShape = constellationList[index];
+            GameObject ConstellationShape = edge.GetRandomConstellation(constellationList);
 
             // instantiate new constellation
             GameObject c = Instantiate(ConstellationShape, 
                new Vector3(hit.point.x, hit.point.y, hit.point.z - 0.1f), 
-               ConstellationShape.transform.rotation)
+               ConstellationShape.transform.rotation) 
                as GameObject;
-
-            MeshFilter mf = (MeshFilter)c.GetComponent("MeshFilter");
-            mesh = mf.sharedMesh;
 
             for (int i = 0; i < numStars; i++)
             {
@@ -53,16 +49,7 @@ public class Sky : MonoBehaviour {
                 Star star = s.GetComponent<Star>();
 
                 // multiply by scale of constellation shape, move by transform, then rotate
-                Vector3 meshPos = edge.GetRandomPointOnMesh(mesh);
-
-                // scale by scale
-                meshPos = Vector3.Scale(meshPos, c.transform.localScale);
-
-                // rotate by rotation
-                meshPos = c.transform.rotation * meshPos;
-                
-                // transform by position
-                meshPos = meshPos + c.transform.position;
+                Vector3 meshPos = edge.GetRandomPointOnConstellation(c);
 
                 star.targetPos = meshPos;
             }

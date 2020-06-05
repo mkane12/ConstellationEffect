@@ -13,10 +13,27 @@ using UnityEngine;
 // Adapted from this github code:
 // > https://gist.github.com/v21/5378391
 
-public class EdgeHelper
+public class MeshHelper
 {
-    public Vector3 GetRandomPointOnMesh(Mesh mesh)
+    private GameObject ConstellationShape;
+
+    public GameObject GetRandomConstellation(List<GameObject> list)
     {
+        int index = UnityEngine.Random.Range(0, list.Count);
+        Debug.Log(index);
+
+        ConstellationShape = list[index];
+        Debug.Log(ConstellationShape);
+
+        return ConstellationShape;
+    }
+
+    public Vector3 GetRandomPointOnConstellation(GameObject Constellation)
+    {
+
+        MeshFilter mf = (MeshFilter)ConstellationShape.GetComponent("MeshFilter");
+        Mesh mesh = mf.sharedMesh;
+
         float[] sizes = GetTriSizes(mesh.triangles, mesh.vertices);
         float[] cumulativeSizes = new float[sizes.Length];
         float total = 0;
@@ -61,6 +78,18 @@ public class EdgeHelper
         //and then turn them back to a Vector3
         // BUT this doesn't account for Mesh's scale, position, or rotation
         Vector3 pointOnMesh = a + r * (b - a) + s * (c - a);
+
+        //TODO: now constellation always appears in center... but maybe that's ok?
+
+        // scale by scale
+        pointOnMesh = Vector3.Scale(pointOnMesh, ConstellationShape.transform.localScale);
+
+        // rotate by rotation
+        pointOnMesh = ConstellationShape.transform.rotation * pointOnMesh;
+
+        // transform by position
+        pointOnMesh = pointOnMesh + ConstellationShape.transform.position;
+
         return pointOnMesh;
 
     }
@@ -74,21 +103,5 @@ public class EdgeHelper
             sizes[i] = .5f * Vector3.Cross(verts[tris[i * 3 + 1]] - verts[tris[i * 3]], verts[tris[i * 3 + 2]] - verts[tris[i * 3]]).magnitude;
         }
         return sizes;
-
-        /*
-         * 
-         * more readably:
-         * 
-for(int ii = 0 ; ii < indices.Length; ii+=3)
-{
-    Vector3 A = Points[indices[ii]];
-    Vector3 B = Points[indices[ii+1]];
-    Vector3 C = Points[indices[ii+2]];
-    Vector3 V = Vector3.Cross(A-B, A-C);
-    Area += V.magnitude * 0.5f;
-}
-         * 
-         * 
-         * */
     }
 }

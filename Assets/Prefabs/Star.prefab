@@ -99,7 +99,7 @@ MonoBehaviour:
     state: -1
     goNow: 0
   targetPos: {x: 0, y: 0, z: 0}
-  size: 0
+  size: 1.29
   velocity: 0
   lifespan: 5
   acceleration: -1
