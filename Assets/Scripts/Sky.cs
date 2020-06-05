@@ -6,17 +6,23 @@ public class Sky : MonoBehaviour {
 
     public GameObject Star;
     public int numStars = 12; // number of stars to spawn
-    public GameObject ConstellationShape;
     private EdgeHelper edge;
     private Mesh mesh;
 
+    //make public list of GameObjects for constellations
+    List<GameObject> constellationList = new List<GameObject>();
+    public GameObject Ursa;
+    public GameObject Leo;
+    public GameObject Prefab3;
+
     void Start()
     {
-        MeshFilter mf = (MeshFilter)ConstellationShape.GetComponent("MeshFilter");
-        mesh = mf.sharedMesh;
-
         // Get random position on mesh
         edge = new EdgeHelper();
+
+        // Add GameObjects to constellationList
+        constellationList.Add(Ursa);
+        constellationList.Add(Leo);
     }
 
     // call on click
@@ -27,21 +33,36 @@ public class Sky : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit))
         {
+            int index = 1;//UnityEngine.Random.Range(0, constellationList.Count - 1);
+            Debug.Log("index = " +index);
+
+            GameObject ConstellationShape = constellationList[index];
+            Debug.Log("shape = " + ConstellationShape);
+
+            // instantiate new constellation
+            GameObject c = Instantiate(ConstellationShape, 
+               new Vector3(hit.point.x, hit.point.y, hit.point.z - 0.1f), 
+               ConstellationShape.transform.rotation);
+
+            MeshFilter mf = (MeshFilter)c.GetComponent("MeshFilter");
+            mesh = mf.sharedMesh;
+
             for (int i = 0; i < numStars; i++)
             {
                 GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
                 Star star = s.GetComponent<Star>();
+
                 // multiply by scale of constellation shape, move by transform, then rotate
                 Vector3 meshPos = edge.GetRandomPointOnMesh(mesh);
 
                 // scale by scale
-                meshPos = Vector3.Scale(meshPos, ConstellationShape.transform.localScale);
+                meshPos = Vector3.Scale(meshPos, c.transform.localScale);
 
                 // rotate by rotation
-                meshPos = ConstellationShape.transform.rotation * meshPos;
+                meshPos = c.transform.rotation * meshPos;
                 
                 // transform by position
-                meshPos = meshPos + ConstellationShape.transform.position;
+                meshPos = meshPos + c.transform.position;
 
                 star.targetPos = meshPos;
             }
