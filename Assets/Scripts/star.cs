@@ -113,15 +113,14 @@ public class Star : StateMachine
 
         // alpha goes from 1 to 0 over roughly timeToFade
         float alpha = Mathf.Lerp(1, 0, timeInFade / timeToFade);
-        // TODO: keeps printing alpha even after object Destroyed
 
         // try to change material as alpha updates
         renderer.material.SetFloat("_Transparency", alpha);
 
         // if alpha is low enough, destroy the star
-        if (renderer.material.color.a <= 0.01)
+        if (alpha <= 0.01)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

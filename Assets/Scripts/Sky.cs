@@ -34,14 +34,15 @@ public class Sky : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit))
         {
-            int index = UnityEngine.Random.Range(0, constellationList.Count - 1);
+            int index = UnityEngine.Random.Range(0, constellationList.Count);
 
             GameObject ConstellationShape = constellationList[index];
 
             // instantiate new constellation
             GameObject c = Instantiate(ConstellationShape, 
                new Vector3(hit.point.x, hit.point.y, hit.point.z - 0.1f), 
-               ConstellationShape.transform.rotation);
+               ConstellationShape.transform.rotation)
+               as GameObject;
 
             MeshFilter mf = (MeshFilter)c.GetComponent("MeshFilter");
             mesh = mf.sharedMesh;
@@ -65,6 +66,8 @@ public class Sky : MonoBehaviour {
 
                 star.targetPos = meshPos;
             }
+
+            Destroy(c);
         }
 
     }
