@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Constellation.unity
+- path: C:/Users/user1/Desktop/repo/WLBW/Assets/WLBW/Scenes/WLBW.unity
   isLoaded: 1
   isActive: 1

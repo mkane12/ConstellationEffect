@@ -43,7 +43,7 @@ public class Star : StateMachine
         // > For your star manager class, I believe a singleton design pattern would be more appropriate than a static class.
         // > In team lab unity frameworks, there is a helpful base class for making singletons. SingletonMonoBehaviour.cs
         //var boundary = EdgeHelper.GetEdges();
-        velocity = Random.Range(10.0f, 30.0f);
+        velocity = Random.Range(5.0f, 20.0f);
 
         // set initial state to born
         SetState((int)StarState.Born);
