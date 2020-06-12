@@ -10,3 +10,7 @@
 	path = Assets/Packages/Osc
 	url = https://github.com/nobnak/unity-osc
 	branch = master
+[submodule "Gist"]
+	path = Gist
+	url = https://github.com/nobnak/Gist.git
+	branch = master
