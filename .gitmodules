@@ -6,3 +6,7 @@
 	path = Assets/Packages/TeamLabUnityFrameworkDevelop
 	url = https://github.com/team-lab/TeamLabUnityFramework.git
 	branch = develop
+[submodule "Assets/Packages/Osc"]
+	path = Assets/Packages/Osc
+	url = https://github.com/nobnak/unity-osc
+	branch = master
