@@ -39,7 +39,7 @@ public class Sky : MonoBehaviour {
 
             // instantiate new constellation
             GameObject c = Instantiate(ConstellationShape, 
-               new Vector3(hit.point.x, hit.point.y, hit.point.z - 0.1f), 
+               hit.point, //new Vector3(hit.point.x, hit.point.y, hit.point.z - 0.1f), 
                ConstellationShape.transform.rotation) 
                as GameObject;
 

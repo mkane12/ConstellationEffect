@@ -15,15 +15,12 @@ using UnityEngine;
 
 public class MeshHelper
 {
-    private GameObject ConstellationShape;
 
     public GameObject GetRandomConstellation(List<GameObject> list)
     {
         int index = UnityEngine.Random.Range(0, list.Count);
-        Debug.Log(index);
 
-        ConstellationShape = list[index];
-        Debug.Log(ConstellationShape);
+        GameObject ConstellationShape = list[index];
 
         return ConstellationShape;
     }
@@ -31,7 +28,7 @@ public class MeshHelper
     public Vector3 GetRandomPointOnConstellation(GameObject Constellation)
     {
 
-        MeshFilter mf = (MeshFilter)ConstellationShape.GetComponent("MeshFilter");
+        MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
         Mesh mesh = mf.sharedMesh;
 
         float[] sizes = GetTriSizes(mesh.triangles, mesh.vertices);
@@ -76,19 +73,18 @@ public class MeshHelper
             s = 1 - s;
         }
         //and then turn them back to a Vector3
+
         // BUT this doesn't account for Mesh's scale, position, or rotation
         Vector3 pointOnMesh = a + r * (b - a) + s * (c - a);
 
-        //TODO: now constellation always appears in center... but maybe that's ok?
-
         // scale by scale
-        pointOnMesh = Vector3.Scale(pointOnMesh, ConstellationShape.transform.localScale);
+        pointOnMesh = Vector3.Scale(pointOnMesh, Constellation.transform.localScale);
 
         // rotate by rotation
-        pointOnMesh = ConstellationShape.transform.rotation * pointOnMesh;
+        pointOnMesh = Constellation.transform.rotation * pointOnMesh;
 
-        // transform by position
-        pointOnMesh = pointOnMesh + ConstellationShape.transform.position;
+        // translate by position
+        pointOnMesh = pointOnMesh + Constellation.transform.position;
 
         return pointOnMesh;
 
