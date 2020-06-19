@@ -20,9 +20,9 @@ public class Sky : MonoBehaviour {
         edge = new MeshHelper();
 
         // Add GameObjects to constellationList
-        constellationList.Add(Ursa);
+        /*constellationList.Add(Ursa);
         constellationList.Add(Leo);
-        constellationList.Add(Tiger);
+        constellationList.Add(Tiger);*/
     }
 
     // call on click

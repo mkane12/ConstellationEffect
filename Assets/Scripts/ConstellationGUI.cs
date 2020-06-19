@@ -39,7 +39,7 @@ namespace TeamLab.Unity
             sky.numStars = sliderNumStars;
             GUILayout.EndHorizontal();
 
-            // checkbox to decide constellation patterns chosen from
+            // toggles to decide constellation patterns chosen from
             GUILayout.BeginHorizontal();
             GUILayout.Label("Constellations to choose from:");
 
