@@ -5,11 +5,10 @@ using UnityEngine;
 public class Sky : MonoBehaviour {
 
     public GameObject Star;
-    public int numStars = 12; // number of stars to spawn
+    public int numStars = 1; // number of stars to spawn
     private MeshHelper edge;
 
     //make public list of GameObjects for constellations
-    // TODO: had wanted to do this in MeshHelper, but then couldn't set prefabs... what do?
     List<GameObject> constellationList = new List<GameObject>();
     public GameObject Ursa;
     public GameObject Leo;

@@ -10,18 +10,13 @@ using TeamLab.Unity;
 // > protected variables accessible by subclasses -> Star has access to StateMachine
 // > virtual functions = subclass can redefine function as needed
 
-    // DON'T REFERENCE A MESH, LET SOMETHING ELSE MAKE A MESH INTO POINTS
-
 public class Star : StateMachine
 {
     public Vector3 targetPos; // target position of the star
     public float size; // size of the star
     public float velocity; // velocity of the star
-    public float lifespan = 5.0f; // number of seconds star lasts
-    public float acceleration = -1.0f; // rate of deceleration of star
-    public float timeToFade = 5.0f; // time for star to fade
-    private float timeInFade = 0f; // timer for star in Die state
     private float initializationTime; // time when star was initialized
+    private float timeInFade = 0f; // timer for star in Die state
 
     public enum StarState : int
     {
@@ -38,12 +33,8 @@ public class Star : StateMachine
     // > still called even if script disabled
     void Awake()
     {
-        // TODO Davis: create new class starProperties/starManager with variables for these hardcoded numbers
-        // > as a brand new .cs file
-        // > For your star manager class, I believe a singleton design pattern would be more appropriate than a static class.
-        // > In team lab unity frameworks, there is a helpful base class for making singletons. SingletonMonoBehaviour.cs
-        //var boundary = EdgeHelper.GetEdges();
-        velocity = Random.Range(5.0f, 20.0f);
+        // Tried to add this to singleton, but would make velocity same for all Stars (velocity should be unique to each Star)
+        velocity = Random.Range(5.0f, 20.0f);//StarManager.Instance.velocity;
 
         // set initial state to born
         SetState((int)StarState.Born);
@@ -90,7 +81,7 @@ public class Star : StateMachine
             case (int)StarState.Live:
                 // Live state: wait until lifespan is elapsed
                 // once we are outside of lifespan, switch to Die state
-                if (Time.timeSinceLevelLoad - initializationTime >= lifespan)
+                if (Time.timeSinceLevelLoad - initializationTime >= StarManager.Instance.lifespan)
                 {
                     SetState((int)StarState.Die);
                 }
@@ -103,7 +94,7 @@ public class Star : StateMachine
 
     private void UpdateBorn()
     {
-        float step = velocity * Time.deltaTime + acceleration * Mathf.Pow(Time.deltaTime, 2.0f);
+        float step = velocity * Time.deltaTime + StarManager.Instance.acceleration * Mathf.Pow(Time.deltaTime, 2.0f);
         transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
     }
 
@@ -112,7 +103,7 @@ public class Star : StateMachine
         timeInFade += Time.deltaTime; // counter for time spent in this method
 
         // alpha goes from 1 to 0 over roughly timeToFade
-        float alpha = Mathf.Lerp(1, 0, timeInFade / timeToFade);
+        float alpha = Mathf.Lerp(1, 0, timeInFade / StarManager.Instance.timeToFade);
 
         // try to change material as alpha updates
         renderer.material.SetFloat("_Transparency", alpha);

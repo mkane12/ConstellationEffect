@@ -11,15 +11,20 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
-    <LangVersion>4</LangVersion>
+    <LangVersion>6</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,7 +33,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -38,18 +43,31 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="System" />
-    <Reference Include="System.XML" />
-    <Reference Include="System.Core" />
-    <Reference Include="Boo.Lang" />
-    <Reference Include="UnityScript.Lang" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="mscorlib">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.XML.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\Microsoft.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.Xml.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
@@ -260,6 +278,9 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/File/Json/Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
@@ -283,15 +304,305 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="nobnak.Gist.csproj">
+      <Project>{7865B458-6473-814C-82CD-12E9ACF7A553}</Project>
+      <Name>nobnak.Gist</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Packages\Osc\MessageEncoder.cs" />
+    <Compile Include="Assets\Packages\Osc\Osc.cs" />
+    <Compile Include="Assets\Packages\Osc\OscPort.cs" />
+    <Compile Include="Assets\Packages\Osc\OscPort\OscPortSocket.cs" />
+    <Compile Include="Assets\Packages\Osc\OscPort\OscPortUdpBegin.cs" />
+    <Compile Include="Assets\Packages\Osc\OscPort\OscPortUdpSync.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Scripts\CustomImageEffectBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Scripts\UVChecker.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Animation\AnimatorSetAvatarFromChild.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Animation\StateMachineBehaviors\RandomAnimSelect.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Animation\StateMachineBehaviors\RandomPlaybackSpeed.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ApplicationSettings\ExhibitSettings.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ApplicationSettings\QuitApplicationHelper.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ApplicationSettings\WindowController.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ApplicationSettings\WindowLayout.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ApplicationSettings\WindowSetting.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\AttributesGeneral\UnityEditor_Property_ReadOnly.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\CommandLine\CommandLineBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ContainersGeneric\ListExtention.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ContainersGeneric\WeightedGenericArray.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ContainersGeneric\WeightedGenericArraySpecilzation.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectBaseStateMachine.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectBaseStateMachineGlobalSettings.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectSettingsNetworkedBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectSpawnerData.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectTweenHelper.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectTweenHelperNGUI.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\PostEffectAdjsutmentBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\PostEffectSettings.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\WaitForEndingEffectsToFinish.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\EffectBaseSystemStateMachine.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\EffectSettingsNTMgr.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\EffectSettingsNTMgrGUI.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\LocalEffectManager.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\LocalEffectManagerSettings.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\LocalEffectUser.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\UniqueEffectAreaManager.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\UniqueEffectVoter.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectPrefabContainer\EffectPrefabsContiner.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectPrefabContainer\EffectPrefabsPerSurfacePerMonth.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\_Utility\ColorFixed.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\_Utility\ColorPerMonth.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\_Utility\ColorSettingsBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\Effect_Spotlight.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\EffectSettingsGUIBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\SpotlightMaterialUpdate.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\SpotlightSettings.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\SpotlightSettingsGUI.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\SurfaceType\SceneSurfaceType.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\SurfaceType\UsableSurface.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\ConfigFileSimple.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\FileUtil.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonConverterVector.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonDataBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\Example\JsonSettingsFileUserBaseClassExample.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\Example\JsonSettingsFileUserDerivedClassExample.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\JsonSettingsFileSystem.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\JsonSettingsFileUserInterface.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\JsonSettingsFileUserMonoBehavior.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\JsonSettingsFileUserNetworkBehavior.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\PackageAndSceneSpecificPath.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\PackageAndSceneSpecificPathCmdLine.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\DestroyParentOnDestroy.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\DestroyWhenNoChildren.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\EnableChildrenOnStart.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\FlagPerPrefabType.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectArray.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectCountGrid.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectCountGridOSC.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectFactory.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectFactory_Debug.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectFinder_Hierarchy.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectHierarchyByName.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectUtil.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\LayerSingle.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\LayersUtil.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\ObjectPool.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\ObjectPoolManager.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\PrefabListByMonth.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\PrefabListByMonthPropertyDrawer.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\PrefabListByString.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\QuadFullScreenStretch.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\UndestroyableOnSceneLoad.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraAfterEffectAndCapture.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraExtentionConversions.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraOutputCapture.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraSetTargetTextureFromMainCam.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraUtility.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorHSV.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\GPUMemoryLeakTest\GPUMemoryLeakTest.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\GPUMemoryLeakTest\RenderTextureMemoryLeakTest.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\GPUMemoryLeakTest\Texture2DArrayMemoryLeakTest.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\GPUMemoryLeakTest\Texture2DMemoryLeakTest.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeX\FadeEdgeX.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeY\FadeEdgeY.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeRects.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeRectsAllGUIs.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\CopyTextureToMaterials.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\DestroyMaterialOnDestroy.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\MaterialConstants.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetKeywordOnAwake.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetMaterialInAncestor.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetMaterialShaderVariablesOnAwake.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetTextureArrayOnAwakeByReference.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetTextureFromGUI.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetTextureOnAwake.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetTextureOnAwakeByReference.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\ShadersToIncludeInReleaseBuild.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\ShaderUtil.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\ShaderVariableGeneric.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\StandardShaderUtility.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\OSCProjectionRect.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\PointRendererInVS.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\RenderResolutionBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\RenderResolutionGlobal.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Screenshot\Screenshot.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Screenshot\ScreenshotGUI.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Screenshot\ScreenshotInLayers.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\TemperatureDependentColor.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\ColorTextures.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\DepthBitsEnum.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\FractalGenerator\FractalShaderVariables.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\Texture2DCPU\Texture2DCPU.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\Texture2DCPU\Texture2DCPUAutoSize.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\Texture2DCPU\Texture2DCPUExtentionNobnak.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\ComputeBufferAutoSize.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\RenderTextureAutoSize.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\RenderTextureFixedSize.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\Texture2DAutoSize.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureRendererSingleton.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\TriangleCPURenderContourX.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\ChildMenuList.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIShowTextLabelForXSeconds.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\AbstractVector.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorField.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorScope.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorString.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\DictionaryGUI.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\DropdownList.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\DropdownListHelper.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Field.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Fold.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Folds.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Indent.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\IntButton.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Slider.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\MenuBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\MenuState.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\GUIGroupFloat.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\GUIGroupVector4.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\GUIGroupVector4Material.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\VariableGroup.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\VariableGroupMgr.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Input\MouseDragSS.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Input\MouseUtility.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\BoundsEx.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\FloatUtility.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\MathTemplateUtility.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\PrimeNumberUtilityForResize.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\Range.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\RangeInt.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\TriangleUtility.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\Vector3Utility.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\CallbackOnChange.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\DebugModeBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\EnableOptions.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\GarbageCollectOnStart.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\IncludeMeToo.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\LogMsgEveryXSec.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\OnAwakeDoSomething.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\StringExt.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\UpdateEveryXFramesStaticMgr.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\MultiThreading\UnityMainThreadSingleton.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCMsgAppControl.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCMsgAppControlBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCMsgAppControlPropertyDrawer.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCRecieverAppControl.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCSenderAppControl.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCSenderAppControlTest.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgArtworkArea.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgMonth.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgSoundBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgSoundBGMBorderless.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgSoundFXBorderless.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCPointRender.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCSenderMonth.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCSendRecieve.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCTouchAndProximity\OSCMsgTouchBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCTouchAndProximity\OSCMsgTouchBaseDistance.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCTouchAndProximity\OSCReceiverTouch.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCTouchAndProximity\OSCReceiverTouchDebugInput.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCTouchAndProximity\OSCTouchDebugMode.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\AssetIDSearch.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\ClientSceneUtil.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\ComputerName\ComputerNameBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\ComputerName\ComputerNameSample.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\Listener.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\MsgGeneric.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\MsgTypeCustom.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkAddress.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkClientIsReady.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkConnectionIDAndClientMap.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkManagerCallbackExample.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkManagerCallbackInterface.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkManagerScenesByCmdLine.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkManagerSetOnlineSceneDelay.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkTimeoutHelper.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkUtil.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\PrintAllNetworkIdentity.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\SyncBool.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\SyncIntCorS.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Physics\PhysicsUtility.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Physics\Temperature.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneAttribute.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneLoadFromCommandLine\SceneLoadFromCommandLine.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneManagerUtil.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Search\Bisection.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Singleton.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\SingletonMonoBehaviour.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\TimeStateMachineDefinition.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\TimeStateMachineInstance.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\CountdownTimerSimple.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\CountupStopwatchSimple.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\DateTimeSimulation.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\DateTimeSimulationSync.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\MonthSelection.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\StartAndLength.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\TimeStringUtility.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\FaceCameraApproximatly.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\MovementAnalysis.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\MovementAnalysisManual.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\PositionOffsetOnAwake.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\RotateLocalYRandom.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\RotateLocalYRandomForChild.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\SetScaleOnAwakeByReference.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\ClientAndNodeMap.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\ConversionUtil.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\MapperTestGUI.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_FileIO.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_FileIOForExtraComponents.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_GUI.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_Mapper.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_Static.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_Tree.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_Visualize.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\NodeExtra_DebugTextureCustom.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\NodeExtra_ProjectorData.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\NodeExtraComponentBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\NodeToClientMap.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\NodeToIPEndPointMap.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\CustomLoadDirectory.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\CustomNodeExample\CustomNodeExample.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\CustomNodeExample\CustomSystemGUIExample.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\NodeExtra_ExampleComponent.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\UVMapExample_CPU.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SelectNodeByName.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SelectNodeByNameBehavior.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SystemGUI.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SystemInstaller.cs" />
     <Compile Include="Assets\Scripts\MeshHelper.cs" />
     <Compile Include="Assets\Scripts\Sky.cs" />
     <Compile Include="Assets\Scripts\Star.cs" />
+    <Compile Include="Assets\Scripts\StarManager.cs" />
     <Compile Include="Assets\Scripts\TextureHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Packages\Gist\CGIncludes\BlendMode.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\ColorSpace.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\Depth.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\Math.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\Normal.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\OIT.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\Quaternion.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\Wireframe.cginc" />
+    <None Include="Assets\Packages\Gist\Compute\Blurring\Resources\GaussianDownsample.compute" />
+    <None Include="Assets\Packages\Gist\Compute\Blurring\Resources\GlowFilter.shader" />
+    <None Include="Assets\Packages\Gist\Compute\Edge\Sobel.shader" />
+    <None Include="Assets\Packages\Gist\GLTools\Resources\Copy.shader" />
+    <None Include="Assets\Packages\Gist\nobnak.Gist.asmdef" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Shaders\PhotoshopMath.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Shaders\UVChecker.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\ProjectSettings\ProjectVersion.txt" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\Spotlight.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeX\FadeEdgeX.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeY\FadeEdgeY.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeRect.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\FractalGenerator\FractalGenerator.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneLoadFromCommandLine\readme.txt" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\UVAndRealWorldMapperNT.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\UVMapExample_GPUFractal.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\CoonsCurve.cginc" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Easing.cginc" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Noise.cginc" />
@@ -310,6 +621,7 @@
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMappingOtherNode.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\version.txt" />
     <None Include="Assets\Shaders\starShader.shader" />
+    <None Include="Assets\smcs.rsp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

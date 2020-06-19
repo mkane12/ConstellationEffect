@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7865B458-6473-814C-82CD-12E9ACF7A553}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>nobnak.Gist</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectGenerator>VSTU</UnityProjectGenerator>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
+    <UnityVersion>2017.3.1f1</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion>6</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_3_1;UNITY_2017_3;UNITY_2017;PLATFORM_ARCH_64;UNITY_64;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\mscorlib.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.XML.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\Microsoft.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.Runtime.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2017.3.1\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.Xml.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WebModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.WebModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StyleSheetsModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticlesLegacyModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.ParticlesLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Timeline">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIAutomation">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIAutomation">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/UIAutomation/Editor/UnityEditor.UIAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.GoogleAudioSpatializer">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GoogleAudioSpatializer">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2017.3.1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/File/Json/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Analytics">
+      <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/Editor/UnityEditor.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StandardEvents">
+      <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Packages\Gist\AutoSceneSelector.cs" />
+    <Compile Include="Assets\Packages\Gist\Camera\CameraAspect.cs" />
+    <Compile Include="Assets\Packages\Gist\Camera\CameraCrop.cs" />
+    <Compile Include="Assets\Packages\Gist\Camera\CameraData.cs" />
+    <Compile Include="Assets\Packages\Gist\Camera\CameraFit.cs" />
+    <Compile Include="Assets\Packages\Gist\Camera\LensShift.cs" />
+    <Compile Include="Assets\Packages\Gist\Camera\LowerFrequency.cs" />
+    <Compile Include="Assets\Packages\Gist\Camera\ManuallyRenderCamera.cs" />
+    <Compile Include="Assets\Packages\Gist\Camera\PreRendering.cs" />
+    <Compile Include="Assets\Packages\Gist\Camera\ScreenFreezer.cs" />
+    <Compile Include="Assets\Packages\Gist\Camera\SSTextureViewer.cs" />
+    <Compile Include="Assets\Packages\Gist\Categorizer.cs" />
+    <Compile Include="Assets\Packages\Gist\Collection\CustomList.cs" />
+    <Compile Include="Assets\Packages\Gist\Collection\FixedCircularBuffer.cs" />
+    <Compile Include="Assets\Packages\Gist\Collection\IndexedList.cs" />
+    <Compile Include="Assets\Packages\Gist\Collection\IReadOnlyList.cs" />
+    <Compile Include="Assets\Packages\Gist\Collection\KVS.cs" />
+    <Compile Include="Assets\Packages\Gist\Collection\Tabulator.cs" />
+    <Compile Include="Assets\Packages\Gist\Collection\UnorderedList.cs" />
+    <Compile Include="Assets\Packages\Gist\Compute\Blurring\Blur.cs" />
+    <Compile Include="Assets\Packages\Gist\Compute\Blurring\Glow.cs" />
+    <Compile Include="Assets\Packages\Gist\Compute\Blurring\Test\BlurFilter.cs" />
+    <Compile Include="Assets\Packages\Gist\Compute\Blurring\Test\GlowFilter.cs" />
+    <Compile Include="Assets\Packages\Gist\Compute\Edge\Test\TestSobel.cs" />
+    <Compile Include="Assets\Packages\Gist\DataUI\FieldEditor.cs" />
+    <Compile Include="Assets\Packages\Gist\DataUI\TextNumber.cs" />
+    <Compile Include="Assets\Packages\Gist\Easings.cs" />
+    <Compile Include="Assets\Packages\Gist\Events\BaseMaterialListener.cs" />
+    <Compile Include="Assets\Packages\Gist\Events\Hooks\HookOnAnimatorMove.cs" />
+    <Compile Include="Assets\Packages\Gist\Events\MaterialListener.cs" />
+    <Compile Include="Assets\Packages\Gist\Events\MonoBehaviourNotifier.cs" />
+    <Compile Include="Assets\Packages\Gist\Events\RendererMaterialListener.cs" />
+    <Compile Include="Assets\Packages\Gist\Events\RigidbodyListener.cs" />
+    <Compile Include="Assets\Packages\Gist\Events\UnityEvents.cs" />
+    <Compile Include="Assets\Packages\Gist\Exhibitor\AbstratExhibitor.cs" />
+    <Compile Include="Assets\Packages\Gist\Exhibitor\ExhibitorGroup.cs" />
+    <Compile Include="Assets\Packages\Gist\Exhibitor\IExhibitorListener.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\AABBExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\ArrayExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\BehaviourExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\CameraExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\ColorExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\ComponentExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\CustomAttributeExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\EasingExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\EnumOperator.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\EventExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\FileExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\FloatExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\GeometryExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\GPUExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\IListExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\IntExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\LinqExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\NativeArrayExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\ObjectExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\ProjectExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\QuaternionExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\RandomExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\RangeExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\RectExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\ScreenExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\SpecialFolderExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\Texture2DExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\TransformExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Extensions\VisualizationExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Generative\IGenerativeTexture.cs" />
+    <Compile Include="Assets\Packages\Gist\Generative\MCMC.cs" />
+    <Compile Include="Assets\Packages\Gist\Generative\MultiOctaveNoise.cs" />
+    <Compile Include="Assets\Packages\Gist\Generative\Noise\AbstractSimplexNoiseTextureGeenerator.cs" />
+    <Compile Include="Assets\Packages\Gist\Generative\Noise\CameraSNTG.cs" />
+    <Compile Include="Assets\Packages\Gist\Generative\Noise\LayerSNTG.cs" />
+    <Compile Include="Assets\Packages\Gist\Generative\Noise\ScreenNoiseMap.cs" />
+    <Compile Include="Assets\Packages\Gist\Generative\NoiseGenerator.cs" />
+    <Compile Include="Assets\Packages\Gist\Generative\SimplexNoiseRevised.cs" />
+    <Compile Include="Assets\Packages\Gist\Generative\Util\TextureFilter.cs" />
+    <Compile Include="Assets\Packages\Gist\GLTools\Copy.cs" />
+    <Compile Include="Assets\Packages\Gist\GLTools\GLFigure.cs" />
+    <Compile Include="Assets\Packages\Gist\GLTools\GLMaterial.cs" />
+    <Compile Include="Assets\Packages\Gist\GPUBuffer\AsyncCPUTexture.cs" />
+    <Compile Include="Assets\Packages\Gist\GPUBuffer\GPUList.cs" />
+    <Compile Include="Assets\Packages\Gist\IMGUI\Scope\FoldoutScope.cs" />
+    <Compile Include="Assets\Packages\Gist\IMGUI\Scope\GUIChangedScope.cs" />
+    <Compile Include="Assets\Packages\Gist\IMGUI\Scope\IndentScope.cs" />
+    <Compile Include="Assets\Packages\Gist\InputDevice\KeycodeStatus.cs" />
+    <Compile Include="Assets\Packages\Gist\InputDevice\KeycodeToggle.cs" />
+    <Compile Include="Assets\Packages\Gist\InputDevice\MouseTracker.cs" />
+    <Compile Include="Assets\Packages\Gist\Interaction\ColliderInfo.cs" />
+    <Compile Include="Assets\Packages\Gist\Interaction\TriggerInteraction.cs" />
+    <Compile Include="Assets\Packages\Gist\Intersection\2D\AABB2.cs" />
+    <Compile Include="Assets\Packages\Gist\Intersection\2D\IConvex2Distance.cs" />
+    <Compile Include="Assets\Packages\Gist\Intersection\2D\IConvex2Polytope.cs" />
+    <Compile Include="Assets\Packages\Gist\Intersection\2D\Intersection2.cs" />
+    <Compile Include="Assets\Packages\Gist\Intersection\2D\OBB2.cs" />
+    <Compile Include="Assets\Packages\Gist\Intersection\3D\AABB3.cs" />
+    <Compile Include="Assets\Packages\Gist\Intersection\3D\IConvex3Polytope.cs" />
+    <Compile Include="Assets\Packages\Gist\Intersection\3D\Intersection3.cs" />
+    <Compile Include="Assets\Packages\Gist\Intersection\3D\OBB3.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layer2\Extensions\LayerExtension.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layer2\IChangeListener.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layer2\ILayer.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layer2\Layer.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layer2\Utility\CameraFollower.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layer2\Utility\LayerFollower.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layer2\Utility\QuadFitToCamera.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layers\AbstractLayer.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layers\BaseLookatLayer.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layers\CameraLookatLayer.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layers\LayerPanel.cs" />
+    <Compile Include="Assets\Packages\Gist\Layer\Layers\TransformLookatLayer.cs" />
+    <Compile Include="Assets\Packages\Gist\Loader\FilePath.cs" />
+    <Compile Include="Assets\Packages\Gist\Loader\FolderPath.cs" />
+    <Compile Include="Assets\Packages\Gist\Loader\ImageLoader.cs" />
+    <Compile Include="Assets\Packages\Gist\Loader\ImageLoaderBehaviour.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Curves\Common\BaseCurve.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Curves\Common\ILineStrip.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Curves\Common\IParametricCurve.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Curves\Common\PointAt.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Curves\CurvedLineStrip.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Curves\Spline.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Curves\Util\CRSpline.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Distribution\Gaussian.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Distribution\Uniform.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Kmeans.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\LongestCommonPrefix.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\MortonCode.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\MortonCodeInt.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\RouletteWheelSelection.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Sampling\DitheredSampler.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Sampling\FlatRing.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\Sampling\Sphere.cs" />
+    <Compile Include="Assets\Packages\Gist\MathAlgorithms\XorshiftRandom.cs" />
+    <Compile Include="Assets\Packages\Gist\ParticleSystemMaterialPropertyBlock.cs" />
+    <Compile Include="Assets\Packages\Gist\Pluggable\Checkin.cs" />
+    <Compile Include="Assets\Packages\Gist\Pluggable\Deffered.cs" />
+    <Compile Include="Assets\Packages\Gist\Pluggable\Reactive.cs" />
+    <Compile Include="Assets\Packages\Gist\Pooling\Behaviour\MaterialPoolBehaviour.cs" />
+    <Compile Include="Assets\Packages\Gist\Pooling\Behaviour\TextPool.cs" />
+    <Compile Include="Assets\Packages\Gist\Pooling\IMemoryPool.cs" />
+    <Compile Include="Assets\Packages\Gist\Pooling\MaterialPool.cs" />
+    <Compile Include="Assets\Packages\Gist\Pooling\MemoryPool.cs" />
+    <Compile Include="Assets\Packages\Gist\Pooling\RenderTexturePool.cs" />
+    <Compile Include="Assets\Packages\Gist\Pooling\Tuple.cs" />
+    <Compile Include="Assets\Packages\Gist\Primitive\DefferedMatrix.cs" />
+    <Compile Include="Assets\Packages\Gist\Primitive\FastBounds.cs" />
+    <Compile Include="Assets\Packages\Gist\Primitive\FastBounds2D.cs" />
+    <Compile Include="Assets\Packages\Gist\Profiling\Frequency.cs" />
+    <Compile Include="Assets\Packages\Gist\Resizable\BaseFormat.cs" />
+    <Compile Include="Assets\Packages\Gist\Resizable\Format2D.cs" />
+    <Compile Include="Assets\Packages\Gist\Resizable\FormatRT.cs" />
+    <Compile Include="Assets\Packages\Gist\Resizable\LODRenderTexture.cs" />
+    <Compile Include="Assets\Packages\Gist\Resizable\ResizableRenderTexture.cs" />
+    <Compile Include="Assets\Packages\Gist\Resizable\TemporalResizableRenderTexture.cs" />
+    <Compile Include="Assets\Packages\Gist\Scoped\ObjectModal.cs" />
+    <Compile Include="Assets\Packages\Gist\Scoped\ScopedActivator.cs" />
+    <Compile Include="Assets\Packages\Gist\Scoped\ScopedObject.cs" />
+    <Compile Include="Assets\Packages\Gist\Scoped\ScopedRandom.cs" />
+    <Compile Include="Assets\Packages\Gist\Sensor\BoundsCluster2D.cs" />
+    <Compile Include="Assets\Packages\Gist\Sensor\PositionCluster2D.cs" />
+    <Compile Include="Assets\Packages\Gist\Sensor\PositionCluster3D.cs" />
+    <Compile Include="Assets\Packages\Gist\Settings.cs" />
+    <Compile Include="Assets\Packages\Gist\SingletonBehaviour.cs" />
+    <Compile Include="Assets\Packages\Gist\SpatialPartitions\HashGrid\AbstractHashGrid.cs" />
+    <Compile Include="Assets\Packages\Gist\SpatialPartitions\HashGrid\HashGrid2DBehaviour.cs" />
+    <Compile Include="Assets\Packages\Gist\SpatialPartitions\HashGrid\HashGrid3DBehaviour.cs" />
+    <Compile Include="Assets\Packages\Gist\SpatialPartitions\HashGrid\Storage\HashGrid2D.cs" />
+    <Compile Include="Assets\Packages\Gist\SpatialPartitions\HashGrid\Storage\HashGrid3D.cs" />
+    <Compile Include="Assets\Packages\Gist\SpatialPartitions\HashGrid\Storage\Storage3D.cs" />
+    <Compile Include="Assets\Packages\Gist\SpatialPartitions\ISpatialPartition.cs" />
+    <Compile Include="Assets\Packages\Gist\SpatialPartitions\Linear\Linear3D.cs" />
+    <Compile Include="Assets\Packages\Gist\StateMachine\FSMRunner.cs" />
+    <Compile Include="Assets\Packages\Gist\Syscall\Kern32.cs" />
+    <Compile Include="Assets\Packages\Gist\TemporalCache.cs" />
+    <Compile Include="Assets\Packages\Gist\Threadsafe\ParallelFor.cs" />
+    <Compile Include="Assets\Packages\Gist\Threadsafe\TextureData.cs" />
+    <Compile Include="Assets\Packages\Gist\Timers\CoroutineBasedTimer.cs" />
+    <Compile Include="Assets\Packages\Gist\Timers\Timer.cs" />
+    <Compile Include="Assets\Packages\Gist\Util\Swap.cs" />
+    <Compile Include="Assets\Packages\Gist\Validator.cs" />
+    <Compile Include="Assets\Packages\Gist\Variations\MeshVariation.cs" />
+    <Compile Include="Assets\Packages\Gist\VoxelBounds.cs" />
+    <Compile Include="Assets\Packages\Gist\WindowSystem\FrameRateJob.cs" />
+    <Compile Include="Assets\Packages\Gist\WindowSystem\TargetFramerate.cs" />
+    <Compile Include="Assets\Packages\Gist\WindowSystem\WindowControl.cs" />
+    <Compile Include="Assets\Packages\Gist\Wrapper\Block.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Packages\Gist\CGIncludes\BlendMode.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\ColorSpace.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\Depth.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\Math.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\Normal.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\OIT.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\Quaternion.cginc" />
+    <None Include="Assets\Packages\Gist\CGIncludes\Wireframe.cginc" />
+    <None Include="Assets\Packages\Gist\Compute\Blurring\Resources\GaussianDownsample.compute" />
+    <None Include="Assets\Packages\Gist\Compute\Blurring\Resources\GlowFilter.shader" />
+    <None Include="Assets\Packages\Gist\Compute\Edge\Sobel.shader" />
+    <None Include="Assets\Packages\Gist\GLTools\Resources\Copy.shader" />
+    <None Include="Assets\Packages\Gist\nobnak.Gist.asmdef" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Shaders\PhotoshopMath.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Shaders\UVChecker.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\ProjectSettings\ProjectVersion.txt" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\Spotlight.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeX\FadeEdgeX.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeY\FadeEdgeY.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeRect.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\FractalGenerator\FractalGenerator.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneLoadFromCommandLine\readme.txt" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\UVAndRealWorldMapperNT.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\UVMapExample_GPUFractal.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\CoonsCurve.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Easing.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Noise.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\PhotoshopMath.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Random.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Transform.cginc" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\LineToCircle.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColor.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColorGlobal.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColorNoAlphaBlend.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureFlipY.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureInvertR.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureView.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewBlendOff.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMapping.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMappingOtherNode.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\version.txt" />
+    <None Include="Assets\Shaders\starShader.shader" />
+    <None Include="Assets\smcs.rsp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+</Project>

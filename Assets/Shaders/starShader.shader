@@ -35,7 +35,6 @@
 			};
 
 			sampler2D _MainTex;
-			// TODO: What does this MainTex_ST do?? It's not explicitly called anywhere...
 			float4 _MainTex_ST;
 			float4 _Color;
 			float _Transparency;
