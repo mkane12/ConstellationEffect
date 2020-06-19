@@ -9,7 +9,7 @@ public class Sky : MonoBehaviour {
     private MeshHelper edge;
 
     //make public list of GameObjects for constellations
-    List<GameObject> constellationList = new List<GameObject>();
+    public List<GameObject> constellationList = new List<GameObject>();
     public GameObject Ursa;
     public GameObject Leo;
     public GameObject Tiger;

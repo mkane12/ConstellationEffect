@@ -7,13 +7,21 @@ namespace TeamLab.Unity
     public class ConstellationGUI : TeamLab.Unity.MenuBase
     {
         public Sky sky;
+        // number of stars in constellation
         public int sliderNumStars;
-        public GUIContent[] checkConstellationList;
+        // toggle for each constellation
+        public bool toggleUrsa = true;
+        public bool toggleLeo = true;
+        public bool toggleTiger = true;
 
         protected override void Start()
         {
             sky = GameObject.FindObjectOfType<Sky>();
             sliderNumStars = sky.numStars;
+
+            sky.constellationList.Add(sky.Ursa);
+            sky.constellationList.Add(sky.Leo);
+            sky.constellationList.Add(sky.Tiger);
 
             base.showButtons.save = false;
             base.showButtons.load = false;
@@ -32,10 +40,40 @@ namespace TeamLab.Unity
             GUILayout.EndHorizontal();
 
             // checkbox to decide constellation patterns chosen from
-            /*GUILayout.BeginHorizontal();
+            GUILayout.BeginHorizontal();
             GUILayout.Label("Constellations to choose from:");
-            checkConstellationList = GUIUtil.DropdownList;
-            GUILayout.EndHorizontal();*/
+
+            toggleUrsa = GUILayout.Toggle(toggleUrsa, "Ursa");
+            if(!toggleUrsa)
+            {
+                sky.constellationList.Remove(sky.Ursa);
+            }
+            else if (toggleUrsa & !sky.constellationList.Contains(sky.Ursa))
+            {
+                sky.constellationList.Add(sky.Ursa);
+            }
+
+            toggleLeo = GUILayout.Toggle(toggleLeo, "Leo");
+            if (!toggleLeo)
+            {
+                sky.constellationList.Remove(sky.Leo);
+            }
+            else if (toggleLeo & !sky.constellationList.Contains(sky.Leo))
+            {
+                sky.constellationList.Add(sky.Leo);
+            }
+
+            toggleTiger = GUILayout.Toggle(toggleTiger, "Tiger");
+            if (!toggleTiger)
+            {
+                sky.constellationList.Remove(sky.Tiger);
+            }
+            else if (toggleTiger & !sky.constellationList.Contains(sky.Tiger))
+            {
+                sky.constellationList.Add(sky.Tiger);
+            }
+
+            GUILayout.EndHorizontal();
 
         }
 
