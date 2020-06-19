@@ -402,10 +402,15 @@ Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/SingletonMonoBehaviour.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/StateMachine/StateMachine.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/StateMachine/TimeStateMachineDefinition.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/StateMachine/TimeStateMachineInstance.cs
+Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/Astrology/SunTimeKeyFrame.cs
+Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/Astrology/SunTimeKeyFrameInput.cs
+Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/Astrology/SunTimes.cs
+Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/Astrology/SunTimesTest.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/CountdownTimerSimple.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/CountupStopwatchSimple.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/DateTimeSimulation.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/DateTimeSimulationSync.cs
+Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/GeoInfoWindows.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/MonthSelection.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/StartAndLength.cs
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/TimeStringUtility.cs

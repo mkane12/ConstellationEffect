@@ -533,10 +533,15 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\TimeStateMachineDefinition.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\TimeStateMachineInstance.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrame.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrameInput.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimes.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimesTest.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\CountdownTimerSimple.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\CountupStopwatchSimple.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\DateTimeSimulation.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\DateTimeSimulationSync.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\GeoInfoWindows.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\MonthSelection.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\StartAndLength.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\TimeStringUtility.cs" />
@@ -572,6 +577,7 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SelectNodeByNameBehavior.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SystemGUI.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SystemInstaller.cs" />
+    <Compile Include="Assets\Scripts\ConstellationGUI.cs" />
     <Compile Include="Assets\Scripts\MeshHelper.cs" />
     <Compile Include="Assets\Scripts\Sky.cs" />
     <Compile Include="Assets\Scripts\Star.cs" />

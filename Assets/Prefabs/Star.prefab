@@ -101,6 +101,3 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   size: 1.29
   velocity: 0
-  lifespan: 5
-  acceleration: -1
-  timeToFade: 5
