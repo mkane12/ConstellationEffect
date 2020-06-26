@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sky : MonoBehaviour {
 
     public GameObject Star;
-    public int numStars = 1; // number of stars to spawn
+    public int numStars = 100; // number of stars to spawn
     private MeshHelper edge;
 
     //make public list of GameObjects for constellations
@@ -19,10 +19,9 @@ public class Sky : MonoBehaviour {
         // Get random position on mesh
         edge = new MeshHelper();
 
-        // Add GameObjects to constellationList
-        /*constellationList.Add(Ursa);
+        constellationList.Add(Ursa);
         constellationList.Add(Leo);
-        constellationList.Add(Tiger);*/
+        constellationList.Add(Tiger);
     }
 
     // call on click
@@ -55,6 +54,19 @@ public class Sky : MonoBehaviour {
 
             Destroy(c);
         }
+    }
 
+    public void UpdateConstellationList(bool toggle, GameObject constellation)
+    {
+        if (!toggle)
+        {
+            constellationList.Remove(constellation);
+        }
+        else if (toggle & !constellationList.Contains(constellation))
+        {
+            constellationList.Add(constellation);
+        }
+
+        Debug.Log(constellationList);
     }
 }

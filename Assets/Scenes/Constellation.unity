@@ -213,6 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
   numStars: 12
+  constellationList: []
   Ursa: {fileID: 1134085668177424, guid: 44e7b51d1548867498b7dac60bc1b1a4, type: 2}
   Leo: {fileID: 1161317567041834, guid: 76b7818b6f5d0eb41bb5bf23418a8fb9, type: 2}
   Tiger: {fileID: 1845759704096782, guid: 77fccd90ff0c2d741ae72788cd502dca, type: 2}
@@ -338,10 +339,15 @@ MonoBehaviour:
   showButtons:
     save: 0
     load: 0
-  windowIsDragable: 1
+  windowIsDragable: 0
   placeholder: 0
-  Sky: {fileID: 446230656}
-  Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
+  sky: {fileID: 0}
+  star: {fileID: 114991130923611854, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
+  sliderNumStars: 100
+  toggleUrsa: 1
+  toggleLeo: 1
+  toggleTiger: 1
+  starColor: {r: 0.5882353, g: 0.9818339, b: 1, a: 0}
 --- !u!4 &1219601355
 Transform:
   m_ObjectHideFlags: 0

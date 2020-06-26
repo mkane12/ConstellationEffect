@@ -5,7 +5,9 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - sky: {instanceID: 0}
+  - star: {fileID: 114991130923611854, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
