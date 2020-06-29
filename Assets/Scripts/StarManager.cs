@@ -17,10 +17,17 @@ public class StarManager : SingletonMonoBehaviour<StarManager> {
     public float lifespan = 5.0f; // number of seconds star lasts
     public float acceleration = -1.0f; // rate of deceleration of star
     public float timeToFade = 5.0f; // time for star to fade
+
+    public float minVelocity = 5.0f; // minimum velocity of a star
+    public float maxVelocity = 20.0f; // maximum velocity of a star
+
+    public float minSize = 0.5f; // minimum size of a star
+    public float maxSize = 2.0f; // maximum size of a star
+
+    public int fps = 8; // frames per second - rate at which stars twinkle
     
     protected override void Awake()
     {
-        //velocity = Random.Range(5.0f, 20.0f);
         base.Awake();
     }
 

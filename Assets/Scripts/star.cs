@@ -33,8 +33,7 @@ public class Star : StateMachine
     // > still called even if script disabled
     void Awake()
     {
-        // Tried to add this to singleton, but would make velocity same for all Stars (velocity should be unique to each Star)
-        velocity = Random.Range(5.0f, 20.0f);//StarManager.Instance.velocity;
+        velocity = Random.Range(StarManager.Instance.minVelocity, StarManager.Instance.maxVelocity);
 
         // set initial state to born
         SetState((int)StarState.Born);
@@ -44,7 +43,7 @@ public class Star : StateMachine
     protected override void Start()
     {
         // make each star have a random size
-        size = Random.Range(0.5f, 2.0f);
+        size = Random.Range(StarManager.Instance.minSize, StarManager.Instance.maxSize);
         transform.localScale *= size;
 
         initializationTime = Time.timeSinceLevelLoad; // establish time at which object was instantiated

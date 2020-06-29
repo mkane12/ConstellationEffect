@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
-  numStars: 12
+  numStars: 100
   constellationList: []
   Ursa: {fileID: 1134085668177424, guid: 44e7b51d1548867498b7dac60bc1b1a4, type: 2}
   Leo: {fileID: 1161317567041834, guid: 76b7818b6f5d0eb41bb5bf23418a8fb9, type: 2}
@@ -344,10 +344,13 @@ MonoBehaviour:
   sky: {fileID: 0}
   star: {fileID: 114991130923611854, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
   sliderNumStars: 100
+  sliderStarVelocity: 0
   toggleUrsa: 1
   toggleLeo: 1
   toggleTiger: 1
+  toggleList: 
   starColor: {r: 0.5882353, g: 0.9818339, b: 1, a: 0}
+  starRenderer: {fileID: 0}
 --- !u!4 &1219601355
 Transform:
   m_ObjectHideFlags: 0

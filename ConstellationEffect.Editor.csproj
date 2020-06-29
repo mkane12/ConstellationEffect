@@ -302,6 +302,12 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="GeoTimeZone">
+      <HintPath>Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/Astrology/DLL/GeoTimeZone.dll</HintPath>
+    </Reference>
+    <Reference Include="TimeZoneConverter">
+      <HintPath>Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/Astrology/DLL/TimeZoneConverter.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ConstellationEffect.csproj">
@@ -340,6 +346,10 @@
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeRect.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\FractalGenerator\FractalGenerator.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneLoadFromCommandLine\readme.txt" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\DLL\GeoTimeZone.xml" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\DLL\GeoTimeZoneReadMe.txt" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\DLL\TimeZoneConverter.xml" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\DLL\TimeZoneConverterReadMe.txt" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\UVAndRealWorldMapperNT.cginc" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\UVMapExample_GPUFractal.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\CoonsCurve.cginc" />

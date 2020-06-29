@@ -19,8 +19,11 @@ public class TextureHelper
     // Reference: https://www.youtube.com/watch?v=cMiY6svKt-s
     public int columns = 4;
     public int rows = 2;
-    public int fps = 8;
+    public int fps;
     private int index;
+
+    private float blend = 0f;
+
     // don't necessarily know what columns or rows will be, but this will always return tileSize even if values changed
     // > especially good for relationships between variables
     private Vector2 tileSize {
@@ -30,17 +33,23 @@ public class TextureHelper
         }
     }
     private Vector2 offset;
+    private Vector2 prevOffset;
     private float delay;
 
     private Renderer renderer;
-    // get cache id for shader property _MainTex - slightly more efficient than searching every time
-    private int mtid = Shader.PropertyToID("_MainTex");
+    // get cache id for shader properties - slightly more efficient than searching every time
+    private int currTexID = Shader.PropertyToID("_CurrTex");
+    private int nextTexID = Shader.PropertyToID("_NextTex");
+    private float blendID = Shader.PropertyToID("_Blend");
 
     // this method is mostly to set valeus that will not change for a given star over its lifetime
     public void NewStarTex(Renderer r, float d)
     {
         renderer = r;
-        renderer.material.SetTextureScale("_MainTex", tileSize);
+        renderer.material.SetTextureScale(currTexID, tileSize);
+        renderer.material.SetTextureScale(nextTexID, tileSize);
+
+        fps = StarManager.Instance.fps;
 
         offset = new Vector2(tileSize.x, tileSize.y);
 
@@ -51,6 +60,15 @@ public class TextureHelper
     public void Twinkle()
     {
         int prevIndex = index;
+
+        // calculate current offset (before texture iterates)
+        var uIndexPrev = prevIndex % rows;
+        var vIndexPrev = prevIndex / rows;
+
+        prevOffset.x = uIndexPrev * tileSize.x;
+        prevOffset.y = 1.0f - tileSize.y - vIndexPrev * tileSize.y;
+
+        renderer.material.SetTextureOffset(currTexID, prevOffset);
 
         // calculate index for texture iteration
         // add random time offset, so stars twinkle at varying rates
@@ -65,11 +83,29 @@ public class TextureHelper
         offset.x = uIndex * tileSize.x;
         offset.y = 1.0f - tileSize.y - vIndex * tileSize.y;
 
-        // only update renderer when index has actually changed
-        if(prevIndex != index)
+        // TODO: Now that we're blending shit, should be updating renderer every frame!
+        renderer.material.SetTextureOffset(nextTexID, offset);
+
+        blend += Time.deltaTime;
+
+        if (blend > 1.0f)
         {
-            renderer.material.SetTextureOffset(mtid, offset);
+            blend = 0;
         }
+
+        // TODO: seems smoother maybe? but still kinda bumpy... maybe need to multiply blend by something...
+        renderer.material.SetFloat("_Blend", blend);
+        Debug.Log(blend);
+
+        // only update renderer when index has actually changed
+        /*if(prevIndex != index)
+        {
+            // TODO: blend between two textures rather than just the one
+            // > combine two textures (not just _CurrTex)
+            renderer.material.SetTextureOffset(currTexID, prevOffset);
+            renderer.material.SetTextureOffset(nextTexID, offset); // TODO for now this should change nothing
+
+        }*/
     }
 
 }

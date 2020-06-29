@@ -66,7 +66,5 @@ public class Sky : MonoBehaviour {
         {
             constellationList.Add(constellation);
         }
-
-        Debug.Log(constellationList);
     }
 }

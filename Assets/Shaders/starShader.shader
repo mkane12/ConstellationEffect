@@ -1,8 +1,10 @@
 ﻿Shader "Custom/starShader" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
-		_MainTex ("Albedo", 2D) = "white" {}
+		_CurrTex ("Albedo", 2D) = "white" {}
+		_NextTex ("Albedo", 2D) = "white" {}
 		_Transparency("Transparency", Float) = 0.9
+		_Blend("Blend", Float) = 0.5
 	}
 	SubShader {
 		Tags {"Queue"="Transparent" "RenderType"="Transparent"}
@@ -34,10 +36,13 @@
 				half2 texcoord : TEXCOORD0;
 			};
 
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
+			sampler2D _CurrTex;
+			float4 _CurrTex_ST;
+			sampler2D _NextTex;
+			float4 _NextTex_ST;
 			float4 _Color;
 			float _Transparency;
+			float _Blend;
 
 			v2f vert (appdata v) {
 				v2f o;
@@ -47,11 +52,16 @@
 			}
 
 			fixed4 frag (v2f i) : SV_Target { // called once for each pixel
-				float2 uv = TRANSFORM_TEX(i.texcoord, _MainTex);
-				float3 input_color = tex2D(_MainTex, uv) * _Color;
-				// fade at edges
-				float t = length(i.texcoord - float2(0.5, 0.5)) * 1.41421356237;
-				float trans = lerp(_Transparency, 0, t + 0.25);
+				// TRANSFORM_TEX scales and offsets texture coordinates; transforms 2D UV by scale/bias property
+				float2 uvCurr = TRANSFORM_TEX(i.texcoord, _CurrTex);
+				float2 uvNext = TRANSFORM_TEX(i.texcoord, _NextTex);
+
+				float3 currColor = tex2D(_CurrTex, uvCurr) * _Color;
+				float3 nextColor = tex2D(_NextTex, uvNext) * _Color;
+				float3 input_color = lerp(currColor, nextColor, _Blend);
+				// make transparent when texture is black (background)
+				float pct = smoothstep(0, 1, (input_color.r + input_color.g + input_color.b)*2/3);
+				float trans = lerp(0, _Transparency, pct);
 				return float4(input_color, max(trans, 0));
 			}
 

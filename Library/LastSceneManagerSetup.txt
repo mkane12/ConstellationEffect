@@ -1,4 +1,4 @@
 sceneSetups:
-- path: C:/Users/user1/AppData/Local/Temp/Temp1_EverythingLibrary_Animals.zip/EverythingLibrary_Animals/EverythingLibrary_Animals_Unity/Assets/Scenes/Animals.unity
+- path: Assets/Scenes/Constellation.unity
   isLoaded: 1
   isActive: 1

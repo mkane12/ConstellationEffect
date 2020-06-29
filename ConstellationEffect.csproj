@@ -302,6 +302,12 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/user1/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="GeoTimeZone">
+      <HintPath>Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/Astrology/DLL/GeoTimeZone.dll</HintPath>
+    </Reference>
+    <Reference Include="TimeZoneConverter">
+      <HintPath>Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/Astrology/DLL/TimeZoneConverter.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="nobnak.Gist.csproj">
@@ -455,6 +461,7 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Folds.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Indent.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\IntButton.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\SelectionGridForEnum.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Slider.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\MenuBase.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\MenuState.cs" />
@@ -535,6 +542,9 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\TimeStateMachineInstance.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrame.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrameInput.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrameInputDefaultOrCustom.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrameInputWindows.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrameInputWindowsDTS.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimes.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimesTest.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\CountdownTimerSimple.cs" />
@@ -607,6 +617,10 @@
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeRect.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\FractalGenerator\FractalGenerator.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneLoadFromCommandLine\readme.txt" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\DLL\GeoTimeZone.xml" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\DLL\GeoTimeZoneReadMe.txt" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\DLL\TimeZoneConverter.xml" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\DLL\TimeZoneConverterReadMe.txt" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\UVAndRealWorldMapperNT.cginc" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\UVMapExample_GPUFractal.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\CoonsCurve.cginc" />
