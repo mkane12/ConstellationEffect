@@ -4,7 +4,7 @@
 		_CurrTex ("Albedo", 2D) = "white" {}
 		_NextTex ("Albedo", 2D) = "white" {}
 		_Transparency("Transparency", Float) = 0.9
-		_Blend("Blend", Float) = 0.5
+		_Blend("Blend", Range(0.0, 1.0)) = 0.0
 	}
 	SubShader {
 		Tags {"Queue"="Transparent" "RenderType"="Transparent"}
@@ -59,6 +59,7 @@
 				float3 currColor = tex2D(_CurrTex, uvCurr) * _Color;
 				float3 nextColor = tex2D(_NextTex, uvNext) * _Color;
 				float3 input_color = lerp(currColor, nextColor, _Blend);
+
 				// make transparent when texture is black (background)
 				float pct = smoothstep(0, 1, (input_color.r + input_color.g + input_color.b)*2/3);
 				float trans = lerp(0, _Transparency, pct);

@@ -344,7 +344,13 @@ MonoBehaviour:
   sky: {fileID: 0}
   star: {fileID: 114991130923611854, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
   sliderNumStars: 100
-  sliderStarVelocity: 0
+  sliderStarVelocityMin: 0
+  sliderStarVelocityMax: 0
+  sliderStarSizeMin: 0
+  sliderStarSizeMax: 0
+  sliderFps: 0
+  sliderLifespan: 0
+  sliderTimeToFade: 0
   toggleUrsa: 1
   toggleLeo: 1
   toggleTiger: 1

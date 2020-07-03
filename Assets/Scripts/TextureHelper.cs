@@ -20,7 +20,7 @@ public class TextureHelper
     public int columns = 4;
     public int rows = 2;
     public int fps;
-    private int index;
+    private int nextIndex;
 
     private float blend = 0f;
 
@@ -32,15 +32,15 @@ public class TextureHelper
             return new Vector2(1.0f / columns, 1.0f / rows);
         }
     }
-    private Vector2 offset;
-    private Vector2 prevOffset;
+    private Vector2 nextOffset;
+    private Vector2 currOffset;
     private float delay;
 
     private Renderer renderer;
     // get cache id for shader properties - slightly more efficient than searching every time
     private int currTexID = Shader.PropertyToID("_CurrTex");
     private int nextTexID = Shader.PropertyToID("_NextTex");
-    private float blendID = Shader.PropertyToID("_Blend");
+    private int blendID = Shader.PropertyToID("_Blend");
 
     // this method is mostly to set valeus that will not change for a given star over its lifetime
     public void NewStarTex(Renderer r, float d)
@@ -51,7 +51,7 @@ public class TextureHelper
 
         fps = StarManager.Instance.fps;
 
-        offset = new Vector2(tileSize.x, tileSize.y);
+        nextOffset = new Vector2(tileSize.x, tileSize.y);
 
         // start index with random offset so twinkling is scattered
         delay = d;
@@ -59,34 +59,44 @@ public class TextureHelper
 
     public void Twinkle()
     {
-        int prevIndex = index;
+        // 0 = 0
+        // 1 = 1
+        // 2 = 2
+        // 3 = 3
+        // 4 = 4
+        // 5 = 5
+        // 6 = 6
+        // 7 = 7
+        // 8 = 0
+
+        int currIndex = nextIndex;
 
         // calculate current offset (before texture iterates)
-        var uIndexPrev = prevIndex % rows;
-        var vIndexPrev = prevIndex / rows;
+        var uIndexCurr = currIndex % columns;
+        var vIndexCurr = currIndex / columns;
 
-        prevOffset.x = uIndexPrev * tileSize.x;
-        prevOffset.y = 1.0f - tileSize.y - vIndexPrev * tileSize.y;
+        currOffset.x = uIndexCurr * tileSize.x;
+        currOffset.y = 1.0f - tileSize.y - vIndexCurr * tileSize.y;//1.0f - tileSize.y - vIndexCurr * tileSize.y;
 
-        renderer.material.SetTextureOffset(currTexID, prevOffset);
+        renderer.material.SetTextureOffset(currTexID, currOffset);
 
         // calculate index for texture iteration
         // add random time offset, so stars twinkle at varying rates
-        index = (int)(Time.time * fps * delay);
-        index = index % (columns * rows);
+        nextIndex = (int)(Time.time * fps * delay); 
+        nextIndex = nextIndex % (columns * rows);
 
         // split into horizontal and vertical indices
-        var uIndex = index % rows;
-        var vIndex = index / rows;
+        var uIndexNext = nextIndex % columns;
+        var vIndexNext = nextIndex / columns;
 
         // build offset
-        offset.x = uIndex * tileSize.x;
-        offset.y = 1.0f - tileSize.y - vIndex * tileSize.y;
+        nextOffset.x = uIndexNext * tileSize.x;
+        nextOffset.y = 1.0f - tileSize.y - vIndexNext * tileSize.y;
 
-        // TODO: Now that we're blending shit, should be updating renderer every frame!
-        renderer.material.SetTextureOffset(nextTexID, offset);
+        // TODO: Now that we're blending between sprites, should be updating renderer every frame!
+        renderer.material.SetTextureOffset(nextTexID, nextOffset);
 
-        blend += Time.deltaTime;
+        blend += Time.deltaTime;// * fps;
 
         if (blend > 1.0f)
         {
@@ -94,18 +104,7 @@ public class TextureHelper
         }
 
         // TODO: seems smoother maybe? but still kinda bumpy... maybe need to multiply blend by something...
-        renderer.material.SetFloat("_Blend", blend);
-        Debug.Log(blend);
-
-        // only update renderer when index has actually changed
-        /*if(prevIndex != index)
-        {
-            // TODO: blend between two textures rather than just the one
-            // > combine two textures (not just _CurrTex)
-            renderer.material.SetTextureOffset(currTexID, prevOffset);
-            renderer.material.SetTextureOffset(nextTexID, offset); // TODO for now this should change nothing
-
-        }*/
+        renderer.material.SetFloat(blendID, blend);
     }
 
 }
