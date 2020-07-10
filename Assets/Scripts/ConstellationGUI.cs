@@ -21,7 +21,7 @@ namespace TeamLab.Unity
         public float sliderStarSizeMax;
 
         // twinkle speed of stars
-        public int sliderFps;
+        public int twinkleSpeed;
 
         // lifespan of stars
         public float sliderLifespan;
@@ -55,7 +55,7 @@ namespace TeamLab.Unity
             sliderStarSizeMin = StarManager.Instance.minSize;
             sliderStarSizeMax = StarManager.Instance.maxSize;
 
-            sliderFps = StarManager.Instance.fps;
+            twinkleSpeed = StarManager.Instance.twinkleSpeed;
 
             sliderLifespan = StarManager.Instance.lifespan;
 
@@ -111,8 +111,8 @@ namespace TeamLab.Unity
             // slider to determine rate at which stars twinkle
             GUILayout.BeginHorizontal();
             GUILayout.Label("Twinkle speed:");
-            sliderFps = GUIUtil.Slider(sliderFps, 1, 20);
-            StarManager.Instance.fps = sliderFps;
+            twinkleSpeed = GUIUtil.Slider(twinkleSpeed, 1, 20);
+            StarManager.Instance.twinkleSpeed = twinkleSpeed;
             GUILayout.EndHorizontal();
 
             // slider to determine star lifespan

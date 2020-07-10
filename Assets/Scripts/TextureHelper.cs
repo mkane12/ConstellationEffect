@@ -19,8 +19,9 @@ public class TextureHelper
     // Reference: https://www.youtube.com/watch?v=cMiY6svKt-s
     public int columns = 4;
     public int rows = 2;
-    public int fps;
-    private int nextIndex;
+    public int twinkleSpeed;
+    private float currIndex;
+    private float nextIndex;
 
     private float blend = 0f;
 
@@ -49,62 +50,57 @@ public class TextureHelper
         renderer.material.SetTextureScale(currTexID, tileSize);
         renderer.material.SetTextureScale(nextTexID, tileSize);
 
-        fps = StarManager.Instance.fps;
+        twinkleSpeed = StarManager.Instance.twinkleSpeed;
 
         nextOffset = new Vector2(tileSize.x, tileSize.y);
 
         // start index with random offset so twinkling is scattered
         delay = d;
+
+        currIndex = (int)(Time.time);
+        nextIndex = currIndex;
     }
 
     public void Twinkle()
     {
-        // 0 = 0
-        // 1 = 1
-        // 2 = 2
-        // 3 = 3
-        // 4 = 4
-        // 5 = 5
-        // 6 = 6
-        // 7 = 7
-        // 8 = 0
+        // calculate index for texture iteration
+        // add random time offset, so stars twinkle at varying rates
 
-        int currIndex = nextIndex;
+        //Time.time = the time in seconds since the start of the game
+        currIndex += (Time.deltaTime);// * twinkleSpeed * delay);
+
+        // Time.deltaTime = The completion time in seconds since the last frame
+        blend += Time.deltaTime;// * twinkleSpeed * delay;
+
+        Debug.Log("currIndex: " + currIndex);
+        Debug.Log("nextIndex: " + nextIndex);
+        if ((int)currIndex >= (int)nextIndex)//twinkleSpeed * delay)
+        {
+            Debug.Log("reset blend");
+            nextIndex = currIndex + 1.0f;
+            blend = 0;
+        }
+
+        renderer.material.SetFloat(blendID, blend);
 
         // calculate current offset (before texture iterates)
-        var uIndexCurr = currIndex % columns;
-        var vIndexCurr = currIndex / columns;
+        var uIndexCurr = (int)currIndex % columns;
+        var vIndexCurr = (int)currIndex / columns;
 
         currOffset.x = uIndexCurr * tileSize.x;
-        currOffset.y = 1.0f - tileSize.y - vIndexCurr * tileSize.y;//1.0f - tileSize.y - vIndexCurr * tileSize.y;
+        currOffset.y = 1.0f - tileSize.y - vIndexCurr * tileSize.y;
 
         renderer.material.SetTextureOffset(currTexID, currOffset);
 
-        // calculate index for texture iteration
-        // add random time offset, so stars twinkle at varying rates
-        nextIndex = (int)(Time.time * fps * delay); 
-        nextIndex = nextIndex % (columns * rows);
-
         // split into horizontal and vertical indices
-        var uIndexNext = nextIndex % columns;
-        var vIndexNext = nextIndex / columns;
+        var uIndexNext = (int)nextIndex % columns;
+        var vIndexNext = (int)nextIndex / columns;
 
         // build offset
         nextOffset.x = uIndexNext * tileSize.x;
         nextOffset.y = 1.0f - tileSize.y - vIndexNext * tileSize.y;
 
-        // TODO: Now that we're blending between sprites, should be updating renderer every frame!
         renderer.material.SetTextureOffset(nextTexID, nextOffset);
-
-        blend += Time.deltaTime;// * fps;
-
-        if (blend > 1.0f)
-        {
-            blend = 0;
-        }
-
-        // TODO: seems smoother maybe? but still kinda bumpy... maybe need to multiply blend by something...
-        renderer.material.SetFloat(blendID, blend);
     }
 
 }

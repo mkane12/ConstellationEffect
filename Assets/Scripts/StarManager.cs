@@ -24,7 +24,7 @@ public class StarManager : SingletonMonoBehaviour<StarManager> {
     public float minSize = 0.5f; // minimum size of a star
     public float maxSize = 2.0f; // maximum size of a star
 
-    public int fps = 8; // frames per second - rate at which stars twinkle
+    public int twinkleSpeed = 8; // rate at which stars twinkle
     
     protected override void Awake()
     {
