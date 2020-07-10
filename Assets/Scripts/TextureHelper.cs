@@ -67,40 +67,40 @@ public class TextureHelper
         // add random time offset, so stars twinkle at varying rates
 
         //Time.time = the time in seconds since the start of the game
-        currIndex += (Time.deltaTime);// * twinkleSpeed * delay);
+        currIndex += (Time.deltaTime) * twinkleSpeed * delay;
 
         // Time.deltaTime = The completion time in seconds since the last frame
-        blend += Time.deltaTime;// * twinkleSpeed * delay;
+        blend += Time.deltaTime * twinkleSpeed * delay;
 
-        Debug.Log("currIndex: " + currIndex);
-        Debug.Log("nextIndex: " + nextIndex);
+        // if we've moved on to next frame
         if ((int)currIndex >= (int)nextIndex)//twinkleSpeed * delay)
         {
-            Debug.Log("reset blend");
             nextIndex = currIndex + 1.0f;
             blend = 0;
+
+            // calculate current offset (before texture iterates)
+            var uIndexCurr = (int)currIndex % columns;
+            var vIndexCurr = (int)currIndex / columns;
+
+            currOffset.x = uIndexCurr * tileSize.x;
+            currOffset.y = 1.0f - tileSize.y - vIndexCurr * tileSize.y;
+
+            renderer.material.SetTextureOffset(currTexID, currOffset);
+
+            // split into horizontal and vertical indices
+            var uIndexNext = (int)nextIndex % columns;
+            var vIndexNext = (int)nextIndex / columns;
+
+            // build offset
+            nextOffset.x = uIndexNext * tileSize.x;
+            nextOffset.y = 1.0f - tileSize.y - vIndexNext * tileSize.y;
+
+            renderer.material.SetTextureOffset(nextTexID, nextOffset);
         }
 
         renderer.material.SetFloat(blendID, blend);
 
-        // calculate current offset (before texture iterates)
-        var uIndexCurr = (int)currIndex % columns;
-        var vIndexCurr = (int)currIndex / columns;
-
-        currOffset.x = uIndexCurr * tileSize.x;
-        currOffset.y = 1.0f - tileSize.y - vIndexCurr * tileSize.y;
-
-        renderer.material.SetTextureOffset(currTexID, currOffset);
-
-        // split into horizontal and vertical indices
-        var uIndexNext = (int)nextIndex % columns;
-        var vIndexNext = (int)nextIndex / columns;
-
-        // build offset
-        nextOffset.x = uIndexNext * tileSize.x;
-        nextOffset.y = 1.0f - tileSize.y - vIndexNext * tileSize.y;
-
-        renderer.material.SetTextureOffset(nextTexID, nextOffset);
+       
     }
 
 }
