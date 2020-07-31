@@ -7,12 +7,25 @@ public class Sky : MonoBehaviour {
     public GameObject Star;
     public int numStars = 100; // number of stars to spawn
     private MeshHelper edge;
+    private Vector3 meshPos;
 
     //make public list of GameObjects for constellations
     public List<GameObject> constellationList = new List<GameObject>();
     public GameObject Ursa;
     public GameObject Leo;
     public GameObject Tiger;
+
+    // make public enum to determine what visual mode constellation will use
+    // Mesh = stars go to random point on constellation mesh
+    // Edge = stars go to random point on constellation edge
+    public enum ConstellationMode
+    {
+        Mesh,
+        Edge
+    }
+
+    // Set constellationMode as Mesh to start
+    public ConstellationMode mode = ConstellationMode.Mesh;
 
     void Start()
     {
@@ -46,9 +59,25 @@ public class Sky : MonoBehaviour {
                 GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
                 Star star = s.GetComponent<Star>();
 
-                // multiply by scale of constellation shape, move by transform, then rotate
-                Vector3 meshPos = edge.GetRandomPointOnConstellation(c);
-
+                switch (mode)
+                {
+                    case ConstellationMode.Mesh:
+                        {
+                            meshPos = edge.GetRandomPointOnConstellationMesh(c);
+                            break;
+                        }
+                    case ConstellationMode.Edge:
+                        {
+                            meshPos = edge.GetRandomPointOnConstellationEdge(c);
+                            break;
+                        }
+                    default: // because might as well?
+                        {
+                            Debug.Log("We're in Default I guess.");
+                            break;
+                        }
+                }
+                
                 star.targetPos = meshPos;
             }
 

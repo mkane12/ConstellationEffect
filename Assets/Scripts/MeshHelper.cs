@@ -25,9 +25,9 @@ public class MeshHelper
         return ConstellationShape;
     }
 
-    public Vector3 GetRandomPointOnConstellation(GameObject Constellation)
+    public Vector3 GetRandomPointOnConstellationMesh(GameObject Constellation)
     {
-
+        Debug.Log("Mesh Mode");
         MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
         Mesh mesh = mf.sharedMesh;
 
@@ -76,6 +76,71 @@ public class MeshHelper
 
         // BUT this doesn't account for Mesh's scale, position, or rotation
         Vector3 pointOnMesh = a + r * (b - a) + s * (c - a);
+
+        // scale by scale
+        pointOnMesh = Vector3.Scale(pointOnMesh, Constellation.transform.localScale);
+
+        // rotate by rotation
+        pointOnMesh = Constellation.transform.rotation * pointOnMesh;
+
+        // translate by position
+        pointOnMesh = pointOnMesh + Constellation.transform.position;
+
+        return pointOnMesh;
+
+    }
+
+    public Vector3 GetRandomPointOnConstellationEdge(GameObject Constellation)
+    {
+        Debug.Log("Edge Mode");
+        MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
+        Mesh mesh = mf.sharedMesh;
+
+        float[] sizes = GetTriSizes(mesh.triangles, mesh.vertices);
+        float[] cumulativeSizes = new float[sizes.Length];
+        float total = 0;
+
+        for (int i = 0; i < sizes.Length; i++)
+        {
+            total += sizes[i];
+            cumulativeSizes[i] = total;
+        }
+
+        //so everything above this point wants to be factored out
+
+        float randomsample = Random.value * total;
+
+        int triIndex = -1;
+
+        for (int i = 0; i < sizes.Length; i++)
+        {
+            if (randomsample <= cumulativeSizes[i])
+            {
+                triIndex = i;
+                break;
+            }
+        }
+
+        if (triIndex == -1) Debug.LogError("triIndex should never be -1");
+
+        Vector3 a = mesh.vertices[mesh.triangles[triIndex * 3]];
+        Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
+        Vector3 c = mesh.vertices[mesh.triangles[triIndex * 3 + 2]];
+
+        //generate random barycentric coordinates
+
+        float r = Random.value;
+        float s = Random.value;
+
+        if (r + s >= 1)
+        {
+            r = 1 - r;
+            s = 1 - s;
+        }
+        //and then turn them back to a Vector3
+
+        // BUT this doesn't account for Mesh's scale, position, or rotation
+        Vector3 pointOnMesh = a + b + c;// a + r * (b - a) + s * (c - a);
 
         // scale by scale
         pointOnMesh = Vector3.Scale(pointOnMesh, Constellation.transform.localScale);

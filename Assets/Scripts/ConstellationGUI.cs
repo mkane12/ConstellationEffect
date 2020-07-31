@@ -36,6 +36,11 @@ namespace TeamLab.Unity
         // List of toggles
         public List<bool> toggleList = new List<bool>();
 
+        // toggle for constellation visual effect
+        public GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>
+            toggleConstellationMode
+            = new GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>();
+
         // color of stars
         public Color starColor = new Color32(170, 236, 255, 255);
         public GUIUtil.ColorField starColorGUI = new GUIUtil.ColorField();
@@ -141,6 +146,15 @@ namespace TeamLab.Unity
 
             toggleTiger = GUILayout.Toggle(toggleTiger, "Tiger");
             sky.UpdateConstellationList(toggleTiger, sky.Tiger);
+
+            GUILayout.EndHorizontal();
+
+            // toggles to decide constellation mode
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Constellation Mode");
+            // public E OnGUI(E enumInitialValue, int xWidth)
+            // will probably need to update xWidth as more modes are added
+            sky.mode = toggleConstellationMode.OnGUI(sky.mode, 2);
 
             GUILayout.EndHorizontal();
 
