@@ -154,7 +154,7 @@ namespace TeamLab.Unity
             GUILayout.Label("Constellation Mode");
             // public E OnGUI(E enumInitialValue, int xWidth)
             // will probably need to update xWidth as more modes are added
-            sky.mode = toggleConstellationMode.OnGUI(sky.mode, 2);
+            sky.mode = toggleConstellationMode.OnGUI(sky.mode, 3);
 
             GUILayout.EndHorizontal();
 

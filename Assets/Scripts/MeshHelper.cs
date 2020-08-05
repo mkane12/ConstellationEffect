@@ -88,14 +88,49 @@ public class MeshHelper
         var boundary = GetEdges(mesh.triangles);
 
         // get a random triangle from the mesh
-        int a = GetRandomTriangle(mesh);
+        int triIndex = GetRandomTriangle(mesh);
 
+        Vector3 a = mesh.vertices[mesh.triangles[triIndex * 3]];
+        Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
 
+        Vector3 line = b - a;
+        Vector3 pointOnEdge = a + Random.value * line;
 
-        Vector3 pointOnEdge = new Vector3(boundary[a].v1, boundary[a].v2, 0);
+        // scale by scale
+        pointOnEdge = Vector3.Scale(pointOnEdge, Constellation.transform.localScale);
+
+        // rotate by rotation
+        pointOnEdge = Constellation.transform.rotation * pointOnEdge;
+
+        // translate by position
+        pointOnEdge = pointOnEdge + Constellation.transform.position;
 
         return pointOnEdge;
+    }
 
+    public Vector3 GetRandomPointOnConstellationVertex(GameObject Constellation)
+    {
+        MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
+        Mesh mesh = mf.sharedMesh;
+
+        // this gives a list of Edge structs, which have 2 vertex components
+        var boundary = GetEdges(mesh.triangles);
+
+        // get a random triangle from the mesh
+        int triIndex = GetRandomTriangle(mesh);
+
+        Vector3 pointOnVertex = mesh.vertices[mesh.triangles[triIndex * 3]];
+
+        // scale by scale
+        pointOnVertex = Vector3.Scale(pointOnVertex, Constellation.transform.localScale);
+
+        // rotate by rotation
+        pointOnVertex = Constellation.transform.rotation * pointOnVertex;
+
+        // translate by position
+        pointOnVertex = pointOnVertex + Constellation.transform.position;
+
+        return pointOnVertex;
     }
 
     float[] GetTriSizes(int[] tris, Vector3[] verts)

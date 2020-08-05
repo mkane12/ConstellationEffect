@@ -21,7 +21,8 @@ public class Sky : MonoBehaviour {
     public enum ConstellationMode
     {
         Mesh,
-        Edge
+        Edge,
+        Vertex
     }
 
     // Set constellationMode as Mesh to start
@@ -69,6 +70,11 @@ public class Sky : MonoBehaviour {
                     case ConstellationMode.Edge:
                         {
                             meshPos = edge.GetRandomPointOnConstellationEdge(c);
+                            break;
+                        }
+                    case ConstellationMode.Vertex:
+                        {
+                            meshPos = edge.GetRandomPointOnConstellationVertex(c);
                             break;
                         }
                     default: // because might as well?
