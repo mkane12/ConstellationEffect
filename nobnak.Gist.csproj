@@ -542,6 +542,8 @@
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMapping.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMappingOtherNode.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\version.txt" />
+    <None Include="Assets\Packages\UnityMeshSimplifier\Editor\Whinarn.UnityMeshSimplifier.Editor.asmdef" />
+    <None Include="Assets\Packages\UnityMeshSimplifier\Runtime\Whinarn.UnityMeshSimplifier.Runtime.asmdef" />
     <None Include="Assets\Shaders\starShader.shader" />
     <None Include="Assets\smcs.rsp" />
   </ItemGroup>

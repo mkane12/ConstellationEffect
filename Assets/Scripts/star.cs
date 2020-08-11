@@ -4,7 +4,6 @@ using UnityEngine;
 using TeamLab.Unity;
 
 // TODO (visual) Davis: maybe add variations in colors of stars
-// TODO (visual) Davis: blend between frames in sprite sheet instead of jump
 
 // About StateMachine
 // > protected variables accessible by subclasses -> Star has access to StateMachine
@@ -90,7 +89,7 @@ public class Star : StateMachine
                 break;
         }
     }
-
+    
     private void UpdateBorn()
     {
         float step = velocity * Time.deltaTime + StarManager.Instance.acceleration * Mathf.Pow(Time.deltaTime, 2.0f);

@@ -65,8 +65,7 @@ public class TextureHelper
     {
         // calculate index for texture iteration
         // add random time offset, so stars twinkle at varying rates
-
-        //Time.time = the time in seconds since the start of the game
+        // Time.time = the time in seconds since the start of the game
         currIndex += (Time.deltaTime) * twinkleSpeed * delay;
 
         // Time.deltaTime = The completion time in seconds since the last frame

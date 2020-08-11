@@ -73,6 +73,7 @@ public class MeshHelper
         pointOnMesh = Constellation.transform.rotation * pointOnMesh;
 
         // translate by position
+        // > shifts from model to world space
         pointOnMesh = pointOnMesh + Constellation.transform.position;
 
         return pointOnMesh;

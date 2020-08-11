@@ -15,6 +15,9 @@ public class Sky : MonoBehaviour {
     public GameObject Leo;
     public GameObject Tiger;
 
+    // time when constellation was initialized
+    private float constellationInitializationTime;
+
     // make public enum to determine what visual mode constellation will use
     // Mesh = stars go to random point on constellation mesh
     // Edge = stars go to random point on constellation edge
@@ -47,11 +50,14 @@ public class Sky : MonoBehaviour {
         if (Physics.Raycast(ray, out hit))
         {
 
+            // establish time at which constellation was instantiated
+            constellationInitializationTime = Time.timeSinceLevelLoad;
+
             GameObject ConstellationShape = edge.GetRandomConstellation(constellationList);
 
             // instantiate new constellation
             GameObject c = Instantiate(ConstellationShape, 
-               hit.point, //new Vector3(hit.point.x, hit.point.y, hit.point.z - 0.1f), 
+               hit.point, 
                ConstellationShape.transform.rotation) 
                as GameObject;
 
@@ -87,7 +93,8 @@ public class Sky : MonoBehaviour {
                 star.targetPos = meshPos;
             }
 
-            Destroy(c);
+            // Destroy constellation game object 1 second after stars fade
+            Destroy(c, StarManager.Instance.lifespan + StarManager.Instance.timeToFade + 1.0f);
         }
     }
 

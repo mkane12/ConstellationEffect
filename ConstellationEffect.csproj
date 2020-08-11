@@ -314,6 +314,14 @@
       <Project>{7865B458-6473-814C-82CD-12E9ACF7A553}</Project>
       <Name>nobnak.Gist</Name>
     </ProjectReference>
+    <ProjectReference Include="Whinarn.UnityMeshSimplifier.Runtime.csproj">
+      <Project>{E7EDAB4D-2392-ADE9-2F22-5F2DF1D6B9DC}</Project>
+      <Name>Whinarn.UnityMeshSimplifier.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Whinarn.UnityMeshSimplifier.Editor.csproj">
+      <Project>{78DB07DB-6C60-BE3E-4BA6-50A349619E81}</Project>
+      <Name>Whinarn.UnityMeshSimplifier.Editor</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Packages\Osc\MessageEncoder.cs" />
@@ -640,6 +648,8 @@
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMapping.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMappingOtherNode.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\version.txt" />
+    <None Include="Assets\Packages\UnityMeshSimplifier\Editor\Whinarn.UnityMeshSimplifier.Editor.asmdef" />
+    <None Include="Assets\Packages\UnityMeshSimplifier\Runtime\Whinarn.UnityMeshSimplifier.Runtime.asmdef" />
     <None Include="Assets\Shaders\starShader.shader" />
     <None Include="Assets\smcs.rsp" />
   </ItemGroup>
