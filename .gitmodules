@@ -14,3 +14,7 @@
 	path = Gist
 	url = https://github.com/nobnak/Gist.git
 	branch = master
+[submodule "Assets/Packages/UnityMeshSimplifier"]
+	path = Assets/Packages/UnityMeshSimplifier
+	url = https://github.com/Whinarn/UnityMeshSimplifier.git
+	branch = master
