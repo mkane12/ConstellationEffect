@@ -15,6 +15,9 @@ public class Sky : MonoBehaviour {
     public GameObject Leo;
     public GameObject Tiger;
 
+    // public bool to see if user wants to show constellation mesh
+    public bool toggleMeshVisibility;
+
     // time when constellation was initialized
     private float constellationInitializationTime;
 
@@ -55,12 +58,27 @@ public class Sky : MonoBehaviour {
 
             GameObject ConstellationShape = edge.GetRandomConstellation(constellationList);
 
+            Renderer constellationRenderer = ConstellationShape.GetComponent<Renderer>();
+
+            Debug.Log(toggleMeshVisibility);
+            // if user wants to make constellation mesh visible
+            if (toggleMeshVisibility)
+            {
+                // make constellation mesh visible
+                constellationRenderer.enabled = true;
+            }
+            else
+            {
+                // make constellation mesh invisible
+                constellationRenderer.enabled = false;
+            }
+
             // instantiate new constellation
             GameObject c = Instantiate(ConstellationShape, 
                hit.point, 
                ConstellationShape.transform.rotation) 
                as GameObject;
-
+            
             for (int i = 0; i < numStars; i++)
             {
                 GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
@@ -109,4 +127,6 @@ public class Sky : MonoBehaviour {
             constellationList.Add(constellation);
         }
     }
+
+
 }

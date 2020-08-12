@@ -217,6 +217,8 @@ MonoBehaviour:
   Ursa: {fileID: 1134085668177424, guid: 44e7b51d1548867498b7dac60bc1b1a4, type: 2}
   Leo: {fileID: 1161317567041834, guid: 76b7818b6f5d0eb41bb5bf23418a8fb9, type: 2}
   Tiger: {fileID: 1845759704096782, guid: 77fccd90ff0c2d741ae72788cd502dca, type: 2}
+  meshAlpha: 0
+  mode: 0
 --- !u!1 &1214343439
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,13 +350,14 @@ MonoBehaviour:
   sliderStarVelocityMax: 0
   sliderStarSizeMin: 0
   sliderStarSizeMax: 0
-  sliderFps: 0
+  twinkleSpeed: 0
   sliderLifespan: 0
   sliderTimeToFade: 0
   toggleUrsa: 1
   toggleLeo: 1
   toggleTiger: 1
   toggleList: 
+  sliderMeshAlpha: 0
   starColor: {r: 0.5882353, g: 0.9818339, b: 1, a: 0}
   starRenderer: {fileID: 0}
 --- !u!4 &1219601355

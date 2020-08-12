@@ -36,6 +36,9 @@ namespace TeamLab.Unity
         // List of toggles
         public List<bool> toggleList = new List<bool>();
 
+        // toggle for constellation mesh visibility
+        public bool toggleMesh = false;
+
         // toggle for constellation visual effect
         public GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>
             toggleConstellationMode
@@ -148,6 +151,15 @@ namespace TeamLab.Unity
             sky.UpdateConstellationList(toggleTiger, sky.Tiger);
 
             GUILayout.EndHorizontal();
+
+            // Toggle to determine visibility of constellation mesh
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("View constellation mesh:");
+            toggleMesh = GUILayout.Toggle(toggleMesh, "View");
+            sky.toggleMeshVisibility = toggleMesh;
+
+            GUILayout.EndHorizontal();
+
 
             // toggles to decide constellation mode
             GUILayout.BeginHorizontal();
