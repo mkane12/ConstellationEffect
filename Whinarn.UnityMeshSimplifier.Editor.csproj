@@ -368,6 +368,7 @@
     <None Include="Assets\Packages\UnityMeshSimplifier\Editor\Whinarn.UnityMeshSimplifier.Editor.asmdef" />
     <None Include="Assets\Packages\UnityMeshSimplifier\Runtime\Whinarn.UnityMeshSimplifier.Runtime.asmdef" />
     <None Include="Assets\Shaders\starShader.shader" />
+    <None Include="Assets\Shaders\wireframeShader.shader" />
     <None Include="Assets\smcs.rsp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

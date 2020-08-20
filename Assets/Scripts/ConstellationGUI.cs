@@ -37,7 +37,7 @@ namespace TeamLab.Unity
         public List<bool> toggleList = new List<bool>();
 
         // toggle for constellation mesh visibility
-        public bool toggleMesh = false;
+        public float sliderMeshAlpha = 1.0f;
 
         // toggle for constellation visual effect
         public GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>
@@ -152,12 +152,12 @@ namespace TeamLab.Unity
 
             GUILayout.EndHorizontal();
 
-            // Toggle to determine visibility of constellation mesh
+            // Slider to determine transparency of constellation mesh
             GUILayout.BeginHorizontal();
-            GUILayout.Label("View constellation mesh:");
-            toggleMesh = GUILayout.Toggle(toggleMesh, "View");
-            sky.toggleMeshVisibility = toggleMesh;
-
+            GUILayout.Label("Constellation mesh alpha:");
+            float oldAlpha = sliderMeshAlpha; // store old alpha before slider checked
+            sliderMeshAlpha = GUIUtil.Slider(sliderMeshAlpha, 0, 1);
+            sky.UpdateConstellationAlpha(sliderMeshAlpha, oldAlpha);
             GUILayout.EndHorizontal();
 
 

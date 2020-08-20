@@ -314,13 +314,13 @@
       <Project>{56E2063B-4592-7BEC-FC95-9FC14F3475B4}</Project>
       <Name>ConstellationEffect</Name>
     </ProjectReference>
-    <ProjectReference Include="nobnak.Gist.csproj">
-      <Project>{7865B458-6473-814C-82CD-12E9ACF7A553}</Project>
-      <Name>nobnak.Gist</Name>
-    </ProjectReference>
     <ProjectReference Include="Whinarn.UnityMeshSimplifier.Runtime.csproj">
       <Project>{E7EDAB4D-2392-ADE9-2F22-5F2DF1D6B9DC}</Project>
       <Name>Whinarn.UnityMeshSimplifier.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="nobnak.Gist.csproj">
+      <Project>{7865B458-6473-814C-82CD-12E9ACF7A553}</Project>
+      <Name>nobnak.Gist</Name>
     </ProjectReference>
     <ProjectReference Include="Whinarn.UnityMeshSimplifier.Editor.csproj">
       <Project>{78DB07DB-6C60-BE3E-4BA6-50A349619E81}</Project>
@@ -380,6 +380,7 @@
     <None Include="Assets\Packages\UnityMeshSimplifier\Editor\Whinarn.UnityMeshSimplifier.Editor.asmdef" />
     <None Include="Assets\Packages\UnityMeshSimplifier\Runtime\Whinarn.UnityMeshSimplifier.Runtime.asmdef" />
     <None Include="Assets\Shaders\starShader.shader" />
+    <None Include="Assets\Shaders\wireframeShader.shader" />
     <None Include="Assets\smcs.rsp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

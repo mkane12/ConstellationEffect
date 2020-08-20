@@ -72,7 +72,7 @@ public class TextureHelper
         blend += Time.deltaTime * twinkleSpeed * delay;
 
         // if we've moved on to next frame
-        if ((int)currIndex >= (int)nextIndex)//twinkleSpeed * delay)
+        if ((int)currIndex >= (int)nextIndex)
         {
             nextIndex = currIndex + 1.0f;
             blend = 0;

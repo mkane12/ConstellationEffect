@@ -15,9 +15,6 @@ public class Sky : MonoBehaviour {
     public GameObject Leo;
     public GameObject Tiger;
 
-    // public bool to see if user wants to show constellation mesh
-    public bool toggleMeshVisibility;
-
     // time when constellation was initialized
     private float constellationInitializationTime;
 
@@ -34,6 +31,10 @@ public class Sky : MonoBehaviour {
     // Set constellationMode as Mesh to start
     public ConstellationMode mode = ConstellationMode.Mesh;
 
+    private GameObject ConstellationShape;
+
+    private Renderer constellationRenderer;
+
     void Start()
     {
         // Get random position on mesh
@@ -42,6 +43,11 @@ public class Sky : MonoBehaviour {
         constellationList.Add(Ursa);
         constellationList.Add(Leo);
         constellationList.Add(Tiger);
+
+        // get a constellation to start to avoid initialization errors
+        ConstellationShape = edge.GetRandomConstellation(constellationList);
+
+        constellationRenderer = ConstellationShape.GetComponent<Renderer>();
     }
 
     // call on click
@@ -56,22 +62,9 @@ public class Sky : MonoBehaviour {
             // establish time at which constellation was instantiated
             constellationInitializationTime = Time.timeSinceLevelLoad;
 
-            GameObject ConstellationShape = edge.GetRandomConstellation(constellationList);
+            ConstellationShape = edge.GetRandomConstellation(constellationList);
 
-            Renderer constellationRenderer = ConstellationShape.GetComponent<Renderer>();
-
-            Debug.Log(toggleMeshVisibility);
-            // if user wants to make constellation mesh visible
-            if (toggleMeshVisibility)
-            {
-                // make constellation mesh visible
-                constellationRenderer.enabled = true;
-            }
-            else
-            {
-                // make constellation mesh invisible
-                constellationRenderer.enabled = false;
-            }
+            constellationRenderer = ConstellationShape.GetComponent<Renderer>();
 
             // instantiate new constellation
             GameObject c = Instantiate(ConstellationShape, 
@@ -128,5 +121,13 @@ public class Sky : MonoBehaviour {
         }
     }
 
-
+    public void UpdateConstellationAlpha(float alpha, float oldAlpha)
+    {
+        // only update shader if alpha has changed
+        if (alpha != oldAlpha)
+        {
+            Debug.Log("alpha changed!"); 
+            constellationRenderer.sharedMaterial.SetFloat("_Transparency", alpha);
+        }
+    }
 }
