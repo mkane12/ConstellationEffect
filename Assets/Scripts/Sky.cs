@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityMeshSimplifier;
 
 public class Sky : MonoBehaviour {
 
@@ -48,13 +49,18 @@ public class Sky : MonoBehaviour {
         ConstellationShape = edge.GetRandomConstellation(constellationList);
 
         constellationRenderer = ConstellationShape.GetComponent<Renderer>();
-    }
+}
 
     // call on click
     void OnMouseDown()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
+
+        // attempt to simplify constellation meshes
+        // https://github.com/Whinarn/UnityMeshSimplifier
+        float quality = 0.5f;
+        var meshSimplifier = new UnityMeshSimplifier.MeshSimplifier();
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -71,7 +77,12 @@ public class Sky : MonoBehaviour {
                hit.point, 
                ConstellationShape.transform.rotation) 
                as GameObject;
-            
+
+            meshSimplifier.Initialize(c.GetComponent<MeshFilter>().sharedMesh);
+            meshSimplifier.SimplifyMesh(quality);
+
+            c.GetComponent<MeshFilter>().sharedMesh = meshSimplifier.ToMesh();
+
             for (int i = 0; i < numStars; i++)
             {
                 GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
@@ -125,8 +136,7 @@ public class Sky : MonoBehaviour {
     {
         // only update shader if alpha has changed
         if (alpha != oldAlpha)
-        {
-            Debug.Log("alpha changed!"); 
+        { 
             constellationRenderer.sharedMaterial.SetFloat("_Transparency", alpha);
         }
     }

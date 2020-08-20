@@ -42,8 +42,7 @@ public class MeshHelper
 
     public Vector3 GetRandomPointOnConstellationMesh(GameObject Constellation)
     {
-        MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
-        Mesh mesh = mf.sharedMesh;
+        Mesh mesh = Constellation.GetComponent<MeshFilter>().sharedMesh;
 
         // get random triangle in mesh
         int triIndex = GetRandomTriangle(mesh);
