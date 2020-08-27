@@ -32,6 +32,9 @@ public class Sky : MonoBehaviour {
     // Set constellationMode as Mesh to start
     public ConstellationMode mode = ConstellationMode.Mesh;
 
+    // Set constant to determine mesh quality/complexity
+    public float quality = 0.5f;
+
     private GameObject ConstellationShape;
 
     private Renderer constellationRenderer;
@@ -59,7 +62,6 @@ public class Sky : MonoBehaviour {
 
         // attempt to simplify constellation meshes
         // https://github.com/Whinarn/UnityMeshSimplifier
-        float quality = 0.5f;
         var meshSimplifier = new UnityMeshSimplifier.MeshSimplifier();
 
         if (Physics.Raycast(ray, out hit))

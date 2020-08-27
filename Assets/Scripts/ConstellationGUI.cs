@@ -36,8 +36,11 @@ namespace TeamLab.Unity
         // List of toggles
         public List<bool> toggleList = new List<bool>();
 
-        // toggle for constellation mesh visibility
+        // constellation mesh visibility
         public float sliderMeshAlpha = 1.0f;
+
+        // constellation mesh complexity
+        public float sliderMeshQuality = 0.5f;
 
         // toggle for constellation visual effect
         public GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>
@@ -160,6 +163,12 @@ namespace TeamLab.Unity
             sky.UpdateConstellationAlpha(sliderMeshAlpha, oldAlpha);
             GUILayout.EndHorizontal();
 
+            // Slider to determine complexity of constellation mesh
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Constellation mesh complexity:");
+            sliderMeshQuality = GUIUtil.Slider(sliderMeshQuality, 0, 1);
+            sky.quality = sliderMeshQuality;
+            GUILayout.EndHorizontal();
 
             // toggles to decide constellation mode
             GUILayout.BeginHorizontal();
