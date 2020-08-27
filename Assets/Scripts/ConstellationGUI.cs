@@ -36,11 +36,14 @@ namespace TeamLab.Unity
         // List of toggles
         public List<bool> toggleList = new List<bool>();
 
+        // slider for number of constellations to spawn
+        public int sliderConstellationCount;
+
         // constellation mesh visibility
         public float sliderMeshAlpha = 1.0f;
 
         // constellation mesh complexity
-        public float sliderMeshQuality = 0.5f;
+        public float sliderMeshQuality;
 
         // toggle for constellation visual effect
         public GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>
@@ -75,6 +78,9 @@ namespace TeamLab.Unity
             toggleList.Add(toggleUrsa);
             toggleList.Add(toggleLeo);
             toggleList.Add(toggleTiger);
+
+            sliderConstellationCount = sky.constellationCount;
+            sliderMeshQuality = sky.quality;
 
             starRenderer = star.GetComponent<Renderer>();
 
@@ -153,6 +159,13 @@ namespace TeamLab.Unity
             toggleTiger = GUILayout.Toggle(toggleTiger, "Tiger");
             sky.UpdateConstellationList(toggleTiger, sky.Tiger);
 
+            GUILayout.EndHorizontal();
+
+            // Slider to determine the number of constellations to spawn
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Number of constellations:");
+            sliderConstellationCount = GUIUtil.Slider(sliderConstellationCount, 1, 10);
+            sky.constellationCount = sliderConstellationCount;
             GUILayout.EndHorizontal();
 
             // Slider to determine transparency of constellation mesh
