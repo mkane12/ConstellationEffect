@@ -33,5 +33,6 @@ public class Data : MonoBehaviour {
 
     // TODO: star color 
     // >> just store RGB values, move this fancy stuff back to script
+    public string starColor = "#AAFFFF";
 
 }

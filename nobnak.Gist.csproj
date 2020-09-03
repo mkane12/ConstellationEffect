@@ -547,6 +547,7 @@
     <None Include="Assets\Packages\UnityMeshSimplifier\Runtime\Whinarn.UnityMeshSimplifier.Runtime.asmdef" />
     <None Include="Assets\Shaders\starShader.shader" />
     <None Include="Assets\Shaders\wireframeShader.shader" />
+    <None Include="Assets\StreamingAssets\GUISettings.txt" />
     <None Include="Assets\StreamingAssets\saveFile.txt" />
     <None Include="Assets\smcs.rsp" />
   </ItemGroup>

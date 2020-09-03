@@ -1,0 +1,13 @@
+{
+    "numStars": 100,
+    "minVelocity": 5.0,
+    "maxVelocity": 20.0,
+    "minSize": 0.5,
+    "maxSize": 2.0,
+    "twinkleSpeed": 8,
+    "lifespan": 5.0,
+    "timeToFade": 5.0,
+    "constellationCount": 1,
+    "quality": 0.5,
+    "starColor": "#FF3BA1FF"
+}

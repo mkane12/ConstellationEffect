@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace TeamLab.Unity
@@ -56,7 +57,8 @@ namespace TeamLab.Unity
         public ShaderVariableColor starColorUpdate = new ShaderVariableColor("_Color"); // star color
 
         // color of stars
-        public Color starColor = new Color32(170, 236, 255, 255);
+        public Color starColor;
+
         public GUIUtil.ColorField starColorGUI = new GUIUtil.ColorField();
 
         public Renderer starRenderer;
@@ -91,6 +93,12 @@ namespace TeamLab.Unity
             starRenderer = star.GetComponent<Renderer>();
 
             // starting starColor
+            Color newCol;
+            if (ColorUtility.TryParseHtmlString(data.starColor, out newCol))
+            {
+                starColor = newCol;
+            }
+
             starColorUpdate.SetValueCPUOnly(starColor);
             starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
 
@@ -206,14 +214,15 @@ namespace TeamLab.Unity
             // Use ShaderVariableGeneric helper class to only update shader when changed
             starColorUpdate.SetValueCPUOnly(starColor);
             starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
+            data.starColor = "#" + ColorUtility.ToHtmlStringRGBA(starColor);
+            Debug.Log(data.starColor);
 
             GUILayout.EndHorizontal();
         }
 
         public override void Save()
         {
-            // TODO: make filename variable more descriptive
-            var path = TeamLab.Unity.PackageAndSceneSpecificPath.Static.GetSaveLoadPathWithFileDefault("saveFile.txt");
+            var path = TeamLab.Unity.PackageAndSceneSpecificPath.Static.GetSaveLoadPathWithFileDefault("GUISettings.txt");
             using (var writer = new StreamWriter(path))
             {
                 string json = UnityEngine.JsonUtility.ToJson(data, true);
@@ -224,7 +233,7 @@ namespace TeamLab.Unity
         public override void Load()
         {
 
-            var path = TeamLab.Unity.PackageAndSceneSpecificPath.Static.GetSaveLoadPathWithFileDefault("saveFile.txt");
+            var path = TeamLab.Unity.PackageAndSceneSpecificPath.Static.GetSaveLoadPathWithFileDefault("GUISettings.txt");
             if (File.Exists(path))
             {
                 string json = File.ReadAllText(path);
@@ -242,6 +251,19 @@ namespace TeamLab.Unity
             sliderNumStars = data.numStars;
             sliderStarVelocityMin = data.minVelocity;
             sliderStarVelocityMax = data.maxVelocity;
+            sliderStarSizeMin = data.minSize;
+            sliderStarSizeMax = data.maxSize;
+            sliderTwinkleSpeed = data.twinkleSpeed;
+            sliderLifespan = data.lifespan;
+            sliderTimeToFade = data.timeToFade;
+            sliderConstellationCount = data.constellationCount;
+            sliderMeshQuality = data.quality;
+
+            Color newCol;
+            if (ColorUtility.TryParseHtmlString(data.starColor, out newCol))
+            {
+                starColor = newCol;
+            }
         }
     } // end class
 } // end namespace
