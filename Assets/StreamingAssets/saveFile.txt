@@ -1,0 +1,24 @@
+{
+    "numStars": 50,
+    "minVelocity": 20.084209442138673,
+    "maxVelocity": 22.66316032409668,
+    "minSize": 0.5,
+    "maxSize": 2.0,
+    "twinkleSpeed": 8,
+    "lifespan": 5.0,
+    "timeToFade": 5.0,
+    "constellationList": [
+        {
+            "instanceID": 11872
+        },
+        {
+            "instanceID": 11790
+        },
+        {
+            "instanceID": 11310
+        }
+    ],
+    "constellationCount": 1,
+    "quality": 0.5,
+    "mode": 0
+}

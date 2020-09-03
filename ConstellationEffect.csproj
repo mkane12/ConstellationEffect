@@ -392,6 +392,7 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\FlagPerPrefabType.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectArray.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectCountGrid.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectCountGridGUI.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectCountGridOSC.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectFactory.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectFactory_Debug.cs" />
@@ -412,6 +413,12 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraOutputCapture.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraSetTargetTextureFromMainCam.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraUtility.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\ColorGradientGUI.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\ColorGradientToTexture.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\ColorGradientToTextureUtil.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\ColorGradientToTextureUVMapping.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\UsageExample\ColorGradientGUIUsageExample.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\UsageExample\ColorGradientToTextureUsageExample.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorHSV.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\GPUMemoryLeakTest\GPUMemoryLeakTest.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\GPUMemoryLeakTest\RenderTextureMemoryLeakTest.cs" />
@@ -453,12 +460,15 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\RenderTextureAutoSize.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\RenderTextureFixedSize.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\Texture2DAutoSize.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\Texture2DFixedSize.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureRendererSingleton.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\TriangleCPURenderContourX.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\ChildMenuList.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUILayoutExt.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIShowTextLabelForXSeconds.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\AbstractVector.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorField.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorFieldRGB.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorScope.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorString.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\DictionaryGUI.cs" />
@@ -472,6 +482,7 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\SelectionGridForEnum.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Slider.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\MenuBase.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\MenuOrShortcutAccessType.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\MenuState.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\GUIGroupFloat.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\GUIGroupVector4.cs" />
@@ -481,6 +492,7 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Input\MouseDragSS.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Input\MouseUtility.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\BoundsEx.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\DoubleUtility.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\FloatUtility.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\MathTemplateUtility.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\PrimeNumberUtilityForResize.cs" />
@@ -555,10 +567,12 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrameInputWindowsDTS.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimes.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimesTest.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\TimeOfDayKeyFrame.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\CountdownTimerSimple.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\CountupStopwatchSimple.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\DateTimeSimulation.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\DateTimeSimulationSync.cs" />
+    <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\FPSCounterAndGUI.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\GeoInfoWindows.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\MonthSelection.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\StartAndLength.cs" />
@@ -596,6 +610,7 @@
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SystemGUI.cs" />
     <Compile Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SystemInstaller.cs" />
     <Compile Include="Assets\Scripts\ConstellationGUI.cs" />
+    <Compile Include="Assets\Scripts\Data.cs" />
     <Compile Include="Assets\Scripts\MeshHelper.cs" />
     <Compile Include="Assets\Scripts\Sky.cs" />
     <Compile Include="Assets\Scripts\Star.cs" />
@@ -643,6 +658,7 @@
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColorNoAlphaBlend.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureFlipY.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureInvertR.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureLerp.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureView.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewBlendOff.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMapping.shader" />
@@ -652,6 +668,7 @@
     <None Include="Assets\Packages\UnityMeshSimplifier\Runtime\Whinarn.UnityMeshSimplifier.Runtime.asmdef" />
     <None Include="Assets\Shaders\starShader.shader" />
     <None Include="Assets\Shaders\wireframeShader.shader" />
+    <None Include="Assets\StreamingAssets\saveFile.txt" />
     <None Include="Assets\smcs.rsp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

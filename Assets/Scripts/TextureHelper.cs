@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TeamLab.Unity;
 using UnityEngine;
 
 
@@ -11,6 +12,7 @@ using UnityEngine;
 // > BUT there can't be one per instance of object - static class applies to all instances, so not helpful here
 public class TextureHelper
 {
+    static public Data data = ConstellationGUI.data;
 
     // Rather than have separate tex____ for texture variables, create new class TextureHelper
     // > Adds uniformity to code; can add helper functions to class
@@ -50,7 +52,7 @@ public class TextureHelper
         renderer.material.SetTextureScale(currTexID, tileSize);
         renderer.material.SetTextureScale(nextTexID, tileSize);
 
-        twinkleSpeed = StarManager.Instance.twinkleSpeed;
+        twinkleSpeed = data.twinkleSpeed;
 
         nextOffset = new Vector2(tileSize.x, tileSize.y);
 

@@ -11,6 +11,8 @@ using TeamLab.Unity;
 
 public class Star : StateMachine
 {
+    static public Data data = ConstellationGUI.data;
+
     public Vector3 targetPos; // target position of the star
     public float size; // size of the star
     public float velocity; // velocity of the star
@@ -32,7 +34,7 @@ public class Star : StateMachine
     // > still called even if script disabled
     void Awake()
     {
-        velocity = Random.Range(StarManager.Instance.minVelocity, StarManager.Instance.maxVelocity);
+        velocity = Random.Range(data.minVelocity, data.maxVelocity);
 
         // set initial state to born
         SetState((int)StarState.Born);
@@ -42,7 +44,7 @@ public class Star : StateMachine
     protected override void Start()
     {
         // make each star have a random size
-        size = Random.Range(StarManager.Instance.minSize, StarManager.Instance.maxSize);
+        size = Random.Range(data.minSize, data.maxSize);
         transform.localScale *= size;
 
         initializationTime = Time.timeSinceLevelLoad; // establish time at which object was instantiated
@@ -79,7 +81,7 @@ public class Star : StateMachine
             case (int)StarState.Live:
                 // Live state: wait until lifespan is elapsed
                 // once we are outside of lifespan, switch to Die state
-                if (Time.timeSinceLevelLoad - initializationTime >= StarManager.Instance.lifespan)
+                if (Time.timeSinceLevelLoad - initializationTime >= data.lifespan)
                 {
                     SetState((int)StarState.Die);
                 }
@@ -101,7 +103,7 @@ public class Star : StateMachine
         timeInFade += Time.deltaTime; // counter for time spent in this method
 
         // alpha goes from 1 to 0 over roughly timeToFade
-        float alpha = Mathf.Lerp(1, 0, timeInFade / StarManager.Instance.timeToFade);
+        float alpha = Mathf.Lerp(1, 0, timeInFade / data.timeToFade);
 
         // try to change material as alpha updates
         renderer.material.SetFloat("_Transparency", alpha);

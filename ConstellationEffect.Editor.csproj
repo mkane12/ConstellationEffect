@@ -372,6 +372,7 @@
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColorNoAlphaBlend.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureFlipY.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureInvertR.shader" />
+    <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureLerp.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureView.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewBlendOff.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMapping.shader" />
@@ -381,6 +382,7 @@
     <None Include="Assets\Packages\UnityMeshSimplifier\Runtime\Whinarn.UnityMeshSimplifier.Runtime.asmdef" />
     <None Include="Assets\Shaders\starShader.shader" />
     <None Include="Assets\Shaders\wireframeShader.shader" />
+    <None Include="Assets\StreamingAssets\saveFile.txt" />
     <None Include="Assets\smcs.rsp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

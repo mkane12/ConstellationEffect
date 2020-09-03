@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace TeamLab.Unity
@@ -8,6 +9,7 @@ namespace TeamLab.Unity
     {
         public Sky sky;
         public Star star;
+        static public Data data = new Data();
 
         // number of stars in constellation
         public int sliderNumStars;
@@ -21,7 +23,7 @@ namespace TeamLab.Unity
         public float sliderStarSizeMax;
 
         // twinkle speed of stars
-        public int twinkleSpeed;
+        public int sliderTwinkleSpeed;
 
         // lifespan of stars
         public float sliderLifespan;
@@ -46,50 +48,51 @@ namespace TeamLab.Unity
         public float sliderMeshQuality;
 
         // toggle for constellation visual effect
-        public GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>
+        public GUIUtil.SelectionGridForEnum<Data.ConstellationMode>
             toggleConstellationMode
-            = new GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>();
+            = new GUIUtil.SelectionGridForEnum<Data.ConstellationMode>();
 
         // color of stars
         public Color starColor = new Color32(170, 236, 255, 255);
         public GUIUtil.ColorField starColorGUI = new GUIUtil.ColorField();
 
-        // Utilizes SharedVariableColor helper class in TeamLabUnityFrameworks
-        public ShaderVariableColor starColorUpdate = new ShaderVariableColor("_Color");
         public Renderer starRenderer;
 
         protected override void Start()
         {
+            base.Start();
+
             sky = GameObject.FindObjectOfType<Sky>();
-            sliderNumStars = sky.numStars;
 
-            sliderStarVelocityMin = StarManager.Instance.minVelocity;
-            sliderStarVelocityMax = StarManager.Instance.maxVelocity;
+            sliderNumStars = data.numStars;
 
-            sliderStarSizeMin = StarManager.Instance.minSize;
-            sliderStarSizeMax = StarManager.Instance.maxSize;
+            sliderStarVelocityMin = data.minVelocity;
+            sliderStarVelocityMax = data.maxVelocity;
 
-            twinkleSpeed = StarManager.Instance.twinkleSpeed;
+            sliderStarSizeMin = data.minSize;
+            sliderStarSizeMax = data.maxSize;
 
-            sliderLifespan = StarManager.Instance.lifespan;
+            sliderTwinkleSpeed = data.twinkleSpeed;
 
-            sliderTimeToFade = StarManager.Instance.timeToFade;
+            sliderLifespan = data.lifespan;
+
+            sliderTimeToFade = data.timeToFade;
 
             toggleList.Add(toggleUrsa);
             toggleList.Add(toggleLeo);
             toggleList.Add(toggleTiger);
 
-            sliderConstellationCount = sky.constellationCount;
-            sliderMeshQuality = sky.quality;
+            sliderConstellationCount = data.constellationCount;
+            sliderMeshQuality = data.quality;
 
             starRenderer = star.GetComponent<Renderer>();
 
             // starting starColor
-            starColorUpdate.SetValueCPUOnly(starColor);
-            starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
+            data.starColorUpdate.SetValueCPUOnly(starColor);
+            data.starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
 
-            base.showButtons.save = false;
-            base.showButtons.load = false;
+            base.showButtons.save = true;
+            base.showButtons.load = true;
             base.autoSaveOnClose = false;
 
             base.Start();
@@ -102,48 +105,48 @@ namespace TeamLab.Unity
             GUILayout.BeginHorizontal();
             GUILayout.Label("Number of stars:");
             sliderNumStars = GUIUtil.Slider(sliderNumStars, 50, 500);
-            sky.numStars = sliderNumStars;
+            data.numStars = sliderNumStars;
             GUILayout.EndHorizontal();
 
             // sliders to determine range of stars' velocity
             GUILayout.BeginHorizontal();
             GUILayout.Label("Range of star velocities:");
             sliderStarVelocityMin = GUIUtil.Slider(sliderStarVelocityMin, 1, 50);
-            StarManager.Instance.minVelocity = sliderStarVelocityMin;
+            data.minVelocity = sliderStarVelocityMin;
 
             sliderStarVelocityMax = GUIUtil.Slider(sliderStarVelocityMax, 1, 50);
-            StarManager.Instance.maxVelocity = sliderStarVelocityMax;
+            data.maxVelocity = sliderStarVelocityMax;
             GUILayout.EndHorizontal();
 
             // sliders to determine range of stars' size
             GUILayout.BeginHorizontal();
             GUILayout.Label("Range of star sizes:");
             sliderStarSizeMin = GUIUtil.Slider(sliderStarSizeMin, 0.1f, 10.0f);
-            StarManager.Instance.minSize = sliderStarSizeMin;
+            data.minSize = sliderStarSizeMin;
 
             sliderStarSizeMax = GUIUtil.Slider(sliderStarSizeMax, 0.1f, 10.0f);
-            StarManager.Instance.maxSize = sliderStarSizeMax;
+            data.maxSize = sliderStarSizeMax;
             GUILayout.EndHorizontal();
 
             // slider to determine rate at which stars twinkle
             GUILayout.BeginHorizontal();
             GUILayout.Label("Twinkle speed:");
-            twinkleSpeed = GUIUtil.Slider(twinkleSpeed, 1, 20);
-            StarManager.Instance.twinkleSpeed = twinkleSpeed;
+            sliderTwinkleSpeed = GUIUtil.Slider(sliderTwinkleSpeed, 1, 20);
+            data.twinkleSpeed = sliderTwinkleSpeed;
             GUILayout.EndHorizontal();
 
             // slider to determine star lifespan
             GUILayout.BeginHorizontal();
             GUILayout.Label("Star lifepan:");
             sliderLifespan = GUIUtil.Slider(sliderLifespan, 5, 500);
-            StarManager.Instance.lifespan = sliderLifespan;
+            data.lifespan = sliderLifespan;
             GUILayout.EndHorizontal();
 
             // slider to determine time over which stars fade
             GUILayout.BeginHorizontal();
             GUILayout.Label("Star fade time:");
             sliderTimeToFade = GUIUtil.Slider(sliderTimeToFade, 1, 500);
-            StarManager.Instance.timeToFade = sliderTimeToFade;
+            data.timeToFade = sliderTimeToFade;
             GUILayout.EndHorizontal();
 
             // toggles to decide constellation patterns chosen from
@@ -165,7 +168,7 @@ namespace TeamLab.Unity
             GUILayout.BeginHorizontal();
             GUILayout.Label("Number of constellations:");
             sliderConstellationCount = GUIUtil.Slider(sliderConstellationCount, 1, 10);
-            sky.constellationCount = sliderConstellationCount;
+            data.constellationCount = sliderConstellationCount;
             GUILayout.EndHorizontal();
 
             // Slider to determine transparency of constellation mesh
@@ -180,7 +183,7 @@ namespace TeamLab.Unity
             GUILayout.BeginHorizontal();
             GUILayout.Label("Constellation mesh complexity:");
             sliderMeshQuality = GUIUtil.Slider(sliderMeshQuality, 0, 1);
-            sky.quality = sliderMeshQuality;
+            data.quality = sliderMeshQuality;
             GUILayout.EndHorizontal();
 
             // toggles to decide constellation mode
@@ -188,7 +191,7 @@ namespace TeamLab.Unity
             GUILayout.Label("Constellation Mode");
             // public E OnGUI(E enumInitialValue, int xWidth)
             // will probably need to update xWidth as more modes are added
-            sky.mode = toggleConstellationMode.OnGUI(sky.mode, 3);
+            data.mode = toggleConstellationMode.OnGUI(data.mode, 3);
 
             GUILayout.EndHorizontal();
 
@@ -198,20 +201,45 @@ namespace TeamLab.Unity
             starColorGUI.OnGUI(ref starColor);
 
             // Use ShaderVariableGeneric helper class to only update shader when changed
-            starColorUpdate.SetValueCPUOnly(starColor);
-            starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
+            data.starColorUpdate.SetValueCPUOnly(starColor);
+            data.starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
 
             GUILayout.EndHorizontal();
-
-
         }
 
-        public override void Save() // If nothing to save, the function can be empty
+        public override void Save()
         {
+
+            // TODO: make filename variable more descriptive
+            var path = TeamLab.Unity.PackageAndSceneSpecificPath.Static.GetSaveLoadPathWithFileDefault("saveFile.txt");
+            using (var writer = new StreamWriter(path))
+            {
+                string json = UnityEngine.JsonUtility.ToJson(data, true);
+                writer.Write(json);
+            }
         }
 
-        public override void Load() // If nothing to load, the function can be empty
+        public override void Load()
         {
+
+            var path = TeamLab.Unity.PackageAndSceneSpecificPath.Static.GetSaveLoadPathWithFileDefault("saveFile.txt");
+            if (File.Exists(path))
+            {
+                string json = File.ReadAllText(path);
+                UnityEngine.JsonUtility.FromJsonOverwrite(json, data);
+            }
+
+            UpdateGUIData();
         }
-    }// end class
+
+        public void UpdateGUIData()
+        {
+            //TODO: set slider values to new data values when new Data is loaded
+            // >> Maybe make an InitializeData() function?
+
+            sliderNumStars = data.numStars;
+            sliderStarVelocityMin = data.minVelocity;
+            sliderStarVelocityMax = data.maxVelocity;
+        }
+    } // end class
 } // end namespace
