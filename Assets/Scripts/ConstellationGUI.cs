@@ -48,9 +48,12 @@ namespace TeamLab.Unity
         public float sliderMeshQuality;
 
         // toggle for constellation visual effect
-        public GUIUtil.SelectionGridForEnum<Data.ConstellationMode>
+        public GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>
             toggleConstellationMode
-            = new GUIUtil.SelectionGridForEnum<Data.ConstellationMode>();
+            = new GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>();
+
+        // Utilizes SharedVariableColor helper class in TeamLabUnityFrameworks
+        public ShaderVariableColor starColorUpdate = new ShaderVariableColor("_Color"); // star color
 
         // color of stars
         public Color starColor = new Color32(170, 236, 255, 255);
@@ -88,8 +91,8 @@ namespace TeamLab.Unity
             starRenderer = star.GetComponent<Renderer>();
 
             // starting starColor
-            data.starColorUpdate.SetValueCPUOnly(starColor);
-            data.starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
+            starColorUpdate.SetValueCPUOnly(starColor);
+            starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
 
             base.showButtons.save = true;
             base.showButtons.load = true;
@@ -191,7 +194,7 @@ namespace TeamLab.Unity
             GUILayout.Label("Constellation Mode");
             // public E OnGUI(E enumInitialValue, int xWidth)
             // will probably need to update xWidth as more modes are added
-            data.mode = toggleConstellationMode.OnGUI(data.mode, 3);
+            sky.mode = toggleConstellationMode.OnGUI(sky.mode, 3);
 
             GUILayout.EndHorizontal();
 
@@ -201,15 +204,14 @@ namespace TeamLab.Unity
             starColorGUI.OnGUI(ref starColor);
 
             // Use ShaderVariableGeneric helper class to only update shader when changed
-            data.starColorUpdate.SetValueCPUOnly(starColor);
-            data.starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
+            starColorUpdate.SetValueCPUOnly(starColor);
+            starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
 
             GUILayout.EndHorizontal();
         }
 
         public override void Save()
         {
-
             // TODO: make filename variable more descriptive
             var path = TeamLab.Unity.PackageAndSceneSpecificPath.Static.GetSaveLoadPathWithFileDefault("saveFile.txt");
             using (var writer = new StreamWriter(path))

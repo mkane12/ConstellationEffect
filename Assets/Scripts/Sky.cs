@@ -21,6 +21,23 @@ public class Sky : MonoBehaviour {
     public GameObject Leo;
     public GameObject Tiger;
 
+    //make public list of GameObjects for constellations
+    public List<GameObject> constellationList = new List<GameObject>();
+
+    // make public enum to determine what visual mode constellation will use
+    // Mesh = stars go to random point on constellation mesh
+    // Edge = stars go to random point on constellation edge
+    // Vertex = stars go to random vertex
+    public enum ConstellationMode
+    {
+        Mesh,
+        Edge,
+        Vertex
+    }
+
+    // Set constellationMode as Mesh to start
+    public ConstellationMode mode = ConstellationMode.Mesh;
+
     // time when constellation was initialized
     private float constellationInitializationTime;
 
@@ -33,12 +50,12 @@ public class Sky : MonoBehaviour {
         // Get random position on mesh
         edge = new MeshHelper();
 
-        data.constellationList.Add(Ursa);
-        data.constellationList.Add(Leo);
-        data.constellationList.Add(Tiger);
+        constellationList.Add(Ursa);
+        constellationList.Add(Leo);
+        constellationList.Add(Tiger);
 
         // get a constellation to start to avoid initialization errors
-        ConstellationShape = edge.GetRandomConstellation(data.constellationList);
+        ConstellationShape = edge.GetRandomConstellation(constellationList);
 
         constellationRenderer = ConstellationShape.GetComponent<Renderer>();
 }
@@ -62,7 +79,7 @@ public class Sky : MonoBehaviour {
             // potentially create multiple constellations with one click
             for(int q = 0; q < data.constellationCount; q++)
             {
-                ConstellationShape = edge.GetRandomConstellation(data.constellationList);
+                ConstellationShape = edge.GetRandomConstellation(constellationList);
 
                 constellationRenderer = ConstellationShape.GetComponent<Renderer>();
 
@@ -83,19 +100,19 @@ public class Sky : MonoBehaviour {
                     GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
                     Star star = s.GetComponent<Star>();
 
-                    switch (data.mode)
+                    switch (mode)
                     {
-                        case Data.ConstellationMode.Mesh:
+                        case ConstellationMode.Mesh:
                             {
                                 meshPos = edge.GetRandomPointOnConstellationMesh(c);
                                 break;
                             }
-                        case Data.ConstellationMode.Edge:
+                        case ConstellationMode.Edge:
                             {
                                 meshPos = edge.GetRandomPointOnConstellationEdge(c);
                                 break;
                             }
-                        case Data.ConstellationMode.Vertex:
+                        case ConstellationMode.Vertex:
                             {
                                 meshPos = edge.GetRandomPointOnConstellationVertex(c);
                                 break;
@@ -121,11 +138,11 @@ public class Sky : MonoBehaviour {
     {
         if (!toggle)
         {
-            data.constellationList.Remove(constellation);
+            constellationList.Remove(constellation);
         }
-        else if (toggle & !data.constellationList.Contains(constellation))
+        else if (toggle & !constellationList.Contains(constellation))
         {
-            data.constellationList.Add(constellation);
+            constellationList.Add(constellation);
         }
     }
 
