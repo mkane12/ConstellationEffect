@@ -45,9 +45,6 @@ public class Sky : MonoBehaviour {
         Tiger
     }
 
-    // Set constellationMode as Mesh to start
-    public ConstellationMode mode = ConstellationMode.Mesh;
-
     // time when constellation was initialized
     private float constellationInitializationTime;
 
@@ -110,7 +107,7 @@ public class Sky : MonoBehaviour {
                     GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
                     Star star = s.GetComponent<Star>();
 
-                    switch (mode)
+                    switch (data.mode)
                     {
                         case ConstellationMode.Mesh:
                             {

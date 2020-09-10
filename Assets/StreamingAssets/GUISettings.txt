@@ -11,6 +11,8 @@
         0
     ],
     "constellationCount": 1,
-    "quality": 0.5,
+    "meshAlpha": 0.23113210499286652,
+    "quality": 0.03723404183983803,
+    "mode": 2,
     "starColor": "#AAFFFFFF"
 }

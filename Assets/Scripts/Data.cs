@@ -23,13 +23,17 @@ public class Data : MonoBehaviour {
 
     public float timeToFade = 5.0f; // time for star to fade
 
-    // TODO: this exists in Unity, but can't store a GameObject in a setting file --> need to store its name, string, etc.
-    // Data should always be able to stand alone - let another class access this data and update GameObject lists etc.
+    // list of ConstellationTypes for constellations user is choosing to select from
     public List<Sky.ConstellationType> constellationNames = new List<Sky.ConstellationType>();
 
     public int constellationCount = 1; // number of constellations to spawn per click
 
+    public float meshAlpha = 1.0f; // alpha for constellation mesh
+
     public float quality = 0.5f; // constant to determine mesh quality/complexity
+
+    // list of ConstellationModes for how stars appear on constellation
+    public Sky.ConstellationMode mode = Sky.ConstellationMode.Mesh;
 
     public string starColor = "#AAFFFF"; // hex star color
 

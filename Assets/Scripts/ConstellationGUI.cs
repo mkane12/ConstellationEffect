@@ -40,7 +40,7 @@ namespace TeamLab.Unity
         public int sliderConstellationCount;
 
         // constellation mesh visibility
-        public float sliderMeshAlpha = 1.0f;
+        public float sliderMeshAlpha;
 
         // constellation mesh complexity
         public float sliderMeshQuality;
@@ -85,6 +85,8 @@ namespace TeamLab.Unity
             {
                 constellationToggles[i] = true;
             }
+
+            sliderMeshAlpha = data.meshAlpha;
 
             sliderConstellationCount = data.constellationCount;
             sliderMeshQuality = data.quality;
@@ -183,6 +185,7 @@ namespace TeamLab.Unity
             GUILayout.Label("Constellation mesh alpha:");
             float oldAlpha = sliderMeshAlpha; // store old alpha before slider checked
             sliderMeshAlpha = GUIUtil.Slider(sliderMeshAlpha, 0, 1);
+            data.meshAlpha = sliderMeshAlpha;
             sky.UpdateConstellationAlpha(sliderMeshAlpha, oldAlpha);
             GUILayout.EndHorizontal();
 
@@ -198,7 +201,7 @@ namespace TeamLab.Unity
             GUILayout.Label("Constellation Mode");
             // public E OnGUI(E enumInitialValue, int xWidth)
             // will probably need to update xWidth as more modes are added
-            sky.mode = toggleConstellationMode.OnGUI(sky.mode, 3);
+            data.mode = toggleConstellationMode.OnGUI(data.mode, 3);
 
             GUILayout.EndHorizontal();
 
@@ -223,8 +226,6 @@ namespace TeamLab.Unity
                 string json = UnityEngine.JsonUtility.ToJson(data, true);
                 writer.Write(json);
             }
-
-            Debug.Log(string.Join(", ", data.constellationNames));
         }
 
         public override void Load()
@@ -236,8 +237,6 @@ namespace TeamLab.Unity
                 string json = File.ReadAllText(path);
                 UnityEngine.JsonUtility.FromJsonOverwrite(json, data);
             }
-
-            Debug.Log(string.Join(", ", data.constellationNames));
 
             UpdateGUIData();
         }
@@ -254,7 +253,6 @@ namespace TeamLab.Unity
             sliderLifespan = data.lifespan;
             sliderTimeToFade = data.timeToFade;
 
-            //TODO update toggles
             // first, reset all toggles to false
             for(int i = 0; i < constellationToggles.Length; i++)
             {
@@ -268,7 +266,12 @@ namespace TeamLab.Unity
             }
 
             sliderConstellationCount = data.constellationCount;
+
+            sliderMeshAlpha = data.meshAlpha;
+
             sliderMeshQuality = data.quality;
+
+
 
             Color newCol;
             if (ColorUtility.TryParseHtmlString(data.starColor, out newCol))
