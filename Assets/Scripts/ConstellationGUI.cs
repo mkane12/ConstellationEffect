@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using System;
 using UnityEngine;
 
 namespace TeamLab.Unity
@@ -33,11 +34,7 @@ namespace TeamLab.Unity
         public float sliderTimeToFade;
 
         // toggle for each constellation
-        public bool toggleUrsa = true;
-        public bool toggleLeo = true;
-        public bool toggleTiger = true;
-        // List of toggles
-        public List<bool> toggleList = new List<bool>();
+        public bool[] constellationToggles = new bool[Enum.GetNames(typeof(Sky.ConstellationType)).Length];
 
         // slider for number of constellations to spawn
         public int sliderConstellationCount;
@@ -83,9 +80,11 @@ namespace TeamLab.Unity
 
             sliderTimeToFade = data.timeToFade;
 
-            toggleList.Add(toggleUrsa);
-            toggleList.Add(toggleLeo);
-            toggleList.Add(toggleTiger);
+            // set all toggles to true to start
+            for(int i = 0; i < constellationToggles.Length; i++)
+            {
+                constellationToggles[i] = true;
+            }
 
             sliderConstellationCount = data.constellationCount;
             sliderMeshQuality = data.quality;
@@ -164,14 +163,11 @@ namespace TeamLab.Unity
             GUILayout.BeginHorizontal();
             GUILayout.Label("Constellations to choose from:");
 
-            toggleUrsa = GUILayout.Toggle(toggleUrsa, "Ursa");
-            sky.UpdateConstellationList(toggleUrsa, sky.Ursa);
-
-            toggleLeo = GUILayout.Toggle(toggleLeo, "Leo");
-            sky.UpdateConstellationList(toggleLeo, sky.Leo);
-
-            toggleTiger = GUILayout.Toggle(toggleTiger, "Tiger");
-            sky.UpdateConstellationList(toggleTiger, sky.Tiger);
+            for(int i = 0; i < constellationToggles.Length; i++)
+            {
+                constellationToggles[i] = GUILayout.Toggle(constellationToggles[i], ((Sky.ConstellationType)i).ToString());
+                sky.UpdateConstellationList(constellationToggles[i], (Sky.ConstellationType)i);
+            }
 
             GUILayout.EndHorizontal();
 
@@ -215,7 +211,6 @@ namespace TeamLab.Unity
             starColorUpdate.SetValueCPUOnly(starColor);
             starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
             data.starColor = "#" + ColorUtility.ToHtmlStringRGBA(starColor);
-            Debug.Log(data.starColor);
 
             GUILayout.EndHorizontal();
         }
@@ -228,6 +223,8 @@ namespace TeamLab.Unity
                 string json = UnityEngine.JsonUtility.ToJson(data, true);
                 writer.Write(json);
             }
+
+            Debug.Log(string.Join(", ", data.constellationNames));
         }
 
         public override void Load()
@@ -240,14 +237,14 @@ namespace TeamLab.Unity
                 UnityEngine.JsonUtility.FromJsonOverwrite(json, data);
             }
 
+            Debug.Log(string.Join(", ", data.constellationNames));
+
             UpdateGUIData();
         }
 
+        // update sliders to reflect loaded data
         public void UpdateGUIData()
         {
-            //TODO: set slider values to new data values when new Data is loaded
-            // >> Maybe make an InitializeData() function?
-
             sliderNumStars = data.numStars;
             sliderStarVelocityMin = data.minVelocity;
             sliderStarVelocityMax = data.maxVelocity;
@@ -256,6 +253,20 @@ namespace TeamLab.Unity
             sliderTwinkleSpeed = data.twinkleSpeed;
             sliderLifespan = data.lifespan;
             sliderTimeToFade = data.timeToFade;
+
+            //TODO update toggles
+            // first, reset all toggles to false
+            for(int i = 0; i < constellationToggles.Length; i++)
+            {
+                constellationToggles[i] = false;
+            }
+
+            // then toggle on all toggles saved in constellationNames list
+            foreach(var type in data.constellationNames)
+            {
+                constellationToggles[(int)type] = true;
+            }
+
             sliderConstellationCount = data.constellationCount;
             sliderMeshQuality = data.quality;
 

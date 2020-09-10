@@ -212,12 +212,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
-  numStars: 100
-  constellationList: []
   Ursa: {fileID: 1134085668177424, guid: 44e7b51d1548867498b7dac60bc1b1a4, type: 2}
   Leo: {fileID: 1161317567041834, guid: 76b7818b6f5d0eb41bb5bf23418a8fb9, type: 2}
   Tiger: {fileID: 1845759704096782, guid: 77fccd90ff0c2d741ae72788cd502dca, type: 2}
-  meshAlpha: 0
+  constellationList: []
   mode: 0
 --- !u!1 &1214343439
 GameObject:
@@ -330,6 +328,7 @@ MonoBehaviour:
   menuStateInitial: 0
   toggleKey: 9
   toggleKeyModifier: 0
+  menuType: 0
   menuButtonColor: {r: 1, g: 1, b: 1, a: 1}
   menuButtonBkgColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   windowColor: {r: 1, g: 1, b: 1, a: 1}
@@ -350,14 +349,16 @@ MonoBehaviour:
   sliderStarVelocityMax: 0
   sliderStarSizeMin: 0
   sliderStarSizeMax: 0
-  twinkleSpeed: 0
+  sliderTwinkleSpeed: 0
   sliderLifespan: 0
   sliderTimeToFade: 0
   toggleUrsa: 1
   toggleLeo: 1
   toggleTiger: 1
   toggleList: 
+  sliderConstellationCount: 0
   sliderMeshAlpha: 0
+  sliderMeshQuality: 0
   starColor: {r: 0.5882353, g: 0.9818339, b: 1, a: 0}
   starRenderer: {fileID: 0}
 --- !u!4 &1219601355

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using TeamLab.Unity;
 using UnityMeshSimplifier;
 using FlowerPackage;
+using System;
 
 [System.Serializable]
 public class Sky : MonoBehaviour {
@@ -17,14 +18,16 @@ public class Sky : MonoBehaviour {
     private MeshHelper edge;
     private Vector3 meshPos;
 
+    // made static to be accessable in Data class
     public GameObject Ursa;
     public GameObject Leo;
     public GameObject Tiger;
 
-    //make public list of GameObjects for constellations
-    public List<GameObject> constellationList = new List<GameObject>();
+    //make public dictionary of GameObjects for constellations
+    public Dictionary<ConstellationType, GameObject> constellationList = new Dictionary<ConstellationType, GameObject>();
 
     // make public enum to determine what visual mode constellation will use
+    // enums cannot be changed at runtime -> defacto way of knowing what all of the values are
     // Mesh = stars go to random point on constellation mesh
     // Edge = stars go to random point on constellation edge
     // Vertex = stars go to random vertex
@@ -33,6 +36,13 @@ public class Sky : MonoBehaviour {
         Mesh,
         Edge,
         Vertex
+    }
+
+    public enum ConstellationType
+    {
+        Ursa,
+        Leo,
+        Tiger
     }
 
     // Set constellationMode as Mesh to start
@@ -50,12 +60,12 @@ public class Sky : MonoBehaviour {
         // Get random position on mesh
         edge = new MeshHelper();
 
-        constellationList.Add(Ursa);
-        constellationList.Add(Leo);
-        constellationList.Add(Tiger);
+        constellationList.Add(ConstellationType.Ursa, Ursa);
+        constellationList.Add(ConstellationType.Leo, Leo);
+        constellationList.Add(ConstellationType.Tiger, Tiger);
 
         // get a constellation to start to avoid initialization errors
-        ConstellationShape = edge.GetRandomConstellation(constellationList);
+        ConstellationShape = edge.GetRandomConstellation(constellationList, data.constellationNames);
 
         constellationRenderer = ConstellationShape.GetComponent<Renderer>();
 }
@@ -79,7 +89,7 @@ public class Sky : MonoBehaviour {
             // potentially create multiple constellations with one click
             for(int q = 0; q < data.constellationCount; q++)
             {
-                ConstellationShape = edge.GetRandomConstellation(constellationList);
+                ConstellationShape = edge.GetRandomConstellation(constellationList, data.constellationNames);
 
                 constellationRenderer = ConstellationShape.GetComponent<Renderer>();
 
@@ -134,16 +144,20 @@ public class Sky : MonoBehaviour {
         }
     }
 
-    public void UpdateConstellationList(bool toggle, GameObject constellation)
+    public void UpdateConstellationList(bool toggle, ConstellationType constellationName)
     {
+        // toggle for a given constellation is off
         if (!toggle)
         {
-            constellationList.Remove(constellation);
+            data.constellationNames.Remove(constellationName);
         }
-        else if (toggle & !constellationList.Contains(constellation))
+        // toggle is on and the name is not present in the data list of constellation names
+        else if (toggle & !data.constellationNames.Contains(constellationName))
         {
-            constellationList.Add(constellation);
+            data.constellationNames.Add(constellationName);
         }
+
+        
     }
 
     public void UpdateConstellationAlpha(float alpha, float oldAlpha)

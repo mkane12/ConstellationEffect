@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -17,13 +18,21 @@ using UnityEngine;
 public class MeshHelper
 {
 
-    public GameObject GetRandomConstellation(List<GameObject> list)
+    public GameObject GetRandomConstellation(Dictionary<Sky.ConstellationType, GameObject> list, List<Sky.ConstellationType> names)
     {
-        int index = UnityEngine.Random.Range(0, list.Count);
 
-        GameObject ConstellationShape = list[index];
+        if(names.Count != 0)
+        {
+            var randomKey = names[(int)Random.Range(0, names.Count)];
 
-        return ConstellationShape;
+            return list[randomKey];
+        }
+        else
+        {
+            Debug.Log("Toggle at least one constellation!");
+            return list[0];
+        }
+        
     }
 
     // new structure for Edges of a mesh

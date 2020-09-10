@@ -25,14 +25,12 @@ public class Data : MonoBehaviour {
 
     // TODO: this exists in Unity, but can't store a GameObject in a setting file --> need to store its name, string, etc.
     // Data should always be able to stand alone - let another class access this data and update GameObject lists etc.
-
+    public List<Sky.ConstellationType> constellationNames = new List<Sky.ConstellationType>();
 
     public int constellationCount = 1; // number of constellations to spawn per click
 
     public float quality = 0.5f; // constant to determine mesh quality/complexity
 
-    // TODO: star color 
-    // >> just store RGB values, move this fancy stuff back to script
-    public string starColor = "#AAFFFF";
+    public string starColor = "#AAFFFF"; // hex star color
 
 }
