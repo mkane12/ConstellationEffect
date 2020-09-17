@@ -33,7 +33,10 @@ public class Data : MonoBehaviour {
     public float quality = 0.5f; // constant to determine mesh quality/complexity
 
     // list of ConstellationModes for how stars appear on constellation
-    public Sky.ConstellationMode mode = Sky.ConstellationMode.Mesh;
+    //public Sky.ConstellationMode mode = Sky.ConstellationMode.Mesh;
+
+    // float to determine percentage of stars to send to edge rather than vertex
+    public float percentEdge = 0.9f;
 
     public string starColor = "#AAFFFF"; // hex star color
 

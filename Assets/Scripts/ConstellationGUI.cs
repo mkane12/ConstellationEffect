@@ -50,6 +50,9 @@ namespace TeamLab.Unity
             toggleConstellationMode
             = new GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>();
 
+        // slider for percentage of stars to edge vs. vertex
+        public float sliderPercentEdge;
+
         // Utilizes SharedVariableColor helper class in TeamLabUnityFrameworks
         public ShaderVariableColor starColorUpdate = new ShaderVariableColor("_Color"); // star color
 
@@ -90,6 +93,8 @@ namespace TeamLab.Unity
 
             sliderConstellationCount = data.constellationCount;
             sliderMeshQuality = data.quality;
+
+            sliderPercentEdge = data.percentEdge;
 
             starRenderer = star.GetComponent<Renderer>();
 
@@ -196,14 +201,20 @@ namespace TeamLab.Unity
             data.quality = sliderMeshQuality;
             GUILayout.EndHorizontal();
 
-            // toggles to decide constellation mode
+            // slider to determine proportion of stars on edge vs vertex
             GUILayout.BeginHorizontal();
+            GUILayout.Label("Percentage of stars on edge:");
+            sliderPercentEdge = GUIUtil.Slider(sliderPercentEdge, 0, 1);
+            data.percentEdge = sliderPercentEdge;
+            GUILayout.EndHorizontal();
+
+            // toggles to decide constellation mode
+            /*GUILayout.BeginHorizontal();
             GUILayout.Label("Constellation Mode");
             // public E OnGUI(E enumInitialValue, int xWidth)
             // will probably need to update xWidth as more modes are added
             data.mode = toggleConstellationMode.OnGUI(data.mode, 3);
-
-            GUILayout.EndHorizontal();
+            GUILayout.EndHorizontal();*/
 
             // Color Field to determine colors of stars
             GUILayout.BeginHorizontal();
@@ -271,7 +282,7 @@ namespace TeamLab.Unity
 
             sliderMeshQuality = data.quality;
 
-
+            sliderPercentEdge = data.percentEdge;
 
             Color newCol;
             if (ColorUtility.TryParseHtmlString(data.starColor, out newCol))

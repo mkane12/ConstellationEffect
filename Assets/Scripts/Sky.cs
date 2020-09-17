@@ -102,7 +102,25 @@ public class Sky : MonoBehaviour {
 
                 c.GetComponent<MeshFilter>().sharedMesh = meshSimplifier.ToMesh();
 
-                for (int i = 0; i < data.numStars; i++)
+                // this block generates stars on edges and vertices by data.percentEdge parameter
+                for (int i = 0; i < (int) data.numStars * data.percentEdge; i ++)
+                {
+                    GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
+                    Star star = s.GetComponent<Star>();
+                    meshPos = edge.GetRandomPointOnConstellationEdge(c);
+                    star.targetPos = meshPos;
+                }
+
+                for (int i = 0; i < (int)data.numStars * (1.0f - data.percentEdge); i++)
+                {
+                    GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
+                    Star star = s.GetComponent<Star>();
+                    meshPos = edge.GetRandomPointOnConstellationVertex(c);
+                    star.targetPos = meshPos;
+                }
+
+                // This block makes total number of stars on any location given mode
+                /*for (int i = 0; i < data.numStars; i++)
                 {
                     GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
                     Star star = s.GetComponent<Star>();
@@ -132,7 +150,7 @@ public class Sky : MonoBehaviour {
                     }
 
                     star.targetPos = meshPos;
-                }
+                }*/
 
                 // Destroy constellation game object 1 second after stars fade
                 Destroy(c, data.lifespan + data.timeToFade + 1.0f);
