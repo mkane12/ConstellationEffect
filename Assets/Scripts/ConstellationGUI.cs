@@ -119,10 +119,7 @@ namespace TeamLab.Unity
             //sliderPercentEdge = data.percentEdge;
 
             starRenderer = star.GetComponent<Renderer>();
-            //edgeStarRenderer = edgeStar.GetComponent<Renderer>();
-
-            starPropertyBlock = new MaterialPropertyBlock();
-            edgeStarPropertyBlock = new MaterialPropertyBlock();
+            edgeStarRenderer = edgeStar.GetComponent<Renderer>();
 
             // starting starColor
             Color newCol;
@@ -140,8 +137,8 @@ namespace TeamLab.Unity
             starColorUpdate.SetValueCPUOnly(starColor);
             starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
 
-            starColorUpdate.SetValueCPUOnly(edgeStarColor);
-            //starColorUpdate.SetToMaterial(edgeStarRenderer.material);
+            edgeStarColorUpdate.SetValueCPUOnly(edgeStarColor);
+            edgeStarColorUpdate.SetToMaterial(edgeStarRenderer.sharedMaterial);
 
             base.showButtons.save = true;
             base.showButtons.load = true;
@@ -288,16 +285,16 @@ namespace TeamLab.Unity
             GUILayout.EndHorizontal();
 
             // Color Field to determine colors of edge stars
-            /*GUILayout.BeginHorizontal();
+            GUILayout.BeginHorizontal();
             GUILayout.Label("Edge star color:");
-            starColorGUI.OnGUI(ref edgeStarColor);
+            edgeStarColorGUI.OnGUI(ref edgeStarColor);
 
             // Use ShaderVariableGeneric helper class to only update shader when changed
-            starColorUpdate.SetValueCPUOnly(edgeStarColor);
-            starColorUpdate.SetToMaterial(edgeStarRenderer.sharedMaterial);
+            edgeStarColorUpdate.SetValueCPUOnly(edgeStarColor);
+            edgeStarColorUpdate.SetToMaterial(edgeStarRenderer.sharedMaterial);
             data.edgeStarColor = "#" + ColorUtility.ToHtmlStringRGBA(edgeStarColor);
 
-            GUILayout.EndHorizontal();*/
+            GUILayout.EndHorizontal();
         }
 
         public override void Save()
@@ -369,6 +366,11 @@ namespace TeamLab.Unity
             if (ColorUtility.TryParseHtmlString(data.starColor, out newCol))
             {
                 starColor = newCol;
+            }
+            Color newColEdge;
+            if (ColorUtility.TryParseHtmlString(data.edgeStarColor, out newColEdge))
+            {
+                edgeStarColor = newColEdge;
             }
         }
     } // end class
