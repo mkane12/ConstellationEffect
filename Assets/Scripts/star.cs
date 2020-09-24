@@ -9,6 +9,8 @@ using TeamLab.Unity;
 // > protected variables accessible by subclasses -> Star has access to StateMachine
 // > virtual functions = subclass can redefine function as needed
 
+// This class will be for stars placed on mesh vertices
+
 public class Star : StateMachine
 {
     static public Data data = ConstellationGUI.data;
@@ -63,7 +65,7 @@ public class Star : StateMachine
     protected override void StateUpdateCallback()
     {
         // Twinkle should happen regardless of state
-        tex.Twinkle();
+        tex.Twinkle(data.twinkleSpeed);
 
         // call method depending on current state
         switch (GetStateID())

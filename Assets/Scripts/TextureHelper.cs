@@ -52,8 +52,6 @@ public class TextureHelper
         renderer.material.SetTextureScale(currTexID, tileSize);
         renderer.material.SetTextureScale(nextTexID, tileSize);
 
-        twinkleSpeed = data.twinkleSpeed;
-
         nextOffset = new Vector2(tileSize.x, tileSize.y);
 
         // start index with random offset so twinkling is scattered
@@ -63,7 +61,7 @@ public class TextureHelper
         nextIndex = currIndex;
     }
 
-    public void Twinkle()
+    public void Twinkle(float twinkleSpeed)
     {
         // calculate index for texture iteration
         // add random time offset, so stars twinkle at varying rates

@@ -8,6 +8,8 @@ MonoImporter:
   defaultReferences:
   - sky: {instanceID: 0}
   - star: {fileID: 114991130923611854, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
+  - edgeStar: {fileID: 114329486572535800, guid: f345441d066f0bb45bf4b958019ae589,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

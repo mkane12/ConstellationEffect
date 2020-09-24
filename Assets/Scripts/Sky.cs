@@ -13,6 +13,7 @@ using System;
 public class Sky : MonoBehaviour {
 
     public GameObject Star;
+    public GameObject EdgeStar;
     static public Data data = ConstellationGUI.data;
     
     private MeshHelper edge;
@@ -102,21 +103,22 @@ public class Sky : MonoBehaviour {
 
                 c.GetComponent<MeshFilter>().sharedMesh = meshSimplifier.ToMesh();
 
-                // this block generates stars on edges and vertices by data.percentEdge parameter
-                for (int i = 0; i < (int) data.numStars * data.percentEdge; i ++)
-                {
-                    GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
-                    Star star = s.GetComponent<Star>();
-                    meshPos = edge.GetRandomPointOnConstellationEdge(c);
-                    star.targetPos = meshPos;
-                }
-
-                for (int i = 0; i < (int)data.numStars * (1.0f - data.percentEdge); i++)
+                // generate stars on mesh vertices
+                for (int i = 0; i < data.numStars; i++)
                 {
                     GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
                     Star star = s.GetComponent<Star>();
                     meshPos = edge.GetRandomPointOnConstellationVertex(c);
                     star.targetPos = meshPos;
+                }
+
+                // generates stars on mesh edge
+                for (int i = 0; i < data.numEdgeStars; i ++)
+                {
+                    GameObject s = Instantiate(EdgeStar, hit.point, Quaternion.identity);
+                    EdgeStar edgeStar = s.GetComponent<EdgeStar>();
+                    meshPos = edge.GetRandomPointOnConstellationEdge(c);
+                    edgeStar.targetPos = meshPos;
                 }
 
                 // This block makes total number of stars on any location given mode

@@ -470,6 +470,7 @@ Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/UVandRealWorldMapperNT/Syst
 Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/UVandRealWorldMapperNT/SystemInstaller.cs
 Assets/Scripts/ConstellationGUI.cs
 Assets/Scripts/Data.cs
+Assets/Scripts/EdgeStar.cs
 Assets/Scripts/MeshHelper.cs
 Assets/Scripts/Sky.cs
 Assets/Scripts/Star.cs
