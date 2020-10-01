@@ -8,6 +8,7 @@ using TeamLab.Unity;
 using UnityMeshSimplifier;
 using FlowerPackage;
 using System;
+using System.Linq;
 
 [System.Serializable]
 public class Sky : MonoBehaviour {
@@ -23,6 +24,8 @@ public class Sky : MonoBehaviour {
     public GameObject Ursa;
     public GameObject Leo;
     public GameObject Tiger;
+
+    public MeshSimplifier meshSimplifier;
 
     //make public dictionary of GameObjects for constellations
     public Dictionary<ConstellationType, GameObject> constellationList = new Dictionary<ConstellationType, GameObject>();
@@ -62,21 +65,60 @@ public class Sky : MonoBehaviour {
         constellationList.Add(ConstellationType.Leo, Leo);
         constellationList.Add(ConstellationType.Tiger, Tiger);
 
+
+
+        // attempt to simplify constellation meshes
+        // https://github.com/Whinarn/UnityMeshSimplifier
+        meshSimplifier = new UnityMeshSimplifier.MeshSimplifier();
+        // set verbose to true so we get more info from meshSimplifier
+        meshSimplifier.Verbose = true;
+
+        //TODO: Preprocess meshes to have varying levels of complexity + designated vertices(?)
+        StandardizeMeshes();
+
         // get a constellation to start to avoid initialization errors
         ConstellationShape = edge.GetRandomConstellation(constellationList, data.constellationNames);
 
         constellationRenderer = ConstellationShape.GetComponent<Renderer>();
-}
+    }
+
+    // before artwork starts, standardize all meshes to have the same number of triangles
+    // * equal to the number of triangles in the least complex mesh
+    public void StandardizeMeshes()
+    {
+        Mesh conMesh = constellationList.First().Value.GetComponent<MeshFilter>().sharedMesh;
+        float minTriangles = conMesh.triangles.Length;
+
+        // first, identify the mesh with the smallest number of triangles and get that number
+        // float minTriangles = constellationList[0].GetComponent<MeshFilter>().sharedMesh.triangles.Length;
+
+        foreach (GameObject c in constellationList.Values)
+        {
+            if (c.GetComponent<MeshFilter>().sharedMesh.triangles.Length < minTriangles)
+            {
+                minTriangles = c.GetComponent<MeshFilter>().sharedMesh.triangles.Length;
+            }
+        }
+
+        // next, standardize all meshes to have that number of triangles
+        foreach (var c in constellationList)
+        {
+            float conTriangles = c.Value.GetComponent<MeshFilter>().sharedMesh.triangles.Length;
+            float meshQuality = minTriangles / conTriangles;
+
+            // simplify the copy
+            meshSimplifier.Initialize(c.Value.GetComponent<MeshFilter>().sharedMesh);
+            meshSimplifier.SimplifyMesh(meshQuality);
+            c.Value.GetComponent<MeshFilter>().sharedMesh = meshSimplifier.ToMesh();
+        }
+
+    }
 
     // call on click
     void OnMouseDown()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
-
-        // attempt to simplify constellation meshes
-        // https://github.com/Whinarn/UnityMeshSimplifier
-        var meshSimplifier = new UnityMeshSimplifier.MeshSimplifier();
 
         if (Physics.Raycast(ray, out hit))
         {

@@ -339,26 +339,31 @@ MonoBehaviour:
   showButtons:
     save: 0
     load: 0
-  windowIsDragable: 0
+  windowIsDragable: 1
   placeholder: 0
   sky: {fileID: 0}
   star: {fileID: 114991130923611854, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
-  edgeStar: {fileID: 0}
+  edgeStar: {fileID: 114329486572535800, guid: f345441d066f0bb45bf4b958019ae589, type: 2}
   sliderNumStars: 100
+  sliderNumEdgeStars: 0
   sliderStarVelocityMin: 0
   sliderStarVelocityMax: 0
+  sliderEdgeStarVelocityMin: 0
+  sliderEdgeStarVelocityMax: 0
   sliderStarSizeMin: 0
   sliderStarSizeMax: 0
+  sliderEdgeStarSizeMin: 0
+  sliderEdgeStarSizeMax: 0
   sliderTwinkleSpeed: 0
+  sliderEdgeTwinkleSpeed: 0
   sliderLifespan: 0
   sliderTimeToFade: 0
+  starColor: {r: 0.5882353, g: 0.9818339, b: 1, a: 0}
+  edgeStarColor: {r: 0, g: 0, b: 0, a: 0}
   constellationToggles: 000000
   sliderConstellationCount: 0
   sliderMeshAlpha: 0
   sliderMeshQuality: 0
-  sliderPercentEdge: 0
-  starColor: {r: 0.5882353, g: 0.9818339, b: 1, a: 0}
-  edgeStarColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &1219601355
 Transform:
   m_ObjectHideFlags: 0

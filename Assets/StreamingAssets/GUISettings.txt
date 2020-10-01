@@ -11,16 +11,16 @@
     "maxSizeEdge": 1.0,
     "twinkleSpeed": 8,
     "twinkleSpeedEdge": 3,
-    "lifespan": 30.477949142456056,
+    "lifespan": 10.0,
     "timeToFade": 5.0,
     "constellationNames": [
+        2,
         0,
-        1,
-        2
+        1
     ],
     "constellationCount": 1,
-    "meshAlpha": 0.0,
-    "quality": 0.1276596039533615,
+    "meshAlpha": 0.18867920339107514,
+    "quality": 0.5106382966041565,
     "percentEdge": 0.8999999761581421,
     "starColor": "#4FFFFFFF",
     "edgeStarColor": "#FFFFFFFF"
