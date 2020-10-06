@@ -49,6 +49,10 @@ public class MeshHelper
         }
     }
 
+
+    // TODO: pass in mesh instead of gameobject for these functions - makes more sense
+    // TODO: scale/rotate/transform outside of this script
+    // >> MeshHelper script shouldn't know about larger game
     public Vector3 GetRandomPointOnConstellationMesh(GameObject Constellation)
     {
         Mesh mesh = Constellation.GetComponent<MeshFilter>().sharedMesh;
@@ -117,9 +121,9 @@ public class MeshHelper
         return pointOnEdge;
     }
 
-    public Vector3 GetRandomPointOnConstellationVertex(GameObject Constellation)
+    public Vector3 GetRandomPointOnConstellationVertex(GameObject Constellation, int n, int i)
     {
-        MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
+        /*MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
         Mesh mesh = mf.sharedMesh;
 
         // this gives a list of Edge structs, which have 2 vertex components
@@ -139,7 +143,34 @@ public class MeshHelper
         // translate by position
         pointOnVertex = pointOnVertex + Constellation.transform.position;
 
+        return pointOnVertex;*/
+
+        MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
+        Mesh mesh = mf.sharedMesh;
+
+        int iteration = Mathf.Max(mesh.vertices.Length / (n + 1), 1);
+
+        Vector3 pointOnVertex = mesh.vertices[((i + 1) * iteration) % mesh.vertices.Length];
+
+        // TODO
+        // take mesh and number of stars
+        // use above method to get list of vertices to send back
+        // for each vertex, test distance from previous vertices
+        // > if it matches some threshold, then vertex is ok to use, if not, need to recalculate
+        // > if it goes through all stars, and it gets too crowded, just stop
+        
+
+        // scale by scale
+        pointOnVertex = Vector3.Scale(pointOnVertex, Constellation.transform.localScale);
+
+        // rotate by rotation
+        pointOnVertex = Constellation.transform.rotation * pointOnVertex;
+
+        // translate by position
+        pointOnVertex = pointOnVertex + Constellation.transform.position;
+
         return pointOnVertex;
+
     }
 
     float[] GetTriSizes(int[] tris, Vector3[] verts)

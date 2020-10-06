@@ -254,7 +254,7 @@ namespace TeamLab.Unity
             GUILayout.BeginHorizontal();
             GUILayout.Label("Constellation mesh complexity:");
             sliderMeshQuality = GUIUtil.Slider(sliderMeshQuality, 0, 1);
-            data.quality = sliderMeshQuality;
+            data.quality = (float) System.Math.Round(sliderMeshQuality, 1);
             GUILayout.EndHorizontal();
 
             // slider to determine proportion of stars on edge vs vertex
