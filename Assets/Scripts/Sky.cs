@@ -66,8 +66,6 @@ public class Sky : MonoBehaviour {
         constellationList.Add(ConstellationType.Leo, Leo);
         constellationList.Add(ConstellationType.Tiger, Tiger);
 
-
-
         // attempt to simplify constellation meshes
         // https://github.com/Whinarn/UnityMeshSimplifier
         meshSimplifier = new UnityMeshSimplifier.MeshSimplifier();
@@ -190,7 +188,17 @@ public class Sky : MonoBehaviour {
                 {
                     GameObject s = Instantiate(EdgeStar, hit.point, Quaternion.identity);
                     EdgeStar edgeStar = s.GetComponent<EdgeStar>();
-                    meshPos = edge.GetRandomPointOnConstellationEdge(c);
+                    meshPos = edge.GetRandomPointOnConstellationEdge(c.GetComponent<MeshFilter>().sharedMesh);
+
+                    // scale by scale
+                    meshPos = Vector3.Scale(meshPos, c.transform.localScale);
+
+                    // rotate by rotation
+                    meshPos = c.transform.rotation * meshPos;
+
+                    // translate by position
+                    meshPos = meshPos + c.transform.position;
+
                     edgeStar.targetPos = meshPos;
                 }
 
@@ -202,7 +210,17 @@ public class Sky : MonoBehaviour {
                     // remove for loop from Sky.cs and have Meshhelper figure out where stars should go internally
                     GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
                     Star star = s.GetComponent<Star>();
-                    meshPos = edge.GetRandomPointOnConstellationVertex(c, data.numStars, i);
+                    meshPos = edge.GetRandomPointOnConstellationVertex(c.GetComponent<MeshFilter>().sharedMesh, data.numStars, i);
+
+                    // scale by scale
+                    meshPos = Vector3.Scale(meshPos, c.transform.localScale);
+
+                    // rotate by rotation
+                    meshPos = c.transform.rotation * meshPos;
+
+                    // translate by position
+                    meshPos = meshPos + c.transform.position;
+
                     star.targetPos = meshPos;
                 }
 

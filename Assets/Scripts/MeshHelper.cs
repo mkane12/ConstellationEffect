@@ -92,10 +92,8 @@ public class MeshHelper
 
     }
 
-    public Vector3 GetRandomPointOnConstellationEdge(GameObject Constellation)
+    public Vector3 GetRandomPointOnConstellationEdge(Mesh mesh)
     {
-        MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
-        Mesh mesh = mf.sharedMesh;
 
         // this gives a list of Edge structs, which have 2 vertex components
         var boundary = GetEdges(mesh.triangles);
@@ -109,45 +107,11 @@ public class MeshHelper
         Vector3 line = b - a;
         Vector3 pointOnEdge = a + Random.value * line;
 
-        // scale by scale
-        pointOnEdge = Vector3.Scale(pointOnEdge, Constellation.transform.localScale);
-
-        // rotate by rotation
-        pointOnEdge = Constellation.transform.rotation * pointOnEdge;
-
-        // translate by position
-        pointOnEdge = pointOnEdge + Constellation.transform.position;
-
         return pointOnEdge;
     }
 
-    public Vector3 GetRandomPointOnConstellationVertex(GameObject Constellation, int n, int i)
+    public Vector3 GetRandomPointOnConstellationVertex(Mesh mesh, int n, int i)
     {
-        /*MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
-        Mesh mesh = mf.sharedMesh;
-
-        // this gives a list of Edge structs, which have 2 vertex components
-        var boundary = GetEdges(mesh.triangles);
-
-        // get a random triangle from the mesh
-        int triIndex = GetRandomTriangle(mesh);
-
-        Vector3 pointOnVertex = mesh.vertices[mesh.triangles[triIndex * 3]];
-
-        // scale by scale
-        pointOnVertex = Vector3.Scale(pointOnVertex, Constellation.transform.localScale);
-
-        // rotate by rotation
-        pointOnVertex = Constellation.transform.rotation * pointOnVertex;
-
-        // translate by position
-        pointOnVertex = pointOnVertex + Constellation.transform.position;
-
-        return pointOnVertex;*/
-
-        MeshFilter mf = (MeshFilter)Constellation.GetComponent("MeshFilter");
-        Mesh mesh = mf.sharedMesh;
-
         int iteration = Mathf.Max(mesh.vertices.Length / (n + 1), 1);
 
         Vector3 pointOnVertex = mesh.vertices[((i + 1) * iteration) % mesh.vertices.Length];
@@ -158,16 +122,6 @@ public class MeshHelper
         // for each vertex, test distance from previous vertices
         // > if it matches some threshold, then vertex is ok to use, if not, need to recalculate
         // > if it goes through all stars, and it gets too crowded, just stop
-        
-
-        // scale by scale
-        pointOnVertex = Vector3.Scale(pointOnVertex, Constellation.transform.localScale);
-
-        // rotate by rotation
-        pointOnVertex = Constellation.transform.rotation * pointOnVertex;
-
-        // translate by position
-        pointOnVertex = pointOnVertex + Constellation.transform.position;
 
         return pointOnVertex;
 
