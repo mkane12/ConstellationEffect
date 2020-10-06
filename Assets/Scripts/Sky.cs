@@ -9,6 +9,7 @@ using UnityMeshSimplifier;
 using FlowerPackage;
 using System;
 using System.Linq;
+using UnityEditor;
 
 [System.Serializable]
 public class Sky : MonoBehaviour {
@@ -70,8 +71,6 @@ public class Sky : MonoBehaviour {
         // attempt to simplify constellation meshes
         // https://github.com/Whinarn/UnityMeshSimplifier
         meshSimplifier = new UnityMeshSimplifier.MeshSimplifier();
-        // set verbose to true so we get more info from meshSimplifier
-        meshSimplifier.Verbose = true;
 
         //TODO: Preprocess meshes to have varying levels of complexity + designated vertices(?)
         StandardizeMeshes();
@@ -109,8 +108,20 @@ public class Sky : MonoBehaviour {
             // simplify the copy
             meshSimplifier.Initialize(c.Value.GetComponent<MeshFilter>().sharedMesh);
             meshSimplifier.SimplifyMesh(meshQuality);
-            c.Value.GetComponent<MeshFilter>().sharedMesh = meshSimplifier.ToMesh();
+
+            string conName = c.Value.name;
+
+            // save base meshes to Assets/Meshes
+            var savePath = "Assets/Meshes/" + conName + "BaseMesh.asset";
+            Debug.Log("Saved base mesh to: " + savePath);
+            AssetDatabase.CreateAsset(meshSimplifier.ToMesh(), savePath);
+
+            // set constellation mesh to new base mesh
+            c.Value.GetComponent<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(savePath);
         }
+
+        // save changes made
+        AssetDatabase.SaveAssets();
 
     }
 
