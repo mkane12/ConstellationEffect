@@ -182,7 +182,7 @@ public class Sky : MonoBehaviour {
                 c.GetComponent<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
 
                 // generates stars on mesh edge
-                meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c.GetComponent<MeshFilter>().sharedMesh, data.numEdgeStars);
+                meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c, data.numEdgeStars);
 
                 for (int i = 0; i < meshEdgePositions.Count; i++)
                 {
@@ -202,7 +202,7 @@ public class Sky : MonoBehaviour {
                     edgeStar.targetPos = edgePos;
                 }
 
-                meshVertexPositions = edge.GetRandomPointsOnConstellationVertices(c.GetComponent<MeshFilter>().sharedMesh, data.numStars, data.vertexStarMinDistance);
+                meshVertexPositions = edge.GetRandomPointsOnConstellationVertices(c, data.numStars, data.vertexStarMinDistance);
 
                 // generate stars on mesh vertices
                 for (int i = 0; i < meshVertexPositions.Count; i++)

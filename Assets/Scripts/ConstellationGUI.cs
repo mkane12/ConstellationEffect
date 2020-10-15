@@ -42,6 +42,9 @@ namespace TeamLab.Unity
         // for now, let's keep these the same for edge and vertex stars
         public float sliderTimeToFade;
 
+        // distance between vertex stars
+        public float sliderVertexStarMinDistance;
+
         // Utilizes SharedVariableColor helper class in TeamLabUnityFrameworks
         public ShaderVariableColor starColorUpdate = new ShaderVariableColor("_Color"); // star color
         public ShaderVariableColor edgeStarColorUpdate = new ShaderVariableColor("_Color"); // star color
@@ -104,6 +107,8 @@ namespace TeamLab.Unity
             sliderLifespan = data.lifespan;
 
             sliderTimeToFade = data.timeToFade;
+
+            sliderVertexStarMinDistance = data.vertexStarMinDistance;
 
             // set all toggles to true to start
             for(int i = 0; i < constellationToggles.Length; i++)
@@ -220,6 +225,13 @@ namespace TeamLab.Unity
             GUILayout.Label("Star fade time:");
             sliderTimeToFade = GUIUtil.Slider(sliderTimeToFade, 1, 500);
             data.timeToFade = sliderTimeToFade;
+            GUILayout.EndHorizontal();
+
+            // slider to determine minimum distance between stars on vertices
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Min distance btw vertex stars:");
+            sliderVertexStarMinDistance = GUIUtil.Slider(sliderVertexStarMinDistance, 0.0f, 1.0f);
+            data.vertexStarMinDistance = sliderVertexStarMinDistance;
             GUILayout.EndHorizontal();
 
             // toggles to decide constellation patterns chosen from
@@ -342,8 +354,10 @@ namespace TeamLab.Unity
             sliderLifespan = data.lifespan;
             sliderTimeToFade = data.timeToFade;
 
+            sliderVertexStarMinDistance = data.vertexStarMinDistance;
+
             // first, reset all toggles to false
-            for(int i = 0; i < constellationToggles.Length; i++)
+            for (int i = 0; i < constellationToggles.Length; i++)
             {
                 constellationToggles[i] = false;
             }

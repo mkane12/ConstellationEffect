@@ -92,9 +92,12 @@ public class MeshHelper
 
     }
 
-    // gets a game object mesh and returns a list of Vector3 positions for stars on mesh edge
-    public List<Vector3> GetRandomPointsOnConstellationEdge(Mesh mesh, int numStars)
+    // gets a game object and returns a list of Vector3 positions for stars on mesh edge
+    public List<Vector3> GetRandomPointsOnConstellationEdge(GameObject constellation, int numStars)
     {
+
+        Mesh mesh = constellation.GetComponent<MeshFilter>().sharedMesh;
+
         // this gives a list of Edge structs, which have 2 vertex components
         var boundary = GetEdges(mesh.triangles);
         List<Vector3> pointsOnEdge = new List<Vector3>();
@@ -110,27 +113,36 @@ public class MeshHelper
             Vector3 line = b - a;
             Vector3 edgePos = a + Random.value * line;
 
+            // TODO: scaling issue
+            // > i want to scale in these functions to make distancing easier to conceptualize for the user
+            // > but this doesnt work for... reasons. TBD
+
+            // scale by scale
+            edgePos = Vector3.Scale(edgePos, constellation.transform.localScale);
+
+            // rotate by rotation
+            edgePos = constellation.transform.rotation * edgePos;
+
+            // translate by position
+            edgePos = edgePos + constellation.transform.position;
+
             pointsOnEdge.Add(edgePos);
         }
 
         return pointsOnEdge;
     }
 
-    // gets a game object mesh and returns a list of Vector3 positions for stars on mesh vertices
-    public List<Vector3> GetRandomPointsOnConstellationVertices(Mesh mesh, int numStars, float minDist)
+    // gets a game object and returns a list of Vector3 positions for stars on mesh vertices
+    public List<Vector3> GetRandomPointsOnConstellationVertices(GameObject constellation, int numStars, float minDist)
     {
+        Mesh mesh = constellation.GetComponent<MeshFilter>().sharedMesh;
+
         List<Vector3> pointsOnVertices = new List<Vector3>();
 
         for (int i = 0; i < numStars; i++)
         {
             int iteration = Mathf.Max(mesh.vertices.Length / (numStars + 1), 1);
             int index = (i + 1) * iteration % mesh.vertices.Length;
-
-            // stop calculating positions if number of vertices is exceeded
-            /*if(index > mesh.vertices.Length)
-            {
-                break;
-            }*/
 
             Vector3 vertexPos = mesh.vertices[index];
 
