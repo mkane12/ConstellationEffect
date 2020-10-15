@@ -180,10 +180,10 @@ public class Sky : MonoBehaviour {
                 // change constellation mesh to those stored in Assets/Meshes
                 var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
                 c.GetComponent<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
-                
-                meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c.GetComponent<MeshFilter>().sharedMesh, data.numEdgeStars);
 
                 // generates stars on mesh edge
+                meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c.GetComponent<MeshFilter>().sharedMesh, data.numEdgeStars);
+
                 for (int i = 0; i < meshEdgePositions.Count; i++)
                 {
                     GameObject s = Instantiate(EdgeStar, hit.point, Quaternion.identity);
@@ -202,31 +202,27 @@ public class Sky : MonoBehaviour {
                     edgeStar.targetPos = edgePos;
                 }
 
+                meshVertexPositions = edge.GetRandomPointsOnConstellationVertices(c.GetComponent<MeshFilter>().sharedMesh, data.numStars, data.vertexStarMinDistance);
+
                 // generate stars on mesh vertices
-                // TODO
-                // give mesh and number of stars 
-                // remove for loop from Sky.cs and have Meshhelper figure out where stars should go internally
-                /*GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
-                Star star = s.GetComponent<Star>();
+                for (int i = 0; i < meshVertexPositions.Count; i++)
+                {
+                    GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
+                    Star star = s.GetComponent<Star>();
 
-                List<Vector3> vertexPositions = edge.GetRandomPointOnConstellationVertex(
-                    c.GetComponent<MeshFilter>().sharedMesh,
-                    data.numStars,
-                    data.vertexStarMinDistance);
-
-                    meshPos = nullablePos.Value;
+                    Vector3 vertexPos = meshVertexPositions[i];
 
                     // scale by scale
-                    meshPos = Vector3.Scale(meshPos, c.transform.localScale);
+                    vertexPos = Vector3.Scale(vertexPos, c.transform.localScale);
 
                     // rotate by rotation
-                    meshPos = c.transform.rotation * meshPos;
+                    vertexPos = c.transform.rotation * vertexPos;
 
                     // translate by position
-                    meshPos = meshPos + c.transform.position;
+                    vertexPos = vertexPos + c.transform.position;
 
-                    star.targetPos = meshPos;
-                }*/
+                    star.targetPos = vertexPos;
+                }
 
                 // This block makes total number of stars on any location given mode
                 /*for (int i = 0; i < data.numStars; i++)

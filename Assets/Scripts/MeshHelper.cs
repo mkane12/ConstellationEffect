@@ -108,41 +108,52 @@ public class MeshHelper
             Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
 
             Vector3 line = b - a;
-            Vector3 pointOnEdge = a + Random.value * line;
+            Vector3 edgePos = a + Random.value * line;
 
-            pointsOnEdge.Add(pointOnEdge);
+            pointsOnEdge.Add(edgePos);
         }
 
         return pointsOnEdge;
     }
 
-    // returns a nullable Vector3
-    /*public List<Vector3> GetRandomPointOnConstellationVertex(Mesh mesh, int numStars, float minDist)
+    // gets a game object mesh and returns a list of Vector3 positions for stars on mesh vertices
+    public List<Vector3> GetRandomPointsOnConstellationVertices(Mesh mesh, int numStars, float minDist)
     {
-        List<Vector3> positions;
+        List<Vector3> pointsOnVertices = new List<Vector3>();
 
         for (int i = 0; i < numStars; i++)
         {
             int iteration = Mathf.Max(mesh.vertices.Length / (numStars + 1), 1);
-            int index = (i + 1) * iteration;
-            int prevIndex = i * iteration;
+            int index = (i + 1) * iteration % mesh.vertices.Length;
 
-            Vector3? currPos = mesh.vertices[index];
-            Vector3? prevPos = mesh.vertices[prevIndex];
-
-            float dist = Vector3.Distance(currPos.Value, prevPos.Value);
-
-            // don't wrap around when index exceeds number of vertices
-            // > this is because the stars are already spaced evenly, so no need to wraparound
-            // ensure next star is far enough from previous star
-            if (index < mesh.vertices.Length && dist >= minDist)
+            // stop calculating positions if number of vertices is exceeded
+            /*if(index > mesh.vertices.Length)
             {
-                positions.Add(currPos.Value);
-            }
+                break;
+            }*/
 
-            return positions;
+            Vector3 vertexPos = mesh.vertices[index];
+
+            // add the latest position now - we will remove it later if it is too close to other stars
+            pointsOnVertices.Add(vertexPos);
+
+            // iterate through previous vertices to check that distances exceed a threshold
+            // > note we iterate through all but the latest added star, since that dist = 0
+            for (int j = 0; j < pointsOnVertices.Count - 1; j++)
+            {
+                float dist = Vector3.Distance(vertexPos, pointsOnVertices[j]);
+                // if distance between new star and any old stars doesn't exceed a threshold, remove the latest star
+                if(dist < minDist)
+                {
+                    pointsOnVertices.Remove(vertexPos);
+                    break;
+                }
+            }
+            
         }
-    }*/
+
+        return pointsOnVertices;
+    }
 
     float[] GetTriSizes(int[] tris, Vector3[] verts)
     {

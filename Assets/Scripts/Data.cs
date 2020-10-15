@@ -47,4 +47,6 @@ public class Data : MonoBehaviour {
     public string starColor = "#AAFFFF"; // hex star color
     public string edgeStarColor = "#AAFFFF"; // hex edge star color
 
+    public float vertexStarMinDistance = 0.1f; // minimum distance btw vertex stars
+
 }
