@@ -92,40 +92,57 @@ public class MeshHelper
 
     }
 
-    public Vector3 GetRandomPointOnConstellationEdge(Mesh mesh)
+    // gets a game object mesh and returns a list of Vector3 positions for stars on mesh edge
+    public List<Vector3> GetRandomPointsOnConstellationEdge(Mesh mesh, int numStars)
     {
-
         // this gives a list of Edge structs, which have 2 vertex components
         var boundary = GetEdges(mesh.triangles);
+        List<Vector3> pointsOnEdge = new List<Vector3>();
 
-        // get a random triangle from the mesh
-        int triIndex = GetRandomTriangle(mesh);
+        for (int i = 0; i < numStars; i++)
+        {
+            // get a random triangle from the mesh
+            int triIndex = GetRandomTriangle(mesh);
 
-        Vector3 a = mesh.vertices[mesh.triangles[triIndex * 3]];
-        Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
+            Vector3 a = mesh.vertices[mesh.triangles[triIndex * 3]];
+            Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
 
-        Vector3 line = b - a;
-        Vector3 pointOnEdge = a + Random.value * line;
+            Vector3 line = b - a;
+            Vector3 pointOnEdge = a + Random.value * line;
 
-        return pointOnEdge;
+            pointsOnEdge.Add(pointOnEdge);
+        }
+
+        return pointsOnEdge;
     }
 
-    public Vector3 GetRandomPointOnConstellationVertex(Mesh mesh, int n, int i)
+    // returns a nullable Vector3
+    /*public List<Vector3> GetRandomPointOnConstellationVertex(Mesh mesh, int numStars, float minDist)
     {
-        int iteration = Mathf.Max(mesh.vertices.Length / (n + 1), 1);
+        List<Vector3> positions;
 
-        Vector3 pointOnVertex = mesh.vertices[((i + 1) * iteration) % mesh.vertices.Length];
+        for (int i = 0; i < numStars; i++)
+        {
+            int iteration = Mathf.Max(mesh.vertices.Length / (numStars + 1), 1);
+            int index = (i + 1) * iteration;
+            int prevIndex = i * iteration;
 
-        // TODO
-        // take mesh and number of stars
-        // use above method to get list of vertices to send back
-        // for each vertex, test distance from previous vertices
-        // > if it matches some threshold, then vertex is ok to use, if not, need to recalculate
-        // > if it goes through all stars, and it gets too crowded, just stop
+            Vector3? currPos = mesh.vertices[index];
+            Vector3? prevPos = mesh.vertices[prevIndex];
 
-        return pointOnVertex;
+            float dist = Vector3.Distance(currPos.Value, prevPos.Value);
 
-    }
+            // don't wrap around when index exceeds number of vertices
+            // > this is because the stars are already spaced evenly, so no need to wraparound
+            // ensure next star is far enough from previous star
+            if (index < mesh.vertices.Length && dist >= minDist)
+            {
+                positions.Add(currPos.Value);
+            }
+
+            return positions;
+        }
+    }*/
 
     float[] GetTriSizes(int[] tris, Vector3[] verts)
     {

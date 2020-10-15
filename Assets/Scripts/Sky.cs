@@ -19,7 +19,8 @@ public class Sky : MonoBehaviour {
     static public Data data = ConstellationGUI.data;
     
     private MeshHelper edge;
-    private Vector3 meshPos;
+    private List<Vector3> meshEdgePositions;
+    private List<Vector3> meshVertexPositions;
 
     // made static to be accessable in Data class
     public GameObject Ursa;
@@ -179,38 +180,41 @@ public class Sky : MonoBehaviour {
                 // change constellation mesh to those stored in Assets/Meshes
                 var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
                 c.GetComponent<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
-
-
-                //c.GetComponent<MeshFilter>().sharedMesh = meshSimplifier.ToMesh();
                 
+                meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c.GetComponent<MeshFilter>().sharedMesh, data.numEdgeStars);
+
                 // generates stars on mesh edge
-                for (int i = 0; i < data.numEdgeStars; i++)
+                for (int i = 0; i < meshEdgePositions.Count; i++)
                 {
                     GameObject s = Instantiate(EdgeStar, hit.point, Quaternion.identity);
                     EdgeStar edgeStar = s.GetComponent<EdgeStar>();
-                    meshPos = edge.GetRandomPointOnConstellationEdge(c.GetComponent<MeshFilter>().sharedMesh);
+                    Vector3 edgePos = meshEdgePositions[i];
 
                     // scale by scale
-                    meshPos = Vector3.Scale(meshPos, c.transform.localScale);
+                    edgePos = Vector3.Scale(edgePos, c.transform.localScale);
 
                     // rotate by rotation
-                    meshPos = c.transform.rotation * meshPos;
+                    edgePos = c.transform.rotation * edgePos;
 
                     // translate by position
-                    meshPos = meshPos + c.transform.position;
+                    edgePos = edgePos + c.transform.position;
 
-                    edgeStar.targetPos = meshPos;
+                    edgeStar.targetPos = edgePos;
                 }
 
                 // generate stars on mesh vertices
-                for (int i = 0; i < data.numStars; i++)
-                {
-                    // TODO
-                    // give mesh and number of stars 
-                    // remove for loop from Sky.cs and have Meshhelper figure out where stars should go internally
-                    GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
-                    Star star = s.GetComponent<Star>();
-                    meshPos = edge.GetRandomPointOnConstellationVertex(c.GetComponent<MeshFilter>().sharedMesh, data.numStars, i);
+                // TODO
+                // give mesh and number of stars 
+                // remove for loop from Sky.cs and have Meshhelper figure out where stars should go internally
+                /*GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
+                Star star = s.GetComponent<Star>();
+
+                List<Vector3> vertexPositions = edge.GetRandomPointOnConstellationVertex(
+                    c.GetComponent<MeshFilter>().sharedMesh,
+                    data.numStars,
+                    data.vertexStarMinDistance);
+
+                    meshPos = nullablePos.Value;
 
                     // scale by scale
                     meshPos = Vector3.Scale(meshPos, c.transform.localScale);
@@ -222,7 +226,7 @@ public class Sky : MonoBehaviour {
                     meshPos = meshPos + c.transform.position;
 
                     star.targetPos = meshPos;
-                }
+                }*/
 
                 // This block makes total number of stars on any location given mode
                 /*for (int i = 0; i < data.numStars; i++)
