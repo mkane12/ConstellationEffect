@@ -1,27 +1,28 @@
 {
-    "numStars": 20,
+    "numStars": 182,
     "numEdgeStars": 500,
     "minVelocity": 5.0,
     "maxVelocity": 20.0,
     "minVelocityEdge": 5.0,
     "maxVelocityEdge": 20.0,
-    "minSize": 2.0,
-    "maxSize": 3.0,
+    "minSize": 3.012500047683716,
+    "maxSize": 3.112499952316284,
     "minSizeEdge": 0.5,
     "maxSizeEdge": 1.0,
-    "twinkleSpeed": 8,
+    "twinkleSpeed": 5,
     "twinkleSpeedEdge": 3,
     "lifespan": 10.0,
     "timeToFade": 5.0,
     "constellationNames": [
-        2,
+        1,
         0,
-        1
+        2
     ],
     "constellationCount": 1,
-    "meshAlpha": 0.18867920339107514,
-    "quality": 0.5106382966041565,
+    "meshAlpha": 0.0,
+    "quality": 1.0,
     "percentEdge": 0.8999999761581421,
-    "starColor": "#4FFFFFFF",
-    "edgeStarColor": "#FFFFFFFF"
+    "starColor": "#A6F4FFFF",
+    "edgeStarColor": "#FFFFFFFF",
+    "vertexStarMinDistance": 1.0
 }

@@ -190,15 +190,6 @@ public class Sky : MonoBehaviour {
                     EdgeStar edgeStar = s.GetComponent<EdgeStar>();
                     Vector3 edgePos = meshEdgePositions[i];
 
-                    // scale by scale
-                    edgePos = Vector3.Scale(edgePos, c.transform.localScale);
-
-                    // rotate by rotation
-                    edgePos = c.transform.rotation * edgePos;
-
-                    // translate by position
-                    edgePos = edgePos + c.transform.position;
-
                     edgeStar.targetPos = edgePos;
                 }
 
@@ -211,15 +202,6 @@ public class Sky : MonoBehaviour {
                     Star star = s.GetComponent<Star>();
 
                     Vector3 vertexPos = meshVertexPositions[i];
-
-                    // scale by scale
-                    vertexPos = Vector3.Scale(vertexPos, c.transform.localScale);
-
-                    // rotate by rotation
-                    vertexPos = c.transform.rotation * vertexPos;
-
-                    // translate by position
-                    vertexPos = vertexPos + c.transform.position;
 
                     star.targetPos = vertexPos;
                 }

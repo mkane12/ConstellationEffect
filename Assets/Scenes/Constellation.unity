@@ -358,6 +358,7 @@ MonoBehaviour:
   sliderEdgeTwinkleSpeed: 0
   sliderLifespan: 0
   sliderTimeToFade: 0
+  sliderVertexStarMinDistance: 0
   starColor: {r: 0.5882353, g: 0.9818339, b: 1, a: 0}
   edgeStarColor: {r: 0, g: 0, b: 0, a: 0}
   constellationToggles: 000000

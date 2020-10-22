@@ -113,10 +113,6 @@ public class MeshHelper
             Vector3 line = b - a;
             Vector3 edgePos = a + Random.value * line;
 
-            // TODO: scaling issue
-            // > i want to scale in these functions to make distancing easier to conceptualize for the user
-            // > but this doesnt work for... reasons. TBD
-
             // scale by scale
             edgePos = Vector3.Scale(edgePos, constellation.transform.localScale);
 
@@ -145,6 +141,15 @@ public class MeshHelper
             int index = (i + 1) * iteration % mesh.vertices.Length;
 
             Vector3 vertexPos = mesh.vertices[index];
+
+            // scale by scale
+            vertexPos = Vector3.Scale(vertexPos, constellation.transform.localScale);
+
+            // rotate by rotation
+            vertexPos = constellation.transform.rotation * vertexPos;
+
+            // translate by position
+            vertexPos = vertexPos + constellation.transform.position;
 
             // add the latest position now - we will remove it later if it is too close to other stars
             pointsOnVertices.Add(vertexPos);
