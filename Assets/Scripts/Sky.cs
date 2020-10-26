@@ -190,6 +190,7 @@ public class Sky : MonoBehaviour {
                 for (int i = 0; i < meshEdgePositions.Count; i++)
                 {
                     GameObject s = Instantiate(EdgeStar, hit.point, Quaternion.identity);
+                    s.transform.parent = c.transform;
                     EdgeStar edgeStar = s.GetComponent<EdgeStar>();
                     Vector3 edgePos = meshEdgePositions[i];
 
@@ -202,6 +203,7 @@ public class Sky : MonoBehaviour {
                 for (int i = 0; i < meshVertexPositions.Count; i++)
                 {
                     GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
+                    s.transform.parent = c.transform;
                     Star star = s.GetComponent<Star>();
 
                     Vector3 vertexPos = meshVertexPositions[i];
