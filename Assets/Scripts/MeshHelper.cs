@@ -55,7 +55,7 @@ public class MeshHelper
     // >> MeshHelper script shouldn't know about larger game
     public Vector3 GetRandomPointOnConstellationMesh(GameObject Constellation)
     {
-        Mesh mesh = Constellation.GetComponent<MeshFilter>().sharedMesh;
+        Mesh mesh = Constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
 
         // get random triangle in mesh
         int triIndex = GetRandomTriangle(mesh);
@@ -96,7 +96,7 @@ public class MeshHelper
     public List<Vector3> GetRandomPointsOnConstellationEdge(GameObject constellation, int numStars)
     {
 
-        Mesh mesh = constellation.GetComponent<MeshFilter>().sharedMesh;
+        Mesh mesh = constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
 
         // this gives a list of Edge structs, which have 2 vertex components
         var boundary = GetEdges(mesh.triangles);
@@ -131,7 +131,7 @@ public class MeshHelper
     // gets a game object and returns a list of Vector3 positions for stars on mesh vertices
     public List<Vector3> GetRandomPointsOnConstellationVertices(GameObject constellation, int numStars, float minDist)
     {
-        Mesh mesh = constellation.GetComponent<MeshFilter>().sharedMesh;
+        Mesh mesh = constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
 
         List<Vector3> pointsOnVertices = new List<Vector3>();
 

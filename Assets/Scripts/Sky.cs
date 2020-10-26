@@ -26,6 +26,7 @@ public class Sky : MonoBehaviour {
     public GameObject Ursa;
     public GameObject Leo;
     public GameObject Tiger;
+    public GameObject Orion;
 
     public MeshSimplifier meshSimplifier;
 
@@ -37,18 +38,19 @@ public class Sky : MonoBehaviour {
     // Mesh = stars go to random point on constellation mesh
     // Edge = stars go to random point on constellation edge
     // Vertex = stars go to random vertex
-    public enum ConstellationMode
+    /*public enum ConstellationMode
     {
         Mesh,
         Edge,
         Vertex
-    }
+    }*/
 
     public enum ConstellationType
     {
         Ursa,
         Leo,
-        Tiger
+        Tiger,
+        Orion
     }
 
     // time when constellation was initialized
@@ -66,12 +68,13 @@ public class Sky : MonoBehaviour {
         constellationList.Add(ConstellationType.Ursa, Ursa);
         constellationList.Add(ConstellationType.Leo, Leo);
         constellationList.Add(ConstellationType.Tiger, Tiger);
+        constellationList.Add(ConstellationType.Orion, Orion);
 
         // attempt to simplify constellation meshes
         // https://github.com/Whinarn/UnityMeshSimplifier
         meshSimplifier = new UnityMeshSimplifier.MeshSimplifier();
 
-        //TODO: Preprocess meshes to have varying levels of complexity + designated vertices(?)
+        // Preprocess all meshes to have varying levels of complexity
         PreprocessMeshes();
 
         // get a constellation to start to avoid initialization errors
@@ -84,7 +87,7 @@ public class Sky : MonoBehaviour {
     // * equal to the number of triangles in the least complex mesh
     public void PreprocessMeshes()
     {
-        Mesh conMesh = constellationList.First().Value.GetComponent<MeshFilter>().sharedMesh;
+        Mesh conMesh = constellationList.First().Value.GetComponentInChildren<MeshFilter>().sharedMesh;
         float minTriangles = conMesh.triangles.Length;
 
         // first, identify the mesh with the smallest number of triangles and get that number
@@ -92,9 +95,9 @@ public class Sky : MonoBehaviour {
 
         foreach (GameObject c in constellationList.Values)
         {
-            if (c.GetComponent<MeshFilter>().sharedMesh.triangles.Length < minTriangles)
+            if (c.GetComponentInChildren<MeshFilter>().sharedMesh.triangles.Length < minTriangles)
             {
-                minTriangles = c.GetComponent<MeshFilter>().sharedMesh.triangles.Length;
+                minTriangles = c.GetComponentInChildren<MeshFilter>().sharedMesh.triangles.Length;
             }
         }
 
@@ -107,11 +110,11 @@ public class Sky : MonoBehaviour {
         // next, standardize all meshes to have that number of triangles
         foreach (var c in constellationList)
         {
-            float conTriangles = c.Value.GetComponent<MeshFilter>().sharedMesh.triangles.Length;
+            float conTriangles = c.Value.GetComponentInChildren<MeshFilter>().sharedMesh.triangles.Length;
             float meshQuality = minTriangles / conTriangles;
 
             // simplify the copy
-            meshSimplifier.Initialize(c.Value.GetComponent<MeshFilter>().sharedMesh);
+            meshSimplifier.Initialize(c.Value.GetComponentInChildren<MeshFilter>().sharedMesh);
             meshSimplifier.SimplifyMesh(meshQuality);
 
             string conName = c.Value.name;
@@ -122,7 +125,7 @@ public class Sky : MonoBehaviour {
             AssetDatabase.CreateAsset(meshSimplifier.ToMesh(), savePathBase);
 
             // set constellation mesh to new base mesh
-            c.Value.GetComponent<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(savePathBase);
+            c.Value.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(savePathBase);
 
             // Finally, create meshes at varying complexities so they don't have to be calculated in-game
             // NOTE: only creates new meshes if directory doesn't exist
@@ -138,7 +141,7 @@ public class Sky : MonoBehaviour {
                 // e.g. Assets/Meshes/0.1/Ursa.asset"
                 var savePath = "Assets/Meshes/" + i.ToString("F1") + "/" + conName + ".asset";
 
-                meshSimplifier.Initialize(c.Value.GetComponent<MeshFilter>().sharedMesh);
+                meshSimplifier.Initialize(c.Value.GetComponentInChildren<MeshFilter>().sharedMesh);
                 meshSimplifier.SimplifyMesh(i);
 
                 Debug.Log("Saved " + i.ToString("F1") + " quality mesh to: " + savePath);
@@ -179,7 +182,7 @@ public class Sky : MonoBehaviour {
 
                 // change constellation mesh to those stored in Assets/Meshes
                 var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
-                c.GetComponent<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
+                c.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
 
                 // generates stars on mesh edge
                 meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c, data.numEdgeStars);

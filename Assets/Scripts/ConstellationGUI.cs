@@ -63,7 +63,8 @@ namespace TeamLab.Unity
 
         // And the rest of these are for constellation things
         // toggle for each constellation
-        public bool[] constellationToggles = new bool[Enum.GetNames(typeof(Sky.ConstellationType)).Length];
+        // TODO: some issue where toggles is only getting 3 values...?
+        public bool[] constellationToggles;
 
         // slider for number of constellations to spawn
         public int sliderConstellationCount;
@@ -75,9 +76,9 @@ namespace TeamLab.Unity
         public float sliderMeshQuality;
 
         // toggle for constellation visual effect
-        public GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>
+        /*public GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>
             toggleConstellationMode
-            = new GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>();
+            = new GUIUtil.SelectionGridForEnum<Sky.ConstellationMode>();*/
 
         // slider for percentage of stars to edge vs. vertex
         //public float sliderPercentEdge;
@@ -85,6 +86,8 @@ namespace TeamLab.Unity
         protected override void Start()
         {
             base.Start();
+
+            constellationToggles = new bool[Enum.GetNames(typeof(Sky.ConstellationType)).Length];
 
             sky = GameObject.FindObjectOfType<Sky>();
 
