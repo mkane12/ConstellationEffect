@@ -80,7 +80,7 @@ public class Sky : MonoBehaviour {
         // get a constellation to start to avoid initialization errors
         ConstellationShape = edge.GetRandomConstellation(constellationList, data.constellationNames);
 
-        constellationRenderer = ConstellationShape.GetComponent<Renderer>();
+        constellationRenderer = ConstellationShape.GetComponentInChildren<Renderer>();
     }
 
     // before artwork starts, standardize all meshes to have the same number of triangles
@@ -172,7 +172,7 @@ public class Sky : MonoBehaviour {
             {
                 ConstellationShape = edge.GetRandomConstellation(constellationList, data.constellationNames);
 
-                constellationRenderer = ConstellationShape.GetComponent<Renderer>();
+                constellationRenderer = ConstellationShape.GetComponentInChildren<Renderer>();
 
                 // instantiate new constellation
                 GameObject c = Instantiate(ConstellationShape,
