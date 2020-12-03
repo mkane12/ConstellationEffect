@@ -98,8 +98,6 @@ public class TextureHelper
         }
 
         renderer.material.SetFloat(blendID, blend);
-
-       
     }
 
 }

@@ -14,15 +14,16 @@ using UnityEditor;
 [System.Serializable]
 public class Sky : MonoBehaviour {
 
-    public GameObject Star;
-    public GameObject EdgeStar;
+    //public GameObject Star;
+    //public GameObject EdgeStar;
     static public Data data = ConstellationGUI.data;
+
+    public Constellation constellation;
     
     private MeshHelper edge;
     private List<Vector3> meshEdgePositions;
     private List<Vector3> meshVertexPositions;
 
-    // made static to be accessable in Data class
     public GameObject Ursa;
     public GameObject Leo;
     public GameObject Tiger;
@@ -149,10 +150,8 @@ public class Sky : MonoBehaviour {
             }
         }
 
-
         // save changes made
         AssetDatabase.SaveAssets();
-
     }
 
     // call on click
@@ -163,16 +162,17 @@ public class Sky : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit))
         {
-
             // establish time at which constellation was instantiated
             constellationInitializationTime = Time.timeSinceLevelLoad;
 
             // potentially create multiple constellations with one click
             for(int q = 0; q < data.constellationCount; q++)
             {
+                constellation = Instantiate(constellation, hit.point, Quaternion.identity);
+
                 ConstellationShape = edge.GetRandomConstellation(constellationList, data.constellationNames);
 
-                constellationRenderer = ConstellationShape.GetComponentInChildren<Renderer>();
+                //constellationRenderer = ConstellationShape.GetComponentInChildren<Renderer>();
 
                 // instantiate new constellation
                 GameObject c = Instantiate(ConstellationShape,
@@ -184,8 +184,10 @@ public class Sky : MonoBehaviour {
                 var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
                 c.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
 
+                constellation.SpawnStars(c, data.numStars);
+
                 // generates stars on mesh edge
-                meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c, data.numEdgeStars);
+                /*meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c, data.numEdgeStars);
 
                 for (int i = 0; i < meshEdgePositions.Count; i++)
                 {
@@ -209,7 +211,7 @@ public class Sky : MonoBehaviour {
                     Vector3 vertexPos = meshVertexPositions[i];
 
                     star.targetPos = vertexPos;
-                }
+                }/*
 
                 // This block makes total number of stars on any location given mode
                 /*for (int i = 0; i < data.numStars; i++)

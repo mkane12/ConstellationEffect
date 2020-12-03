@@ -1,0 +1,50 @@
+﻿// Compute Shader tutorial: http://kylehalladay.com/blog/tutorial/2014/06/27/Compute-Shaders-Are-Nifty.html
+
+// Each #kernel tells which function to compile; you can have many kernels
+// > From tutorial: This specifies the entry point to the program (essentially the compute shader’s “main”). 
+// > A single compute shader file can have a number of these functions defined, and you can call whichever one you need from script.
+
+#pragma kernel UpdatePosition
+
+#include "UnityCG.cginc"
+
+#define BLOCK_SIZE 16 
+
+struct InstanceData // data for an instance of a single star
+{
+	int idx; // star's id
+	int trangleIndex; // index for triangle star is on
+}
+
+// This declares a variable that contains data the shader program will work wth. 
+// Since we aren’t working with mesh data, you have to explicitly declare what data your compute shader will read and write to. 
+// The “RW” in front of the datatype specifies that the shader will both read and write to that variable.
+RWStructuredBuffer<InstanceData> data;
+
+// Without the RW means it's a read-only variable
+// Stuctured Buffer =  array of data consisting of a single data type (e.g. all int, or all float)
+StructuredBuffer<float3> vertices;
+StructuredBuffer<int> triangles;
+
+// Get point on mesh where star should be
+float3 GetPosition(int idx, int triangleIdx)
+{
+	float3 p1 = vertices[triangles[(triangleIdx * 3)]];
+	float3 p2 = vertices[triangles[(triangleIdx * 3) + 1]];
+	float3 p3 = vertices[triangles[(triangleIdx * 3) + 2]];
+
+	// TODO: for now, have this just return a vertex
+	// >> need to refine based on edge or vertex star later in a way that avoids randomness
+	float3 pointOnMesh = p1;
+}
+
+// updates star's position as mesh moves
+[numthreads(BLOCK_SIZE, 1, 1)]
+void UpdatePosition(uint3 id : SV_DispatchThreadID)
+{
+	int triangleIdx = data[id.x].triangleIndex;
+
+	// redefine current position of star instance
+	float3 pos = GetPosition(id.x, triangleIdx);
+	data[id.x].position = pos;
+}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TeamLab.Unity;
+using System.Runtime.InteropServices;
 
 // TODO (visual) Davis: maybe add variations in colors of stars
 
@@ -20,6 +21,8 @@ public class Star : StateMachine
     public float velocity; // velocity of the star
     private float initializationTime; // time when star was initialized
     private float timeInFade = 0f; // timer for star in Die state
+
+    public StarData starData;
 
     public enum StarState : int
     {
