@@ -16,9 +16,13 @@ public class Star : StateMachine
 {
     static public Data data = ConstellationGUI.data;
 
-    public Vector3 targetPos; // target position of the star
-    public float size; // size of the star
+    public int id; // unique id for star
     public float velocity; // velocity of the star
+    public float size; // size of the star
+    public int twinkleSpeed; // twinkle speed of star
+    public float lifespan; // lifespan of star
+    public float timeToFade; // time it takes for star to fade in death
+    public Vector3 targetPos; // target position of the star
     private float initializationTime; // time when star was initialized
     private float timeInFade = 0f; // timer for star in Die state
 
@@ -39,8 +43,6 @@ public class Star : StateMachine
     // > still called even if script disabled
     void Awake()
     {
-        velocity = Random.Range(data.minVelocity, data.maxVelocity);
-
         // set initial state to born
         SetState((int)StarState.Born);
     }
@@ -48,8 +50,6 @@ public class Star : StateMachine
     // Below only called if script enabled
     protected override void Start()
     {
-        // make each star have a random size
-        size = Random.Range(data.minSize, data.maxSize);
         transform.localScale *= size;
 
         initializationTime = Time.timeSinceLevelLoad; // establish time at which object was instantiated
@@ -68,7 +68,7 @@ public class Star : StateMachine
     protected override void StateUpdateCallback()
     {
         // Twinkle should happen regardless of state
-        tex.Twinkle(data.twinkleSpeed);
+        tex.Twinkle(twinkleSpeed);
 
         // call method depending on current state
         switch (GetStateID())
@@ -86,7 +86,7 @@ public class Star : StateMachine
             case (int)StarState.Live:
                 // Live state: wait until lifespan is elapsed
                 // once we are outside of lifespan, switch to Die state
-                if (Time.timeSinceLevelLoad - initializationTime >= data.lifespan)
+                if (Time.timeSinceLevelLoad - initializationTime >= lifespan)
                 {
                     SetState((int)StarState.Die);
                 }
@@ -108,7 +108,7 @@ public class Star : StateMachine
         timeInFade += Time.deltaTime; // counter for time spent in this method
 
         // alpha goes from 1 to 0 over roughly timeToFade
-        float alpha = Mathf.Lerp(1, 0, timeInFade / data.timeToFade);
+        float alpha = Mathf.Lerp(1, 0, timeInFade / timeToFade);
 
         // try to change material as alpha updates
         renderer.material.SetFloat("_Transparency", alpha);

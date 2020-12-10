@@ -49,16 +49,18 @@ public class MeshHelper
         }
     }
 
+    public Edge thisEdge;
+
 
     // TODO: pass in mesh instead of gameobject for these functions - makes more sense
     // TODO: scale/rotate/transform outside of this script
     // >> MeshHelper script shouldn't know about larger game
-    public Vector3 GetRandomPointOnConstellationMesh(GameObject Constellation)
+    public Vector3 GetRandomPointOnConstellationMesh(GameObject Constellation, float uniqueVal)
     {
         Mesh mesh = Constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
 
         // get random triangle in mesh
-        int triIndex = GetRandomTriangle(mesh);
+        int triIndex = GetRandomTriangle(mesh, uniqueVal);
 
         Vector3 a = mesh.vertices[mesh.triangles[triIndex * 3]];
         Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
@@ -93,7 +95,7 @@ public class MeshHelper
     }
 
     // gets a game object and returns a list of Vector3 positions for stars on mesh edge
-    public List<Vector3> GetRandomPointsOnConstellationEdge(GameObject constellation, int numStars)
+    /*public List<Vector3> GetRandomPointsOnConstellationEdge(GameObject constellation, int numStars)
     {
 
         Mesh mesh = constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
@@ -105,7 +107,7 @@ public class MeshHelper
         for (int i = 0; i < numStars; i++)
         {
             // get a random triangle from the mesh
-            int triIndex = GetRandomTriangle(mesh);
+            int triIndex = GetRandomTriangle(mesh, (float) i/numStars);
 
             Vector3 a = mesh.vertices[mesh.triangles[triIndex * 3]];
             Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
@@ -170,7 +172,7 @@ public class MeshHelper
         }
 
         return pointsOnVertices;
-    }
+    }*/
 
     float[] GetTriSizes(int[] tris, Vector3[] verts)
     {
@@ -183,8 +185,12 @@ public class MeshHelper
         return sizes;
     }
 
-    int GetRandomTriangle(Mesh m)
+    // get pseudo-random triangle based partially on a value unique to each star
+    // > uniqueVal = star ID / total number of stars
+    int GetRandomTriangle(Mesh m, float uniqueVal)
     {
+        thisEdge = new Edge();
+
         // gets list of sizes of mesh triangles
         float[] sizes = GetTriSizes(m.triangles, m.vertices);
 
@@ -200,8 +206,8 @@ public class MeshHelper
             cumulativeSizes[i] = total;
         }
 
-
-        float randomsample = Random.value * total;
+        // pseudo-random sample based on uniqueVal = star id / total number of stars
+        float randomsample = uniqueVal * total;
 
         int triIndex = -1;
 
@@ -215,6 +221,8 @@ public class MeshHelper
         }
 
         if (triIndex == -1) Debug.LogError("triIndex should never be -1");
+
+        thisEdge.triangleIndex = triIndex;
 
         return triIndex;
     }
