@@ -172,19 +172,22 @@ public class Sky : MonoBehaviour {
 
                 ConstellationShape = edge.GetRandomConstellation(constellationList, data.constellationNames);
 
+                constellation.constellationObject = ConstellationShape;
+                constellation.numStars = data.numStars;
+
                 //constellationRenderer = ConstellationShape.GetComponentInChildren<Renderer>();
 
                 // instantiate new constellation
-                GameObject c = Instantiate(ConstellationShape,
+                /*GameObject c = Instantiate(ConstellationShape,
                    hit.point,
                    ConstellationShape.transform.rotation)
-                   as GameObject;
+                   as GameObject;*/
 
                 // change constellation mesh to those stored in Assets/Meshes
-                var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
-                c.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
+                //var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
+                //c.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
 
-                constellation.SpawnStars(c, data.numStars);
+                constellation.SpawnStars();
 
                 // generates stars on mesh edge
                 /*meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c, data.numEdgeStars);
@@ -247,7 +250,7 @@ public class Sky : MonoBehaviour {
                 }*/
 
                 // Destroy constellation game object 1 second after stars fade
-                Destroy(c, data.lifespan + data.timeToFade + 1.0f);
+                // Destroy(constellation, data.lifespan + data.timeToFade + 1.0f);
             }
            
         }

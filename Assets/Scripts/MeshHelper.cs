@@ -55,9 +55,9 @@ public class MeshHelper
     // TODO: pass in mesh instead of gameobject for these functions - makes more sense
     // TODO: scale/rotate/transform outside of this script
     // >> MeshHelper script shouldn't know about larger game
-    public Vector3 GetRandomPointOnConstellationMesh(GameObject Constellation, float uniqueVal)
+    public Vector3 GetRandomPointOnConstellationMesh(Mesh mesh, GameObject Constellation, float uniqueVal)
     {
-        Mesh mesh = Constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
+        //Mesh mesh = Constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
 
         // get random triangle in mesh
         int triIndex = GetRandomTriangle(mesh, uniqueVal);

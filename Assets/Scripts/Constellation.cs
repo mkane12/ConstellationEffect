@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TeamLab.Unity;
+using UnityEditor;
 using UnityEngine;
 
 public class Constellation : MonoBehaviour
@@ -16,15 +17,33 @@ public class Constellation : MonoBehaviour
 
     private StarData[] starData;
 
+    public GameObject constellationObject;
+    public int numStars;
+
+    Mesh bakedMesh;
+    SkinnedMeshRenderer skinnedMesh;
+
     void Awake()
     {
         // Get random position on mesh
         edge = new MeshHelper();
+
+        // Mesh "screenshots" for animated mesh
+        bakedMesh = new Mesh();
     }
 
     // method to spawn stars on mesh given the number of stars and constellation gameobject
-    public void SpawnStars(GameObject c, int numStars)
+    public void SpawnStars()
     {
+        GameObject c = Instantiate(constellationObject,
+                   this.transform.position,
+                   constellationObject.transform.rotation)
+                   as GameObject;
+
+        var path = "Assets/Meshes/" + GUIData.quality.ToString("F1") + "/" + constellationObject.name + ".asset";
+        c.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
+
+
         starData = new StarData[numStars];
 
         // generate stars on mesh
@@ -49,29 +68,44 @@ public class Constellation : MonoBehaviour
 
             // start by just sending stars to random points on the mesh
             // > get pseudo-random point based on star's unique id
-            Vector3 targetPosition = edge.GetRandomPointOnConstellationMesh(c, (float) i/numStars);
+            Vector3 targetPosition = edge.GetRandomPointOnConstellationMesh(
+                c.GetComponentInChildren<MeshFilter>().sharedMesh, 
+                c,
+                (float) i/numStars);
 
             // assign remaining starData values here
             starData[i].triangleIndex = edge.thisEdge.triangleIndex;
             starData[i].position = targetPosition;
 
             // assign values to this star as necessary
-            star.id = starData[i].idx;
-            star.velocity = starData[i].velocity;
-            star.size = starData[i].size;
-            star.twinkleSpeed = starData[i].twinkleSpeed;
-            star.lifespan = starData[i].lifespan;
-            star.timeToFade = starData[i].timeToFade;
-            star.targetPos = starData[i].position;
+            star.starData = starData[i];
+        }
+
+        skinnedMesh = constellationObject.GetComponentInChildren<SkinnedMeshRenderer>();
+
+        Destroy(c, GUIData.lifespan + GUIData.timeToFade + 1.0f);
+    }
+
+    // Called every frame
+    private void Update()
+    {
+        // call UpdatePosition if constellation has a skinned mesh (means it's animated)
+        if (skinnedMesh != null)
+        {
+            UpdatePosition();
         }
     }
 
-    // if skinned mesh (animated) bake stuff
+    // function to update stars' positions if mesh is animated
+    public void UpdatePosition()
+    {
+        // bake a "snapshot" of the skinned mesh renderer and store in bakedMesh
+        skinnedMesh.BakeMesh(bakedMesh);
 
-    /*_skin.BakeMesh(_baked);
-    // _vertices assigned to mesh vertices
-     _vertices = _baked.vertices;
-     _triangles = _baked.triangles;*/
+        for(int i = 0; i < numStars; i ++)
+        {
+            starData[i].position = edge.GetRandomPointOnConstellationMesh(bakedMesh, constellationObject, (float)i / numStars);
+        }
+    }
 
-    // if regular mesh (static) just get that mesh info
 }
