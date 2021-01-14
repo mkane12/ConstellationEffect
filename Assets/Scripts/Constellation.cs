@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TeamLab.Unity;
@@ -10,6 +11,9 @@ public class Constellation : MonoBehaviour
     public GameObject Star;
     public GameObject EdgeStar;
     static public Data GUIData = ConstellationGUI.data;
+
+    // create a GameObject constellationShape to record the shape of the constellation
+    public GameObject constellationShape;
 
     private MeshHelper edge;
     private List<Vector3> meshEdgePositions;
@@ -39,15 +43,14 @@ public class Constellation : MonoBehaviour
         starData = new StarData[numStars];
 
         // generate stars on mesh
-        // TODO: temporarily pause spawning stars to make sure constellation is created correctly
-        /*for (int i = 0; i < numStars; i++)
+        for (int i = 0; i < numStars; i++)
         {
             starData[i] = new StarData();
 
             // save values unique to each star in StarData
             starData[i].idx = i;
-            starData[i].velocity = Random.Range(GUIData.minVelocity, GUIData.maxVelocity);
-            starData[i].size = Random.Range(GUIData.minSize, GUIData.maxSize);
+            starData[i].velocity = UnityEngine.Random.Range(GUIData.minVelocity, GUIData.maxVelocity);
+            starData[i].size = UnityEngine.Random.Range(GUIData.minSize, GUIData.maxSize);
             starData[i].twinkleSpeed = GUIData.twinkleSpeed;
             starData[i].lifespan = GUIData.lifespan;
             starData[i].timeToFade = GUIData.timeToFade;
@@ -78,7 +81,7 @@ public class Constellation : MonoBehaviour
             {
                 targetPosition = edge.GetRandomPointOnStaticConstellationMesh(
                     this.GetComponentInChildren<MeshFilter>().sharedMesh,
-                    this.GetComponent<GameObject>(),
+                    this.constellationShape,
                     (float)i / numStars);
             }
 
@@ -88,7 +91,7 @@ public class Constellation : MonoBehaviour
 
             // assign values to this star as necessary
             star.starData = starData[i];
-        }*/
+        }
     }
 
     // Called every frame

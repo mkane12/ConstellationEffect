@@ -177,7 +177,11 @@ public class Sky : MonoBehaviour {
 
                 Constellation con = c.GetComponent<Constellation>();
 
+                // pass to constellation the
+                // 1) number of stars it has
+                // 2) its GameObject shape
                 con.numStars = data.numStars;
+                con.constellationShape = constellation;
 
                 constellationRenderer = con.GetComponentInChildren<Renderer>();
 
