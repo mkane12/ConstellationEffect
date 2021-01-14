@@ -34,14 +34,6 @@ public class Constellation : MonoBehaviour
     // spawn stars at start
     void Start()
     {
-        /*GameObject c = Instantiate(constellationObject,
-                   this.transform.position,
-                   constellationObject.transform.rotation)
-                   as GameObject;*/
-
-        var path = "Assets/Meshes/" + GUIData.quality.ToString("F1") + "/" + this.name + ".asset";
-        this.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
-
         skinnedMesh = this.GetComponentInChildren<SkinnedMeshRenderer>();
 
         starData = new StarData[numStars];

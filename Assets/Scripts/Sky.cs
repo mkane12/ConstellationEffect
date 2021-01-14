@@ -178,27 +178,12 @@ public class Sky : MonoBehaviour {
                 Constellation con = c.GetComponent<Constellation>();
 
                 con.numStars = data.numStars;
-                
-                /*constellation = Instantiate(constellation, hit.point, Quaternion.identity);
 
-                ConstellationShape = edge.GetRandomConstellation(constellationList, data.constellationNames);
-
-                constellation.constellationObject = ConstellationShape;
-                constellation.numStars = data.numStars;*/
-
-                //constellationRenderer = ConstellationShape.GetComponentInChildren<Renderer>();
-
-                // instantiate new constellation
-                /*GameObject c = Instantiate(ConstellationShape,
-                   hit.point,
-                   ConstellationShape.transform.rotation)
-                   as GameObject;*/
+                constellationRenderer = con.GetComponentInChildren<Renderer>();
 
                 // change constellation mesh to those stored in Assets/Meshes
-                //var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
-                //c.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
-
-                //constellation.SpawnStars();
+                var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
+                con.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
 
                 // generates stars on mesh edge
                 /*meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c, data.numEdgeStars);
