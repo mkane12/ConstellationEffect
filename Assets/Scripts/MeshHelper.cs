@@ -95,7 +95,7 @@ public class MeshHelper
 
     // Function to get random point on static (non-animated) constellation mesh
     // >> MeshHelper script shouldn't know about larger game
-    public Vector3 GetRandomPointOnAnimatedConstellationMesh(Mesh mesh, GameObject Constellation, float uniqueVal)
+    public Vector3 GetRandomPointOnAnimatedConstellationMesh(Mesh mesh, GameObject con, float uniqueVal)
     {
         //Mesh mesh = Constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
 
@@ -118,17 +118,18 @@ public class MeshHelper
         //and then turn them back to a Vector3
 
         // BUT this doesn't account for Mesh's scale, position, or rotation
+        // TODO: some kind of issue just with animated mesh where con becomes null on last star?
         Vector3 pointOnMesh = a + uniqueVal * (b - a) + (1 - uniqueVal) * (c - a);
 
         // scale by scale
-        //pointOnMesh = Vector3.Scale(pointOnMesh, Constellation.transform.localScale);
+        pointOnMesh = Vector3.Scale(pointOnMesh, con.transform.localScale);
 
         // rotate by rotation
-        pointOnMesh = Constellation.transform.rotation * pointOnMesh;
+        pointOnMesh = con.transform.rotation * pointOnMesh;
 
         // translate by position
         // > shifts from model to world space
-        pointOnMesh = pointOnMesh + Constellation.transform.position;
+        pointOnMesh = pointOnMesh + con.transform.position;
 
         return pointOnMesh;
 
