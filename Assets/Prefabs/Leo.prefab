@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33029434900867250}
   - component: {fileID: 23523944831047936}
   - component: {fileID: 64271519467517330}
+  - component: {fileID: 114568872416247256}
   m_Layer: 0
   m_Name: Leo
   m_TagString: Untagged
@@ -92,3 +93,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: 0f2db1a86a8c9174086a63877d81d52a, type: 3}
+--- !u!114 &114568872416247256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161317567041834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65da25013096264469f3f8fedff634a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 3}
+  EdgeStar: {fileID: 1838518309684516, guid: f345441d066f0bb45bf4b958019ae589, type: 3}
+  numStars: 0

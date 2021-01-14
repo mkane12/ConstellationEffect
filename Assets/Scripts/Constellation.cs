@@ -17,7 +17,6 @@ public class Constellation : MonoBehaviour
 
     private StarData[] starData;
 
-    public GameObject constellationObject;
     public int numStars;
 
     Mesh bakedMesh;
@@ -32,22 +31,24 @@ public class Constellation : MonoBehaviour
         bakedMesh = new Mesh();
     }
 
-    // method to spawn stars on mesh given the number of stars and constellation gameobject
-    public void SpawnStars()
+    // spawn stars at start
+    void Start()
     {
-        GameObject c = Instantiate(constellationObject,
+        /*GameObject c = Instantiate(constellationObject,
                    this.transform.position,
                    constellationObject.transform.rotation)
-                   as GameObject;
+                   as GameObject;*/
 
-        var path = "Assets/Meshes/" + GUIData.quality.ToString("F1") + "/" + constellationObject.name + ".asset";
-        c.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
+        var path = "Assets/Meshes/" + GUIData.quality.ToString("F1") + "/" + this.name + ".asset";
+        this.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
 
+        skinnedMesh = this.GetComponentInChildren<SkinnedMeshRenderer>();
 
         starData = new StarData[numStars];
 
         // generate stars on mesh
-        for (int i = 0; i < numStars; i++)
+        // TODO: temporarily pause spawning stars to make sure constellation is created correctly
+        /*for (int i = 0; i < numStars; i++)
         {
             starData[i] = new StarData();
 
@@ -62,16 +63,32 @@ public class Constellation : MonoBehaviour
             starData[i].minDistance = GUIData.vertexStarMinDistance;
 
             // begin by instantiating stars at center of constellation gameobject
-            GameObject s = Instantiate(Star, c.GetComponentInChildren<Renderer>().bounds.center, Quaternion.identity);
-            s.transform.parent = c.transform;
+            GameObject s = Instantiate(Star, this.GetComponentInChildren<Renderer>().bounds.center, Quaternion.identity);
+            s.transform.parent = this.transform;
             Star star = s.GetComponent<Star>();
 
             // start by just sending stars to random points on the mesh
             // > get pseudo-random point based on star's unique id
-            Vector3 targetPosition = edge.GetRandomPointOnConstellationMesh(
-                c.GetComponentInChildren<MeshFilter>().sharedMesh, 
-                c,
-                (float) i/numStars);
+            Vector3 targetPosition;
+
+            // if mesh is animated
+            if (skinnedMesh != null)
+            {
+                // bake a "snapshot" of the skinned mesh renderer and store in bakedMesh
+                skinnedMesh.BakeMesh(bakedMesh);
+
+                targetPosition = edge.GetRandomPointOnAnimatedConstellationMesh(
+                    bakedMesh,
+                    this.GetComponent<GameObject>(),
+                    (float)i / numStars);
+            }
+            else // mesh is static
+            {
+                targetPosition = edge.GetRandomPointOnStaticConstellationMesh(
+                    this.GetComponentInChildren<MeshFilter>().sharedMesh,
+                    this.GetComponent<GameObject>(),
+                    (float)i / numStars);
+            }
 
             // assign remaining starData values here
             starData[i].triangleIndex = edge.thisEdge.triangleIndex;
@@ -79,11 +96,7 @@ public class Constellation : MonoBehaviour
 
             // assign values to this star as necessary
             star.starData = starData[i];
-        }
-
-        skinnedMesh = constellationObject.GetComponentInChildren<SkinnedMeshRenderer>();
-
-        Destroy(c, GUIData.lifespan + GUIData.timeToFade + 1.0f);
+        }*/
     }
 
     // Called every frame
@@ -104,7 +117,7 @@ public class Constellation : MonoBehaviour
 
         for(int i = 0; i < numStars; i ++)
         {
-            starData[i].position = edge.GetRandomPointOnConstellationMesh(bakedMesh, constellationObject, (float)i / numStars);
+            starData[i].position = edge.GetRandomPointOnAnimatedConstellationMesh(bakedMesh, this.GetComponent<GameObject>(), (float)i / numStars);
         }
     }
 

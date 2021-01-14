@@ -18,7 +18,7 @@ public class Sky : MonoBehaviour {
     //public GameObject EdgeStar;
     static public Data data = ConstellationGUI.data;
 
-    public Constellation constellation;
+    public GameObject constellation;
     
     private MeshHelper edge;
     private List<Vector3> meshEdgePositions;
@@ -168,12 +168,23 @@ public class Sky : MonoBehaviour {
             // potentially create multiple constellations with one click
             for(int q = 0; q < data.constellationCount; q++)
             {
-                constellation = Instantiate(constellation, hit.point, Quaternion.identity);
+                constellation = edge.GetRandomConstellation(constellationList, data.constellationNames);
+
+                // Cast c as a GameObject to access its other properties
+                GameObject c = Instantiate(constellation, 
+                    hit.point, 
+                    constellation.transform.rotation);
+
+                Constellation con = c.GetComponent<Constellation>();
+
+                con.numStars = data.numStars;
+                
+                /*constellation = Instantiate(constellation, hit.point, Quaternion.identity);
 
                 ConstellationShape = edge.GetRandomConstellation(constellationList, data.constellationNames);
 
                 constellation.constellationObject = ConstellationShape;
-                constellation.numStars = data.numStars;
+                constellation.numStars = data.numStars;*/
 
                 //constellationRenderer = ConstellationShape.GetComponentInChildren<Renderer>();
 
@@ -187,7 +198,7 @@ public class Sky : MonoBehaviour {
                 //var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
                 //c.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
 
-                constellation.SpawnStars();
+                //constellation.SpawnStars();
 
                 // generates stars on mesh edge
                 /*meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c, data.numEdgeStars);
@@ -250,7 +261,7 @@ public class Sky : MonoBehaviour {
                 }*/
 
                 // Destroy constellation game object 1 second after stars fade
-                // Destroy(constellation, data.lifespan + data.timeToFade + 1.0f);
+                Destroy(c, data.lifespan + data.timeToFade + 1.0f);
             }
            
         }

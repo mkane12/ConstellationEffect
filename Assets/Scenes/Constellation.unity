@@ -217,8 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a420ee6e89cfa2040ab55a660c83332e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constellation: {fileID: 2559447965543876466, guid: 1492547d97574544285f14bdae1dbe26,
-    type: 3}
+  constellation: {fileID: 0}
   Ursa: {fileID: 1134085668177424, guid: 44e7b51d1548867498b7dac60bc1b1a4, type: 3}
   Leo: {fileID: 1161317567041834, guid: 76b7818b6f5d0eb41bb5bf23418a8fb9, type: 3}
   Tiger: {fileID: 1845759704096782, guid: 77fccd90ff0c2d741ae72788cd502dca, type: 3}

@@ -52,10 +52,9 @@ public class MeshHelper
     public Edge thisEdge;
 
 
-    // TODO: pass in mesh instead of gameobject for these functions - makes more sense
-    // TODO: scale/rotate/transform outside of this script
+    // Function to get random point on static (non-animated) constellation mesh
     // >> MeshHelper script shouldn't know about larger game
-    public Vector3 GetRandomPointOnConstellationMesh(Mesh mesh, GameObject Constellation, float uniqueVal)
+    public Vector3 GetRandomPointOnStaticConstellationMesh(Mesh mesh, GameObject Constellation, float uniqueVal)
     {
         //Mesh mesh = Constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
 
@@ -67,21 +66,62 @@ public class MeshHelper
         Vector3 c = mesh.vertices[mesh.triangles[triIndex * 3 + 2]];
 
         //generate random barycentric coordinates
-        float r = Random.value;
+        /*float r = Random.value;
         float s = Random.value;
 
         if (r + s >= 1)
         {
             r = 1 - r;
             s = 1 - s;
-        }
+        }*/
         //and then turn them back to a Vector3
 
         // BUT this doesn't account for Mesh's scale, position, or rotation
-        Vector3 pointOnMesh = a + r * (b - a) + s * (c - a);
+        Vector3 pointOnMesh = a + uniqueVal * (b - a) + (1 - uniqueVal) * (c - a);
 
         // scale by scale
         pointOnMesh = Vector3.Scale(pointOnMesh, Constellation.transform.localScale);
+
+        // rotate by rotation
+        pointOnMesh = Constellation.transform.rotation * pointOnMesh;
+
+        // translate by position
+        // > shifts from model to world space
+        pointOnMesh = pointOnMesh + Constellation.transform.position;
+
+        return pointOnMesh;
+
+    }
+
+    // Function to get random point on static (non-animated) constellation mesh
+    // >> MeshHelper script shouldn't know about larger game
+    public Vector3 GetRandomPointOnAnimatedConstellationMesh(Mesh mesh, GameObject Constellation, float uniqueVal)
+    {
+        //Mesh mesh = Constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
+
+        // get random triangle in mesh
+        int triIndex = GetRandomTriangle(mesh, uniqueVal);
+
+        Vector3 a = mesh.vertices[mesh.triangles[triIndex * 3]];
+        Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
+        Vector3 c = mesh.vertices[mesh.triangles[triIndex * 3 + 2]];
+
+        //generate random barycentric coordinates
+        /*float r = Random.value;
+        float s = Random.value;
+
+        if (r + s >= 1)
+        {
+            r = 1 - r;
+            s = 1 - s;
+        }*/
+        //and then turn them back to a Vector3
+
+        // BUT this doesn't account for Mesh's scale, position, or rotation
+        Vector3 pointOnMesh = a + uniqueVal * (b - a) + (1 - uniqueVal) * (c - a);
+
+        // scale by scale
+        //pointOnMesh = Vector3.Scale(pointOnMesh, Constellation.transform.localScale);
 
         // rotate by rotation
         pointOnMesh = Constellation.transform.rotation * pointOnMesh;

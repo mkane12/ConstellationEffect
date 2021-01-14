@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33710458828900482}
   - component: {fileID: 23161153343787908}
   - component: {fileID: 64606400813754610}
+  - component: {fileID: 114661394352872372}
   m_Layer: 0
   m_Name: Tiger
   m_TagString: Untagged
@@ -92,3 +93,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 3ba44afe9035c5e409c30bae1ec51c36, type: 3}
+--- !u!114 &114661394352872372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845759704096782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65da25013096264469f3f8fedff634a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 3}
+  EdgeStar: {fileID: 1838518309684516, guid: f345441d066f0bb45bf4b958019ae589, type: 3}
+  numStars: 0
