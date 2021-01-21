@@ -18,7 +18,7 @@ public class Sky : MonoBehaviour {
     //public GameObject EdgeStar;
     static public Data data = ConstellationGUI.data;
 
-    public Constellation constellation;
+    public GameObject constellation;
     
     private MeshHelper edge;
     private List<Vector3> meshEdgePositions;
@@ -168,26 +168,28 @@ public class Sky : MonoBehaviour {
             // potentially create multiple constellations with one click
             for(int q = 0; q < data.constellationCount; q++)
             {
-                constellation = Instantiate(constellation, hit.point, Quaternion.identity);
+                // TODO: reorganize to generate name (constellation type) and get the game object FROM that
+                constellation = edge.GetRandomConstellation(constellationList, data.constellationNames);
 
-                ConstellationShape = edge.GetRandomConstellation(constellationList, data.constellationNames);
+                // Cast c as a GameObject to access its other properties
+                // Instantiate copies all of the scripts, meshes, etc attached to a prefab
+                GameObject c = Instantiate(constellation, 
+                    hit.point, 
+                    constellation.transform.rotation);
 
-                constellation.constellationObject = ConstellationShape;
-                constellation.numStars = data.numStars;
+                Constellation con = c.GetComponent<Constellation>();
 
-                //constellationRenderer = ConstellationShape.GetComponentInChildren<Renderer>();
+                // pass to constellation the
+                // 1) number of stars it has
+                // 2) its GameObject shape
+                con.numStars = data.numStars;
+                con.constellationShape = constellation;
 
-                // instantiate new constellation
-                /*GameObject c = Instantiate(ConstellationShape,
-                   hit.point,
-                   ConstellationShape.transform.rotation)
-                   as GameObject;*/
+                constellationRenderer = con.GetComponentInChildren<Renderer>();
 
                 // change constellation mesh to those stored in Assets/Meshes
-                //var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
-                //c.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
-
-                constellation.SpawnStars();
+                var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + constellation.name + ".asset";
+                con.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
 
                 // generates stars on mesh edge
                 /*meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c, data.numEdgeStars);
@@ -250,7 +252,7 @@ public class Sky : MonoBehaviour {
                 }*/
 
                 // Destroy constellation game object 1 second after stars fade
-                // Destroy(constellation, data.lifespan + data.timeToFade + 1.0f);
+                Destroy(c, data.lifespan + data.timeToFade + 1.0f);
             }
            
         }

@@ -11,11 +11,8 @@ using System.Runtime.InteropServices;
 // > virtual functions = subclass can redefine function as needed
 
 // This class will be for stars placed on mesh vertices
-
 public class Star : StateMachine
 {
-    static public Data data = ConstellationGUI.data;
-
     private float initializationTime; // time when star was initialized
     private float timeInFade = 0f; // timer for star in Die state
 
@@ -43,7 +40,8 @@ public class Star : StateMachine
     // Below only called if script enabled
     protected override void Start()
     {
-        transform.localScale *= starData.size;
+        // TODO: need a way to access the starData set in Constellation.cs
+        //transform.localScale *= starData.size;
 
         initializationTime = Time.timeSinceLevelLoad; // establish time at which object was instantiated
 
