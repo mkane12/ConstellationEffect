@@ -54,7 +54,7 @@ public class MeshHelper
 
     // Function to get random point on static (non-animated) constellation mesh
     // >> MeshHelper script shouldn't know about larger game
-    public Vector3 GetRandomPointOnStaticConstellationMesh(Mesh mesh, GameObject con, float uniqueVal)
+    public Vector3 GetRandomPointOnStaticConstellationMesh(Mesh mesh, Constellation con, float uniqueVal)
     {
         //Mesh mesh = Constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
 

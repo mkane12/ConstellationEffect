@@ -81,7 +81,7 @@ public class Constellation : MonoBehaviour
             {
                 targetPosition = edge.GetRandomPointOnStaticConstellationMesh(
                     this.GetComponent<MeshFilter>().sharedMesh,
-                    this.constellationShape,
+                    this,
                     (float)i / numStars);
             }
 
