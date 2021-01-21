@@ -74,7 +74,7 @@ public class Constellation : MonoBehaviour
 
                 targetPosition = edge.GetRandomPointOnAnimatedConstellationMesh(
                     bakedMesh,
-                    this.constellationShape,
+                    this,
                     (float)i / numStars);
             }
             else // mesh is static
@@ -112,7 +112,7 @@ public class Constellation : MonoBehaviour
 
         for(int i = 0; i < numStars; i ++)
         {
-            starData[i].position = edge.GetRandomPointOnAnimatedConstellationMesh(bakedMesh, this.constellationShape, (float)i / numStars);
+            starData[i].position = edge.GetRandomPointOnAnimatedConstellationMesh(bakedMesh, this, (float)i / numStars);
         }
     }
 
