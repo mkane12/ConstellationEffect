@@ -1,17 +1,15 @@
 fileFormatVersion: 2
 guid: a420ee6e89cfa2040ab55a660c83332e
-timeCreated: 1587637949
-licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 2}
-  - EdgeStar: {fileID: 1838518309684516, guid: f345441d066f0bb45bf4b958019ae589, type: 2}
-  - Ursa: {fileID: 1134085668177424, guid: 44e7b51d1548867498b7dac60bc1b1a4, type: 2}
-  - Leo: {fileID: 1161317567041834, guid: 76b7818b6f5d0eb41bb5bf23418a8fb9, type: 2}
-  - Tiger: {fileID: 1845759704096782, guid: 77fccd90ff0c2d741ae72788cd502dca, type: 2}
-  - Orion: {fileID: 1088544216130710, guid: ff187f87b5b6b5e44a37a774ddaa7d47, type: 2}
+  - constellation: {fileID: 3790096945327622566, guid: 1492547d97574544285f14bdae1dbe26,
+      type: 3}
+  - Ursa: {fileID: 1134085668177424, guid: 44e7b51d1548867498b7dac60bc1b1a4, type: 3}
+  - Leo: {fileID: 1161317567041834, guid: 76b7818b6f5d0eb41bb5bf23418a8fb9, type: 3}
+  - Tiger: {fileID: 1845759704096782, guid: 77fccd90ff0c2d741ae72788cd502dca, type: 3}
+  - Orion: {fileID: 1088544216130710, guid: ff187f87b5b6b5e44a37a774ddaa7d47, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

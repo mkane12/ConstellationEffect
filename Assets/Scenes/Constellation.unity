@@ -360,7 +360,7 @@ MonoBehaviour:
   windowIsDragable: 0
   placeholder: 0
   sky: {fileID: 446230662}
-  star: {fileID: 114991130923611854, guid: e9faa4f65b880954d9d934dd282941c8, type: 3}
+  star: {fileID: 3643344051909436655, guid: e9faa4f65b880954d9d934dd282941c8, type: 3}
   edgeStar: {fileID: 114329486572535800, guid: f345441d066f0bb45bf4b958019ae589, type: 3}
   sliderNumStars: 100
   sliderNumEdgeStars: 0
