@@ -168,9 +168,11 @@ public class Sky : MonoBehaviour {
             // potentially create multiple constellations with one click
             for(int q = 0; q < data.constellationCount; q++)
             {
+                // TODO: reorganize to generate name (constellation type) and get the game object FROM that
                 constellation = edge.GetRandomConstellation(constellationList, data.constellationNames);
 
                 // Cast c as a GameObject to access its other properties
+                // Instantiate copies all of the scripts, meshes, etc attached to a prefab
                 GameObject c = Instantiate(constellation, 
                     hit.point, 
                     constellation.transform.rotation);
@@ -186,7 +188,7 @@ public class Sky : MonoBehaviour {
                 constellationRenderer = con.GetComponentInChildren<Renderer>();
 
                 // change constellation mesh to those stored in Assets/Meshes
-                var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + ConstellationShape.name + ".asset";
+                var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + constellation.name + ".asset";
                 con.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
 
                 // generates stars on mesh edge

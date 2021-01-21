@@ -80,7 +80,7 @@ public class Constellation : MonoBehaviour
             else // mesh is static
             {
                 targetPosition = edge.GetRandomPointOnStaticConstellationMesh(
-                    this.GetComponentInChildren<MeshFilter>().sharedMesh,
+                    this.GetComponent<MeshFilter>().sharedMesh,
                     this.constellationShape,
                     (float)i / numStars);
             }
