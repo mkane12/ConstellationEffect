@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TeamLab.Unity;
@@ -116,4 +116,4 @@ public class EdgeStar : StateMachine
             Destroy(this.gameObject);
         }
     }
-}
+}*/

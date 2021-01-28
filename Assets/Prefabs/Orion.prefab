@@ -224,9 +224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 3}
-  EdgeStar: {fileID: 1838518309684516, guid: f345441d066f0bb45bf4b958019ae589, type: 3}
   constellationShape: {fileID: 0}
-  numStars: 0
+  numVertexStars: 0
+  numEdgeStars: 0
 --- !u!1 &1090846442478680
 GameObject:
   m_ObjectHideFlags: 0

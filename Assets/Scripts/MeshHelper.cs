@@ -20,11 +20,9 @@ public class MeshHelper
 
     public GameObject GetRandomConstellation(Dictionary<Sky.ConstellationType, GameObject> list, List<Sky.ConstellationType> names)
     {
-
         if(names.Count != 0)
         {
             var randomKey = names[(int)Random.Range(0, names.Count)];
-
             return list[randomKey];
         }
         else
@@ -65,17 +63,6 @@ public class MeshHelper
         Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
         Vector3 c = mesh.vertices[mesh.triangles[triIndex * 3 + 2]];
 
-        //generate random barycentric coordinates
-        /*float r = Random.value;
-        float s = Random.value;
-
-        if (r + s >= 1)
-        {
-            r = 1 - r;
-            s = 1 - s;
-        }*/
-        //and then turn them back to a Vector3
-
         // BUT this doesn't account for Mesh's scale, position, or rotation
         Vector3 pointOnMesh = a + uniqueVal * (b - a) + (1 - uniqueVal) * (c - a);
 
@@ -90,7 +77,6 @@ public class MeshHelper
         pointOnMesh = pointOnMesh + con.transform.position;
 
         return pointOnMesh;
-
     }
 
     // Function to get random point on static (non-animated) constellation mesh
@@ -106,18 +92,7 @@ public class MeshHelper
         Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
         Vector3 c = mesh.vertices[mesh.triangles[triIndex * 3 + 2]];
 
-        //generate random barycentric coordinates
-        /*float r = Random.value;
-        float s = Random.value;
-
-        if (r + s >= 1)
-        {
-            r = 1 - r;
-            s = 1 - s;
-        }*/
-        //and then turn them back to a Vector3
-
-        // BUT this doesn't account for Mesh's scale, position, or rotation
+        // BUT this doesn't account for Mesh's position, or rotation
         Vector3 pointOnMesh = a + uniqueVal * (b - a) + (1 - uniqueVal) * (c - a);
 
         // Note: no need to scale for animated mesh
@@ -130,7 +105,6 @@ public class MeshHelper
         pointOnMesh = pointOnMesh + con.transform.position;
 
         return pointOnMesh;
-
     }
 
     // gets a game object and returns a list of Vector3 positions for stars on mesh edge
@@ -260,9 +234,7 @@ public class MeshHelper
         }
 
         if (triIndex == -1) Debug.LogError("triIndex should never be -1");
-
         thisEdge.triangleIndex = triIndex;
-
         return triIndex;
     }
 

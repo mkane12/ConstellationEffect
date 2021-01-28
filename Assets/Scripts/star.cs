@@ -40,12 +40,15 @@ public class Star : StateMachine
     // Below only called if script enabled
     protected override void Start()
     {
-        // TODO: need a way to access the starData set in Constellation.cs
-        //transform.localScale *= starData.size;
+        transform.localScale *= starData.size;
 
         initializationTime = Time.timeSinceLevelLoad; // establish time at which object was instantiated
 
         renderer = GetComponent<Renderer>();
+
+        Color starColor;
+        if (ColorUtility.TryParseHtmlString(starData.color, out starColor))
+            renderer.material.SetColor("_Color", starColor);
 
         // start index with random offset so twinkling is scattered
         delay = Random.Range(0.0f, 1.0f);

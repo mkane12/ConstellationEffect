@@ -11,18 +11,15 @@ namespace TeamLab.Unity
     {
         public Sky sky;
         public Star star;
-        public EdgeStar edgeStar;
         static public Data data = new Data();
 
         // number of stars in constellation
-        public int sliderNumStars; // on vertices
+        public int sliderNumVertexStars; // on vertices
         public int sliderNumEdgeStars; // on edges
 
         // velocity range of stars
         public float sliderStarVelocityMin; // vertex stars
         public float sliderStarVelocityMax; // vertex stars
-        public float sliderEdgeStarVelocityMin; //edge stars
-        public float sliderEdgeStarVelocityMax; // edge stars
 
         // size range of stars
         public float sliderStarSizeMin; // vertex stars
@@ -31,7 +28,7 @@ namespace TeamLab.Unity
         public float sliderEdgeStarSizeMax; // edge stars
 
         // twinkle speed of stars
-        public int sliderTwinkleSpeed; // vertex stars
+        public int sliderVertexTwinkleSpeed; // vertex stars
         public int sliderEdgeTwinkleSpeed; // edge stars
 
         // lifespan of stars
@@ -58,8 +55,6 @@ namespace TeamLab.Unity
         public GUIUtil.ColorField edgeStarColorGUI = new GUIUtil.ColorField();
 
         private Renderer starRenderer;
-        private Renderer edgeStarRenderer;
-
 
         // And the rest of these are for constellation things
         // toggle for each constellation
@@ -91,20 +86,18 @@ namespace TeamLab.Unity
 
             sky = GameObject.FindObjectOfType<Sky>();
 
-            sliderNumStars = data.numStars;
+            sliderNumVertexStars = data.numVertexStars;
             sliderNumEdgeStars = data.numEdgeStars;
 
             sliderStarVelocityMin = data.minVelocity;
             sliderStarVelocityMax = data.maxVelocity;
-            sliderEdgeStarVelocityMin = data.minVelocityEdge;
-            sliderEdgeStarVelocityMax = data.maxVelocityEdge;
 
-            sliderStarSizeMin = data.minSize;
-            sliderStarSizeMax = data.maxSize;
+            sliderStarSizeMin = data.minSizeVertex;
+            sliderStarSizeMax = data.maxSizeVertex;
             sliderEdgeStarSizeMin = data.minSizeEdge;
             sliderEdgeStarSizeMax = data.maxSizeEdge;
 
-            sliderTwinkleSpeed = data.twinkleSpeed;
+            sliderVertexTwinkleSpeed = data.twinkleSpeedVertex;
             sliderEdgeTwinkleSpeed = data.twinkleSpeedEdge;
 
             sliderLifespan = data.lifespan;
@@ -127,13 +120,12 @@ namespace TeamLab.Unity
             //sliderPercentEdge = data.percentEdge;
 
             starRenderer = star.GetComponent<Renderer>();
-            edgeStarRenderer = edgeStar.GetComponent<Renderer>();
 
             // starting starColor
-            Color newCol;
-            if (ColorUtility.TryParseHtmlString(data.starColor, out newCol))
+            Color newColVertex;
+            if (ColorUtility.TryParseHtmlString(data.vertexStarColor, out newColVertex))
             {
-                starColor = newCol;
+                starColor = newColVertex;
             }
 
             Color newEdgeCol;
@@ -146,7 +138,7 @@ namespace TeamLab.Unity
             starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
 
             edgeStarColorUpdate.SetValueCPUOnly(edgeStarColor);
-            edgeStarColorUpdate.SetToMaterial(edgeStarRenderer.sharedMaterial);
+            edgeStarColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
 
             base.showButtons.save = true;
             base.showButtons.load = true;
@@ -162,8 +154,8 @@ namespace TeamLab.Unity
             GUILayout.BeginHorizontal();
             // vertex stars
             GUILayout.Label("Number of stars on vertices:");
-            sliderNumStars = GUIUtil.Slider(sliderNumStars, 50, 500);
-            data.numStars = sliderNumStars;
+            sliderNumVertexStars = GUIUtil.Slider(sliderNumVertexStars, 50, 500);
+            data.numVertexStars = sliderNumVertexStars;
             // edge stars
             GUILayout.Label("Number of stars on edges:");
             sliderNumEdgeStars = GUIUtil.Slider(sliderNumEdgeStars, 50, 500);
@@ -179,23 +171,14 @@ namespace TeamLab.Unity
             data.maxVelocity = sliderStarVelocityMax;
             GUILayout.EndHorizontal();
 
-            // sliders to determine range of edge stars' velocity
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Range of edge star velocities:");
-            sliderEdgeStarVelocityMin = GUIUtil.Slider(sliderEdgeStarVelocityMin, 1, 50);
-            data.minVelocityEdge = sliderEdgeStarVelocityMin;
-            sliderEdgeStarVelocityMax = GUIUtil.Slider(sliderEdgeStarVelocityMax, 1, 50);
-            data.maxVelocity = sliderEdgeStarVelocityMax;
-            GUILayout.EndHorizontal();
-
             // sliders to determine range of stars' size
             // vertex stars
             GUILayout.BeginHorizontal();
             GUILayout.Label("Range of vertex star sizes:");
             sliderStarSizeMin = GUIUtil.Slider(sliderStarSizeMin, 0.1f, 10.0f);
-            data.minSize = sliderStarSizeMin;
+            data.minSizeVertex = sliderStarSizeMin;
             sliderStarSizeMax = GUIUtil.Slider(sliderStarSizeMax, 0.1f, 10.0f);
-            data.maxSize = sliderStarSizeMax;
+            data.maxSizeVertex = sliderStarSizeMax;
             GUILayout.EndHorizontal();
             // edge stars
             GUILayout.BeginHorizontal();
@@ -209,8 +192,8 @@ namespace TeamLab.Unity
             // slider to determine rate at which stars twinkle
             GUILayout.BeginHorizontal();
             GUILayout.Label("Vertex star twinkle speed:");
-            sliderTwinkleSpeed = GUIUtil.Slider(sliderTwinkleSpeed, 1, 20);
-            data.twinkleSpeed = sliderTwinkleSpeed;
+            sliderVertexTwinkleSpeed = GUIUtil.Slider(sliderVertexTwinkleSpeed, 1, 20);
+            data.twinkleSpeedVertex = sliderVertexTwinkleSpeed;
             GUILayout.Label("Edge star twinkle speed:");
             sliderEdgeTwinkleSpeed = GUIUtil.Slider(sliderEdgeTwinkleSpeed, 1, 20);
             data.twinkleSpeedEdge = sliderEdgeTwinkleSpeed;
@@ -295,7 +278,7 @@ namespace TeamLab.Unity
             // Use ShaderVariableGeneric helper class to only update shader when changed
             starColorUpdate.SetValueCPUOnly(starColor);
             starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
-            data.starColor = "#" + ColorUtility.ToHtmlStringRGBA(starColor);
+            data.vertexStarColor = "#" + ColorUtility.ToHtmlStringRGBA(starColor);
 
             GUILayout.EndHorizontal();
 
@@ -306,7 +289,7 @@ namespace TeamLab.Unity
 
             // Use ShaderVariableGeneric helper class to only update shader when changed
             edgeStarColorUpdate.SetValueCPUOnly(edgeStarColor);
-            edgeStarColorUpdate.SetToMaterial(edgeStarRenderer.sharedMaterial);
+            edgeStarColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
             data.edgeStarColor = "#" + ColorUtility.ToHtmlStringRGBA(edgeStarColor);
 
             GUILayout.EndHorizontal();
@@ -338,20 +321,18 @@ namespace TeamLab.Unity
         // update sliders to reflect loaded data
         public void UpdateGUIData()
         {
-            sliderNumStars = data.numStars;
+            sliderNumVertexStars = data.numVertexStars;
             sliderNumEdgeStars = data.numEdgeStars;
 
             sliderStarVelocityMin = data.minVelocity;
             sliderStarVelocityMax = data.maxVelocity;
-            sliderEdgeStarVelocityMin = data.minVelocityEdge;
-            sliderEdgeStarVelocityMax = data.maxVelocityEdge;
 
-            sliderStarSizeMin = data.minSize;
-            sliderStarSizeMax = data.maxSize;
+            sliderStarSizeMin = data.minSizeVertex;
+            sliderStarSizeMax = data.maxSizeVertex;
             sliderEdgeStarSizeMin = data.minSizeEdge;
             sliderEdgeStarSizeMax = data.maxSizeEdge;
 
-            sliderTwinkleSpeed = data.twinkleSpeed;
+            sliderVertexTwinkleSpeed = data.twinkleSpeedVertex;
             sliderEdgeTwinkleSpeed = data.twinkleSpeedEdge;
 
             sliderLifespan = data.lifespan;
@@ -379,10 +360,10 @@ namespace TeamLab.Unity
 
             //sliderPercentEdge = data.percentEdge;
 
-            Color newCol;
-            if (ColorUtility.TryParseHtmlString(data.starColor, out newCol))
+            Color newColVertex;
+            if (ColorUtility.TryParseHtmlString(data.vertexStarColor, out newColVertex))
             {
-                starColor = newCol;
+                starColor = newColVertex;
             }
             Color newColEdge;
             if (ColorUtility.TryParseHtmlString(data.edgeStarColor, out newColEdge))
