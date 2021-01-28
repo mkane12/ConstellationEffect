@@ -162,9 +162,9 @@ namespace TeamLab.Unity
             data.numEdgeStars = sliderNumEdgeStars;
             GUILayout.EndHorizontal();
 
-            // sliders to determine range of vertex stars' velocity
+            // sliders to determine range of stars' velocity
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Range of vertex star velocities:");
+            GUILayout.Label("Range of star velocities:");
             sliderStarVelocityMin = GUIUtil.Slider(sliderStarVelocityMin, 1, 50);
             data.minVelocity = sliderStarVelocityMin;
             sliderStarVelocityMax = GUIUtil.Slider(sliderStarVelocityMax, 1, 50);

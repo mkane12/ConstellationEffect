@@ -86,14 +86,14 @@ public class Constellation : MonoBehaviour
             // bake a "snapshot" of the skinned mesh renderer and store in bakedMesh
             skinnedMesh.BakeMesh(bakedMesh);
 
-            targetPosition = edge.GetRandomPointOnAnimatedConstellationMesh(
+            targetPosition = edge.GetRandomPointOnAnimatedConstellationVertex(
                 bakedMesh,
                 this,
                 (float)i / numVertexStars);
         }
         else // mesh is static
         {
-            targetPosition = edge.GetRandomPointOnStaticConstellationMesh(
+            targetPosition = edge.GetRandomPointOnStaticConstellationVertex(
                 this.GetComponent<MeshFilter>().sharedMesh,
                 this,
                 (float)i / numVertexStars);
@@ -136,14 +136,14 @@ public class Constellation : MonoBehaviour
             // bake a "snapshot" of the skinned mesh renderer and store in bakedMesh
             skinnedMesh.BakeMesh(bakedMesh);
 
-            targetPosition = edge.GetRandomPointOnAnimatedConstellationMesh(
+            targetPosition = edge.GetRandomPointOnAnimatedConstellationEdge(
                 bakedMesh,
                 this,
                 (float)i / numEdgeStars);
         }
         else // mesh is static
         {
-            targetPosition = edge.GetRandomPointOnStaticConstellationMesh(
+            targetPosition = edge.GetRandomPointOnStaticConstellationEdge(
                 this.GetComponent<MeshFilter>().sharedMesh,
                 this,
                 (float)i / numEdgeStars);

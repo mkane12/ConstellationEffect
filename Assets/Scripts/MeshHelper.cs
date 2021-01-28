@@ -107,7 +107,101 @@ public class MeshHelper
         return pointOnMesh;
     }
 
-    // gets a game object and returns a list of Vector3 positions for stars on mesh edge
+    // Get a random point on a static constellation's edge
+    public Vector3 GetRandomPointOnStaticConstellationEdge(Mesh mesh, Constellation con, float uniqueVal)
+    {
+        // get random triangle in mesh
+        int triIndex = GetRandomTriangle(mesh, uniqueVal);
+
+        Vector3 a = mesh.vertices[mesh.triangles[triIndex * 3]];
+        Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
+
+        // BUT this doesn't account for Mesh's scale, position, or rotation
+        Vector3 pointOnMesh = a + uniqueVal * (b - a);
+
+        // scale by scale
+        pointOnMesh = Vector3.Scale(pointOnMesh, con.transform.localScale);
+
+        // rotate by rotation
+        pointOnMesh = con.transform.rotation * pointOnMesh;
+
+        // translate by position
+        // > shifts from model to world space
+        pointOnMesh = pointOnMesh + con.transform.position;
+
+        return pointOnMesh;
+    }
+
+    // Get a random point on an animated constellations' edge
+    public Vector3 GetRandomPointOnAnimatedConstellationEdge(Mesh mesh, Constellation con, float uniqueVal)
+    {
+        //Mesh mesh = Constellation.GetComponentInChildren<MeshFilter>().sharedMesh;
+
+        // get random triangle in mesh
+        int triIndex = GetRandomTriangle(mesh, uniqueVal);
+
+        Vector3 a = mesh.vertices[mesh.triangles[triIndex * 3]];
+        Vector3 b = mesh.vertices[mesh.triangles[triIndex * 3 + 1]];
+
+        // BUT this doesn't account for Mesh's position, or rotation
+        Vector3 pointOnMesh = a + uniqueVal * (b - a);
+
+        // Note: no need to scale for animated mesh
+
+        // rotate by rotation
+        pointOnMesh = con.transform.rotation * pointOnMesh;
+
+        // translate by position
+        // > shifts from model to world space
+        pointOnMesh = pointOnMesh + con.transform.position;
+
+        return pointOnMesh;
+    }
+
+    // Get a random vertex on a static constellation
+    public Vector3 GetRandomPointOnStaticConstellationVertex(Mesh mesh, Constellation con, float uniqueVal)
+    {
+        // get random triangle in mesh
+        int triIndex = GetRandomTriangle(mesh, uniqueVal);
+
+        // BUT this doesn't account for Mesh's scale, position, or rotation
+        Vector3 pointOnMesh = mesh.vertices[mesh.triangles[triIndex * 3]];
+
+        // scale by scale
+        pointOnMesh = Vector3.Scale(pointOnMesh, con.transform.localScale);
+
+        // rotate by rotation
+        pointOnMesh = con.transform.rotation * pointOnMesh;
+
+        // translate by position
+        // > shifts from model to world space
+        pointOnMesh = pointOnMesh + con.transform.position;
+
+        return pointOnMesh;
+    }
+
+    // Get a random vertex on an animated consetellation
+    public Vector3 GetRandomPointOnAnimatedConstellationVertex(Mesh mesh, Constellation con, float uniqueVal)
+    {
+        // get random triangle in mesh
+        int triIndex = GetRandomTriangle(mesh, uniqueVal);
+        
+        // BUT this doesn't account for Mesh's position, or rotation
+        Vector3 pointOnMesh = mesh.vertices[mesh.triangles[triIndex * 3]];
+
+        // Note: no need to scale for animated mesh
+
+        // rotate by rotation
+        pointOnMesh = con.transform.rotation * pointOnMesh;
+
+        // translate by position
+        // > shifts from model to world space
+        pointOnMesh = pointOnMesh + con.transform.position;
+
+        return pointOnMesh;
+    }
+
+
     /*public List<Vector3> GetRandomPointsOnConstellationEdge(GameObject constellation, int numStars)
     {
 
@@ -141,8 +235,9 @@ public class MeshHelper
         }
 
         return pointsOnEdge;
-    }
+    }*/
 
+    /*
     // gets a game object and returns a list of Vector3 positions for stars on mesh vertices
     public List<Vector3> GetRandomPointsOnConstellationVertices(GameObject constellation, int numStars, float minDist)
     {
