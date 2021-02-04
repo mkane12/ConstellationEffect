@@ -158,8 +158,8 @@ public class MeshHelper
         return pointOnMesh;
     }
 
-    // Get a list of vertices spaced according to the number of vertex stars (and more than minDist apart
-    public List<Vector3> GetVertexListForNumStars(Mesh mesh, Constellation con, int numStars, float minDist)
+    // Get a list of vertices spaced according to the number of vertex stars (and more than minDist apart) for static constellation
+    public List<Vector3> GetVertexListForStaticConstellation(Mesh mesh, Constellation con, int numStars, float minDist)
     {
         List<Vector3> vertexList = new List<Vector3>();
 
@@ -172,6 +172,48 @@ public class MeshHelper
 
             // scale by scale
             vertexPos = Vector3.Scale(vertexPos, con.transform.localScale);
+
+            // rotate by rotation
+            vertexPos = con.transform.rotation * vertexPos;
+
+            // translate by position
+            vertexPos = vertexPos + con.transform.position;
+
+            // add the latest position now - we will remove it later if it is too close to other stars
+            vertexList.Add(vertexPos);
+
+            // iterate through previous vertices to check that distances exceed a threshold
+            // > note we iterate through all but the latest added star, since that dist = 0
+            for (int j = 0; j < vertexList.Count - 1; j++)
+            {
+                float dist = Vector3.Distance(vertexPos, vertexList[j]);
+                // if distance between new star and any old stars doesn't exceed a threshold, remove the latest star
+                if (dist < minDist)
+                {
+                    vertexList.Remove(vertexPos);
+                    break;
+                }
+            }
+
+        }
+
+        return vertexList;
+
+    }
+
+    // Get a list of vertices spaced according to the number of vertex stars (and more than minDist apart) for static constellation
+    public List<Vector3> GetVertexListFoAnimatedConstellation(Mesh mesh, Constellation con, int numStars, float minDist)
+    {
+        List<Vector3> vertexList = new List<Vector3>();
+
+        for (int i = 0; i < numStars; i++)
+        {
+            int iteration = Mathf.Max(mesh.vertices.Length / (numStars + 1), 1);
+            int index = (i + 1) * iteration % mesh.vertices.Length;
+
+            Vector3 vertexPos = mesh.vertices[index];
+
+            // Note: no need to scale for animated constellation
 
             // rotate by rotation
             vertexPos = con.transform.rotation * vertexPos;

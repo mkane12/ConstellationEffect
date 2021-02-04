@@ -49,7 +49,7 @@ public class Constellation : MonoBehaviour
             // bake a "snapshot" of the skinned mesh renderer and store in bakedMesh
             skinnedMesh.BakeMesh(bakedMesh);
 
-            vertexStarPositions = edge.GetVertexListForNumStars(
+            vertexStarPositions = edge.GetVertexListFoAnimatedConstellation(
                 bakedMesh,
                 this,
                 numVertexStars,
@@ -60,7 +60,7 @@ public class Constellation : MonoBehaviour
         }
         else // mesh is static
         {
-            vertexStarPositions = edge.GetVertexListForNumStars(
+            vertexStarPositions = edge.GetVertexListForStaticConstellation(
                 this.GetComponent<MeshFilter>().sharedMesh,
                 this,
                 numVertexStars,
@@ -180,7 +180,7 @@ public class Constellation : MonoBehaviour
         // bake a "snapshot" of the skinned mesh renderer and store in bakedMesh
         skinnedMesh.BakeMesh(bakedMesh);
 
-        vertexStarPositions = edge.GetVertexListForNumStars(
+        vertexStarPositions = edge.GetVertexListFoAnimatedConstellation(
                 bakedMesh,
                 this,
                 numVertexStars,
