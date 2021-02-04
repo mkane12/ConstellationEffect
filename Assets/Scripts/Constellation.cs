@@ -21,6 +21,8 @@ public class Constellation : MonoBehaviour
     private StarData[] vertexStarData;
     private StarData[] edgeStarData;
 
+    private List<Vector3> vertexStarPositions;
+
     public int numVertexStars;
     public int numEdgeStars;
 
@@ -40,6 +42,32 @@ public class Constellation : MonoBehaviour
     void Start()
     {
         skinnedMesh = this.GetComponentInChildren<SkinnedMeshRenderer>();
+
+        // get list of vertices  to determine how many vertex stars to make
+        if (skinnedMesh != null) // mesh is animated
+        {
+            // bake a "snapshot" of the skinned mesh renderer and store in bakedMesh
+            skinnedMesh.BakeMesh(bakedMesh);
+
+            vertexStarPositions = edge.GetVertexListForNumStars(
+                bakedMesh,
+                this,
+                numVertexStars,
+                GUIData.vertexStarMinDistance);
+
+            // if there aren't enough vertices, reduce number of vertex stars generated
+            numVertexStars = vertexStarPositions.Count;
+        }
+        else // mesh is static
+        {
+            vertexStarPositions = edge.GetVertexListForNumStars(
+                this.GetComponent<MeshFilter>().sharedMesh,
+                this,
+                numVertexStars,
+                GUIData.vertexStarMinDistance);
+
+            numVertexStars = vertexStarPositions.Count;
+        }
 
         vertexStarData = new StarData[numVertexStars];
         edgeStarData = new StarData[numEdgeStars];
@@ -76,28 +104,7 @@ public class Constellation : MonoBehaviour
         s.transform.parent = this.transform;
         Star star = s.GetComponent<Star>();
 
-        // start by just sending stars to random points on the mesh
-        // > get pseudo-random point based on star's unique id
-        Vector3 targetPosition;
-
-        // if mesh is animated
-        if (skinnedMesh != null)
-        {
-            // bake a "snapshot" of the skinned mesh renderer and store in bakedMesh
-            skinnedMesh.BakeMesh(bakedMesh);
-
-            targetPosition = edge.GetRandomPointOnAnimatedConstellationVertex(
-                bakedMesh,
-                this,
-                (float)i / numVertexStars);
-        }
-        else // mesh is static
-        {
-            targetPosition = edge.GetRandomPointOnStaticConstellationVertex(
-                this.GetComponent<MeshFilter>().sharedMesh,
-                this,
-                (float)i / numVertexStars);
-        }
+        Vector3 targetPosition = vertexStarPositions[i];
 
         // assign remaining starData values here
         vertexStarData[i].triangleIndex = edge.thisEdge.triangleIndex;
@@ -173,17 +180,20 @@ public class Constellation : MonoBehaviour
         // bake a "snapshot" of the skinned mesh renderer and store in bakedMesh
         skinnedMesh.BakeMesh(bakedMesh);
 
-        for(int i = 0; i < numVertexStars; i ++)
+        vertexStarPositions = edge.GetVertexListForNumStars(
+                bakedMesh,
+                this,
+                numVertexStars,
+                GUIData.vertexStarMinDistance);
+
+        for (int i = 0; i < numVertexStars; i ++)
         {
-            vertexStarData[i].position = edge.GetRandomPointOnAnimatedConstellationMesh(
-                bakedMesh, 
-                this, 
-                (float)i / numVertexStars);
+            vertexStarData[i].position = vertexStarPositions[i];
         }
         
         for (int i = 0; i < numEdgeStars; i++)
         {
-            edgeStarData[i].position = edge.GetRandomPointOnAnimatedConstellationMesh(
+            edgeStarData[i].position = edge.GetRandomPointOnAnimatedConstellationEdge(
                 bakedMesh,
                 this,
                 (float)i / numEdgeStars);

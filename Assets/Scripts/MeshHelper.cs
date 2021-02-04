@@ -158,26 +158,47 @@ public class MeshHelper
         return pointOnMesh;
     }
 
-    // Get a random vertex on a static constellation
-    public Vector3 GetRandomPointOnStaticConstellationVertex(Mesh mesh, Constellation con, float uniqueVal)
+    // Get a list of vertices spaced according to the number of vertex stars (and more than minDist apart
+    public List<Vector3> GetVertexListForNumStars(Mesh mesh, Constellation con, int numStars, float minDist)
     {
-        // get random triangle in mesh
-        int triIndex = GetRandomTriangle(mesh, uniqueVal);
+        List<Vector3> vertexList = new List<Vector3>();
 
-        // BUT this doesn't account for Mesh's scale, position, or rotation
-        Vector3 pointOnMesh = mesh.vertices[mesh.triangles[triIndex * 3]];
+        for (int i = 0; i < numStars; i++)
+        {
+            int iteration = Mathf.Max(mesh.vertices.Length / (numStars + 1), 1);
+            int index = (i + 1) * iteration % mesh.vertices.Length;
 
-        // scale by scale
-        pointOnMesh = Vector3.Scale(pointOnMesh, con.transform.localScale);
+            Vector3 vertexPos = mesh.vertices[index];
 
-        // rotate by rotation
-        pointOnMesh = con.transform.rotation * pointOnMesh;
+            // scale by scale
+            vertexPos = Vector3.Scale(vertexPos, con.transform.localScale);
 
-        // translate by position
-        // > shifts from model to world space
-        pointOnMesh = pointOnMesh + con.transform.position;
+            // rotate by rotation
+            vertexPos = con.transform.rotation * vertexPos;
 
-        return pointOnMesh;
+            // translate by position
+            vertexPos = vertexPos + con.transform.position;
+
+            // add the latest position now - we will remove it later if it is too close to other stars
+            vertexList.Add(vertexPos);
+
+            // iterate through previous vertices to check that distances exceed a threshold
+            // > note we iterate through all but the latest added star, since that dist = 0
+            for (int j = 0; j < vertexList.Count - 1; j++)
+            {
+                float dist = Vector3.Distance(vertexPos, vertexList[j]);
+                // if distance between new star and any old stars doesn't exceed a threshold, remove the latest star
+                if (dist < minDist)
+                {
+                    vertexList.Remove(vertexPos);
+                    break;
+                }
+            }
+
+        }
+
+        return vertexList;
+
     }
 
     // Get a random vertex on an animated consetellation
