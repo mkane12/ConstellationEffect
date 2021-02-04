@@ -23,7 +23,10 @@ public class Constellation : MonoBehaviour
 
     private List<Vector3> vertexStarPositions;
 
-    public int numVertexStars;
+    public int numVertexStars; // this is the original number of vertex stars
+    // the number of vertex stars changes after vertex positions are calculated, so this just stores that value
+
+    public int numVertexStarsNew; 
     public int numEdgeStars;
 
     Mesh bakedMesh;
@@ -54,9 +57,6 @@ public class Constellation : MonoBehaviour
                 this,
                 numVertexStars,
                 GUIData.vertexStarMinDistance);
-
-            // if there aren't enough vertices, reduce number of vertex stars generated
-            numVertexStars = vertexStarPositions.Count;
         }
         else // mesh is static
         {
@@ -65,15 +65,16 @@ public class Constellation : MonoBehaviour
                 this,
                 numVertexStars,
                 GUIData.vertexStarMinDistance);
-
-            numVertexStars = vertexStarPositions.Count;
         }
 
-        vertexStarData = new StarData[numVertexStars];
+        // if there aren't enough vertices, reduce number of vertex stars generated
+        numVertexStarsNew = vertexStarPositions.Count;
+
+        vertexStarData = new StarData[numVertexStarsNew];
         edgeStarData = new StarData[numEdgeStars];
 
         // generate stars on mesh
-        for (int i = 0; i < numVertexStars; i++)
+        for (int i = 0; i < numVertexStarsNew; i++)
         {
             makeVertexStar(i);
         }
@@ -186,7 +187,7 @@ public class Constellation : MonoBehaviour
                 numVertexStars,
                 GUIData.vertexStarMinDistance);
 
-        for (int i = 0; i < numVertexStars; i ++)
+        for (int i = 0; i < numVertexStarsNew; i ++)
         {
             vertexStarData[i].position = vertexStarPositions[i];
         }

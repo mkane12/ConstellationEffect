@@ -226,6 +226,7 @@ MonoBehaviour:
   Star: {fileID: 1838518309684516, guid: e9faa4f65b880954d9d934dd282941c8, type: 3}
   constellationShape: {fileID: 0}
   numVertexStars: 0
+  numVertexStarsNew: 0
   numEdgeStars: 0
 --- !u!1 &1090846442478680
 GameObject:
