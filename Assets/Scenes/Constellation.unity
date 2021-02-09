@@ -361,18 +361,15 @@ MonoBehaviour:
   placeholder: 0
   sky: {fileID: 446230662}
   star: {fileID: 3643344051909436655, guid: e9faa4f65b880954d9d934dd282941c8, type: 3}
-  edgeStar: {fileID: 114329486572535800, guid: f345441d066f0bb45bf4b958019ae589, type: 3}
-  sliderNumStars: 100
+  sliderNumVertexStars: 0
   sliderNumEdgeStars: 0
   sliderStarVelocityMin: 0
   sliderStarVelocityMax: 0
-  sliderEdgeStarVelocityMin: 0
-  sliderEdgeStarVelocityMax: 0
   sliderStarSizeMin: 0
   sliderStarSizeMax: 0
   sliderEdgeStarSizeMin: 0
   sliderEdgeStarSizeMax: 0
-  sliderTwinkleSpeed: 0
+  sliderVertexTwinkleSpeed: 0
   sliderEdgeTwinkleSpeed: 0
   sliderLifespan: 0
   sliderTimeToFade: 0
