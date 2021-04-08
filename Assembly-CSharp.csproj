@@ -349,6 +349,7 @@
     <Compile Include="Assets\Scripts\ConstellationGUI.cs" />
     <Compile Include="Assets\Scripts\Data.cs" />
     <Compile Include="Assets\Scripts\EdgeStar.cs" />
+    <Compile Include="Assets\Scripts\GPUConstellation.cs" />
     <Compile Include="Assets\Scripts\MeshHelper.cs" />
     <Compile Include="Assets\Scripts\Sky.cs" />
     <Compile Include="Assets\Scripts\Star.cs" />
@@ -364,6 +365,7 @@
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeX\FadeEdgeX.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\Easing.cginc" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\PhotoshopMath.cginc" />
+    <None Include="Assets\Shaders\ConstellationShader.compute" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColor.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeRect.shader" />
@@ -384,7 +386,7 @@
     <None Include="Assets\StreamingAssets\saveFile.txt" />
     <None Include="Assets\StreamingAssets\GUISettings.txt" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColorGlobal.shader" />
-    <None Include="Assets\Shaders\starComputeShader.compute" />
+    <None Include="Assets\Shaders\starShaderGPU.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeY\FadeEdgeY.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureFlipY.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureLerp.shader" />

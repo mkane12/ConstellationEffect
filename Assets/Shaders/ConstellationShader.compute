@@ -1,0 +1,97 @@
+﻿// Adapted from Flowers and Animals
+#pragma kernel Update
+#pragma kernel UpdatePosition
+#pragma kernel Init
+
+#define BLOCK_SIZE 16
+
+struct InstanceData // data for an instance of a single star
+{
+    int idx; // star's id
+    int triangleIndex; // red component of pixel on position texture, defined at RandomOnMeshSurface.SetPositionDataFromSamplingTexture
+	// > red component is assigned in preprocessing to be an int triangle id, so values are in thousands (not just 0 to 1)
+    float3 position; // position of star on mesh
+    float2 xy;
+    float4x4 mtx; // world data's transform
+};
+
+struct WorldData
+{
+    float deltaTime;
+    float4x4 transform;
+};
+
+// This declares a variable that contains data the shader program will work wth. 
+// Since we aren’t working with mesh data, you have to explicitly declare what data your compute shader will read and write to. 
+// The “RW” in front of the datatype specifies that the shader will both read and write to that variable.
+RWStructuredBuffer<InstanceData> data;
+
+// Without the RW means it's a read-only variable
+// Stuctured Buffer =  array of data consisting of a single data type (e.g. all int, or all float)
+StructuredBuffer<float3> vertices;
+StructuredBuffer<int> triangles;
+
+// the data type can also be a struct
+// worldData[0] variables defined in RandomOnMeshSurface.UpdateWorldData()
+StructuredBuffer<WorldData> worldData;
+
+float3 Interpolate(float x, float y, float3 t1, float3 t2, float3 t3)
+{
+    float aa = x;
+    float bb = y;
+    float cc = 1 - x - y;
+
+    float3 p = aa * t1 + bb * t2 + cc * t3;
+    return p;
+
+}
+
+// gets random position on constellation mesh
+float3 GetPosition(int idx, int triangleIdx)
+{
+    float3 p1 = vertices[triangles[(triangleIdx * 3)]];
+    float3 p2 = vertices[triangles[(triangleIdx * 3) + 1]];
+    float3 p3 = vertices[triangles[(triangleIdx * 3) + 2]];
+
+    float u = data[idx].xy.x;
+    float v = data[idx].xy.y;
+
+	// interpolates between triangle vertices and some pre-processed x and y values
+
+    float3 pointOnMesh = Interpolate(u, v, p1, p2, p3);
+
+    return pointOnMesh;
+}
+
+// This line specifies the dimensions of the thread groups being spawned by our compute shader. 
+// GPUs take advantage of the massive parallel processing powers of the GPU by creating threads that run simultaneously. 
+// Thread groups specify how to organize these spawned threads.
+
+// Init called in RandomOnMeshSurface.InitComputeBuffer() lines 190-193
+// id is a unique number, runs sequentially through threads
+// num threads = _num_active_blocks * BLOCK_SIZE
+[numthreads(BLOCK_SIZE, 1, 1)]
+void Init(uint3 id : SV_DispatchThreadID)
+{
+	// triangleIndex = component of InstanceData struct
+	// > I assume it's the index for a given triangle
+    int i = data[id.x].triangleIndex;
+}
+
+[numthreads(BLOCK_SIZE, 1, 1)]
+void UpdatePosition(uint3 id : SV_DispatchThreadID)
+{
+    int i = data[id.x].triangleIndex;
+
+	// redefine current position of star instance
+    float3 pos = GetPosition(id.x, i);
+    data[id.x].position = pos;
+	
+    data[id.x].mtx = worldData[0].transform;
+}
+
+[numthreads(BLOCK_SIZE, 1, 1)]
+void Update(uint3 id : SV_DispatchThreadID)
+{
+    float3 worldPosition = mul(worldData[0].transform, float4(data[id.x].position, 1));
+}

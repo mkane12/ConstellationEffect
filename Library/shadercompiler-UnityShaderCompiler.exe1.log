@@ -1,13 +1,7 @@
 Base path: C:/Program Files/Unity/Hub/Editor/2018.4.28f1/Editor/Data
 Cmd: initializeCompiler
 Cmd: compileComputeKernel
-  error: 2 plat 4 at starComputeShader.compute(14): failed to open source file: 'Assets/FlowersAndAnimals/Shader/Common/Random.cginc'
-  api=4 insize=11302 outsize=0 ok=0
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
+  error: 2 plat 4 at (0): Did not find shader kernel 'FunctionKernel' to compile
+  api=4 insize=481 outsize=0 ok=0
 Cmd: initializeCompiler
 Cmd: initializeCompiler
