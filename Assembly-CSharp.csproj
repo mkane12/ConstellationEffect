@@ -374,6 +374,7 @@
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\version.txt" />
     <None Include="Assets\smcs.rsp" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Shaders\PhotoshopMath.cginc" />
+    <None Include="Assets\Shaders\starShader2.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\DLL\GeoTimeZoneReadMe.txt" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\Libs\CoonsCurve.cginc" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\DLL\TimeZoneConverter.xml" />

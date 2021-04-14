@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23212882154679400}
   - component: {fileID: 64761265874978148}
   - component: {fileID: 114319468279601012}
+  - component: {fileID: 114489742047712022}
   m_Layer: 0
   m_Name: Ursa
   m_TagString: Untagged
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134085668177424}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65da25013096264469f3f8fedff634a4, type: 3}
   m_Name: 
@@ -110,3 +111,20 @@ MonoBehaviour:
   numVertexStars: 0
   numVertexStarsNew: 0
   numEdgeStars: 0
+--- !u!114 &114489742047712022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134085668177424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9d760f98366af41bf8546a033de265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  constellationShape: {fileID: 1134085668177424}
+  numStars: 1000
+  computeShader: {fileID: 7200000, guid: b18e3463c9a8e8e4cb2d69c4e6f13452, type: 3}
+  material: {fileID: 2100000, guid: b5352369334707b4fb426b102370a6ee, type: 2}
+  starMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
