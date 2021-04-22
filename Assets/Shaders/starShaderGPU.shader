@@ -4,6 +4,7 @@
 
 	Properties {
 		_Smoothness ("Smoothness", Range(0,1)) = 0.5
+		_Scale ("Position Scale", Range(1, 1000)) = 10
 	}
 	
 	SubShader{
@@ -28,16 +29,22 @@
 		float3 worldPos;
 	};
 
+	struct InstanceData {
+		float3 position; // position of star on mesh
+	};
+
 	float _Smoothness;
+	float _Scale;
 
 	#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
 		StructuredBuffer<float3> _Positions;
+		StructuredBuffer<InstanceData> _InstanceDataBuffer;
 	#endif
 
 	void ConfigureProcedural() 
 	{
 		#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
-			float3 position = _Positions[unity_InstanceID] * 10000;
+			float3 position = _InstanceDataBuffer[unity_InstanceID].position * _Scale;
 
 			unity_ObjectToWorld = 0.0;
 			unity_ObjectToWorld._m03_m13_m23_m33 = float4(position, 1.0);

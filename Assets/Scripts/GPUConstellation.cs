@@ -2,12 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using TeamLab.Unity;
 using UnityEditor;
 using UnityEngine;
 
 public class GPUConstellation : MonoBehaviour
-{
+{ 
+    public struct InstanceData
+    {
+        public Vector3 position;
+    };
+
     //public GameObject Star;
     static public Data GUIData = ConstellationGUI.data;
 
@@ -33,9 +39,10 @@ public class GPUConstellation : MonoBehaviour
     public int numStars = 1000;
 
     // TODO: we start by just placing stars on every vertex
-    static readonly int 
+    static readonly int
         verticesId = Shader.PropertyToID("_Vertices"),
-        positionsId = Shader.PropertyToID("_Positions");
+        positionsId = Shader.PropertyToID("_Positions"),
+        instanceDataId = Shader.PropertyToID("_InstanceDataBuffer");
 
     // get kernel ids for compute shader
     int _init_kernel_idx;
@@ -47,10 +54,12 @@ public class GPUConstellation : MonoBehaviour
 
     private int subMeshIndex = 0;
 
-    ComputeBuffer vertexBuffer;
-    ComputeBuffer positionsBuffer;
+    protected ComputeBuffer vertexBuffer;
+    protected ComputeBuffer positionsBuffer;
+    protected ComputeBuffer instanceDataBuffer;
 
-    ComputeBuffer argsBuffer;
+
+    protected ComputeBuffer argsBuffer;
     uint[] args = new uint[5] { 0, 0, 0, 0, 0 };
 
     [SerializeField]
@@ -59,14 +68,17 @@ public class GPUConstellation : MonoBehaviour
     [SerializeField]
     Material material;
 
+    public Material instanceMaterial;
+
     [SerializeField]
     Mesh starMesh;
 
     private void OnEnable()
     {
-
         // Get random position on mesh
         edge = new MeshHelper();
+
+        instanceMaterial = new Material(material);
 
         // Mesh "screenshots" for animated mesh
         bakedMesh = new Mesh();
@@ -92,6 +104,7 @@ public class GPUConstellation : MonoBehaviour
         // storing numStars Vector3 positions, each Vector3 is 3 floats 4 bytes each
         vertexBuffer = new ComputeBuffer(mesh.vertices.Length, 3 * sizeof(float));
         positionsBuffer = new ComputeBuffer(mesh.vertices.Length, 3 * sizeof(float));
+        instanceDataBuffer = new ComputeBuffer(mesh.vertices.Length, Marshal.SizeOf(typeof(InstanceData)));
     }
 
     // invoked when component is disabled (if constellation destroyed and right before hot reload)
@@ -275,6 +288,7 @@ public class GPUConstellation : MonoBehaviour
             skinnedMesh.BakeMesh(bakedMesh);
             mesh = bakedMesh;
         }
+
         // index count per instance, instance count, start index location, base vertex location, start instance location
         args[0] = (uint)starMesh.GetIndexCount(subMeshIndex);
         args[1] = (uint)(mesh.vertices.Length);
@@ -283,25 +297,29 @@ public class GPUConstellation : MonoBehaviour
 
         argsBuffer.SetData(args);
 
+        Vector3[] vertices = mesh.vertices;
+
         // transform vertices according to constellation
-        for (int i = 0; i < mesh.vertices.Length; i ++)
+        for (int i = 0; i < vertices.Length; i ++)
         {
-            mesh.vertices[i] = Vector3.Scale(mesh.vertices[i], this.transform.localScale);
-            mesh.vertices[i] = this.transform.rotation * mesh.vertices[i];
-            mesh.vertices[i] = mesh.vertices[i] + this.transform.position;
+            vertices[i] = Vector3.Scale(vertices[i], this.transform.localScale);
+            vertices[i] = this.transform.rotation * vertices[i];
+            vertices[i] = vertices[i] + this.transform.position;
         }
 
-        vertexBuffer.SetData(mesh.vertices);
+        vertexBuffer.SetData(vertices);
 
         computeShader.SetBuffer(_init_kernel_idx, verticesId, vertexBuffer); // link buffer to kernel
         computeShader.SetBuffer(_init_kernel_idx, positionsId, positionsBuffer);
 
-        // TODO: what's a good number of work groups?
+        // declares space and "passes" data, but doesn't CALL anything
+        // Note: might as well set in Update, since it's not a heavy operation
+        computeShader.SetBuffer(_init_kernel_idx, instanceDataId, instanceDataBuffer);
 
-        computeShader.Dispatch(_init_kernel_idx, Mathf.CeilToInt(mesh.vertices.Length / 16f), 1, 1);
+        // this actually CALLS the function
+        computeShader.Dispatch(_init_kernel_idx, Mathf.CeilToInt(vertices.Length / 16f), 1, 1);
 
-        // material needs to know positions where to draw points
-        material.SetBuffer(positionsId, positionsBuffer);
+        SetMaterialBuffer();
 
         /*Vector3[] sanityCheck = new Vector3[mesh.vertices.Length];
         vertexBuffer.GetData(sanityCheck);
@@ -310,14 +328,21 @@ public class GPUConstellation : MonoBehaviour
             Debug.Log(sanityCheck[i]);
         }*/
 
-        // create bounds box so unity knows where to draw the graph
+        // create bounds box so unity knows where to draw the stars
         // TODO: just made a very big area to start
         var bounds = new Bounds(Vector3.zero, Vector3.one * 1000f);
 
         // render
         Graphics.DrawMeshInstancedIndirect(
-            starMesh, subMeshIndex, material, bounds, argsBuffer
+            starMesh, subMeshIndex, instanceMaterial, bounds, argsBuffer
         );
+    }
+
+    protected virtual void SetMaterialBuffer()
+    {
+        // material needs to know positions where to draw points
+        instanceMaterial.SetBuffer(positionsId, positionsBuffer);
+        instanceMaterial.SetBuffer(instanceDataId, instanceDataBuffer);
     }
 
 }

@@ -5,19 +5,10 @@
 
 struct InstanceData // data for an instance of a single star
 {
-    int idx; // star's id
-    int triangleIndex; // red component of pixel on position texture, defined at RandomOnMeshSurface.SetPositionDataFromSamplingTexture
-	// > red component is assigned in preprocessing to be an int triangle id, so values are in thousands (not just 0 to 1)
     float3 position; // position of star on mesh
-    float2 xy;
-    float4x4 mtx; // world data's transform
 };
 
-struct WorldData
-{
-    float deltaTime;
-    float4x4 transform;
-};
+RWStructuredBuffer<InstanceData> _InstanceDataBuffer;
 
 // This declares a variable that contains data the shader program will work wth. 
 // Since we aren’t working with mesh data, you have to explicitly declare what data your compute shader will read and write to. 
@@ -25,9 +16,8 @@ struct WorldData
 // RWStructuredBuffer<InstanceData> data;
 RWStructuredBuffer<float3> _Positions;
 
-// Without the RW means it's a read-only variable
 // Stuctured Buffer =  array of data consisting of a single data type (e.g. all int, or all float)
-StructuredBuffer<float3> _Vertices;
+RWStructuredBuffer<float3> _Vertices;
 
 float3 Interpolate(float x, float y, float3 t1, float3 t2, float3 t3)
 {
@@ -37,13 +27,13 @@ float3 Interpolate(float x, float y, float3 t1, float3 t2, float3 t3)
 
     float3 p = aa * t1 + bb * t2 + cc * t3;
     return p;
-
 }
 
 void SetPosition(uint3 id)
 {
     int starNum = id.x;
-    _Positions[starNum] = _Vertices[starNum];
+    _InstanceDataBuffer[starNum].position = _Vertices[starNum];
+
 }
 
 // This line specifies the dimensions of the thread groups being spawned by our compute shader. 
