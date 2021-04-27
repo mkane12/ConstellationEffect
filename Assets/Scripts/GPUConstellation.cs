@@ -12,7 +12,6 @@ public class GPUConstellation : MonoBehaviour
     public struct InstanceData
     {
         public Vector3 position;
-        public Matrix4x4 mtx;
     };
 
     //public GameObject Star;
@@ -42,8 +41,6 @@ public class GPUConstellation : MonoBehaviour
     // TODO: we start by just placing stars on every vertex
     static readonly int
         verticesId = Shader.PropertyToID("_Vertices"),
-        //positionsId = Shader.PropertyToID("_Positions"),
-        matricesId = Shader.PropertyToID("_Matrices"),
         instanceDataId = Shader.PropertyToID("_InstanceDataBuffer");
 
     // get kernel ids for compute shader
@@ -57,8 +54,6 @@ public class GPUConstellation : MonoBehaviour
     private int subMeshIndex = 0;
 
     protected ComputeBuffer vertexBuffer;
-    //protected ComputeBuffer positionsBuffer;
-    protected ComputeBuffer matrixBuffer;
     protected ComputeBuffer instanceDataBuffer;
 
     protected ComputeBuffer argsBuffer;
@@ -109,8 +104,6 @@ public class GPUConstellation : MonoBehaviour
 
         // storing numStars Vector3 positions, each Vector3 is 3 floats 4 bytes each
         vertexBuffer = new ComputeBuffer(mesh.vertices.Length, 3 * sizeof(float));
-        matrixBuffer = new ComputeBuffer(mesh.vertices.Length, 4 * 4 * sizeof(float));
-        //positionsBuffer = new ComputeBuffer(mesh.vertices.Length, 3 * sizeof(float));
         instanceDataBuffer = new ComputeBuffer(mesh.vertices.Length, Marshal.SizeOf(typeof(InstanceData)));
     }
 
@@ -122,12 +115,6 @@ public class GPUConstellation : MonoBehaviour
             vertexBuffer.Release(); // free GPU memory allocated for the buffer
         }
         vertexBuffer = null; // possible for object to be reclaimed by Unity's memory garbage collection process
-
-        if (matrixBuffer != null)
-        {
-            matrixBuffer.Release();
-        }
-        matrixBuffer = null;
 
         if (instanceDataBuffer != null)
         {
@@ -301,11 +288,22 @@ public class GPUConstellation : MonoBehaviour
 
     void UpdatePositionOnGPU()
     {
+        // set transforms for constellation (position, rotation, scale)
+        computeShader.SetVector("constellationPosition", this.transform.position);
+        Vector4 rotation = new Vector4(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z, this.transform.rotation.w);
+        computeShader.SetVector("constellationRotation", rotation);
+
         // Indirect args for ComputeBuffer
         if (skinnedMesh != null) // mesh is animated
         {
             skinnedMesh.BakeMesh(bakedMesh);
             mesh = bakedMesh;
+            // Note: animated meshes don't need to be scaled
+            computeShader.SetVector("constellationScale", Vector4.one);
+        }
+        else // mesh is static
+        {
+            computeShader.SetVector("constellationScale", this.transform.localScale);
         }
 
         // index count per instance, instance count, start index location, base vertex location, start instance location
@@ -318,46 +316,9 @@ public class GPUConstellation : MonoBehaviour
 
         Vector3[] vertices = mesh.vertices;
 
-        // transform vertices according to constellation
-        /*for (int i = 0; i < vertices.Length; i ++)
-        {
-            vertices[i] = Vector3.Scale(vertices[i], this.transform.localScale);
-            vertices[i] = this.transform.rotation * vertices[i];
-            vertices[i] = vertices[i] + this.transform.position;
-        }*/
-
-        // transformation matrix for every point
-        Matrix4x4 m;
-
-        Matrix4x4[] matrices = new Matrix4x4[mesh.vertices.Length];
-
-        for (int i = 0; i < mesh.vertices.Length; i++)
-        {
-            /*m = Matrix4x4.TRS(
-                mesh.vertices[i] + this.transform.position,
-                this.transform.rotation,
-                this.transform.localScale);*/
-
-            //instanceDataArray[i].position = mesh.vertices[i];
-            //instanceDataArray[i].mtx = m;
-
-            //matrices[i] = m;
-        }
-
         vertexBuffer.SetData(vertices);
-        matrixBuffer.SetData(matrices);
-
-        //instanceDataBuffer.SetData(instanceDataArray);
-        computeShader.SetVector("constellationPosition", this.transform.position);
-        computeShader.SetVector("constellationScale", this.transform.localScale);
-
-        Vector4 rotation = new Vector4(this.transform.rotation.x, this.transform.rotation.y, this.transform.rotation.z, this.transform.rotation.w);
-
-        computeShader.SetVector("constellationRotation", rotation);
 
         computeShader.SetBuffer(_init_kernel_idx, verticesId, vertexBuffer); // link buffer to kernel
-        computeShader.SetBuffer(_init_kernel_idx, matricesId, matrixBuffer);
-        //computeShader.SetBuffer(_init_kernel_idx, positionsId, positionsBuffer);
 
         // declares space and "passes" data, but doesn't CALL anything
         // Note: might as well set in Update, since it's not a heavy operation
@@ -381,7 +342,6 @@ public class GPUConstellation : MonoBehaviour
     protected virtual void SetMaterialBuffer()
     {
         // material needs to know positions where to draw points
-        //instanceMaterial.SetBuffer(positionsId, positionsBuffer);
         instanceMaterial.SetBuffer(instanceDataId, instanceDataBuffer);
     }
 

@@ -6,7 +6,6 @@
 struct InstanceData // data for an instance of a single star
 {
     float3 position; // position of star on mesh
-    float4x4 mtx;
 };
 
 RWStructuredBuffer<InstanceData> _InstanceDataBuffer;
@@ -19,7 +18,6 @@ RWStructuredBuffer<InstanceData> _InstanceDataBuffer;
 
 // Stuctured Buffer =  array of data consisting of a single data type (e.g. all int, or all float)
 RWStructuredBuffer<float3> _Vertices;
-RWStructuredBuffer<float4x4> _Matrices;
 
 float3 constellationPosition;
 float3 constellationScale;
@@ -56,16 +54,12 @@ float3 Interpolate(float x, float y, float3 t1, float3 t2, float3 t3)
 void SetPosition(uint3 id)
 {
     int starNum = id.x;
+    
+    // transform position by scaling, rotating, then translating
     float3 pos = _Vertices[starNum] * constellationScale;
     pos = rotate_vector(pos, constellationRotation);
     pos = pos + constellationPosition;
     _InstanceDataBuffer[starNum].position = pos;
-}
-
-void SetTransformation(uint3 id)
-{
-    int starNum = id.x;
-    _InstanceDataBuffer[starNum].mtx = _Matrices[starNum];
 }
 
 // This line specifies the dimensions of the thread groups being spawned by our compute shader. 
@@ -78,5 +72,4 @@ void SetTransformation(uint3 id)
 void Init(uint3 id : SV_DispatchThreadID)
 {
     SetPosition(id);
-    SetTransformation(id);
 }

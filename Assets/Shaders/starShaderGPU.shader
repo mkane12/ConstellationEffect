@@ -30,15 +30,12 @@
 
 	struct InstanceData {
 		float3 position; // position of star on mesh
-		float4x4 mtx; // transformation matrix for star
 	};
 
 	float _Smoothness;
-	float3 _Scale;
 
 	#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
 		StructuredBuffer<float3> _Vertices;
-		StructuredBuffer<float4x4> _Matrices;
 		StructuredBuffer<InstanceData> _InstanceDataBuffer;
 	#endif
 
@@ -46,7 +43,6 @@
 	{
 		#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
 			float3 position = _InstanceDataBuffer[unity_InstanceID].position;
-			float4x4 m = _InstanceDataBuffer[unity_InstanceID].mtx;
 
 			unity_ObjectToWorld = 0.0;
 			unity_ObjectToWorld._m03_m13_m23_m33 = float4(position, 1.0);
