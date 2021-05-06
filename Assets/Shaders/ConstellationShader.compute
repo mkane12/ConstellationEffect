@@ -43,6 +43,7 @@ float3 rotate_vector(float3 v, float4 r)
     return qmul(r, qmul(float4(v, 0), r_c)).xyz;
 }
 
+// sets position of star every update
 void SetPosition(uint3 id)
 {
     int starNum = id.x;

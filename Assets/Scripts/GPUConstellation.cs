@@ -79,8 +79,6 @@ public class GPUConstellation : MonoBehaviour
 
     protected InstanceData[] instanceDataArray; // this is the array of InstanceData that will be passed to the shader
 
-    private Renderer renderer;
-
     private void OnEnable()
     {
         // Get random position on mesh
@@ -114,6 +112,10 @@ public class GPUConstellation : MonoBehaviour
         // storing numStars Vector3 positions, each Vector3 is 3 floats 4 bytes each
         vertexBuffer = new ComputeBuffer(mesh.vertices.Length, 3 * sizeof(float));
         instanceDataBuffer = new ComputeBuffer(mesh.vertices.Length, Marshal.SizeOf(typeof(InstanceData)));
+
+        computeShader.SetFloat(timeId, Time.time);
+
+        instanceMaterial.SetFloat("_Size", GUIData.size);
     }
 
     // invoked when component is disabled (if constellation destroyed and right before hot reload)
@@ -316,15 +318,10 @@ public class GPUConstellation : MonoBehaviour
             mesh = bakedMesh;
             // Note: animated meshes don't need to be scaled
             computeShader.SetVector("constellationScale", Vector3.one);
-
-            // reset the renderer to the skinnedMesh renderer if animated
-            renderer = skinnedMesh;
         }
         else // mesh is static
         {
             computeShader.SetVector("constellationScale", this.transform.localScale);
-
-            renderer = GetComponent<Renderer>();
         }
 
         computeShader.SetFloat(timeId, Time.time);

@@ -93,7 +93,7 @@ public class Constellation : MonoBehaviour
         // save values unique to each star in StarData
         vertexStarData[i].idx = i;
         //vertexStarData[i].velocity = UnityEngine.Random.Range(GUIData.minVelocity, GUIData.maxVelocity);
-        vertexStarData[i].size = UnityEngine.Random.Range(GUIData.minSizeVertex, GUIData.maxSizeVertex);
+        //vertexStarData[i].size = UnityEngine.Random.Range(GUIData.minSizeVertex, GUIData.maxSizeVertex);
         vertexStarData[i].twinkleSpeed = GUIData.twinkleSpeedVertex;
         vertexStarData[i].lifespan = GUIData.lifespan;
         vertexStarData[i].timeToFade = GUIData.timeToFade;
@@ -123,7 +123,7 @@ public class Constellation : MonoBehaviour
         // save values unique to each star in StarData
         edgeStarData[i].idx = i;
         //edgeStarData[i].velocity = UnityEngine.Random.Range(GUIData.minVelocity, GUIData.maxVelocity);
-        edgeStarData[i].size = UnityEngine.Random.Range(GUIData.minSizeEdge, GUIData.maxSizeEdge);
+        //edgeStarData[i].size = UnityEngine.Random.Range(GUIData.minSizeEdge, GUIData.maxSizeEdge);
         edgeStarData[i].twinkleSpeed = GUIData.twinkleSpeedEdge;
         edgeStarData[i].lifespan = GUIData.lifespan;
         edgeStarData[i].timeToFade = GUIData.timeToFade;

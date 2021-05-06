@@ -1,15 +1,11 @@
 {
     "numVertexStars": 100,
     "numEdgeStars": 50,
-    "minVelocity": 5.0,
-    "maxVelocity": 20.0,
-    "minSizeVertex": 0.5,
-    "maxSizeVertex": 2.0,
-    "minSizeEdge": 2.0,
-    "maxSizeEdge": 3.0,
+    "size": 0.20000000298023225,
     "twinkleSpeedVertex": 8,
     "twinkleSpeedEdge": 3,
     "lifespan": 2.0,
+    "timeToMove": 1.0,
     "timeToFade": 5.0,
     "constellationNames": [
         0,

@@ -12,18 +12,13 @@ public class Data : MonoBehaviour {
     public int numVertexStars = 100; // number of stars to spawn on vertices
     public int numEdgeStars = 50; // number of stars to spawn on edges
 
-    public float timeToMove = 1.0f; // time for star to mvoe
-
-    public float minSizeVertex = 0.5f; // minimum size of a vertex star
-    public float maxSizeVertex = 2.0f; // maximum size of a vertex star
-    public float minSizeEdge = 2.0f; // minimum size of an edge star
-    public float maxSizeEdge = 3.0f; // maximum size of an edge star
+    public float size = 0.5f; // size of a star
 
     public int twinkleSpeedVertex = 8; // twinkle speed of vertex stars
     public int twinkleSpeedEdge = 3; // twinkle speed of edge stars
 
     public float lifespan = 5.0f; // number of seconds star lasts
-
+    public float timeToMove = 1.0f; // time for star to mvoe
     public float timeToFade = 5.0f; // time for star to fade
 
     // list of ConstellationTypes for constellations user is choosing to select from
