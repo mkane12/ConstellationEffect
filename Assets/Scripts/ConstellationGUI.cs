@@ -17,9 +17,8 @@ namespace TeamLab.Unity
         public int sliderNumVertexStars; // on vertices
         public int sliderNumEdgeStars; // on edges
 
-        // velocity range of stars
-        public float sliderStarVelocityMin; // vertex stars
-        public float sliderStarVelocityMax; // vertex stars
+        // time over which stars move
+        public float sliderTimeToMove;
 
         // size range of stars
         public float sliderStarSizeMin; // vertex stars
@@ -89,9 +88,6 @@ namespace TeamLab.Unity
             sliderNumVertexStars = data.numVertexStars;
             sliderNumEdgeStars = data.numEdgeStars;
 
-            sliderStarVelocityMin = data.minVelocity;
-            sliderStarVelocityMax = data.maxVelocity;
-
             sliderStarSizeMin = data.minSizeVertex;
             sliderStarSizeMax = data.maxSizeVertex;
             sliderEdgeStarSizeMin = data.minSizeEdge;
@@ -101,7 +97,7 @@ namespace TeamLab.Unity
             sliderEdgeTwinkleSpeed = data.twinkleSpeedEdge;
 
             sliderLifespan = data.lifespan;
-
+            sliderTimeToMove = data.timeToMove;
             sliderTimeToFade = data.timeToFade;
 
             sliderVertexStarMinDistance = data.vertexStarMinDistance;
@@ -162,15 +158,6 @@ namespace TeamLab.Unity
             data.numEdgeStars = sliderNumEdgeStars;
             GUILayout.EndHorizontal();
 
-            // sliders to determine range of stars' velocity
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Range of star velocities:");
-            sliderStarVelocityMin = GUIUtil.Slider(sliderStarVelocityMin, 1, 50);
-            data.minVelocity = sliderStarVelocityMin;
-            sliderStarVelocityMax = GUIUtil.Slider(sliderStarVelocityMax, 1, 50);
-            data.maxVelocity = sliderStarVelocityMax;
-            GUILayout.EndHorizontal();
-
             // sliders to determine range of stars' size
             // vertex stars
             GUILayout.BeginHorizontal();
@@ -204,6 +191,13 @@ namespace TeamLab.Unity
             GUILayout.Label("Star lifepan:");
             sliderLifespan = GUIUtil.Slider(sliderLifespan, 5, 500);
             data.lifespan = sliderLifespan;
+            GUILayout.EndHorizontal();
+
+            // slider to determine time over which stars move
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Star move time:");
+            sliderTimeToMove = GUIUtil.Slider(sliderTimeToMove, 1, 10);
+            data.timeToMove = sliderTimeToMove;
             GUILayout.EndHorizontal();
 
             // slider to determine time over which stars fade
@@ -324,9 +318,6 @@ namespace TeamLab.Unity
             sliderNumVertexStars = data.numVertexStars;
             sliderNumEdgeStars = data.numEdgeStars;
 
-            sliderStarVelocityMin = data.minVelocity;
-            sliderStarVelocityMax = data.maxVelocity;
-
             sliderStarSizeMin = data.minSizeVertex;
             sliderStarSizeMax = data.maxSizeVertex;
             sliderEdgeStarSizeMin = data.minSizeEdge;
@@ -336,6 +327,7 @@ namespace TeamLab.Unity
             sliderEdgeTwinkleSpeed = data.twinkleSpeedEdge;
 
             sliderLifespan = data.lifespan;
+            sliderTimeToMove = data.timeToMove;
             sliderTimeToFade = data.timeToFade;
 
             sliderVertexStarMinDistance = data.vertexStarMinDistance;

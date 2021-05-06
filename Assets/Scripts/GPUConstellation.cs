@@ -26,10 +26,6 @@ public class GPUConstellation : MonoBehaviour
     // this will measure the amount of time the constellation has been in existence
     float duration;
 
-    // the amount of time it should take for stars to move from touch to final location
-    [SerializeField, Range(0f, 20f)]
-    float moveDuration = 1f;
-
     //private List<Vector3> meshEdgePositions;
     //private List<Vector3> meshVertexPositions;
 
@@ -82,6 +78,8 @@ public class GPUConstellation : MonoBehaviour
     Mesh starMesh;
 
     protected InstanceData[] instanceDataArray; // this is the array of InstanceData that will be passed to the shader
+
+    private Renderer renderer;
 
     private void OnEnable()
     {
@@ -271,6 +269,11 @@ public class GPUConstellation : MonoBehaviour
 
         //UpdatePosition();
         UpdatePositionOnGPU();
+
+        if (duration >= GUIData.lifespan)
+        {
+            UpdateFade();
+        }
     }
 
     // function to update stars' positions if mesh is animated
@@ -313,17 +316,22 @@ public class GPUConstellation : MonoBehaviour
             mesh = bakedMesh;
             // Note: animated meshes don't need to be scaled
             computeShader.SetVector("constellationScale", Vector3.one);
+
+            // reset the renderer to the skinnedMesh renderer if animated
+            renderer = skinnedMesh;
         }
         else // mesh is static
         {
             computeShader.SetVector("constellationScale", this.transform.localScale);
+
+            renderer = GetComponent<Renderer>();
         }
 
         computeShader.SetFloat(timeId, Time.time);
 
         // update the progress stars are making to end positions
         computeShader.SetFloat(transitionProgressId,
-            Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(duration / moveDuration))
+            Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(duration / GUIData.timeToMove))
         );
 
         // index count per instance, instance count, start index location, base vertex location, start instance location
@@ -356,6 +364,14 @@ public class GPUConstellation : MonoBehaviour
         // render
         Graphics.DrawMeshInstancedIndirect(
             starMesh, subMeshIndex, instanceMaterial, bounds, argsBuffer
+        );
+    }
+
+    void UpdateFade()
+    {
+        instanceMaterial.SetFloat("_Transparency",
+             Mathf.Lerp(1f, 0f, 
+             Mathf.Clamp01((duration - GUIData.lifespan) / GUIData.timeToFade))
         );
     }
 

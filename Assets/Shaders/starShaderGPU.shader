@@ -4,6 +4,7 @@
 
 	Properties {
 		_Smoothness ("Smoothness", Range(0,1)) = 0.5
+		_Transparency ("Transparency", Range(0,1)) = 1.0
 	}
 	
 	SubShader{
@@ -34,6 +35,7 @@
 	};
 
 	float _Smoothness;
+	float _Transparency;
 
 	#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
 		StructuredBuffer<float3> _Vertices;
@@ -52,8 +54,9 @@
 	}
 
 	// define ConfigureSurface method - result indicated by inout
-	void ConfigureSurface (Input input, inout SurfaceOutputStandard surface) {
-		surface.Albedo = saturate(input.worldPos * 0.5 + 0.5); // saturate clamps components to [0, 1]
+	void ConfigureSurface (Input input, inout SurfaceOutputStandard surface) 
+	{
+		surface.Albedo = (1.0, 1.0, 1.0, _Transparency);
 		surface.Smoothness = _Smoothness;
 	}
 

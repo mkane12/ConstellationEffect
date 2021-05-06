@@ -12,7 +12,10 @@
     "lifespan": 2.0,
     "timeToFade": 5.0,
     "constellationNames": [
-        0
+        0,
+        1,
+        2,
+        3
     ],
     "constellationCount": 1,
     "meshAlpha": 1.0,

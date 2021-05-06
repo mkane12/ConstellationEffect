@@ -12,8 +12,7 @@ public class Data : MonoBehaviour {
     public int numVertexStars = 100; // number of stars to spawn on vertices
     public int numEdgeStars = 50; // number of stars to spawn on edges
 
-    public float minVelocity = 5.0f; // minimum velocity of a vertex star
-    public float maxVelocity = 20.0f; // maximum velocity of a vertex star
+    public float timeToMove = 1.0f; // time for star to mvoe
 
     public float minSizeVertex = 0.5f; // minimum size of a vertex star
     public float maxSizeVertex = 2.0f; // maximum size of a vertex star

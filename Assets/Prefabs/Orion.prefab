@@ -242,7 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constellationShape: {fileID: 1088544216130710}
-  moveDuration: 1
   numStars: 1000
   computeShader: {fileID: 7200000, guid: b18e3463c9a8e8e4cb2d69c4e6f13452, type: 3}
   material: {fileID: 2100000, guid: b5352369334707b4fb426b102370a6ee, type: 2}
