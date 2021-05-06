@@ -11,6 +11,7 @@ public class GPUConstellation : MonoBehaviour
 { 
     public struct InstanceData
     {
+        public Vector3 startPosition;
         public Vector3 position;
     };
 
@@ -21,6 +22,14 @@ public class GPUConstellation : MonoBehaviour
     public GameObject constellationShape;
 
     private MeshHelper edge;
+
+    // this will measure the amount of time the constellation has been in existence
+    float duration;
+
+    // the amount of time it should take for stars to move from touch to final location
+    [SerializeField, Range(0f, 20f)]
+    float moveDuration = 1f;
+
     //private List<Vector3> meshEdgePositions;
     //private List<Vector3> meshVertexPositions;
 
@@ -41,6 +50,8 @@ public class GPUConstellation : MonoBehaviour
     // TODO: we start by just placing stars on every vertex
     static readonly int
         verticesId = Shader.PropertyToID("_Vertices"),
+        timeId = Shader.PropertyToID("_Time"),
+        transitionProgressId = Shader.PropertyToID("_TransitionProgress"),
         instanceDataId = Shader.PropertyToID("_InstanceDataBuffer");
 
     // get kernel ids for compute shader
@@ -256,6 +267,8 @@ public class GPUConstellation : MonoBehaviour
     // Called every frame
     private void Update()
     {
+        duration += Time.deltaTime;
+
         //UpdatePosition();
         UpdatePositionOnGPU();
     }
@@ -299,12 +312,19 @@ public class GPUConstellation : MonoBehaviour
             skinnedMesh.BakeMesh(bakedMesh);
             mesh = bakedMesh;
             // Note: animated meshes don't need to be scaled
-            computeShader.SetVector("constellationScale", Vector4.one);
+            computeShader.SetVector("constellationScale", Vector3.one);
         }
         else // mesh is static
         {
             computeShader.SetVector("constellationScale", this.transform.localScale);
         }
+
+        computeShader.SetFloat(timeId, Time.time);
+
+        // update the progress stars are making to end positions
+        computeShader.SetFloat(transitionProgressId,
+            Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(duration / moveDuration))
+        );
 
         // index count per instance, instance count, start index location, base vertex location, start instance location
         args[0] = (uint)starMesh.GetIndexCount(subMeshIndex);

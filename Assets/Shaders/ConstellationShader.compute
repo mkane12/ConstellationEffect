@@ -5,6 +5,7 @@
 
 struct InstanceData // data for an instance of a single star
 {
+    float3 startPosition; // starting position of stars (touch point)
     float3 position; // position of star on mesh
 };
 
@@ -18,6 +19,7 @@ RWStructuredBuffer<InstanceData> _InstanceDataBuffer;
 
 // Stuctured Buffer =  array of data consisting of a single data type (e.g. all int, or all float)
 RWStructuredBuffer<float3> _Vertices;
+float _Time, _TransitionProgress; 
 
 float3 constellationPosition;
 float3 constellationScale;
@@ -41,25 +43,17 @@ float3 rotate_vector(float3 v, float4 r)
     return qmul(r, qmul(float4(v, 0), r_c)).xyz;
 }
 
-float3 Interpolate(float x, float y, float3 t1, float3 t2, float3 t3)
-{
-    float aa = x;
-    float bb = y;
-    float cc = 1 - x - y;
-
-    float3 p = aa * t1 + bb * t2 + cc * t3;
-    return p;
-}
-
 void SetPosition(uint3 id)
 {
     int starNum = id.x;
     
+    float3 startPosition = constellationPosition;
+    
     // transform position by scaling, rotating, then translating
-    float3 pos = _Vertices[starNum] * constellationScale;
-    pos = rotate_vector(pos, constellationRotation);
-    pos = pos + constellationPosition;
-    _InstanceDataBuffer[starNum].position = pos;
+    float3 endPosition = _Vertices[starNum] * constellationScale;
+    endPosition = rotate_vector(endPosition, constellationRotation);
+    endPosition = endPosition + constellationPosition;
+    _InstanceDataBuffer[starNum].position = lerp(startPosition, endPosition, _TransitionProgress);
 }
 
 // This line specifies the dimensions of the thread groups being spawned by our compute shader. 

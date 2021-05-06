@@ -29,6 +29,7 @@
 	};
 
 	struct InstanceData {
+		float3 startPosition;
 		float3 position; // position of star on mesh
 	};
 
@@ -45,8 +46,8 @@
 			float3 position = _InstanceDataBuffer[unity_InstanceID].position;
 
 			unity_ObjectToWorld = 0.0;
-			unity_ObjectToWorld._m03_m13_m23_m33 = float4(position, 1.0);
-			unity_ObjectToWorld._m00_m11_m22 = 1.0;
+			unity_ObjectToWorld._m03_m13_m23_m33 = float4(position, 1.0); // this is star position
+			unity_ObjectToWorld._m00_m11_m22 = 0.2; // this is star scale
 		#endif
 	}
 

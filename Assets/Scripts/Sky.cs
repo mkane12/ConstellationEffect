@@ -270,9 +270,7 @@ public class Sky : MonoBehaviour {
         else if (toggle & !data.constellationNames.Contains(constellationName))
         {
             data.constellationNames.Add(constellationName);
-        }
-
-        
+        }  
     }
 
     public void UpdateConstellationAlpha(float alpha, float oldAlpha)
