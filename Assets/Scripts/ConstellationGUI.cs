@@ -10,7 +10,8 @@ namespace TeamLab.Unity
     public class ConstellationGUI : TeamLab.Unity.MenuBase
     {
         public Sky sky;
-        public Star star;
+        public GPUConstellation con;
+        //public Star star;
         static public Data data = new Data();
 
         // number of stars in constellation
@@ -39,18 +40,12 @@ namespace TeamLab.Unity
         public float sliderVertexStarMinDistance;
 
         // Utilizes SharedVariableColor helper class in TeamLabUnityFrameworks
-        public ShaderVariableColor starColorUpdate = new ShaderVariableColor("_Color"); // star color
-        public ShaderVariableColor edgeStarColorUpdate = new ShaderVariableColor("_Color"); // star color
+        //public ShaderVariableColor starColorUpdate = new ShaderVariableColor("_Color"); // star color
 
-        // color of vertex stars
+        // color of stars
         public Color starColor;
-        // color of edge stars
-        public Color edgeStarColor;
 
         public GUIUtil.ColorField starColorGUI = new GUIUtil.ColorField();
-        public GUIUtil.ColorField edgeStarColorGUI = new GUIUtil.ColorField();
-
-        private Renderer starRenderer;
 
         // And the rest of these are for constellation things
         // toggle for each constellation
@@ -107,28 +102,13 @@ namespace TeamLab.Unity
             sliderConstellationCount = data.constellationCount;
             sliderMeshQuality = data.quality;
 
-            //sliderPercentEdge = data.percentEdge;
-
-            starRenderer = star.GetComponent<Renderer>();
-
             // starting starColor
-            Color newColVertex;
-            if (ColorUtility.TryParseHtmlString(data.vertexStarColor, out newColVertex))
+            if (ColorUtility.TryParseHtmlString(data.color, out Color newCol))
             {
-                starColor = newColVertex;
+                starColor = newCol;
             }
 
-            Color newEdgeCol;
-            if (ColorUtility.TryParseHtmlString(data.edgeStarColor, out newEdgeCol))
-            {
-                edgeStarColor = newEdgeCol;
-            }
-
-            starColorUpdate.SetValueCPUOnly(starColor);
-            starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
-
-            edgeStarColorUpdate.SetValueCPUOnly(edgeStarColor);
-            edgeStarColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
+            con.instanceMaterial.SetVector("_Color", starColor);
 
             base.showButtons.save = true;
             base.showButtons.load = true;
@@ -232,42 +212,13 @@ namespace TeamLab.Unity
             data.quality = (float) System.Math.Round(sliderMeshQuality, 1);
             GUILayout.EndHorizontal();
 
-            // slider to determine proportion of stars on edge vs vertex
-            /*GUILayout.BeginHorizontal();
-            GUILayout.Label("Percentage of stars on edge:");
-            sliderPercentEdge = GUIUtil.Slider(sliderPercentEdge, 0, 1);
-            data.percentEdge = sliderPercentEdge;
-            GUILayout.EndHorizontal();*/
-
-            // toggles to decide constellation mode
-            /*GUILayout.BeginHorizontal();
-            GUILayout.Label("Constellation Mode");
-            // public E OnGUI(E enumInitialValue, int xWidth)
-            // will probably need to update xWidth as more modes are added
-            data.mode = toggleConstellationMode.OnGUI(data.mode, 3);
-            GUILayout.EndHorizontal();*/
-
-            // Color Field to determine colors of vertex stars
+            // Color Field to determine colors of  stars
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Vertex star color:");
+            GUILayout.Label("Star color:");
             starColorGUI.OnGUI(ref starColor);
 
-            // Use ShaderVariableGeneric helper class to only update shader when changed
-            starColorUpdate.SetValueCPUOnly(starColor);
-            starColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
-            data.vertexStarColor = "#" + ColorUtility.ToHtmlStringRGBA(starColor);
-
-            GUILayout.EndHorizontal();
-
-            // Color Field to determine colors of edge stars
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Edge star color:");
-            edgeStarColorGUI.OnGUI(ref edgeStarColor);
-
-            // Use ShaderVariableGeneric helper class to only update shader when changed
-            edgeStarColorUpdate.SetValueCPUOnly(edgeStarColor);
-            edgeStarColorUpdate.SetToMaterial(starRenderer.sharedMaterial);
-            data.edgeStarColor = "#" + ColorUtility.ToHtmlStringRGBA(edgeStarColor);
+            con.instanceMaterial.SetVector("_Color", starColor);
+            data.color = "#" + ColorUtility.ToHtmlStringRGBA(starColor);
 
             GUILayout.EndHorizontal();
         }
@@ -284,7 +235,6 @@ namespace TeamLab.Unity
 
         public override void Load()
         {
-
             var path = TeamLab.Unity.PackageAndSceneSpecificPath.Static.GetSaveLoadPathWithFileDefault("GUISettings.txt");
             if (File.Exists(path))
             {
@@ -330,17 +280,9 @@ namespace TeamLab.Unity
 
             sliderMeshQuality = data.quality;
 
-            //sliderPercentEdge = data.percentEdge;
-
-            Color newColVertex;
-            if (ColorUtility.TryParseHtmlString(data.vertexStarColor, out newColVertex))
+            if (ColorUtility.TryParseHtmlString(data.color, out Color newCol))
             {
-                starColor = newColVertex;
-            }
-            Color newColEdge;
-            if (ColorUtility.TryParseHtmlString(data.edgeStarColor, out newColEdge))
-            {
-                edgeStarColor = newColEdge;
+                starColor = newCol;
             }
         }
     } // end class

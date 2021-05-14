@@ -36,8 +36,7 @@ public class Data : MonoBehaviour {
     // float to determine percentage of stars to send to edge rather than vertex
     public float percentEdge = 0.9f;
 
-    public string vertexStarColor = "#AAFFFF"; // hex star color
-    public string edgeStarColor = "#AAFFFF"; // hex edge star color
+    public string color = "#AAFFFF"; // hex star color
 
     public float vertexStarMinDistance = 0.1f; // minimum distance btw vertex stars
 

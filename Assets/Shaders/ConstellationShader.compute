@@ -57,6 +57,9 @@ void SetPosition(uint3 id)
     _InstanceDataBuffer[starNum].position = lerp(startPosition, endPosition, _TransitionProgress);
 }
 
+// TODO: Compute Shader will just run calculation to iterate over texture, but does not know about the texture itself
+// The renderer is responsible for reading in the texture and rendering it
+
 // This line specifies the dimensions of the thread groups being spawned by our compute shader. 
 // GPUs take advantage of the massive parallel processing powers of the GPU by creating threads that run simultaneously. 
 // Thread groups specify how to organize these spawned threads.

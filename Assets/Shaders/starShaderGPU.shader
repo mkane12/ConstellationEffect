@@ -37,6 +37,7 @@
 	float _Smoothness;
 	float _Transparency;
 	float _Size;
+	float3 _Color;
 
 	#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
 		StructuredBuffer<float3> _Vertices;
@@ -57,7 +58,8 @@
 	// define ConfigureSurface method - result indicated by inout
 	void ConfigureSurface (Input input, inout SurfaceOutputStandard surface) 
 	{
-		surface.Albedo = (1.0, 1.0, 1.0, _Transparency);
+		surface.Albedo = _Color;
+		surface.Alpha = _Transparency;
 		surface.Smoothness = _Smoothness;
 	}
 

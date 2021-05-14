@@ -97,7 +97,7 @@ public class Constellation : MonoBehaviour
         vertexStarData[i].twinkleSpeed = GUIData.twinkleSpeedVertex;
         vertexStarData[i].lifespan = GUIData.lifespan;
         vertexStarData[i].timeToFade = GUIData.timeToFade;
-        vertexStarData[i].color = GUIData.vertexStarColor;
+        //vertexStarData[i].color = GUIData.vertexStarColor;
         vertexStarData[i].minDistance = GUIData.vertexStarMinDistance;
 
         // begin by instantiating stars at center of constellation gameobject
@@ -127,7 +127,7 @@ public class Constellation : MonoBehaviour
         edgeStarData[i].twinkleSpeed = GUIData.twinkleSpeedEdge;
         edgeStarData[i].lifespan = GUIData.lifespan;
         edgeStarData[i].timeToFade = GUIData.timeToFade;
-        edgeStarData[i].color = GUIData.edgeStarColor;
+        //edgeStarData[i].color = GUIData.edgeStarColor;
 
         // begin by instantiating stars at center of constellation gameobject
         GameObject s = Instantiate(Star, this.GetComponentInChildren<Renderer>().bounds.center, Quaternion.identity);

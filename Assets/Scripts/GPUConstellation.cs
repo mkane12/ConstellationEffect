@@ -116,6 +116,10 @@ public class GPUConstellation : MonoBehaviour
         computeShader.SetFloat(timeId, Time.time);
 
         instanceMaterial.SetFloat("_Size", GUIData.size);
+
+        Color starColor;
+        if (ColorUtility.TryParseHtmlString(GUIData.color, out starColor))
+            instanceMaterial.SetColor("_Color", starColor);
     }
 
     // invoked when component is disabled (if constellation destroyed and right before hot reload)

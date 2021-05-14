@@ -5,9 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - sky: {instanceID: 0}
-  - star: {fileID: 3643344051909436655, guid: e9faa4f65b880954d9d934dd282941c8, type: 3}
-  - edgeStar: {fileID: 114329486572535800, guid: f345441d066f0bb45bf4b958019ae589,
-      type: 3}
+  - con: {fileID: 3625727276152607711, guid: 6f0aa8e96e419c54fa101c72d2dbe22e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -17,7 +17,6 @@
     "meshAlpha": 1.0,
     "quality": 0.5,
     "percentEdge": 0.8999999761581421,
-    "vertexStarColor": "#AAFFFFFF",
-    "edgeStarColor": "#AAFFFFFF",
+    "color": "#AAFF00FF",
     "vertexStarMinDistance": 0.10000000149011612
 }

@@ -360,22 +360,17 @@ MonoBehaviour:
   windowIsDragable: 0
   placeholder: 0
   sky: {fileID: 446230662}
-  star: {fileID: 3643344051909436655, guid: e9faa4f65b880954d9d934dd282941c8, type: 3}
+  con: {fileID: 3625727276152607711, guid: 6f0aa8e96e419c54fa101c72d2dbe22e, type: 3}
   sliderNumVertexStars: 0
   sliderNumEdgeStars: 0
-  sliderStarVelocityMin: 0
-  sliderStarVelocityMax: 0
-  sliderStarSizeMin: 0
-  sliderStarSizeMax: 0
-  sliderEdgeStarSizeMin: 0
-  sliderEdgeStarSizeMax: 0
+  sliderTimeToMove: 0
+  sliderStarSize: 0
   sliderVertexTwinkleSpeed: 0
   sliderEdgeTwinkleSpeed: 0
   sliderLifespan: 0
   sliderTimeToFade: 0
   sliderVertexStarMinDistance: 0
   starColor: {r: 0.5882353, g: 0.9818339, b: 1, a: 0}
-  edgeStarColor: {r: 0, g: 0, b: 0, a: 0}
   constellationToggles: 000000
   sliderConstellationCount: 0
   sliderMeshAlpha: 0
