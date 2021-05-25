@@ -7,6 +7,9 @@ struct InstanceData // data for an instance of a single star
 {
     float3 startPosition; // starting position of stars (touch point)
     float3 position; // position of star on mesh
+    // offsets for texture
+    float2 currOffset;
+    float2 nextOffset;
 };
 
 RWStructuredBuffer<InstanceData> _InstanceDataBuffer;
@@ -19,11 +22,15 @@ RWStructuredBuffer<InstanceData> _InstanceDataBuffer;
 
 // Stuctured Buffer =  array of data consisting of a single data type (e.g. all int, or all float)
 RWStructuredBuffer<float3> _Vertices;
-float _Time, _TransitionProgress; 
+float _Time, _DeltaTime, _TransitionProgress, _TwinkleProgress, _TwinkleSpeed, blend; 
 
 float3 constellationPosition;
 float3 constellationScale;
 float4 constellationRotation;
+
+int currIndex, nextIndex, _Columns;
+
+float2 currOffset, nextOffset, _TileSize;
 
 // Quaternion multiplication
 // http://mathworld.wolfram.com/Quaternion.html
@@ -54,11 +61,72 @@ void SetPosition(uint3 id)
     float3 endPosition = _Vertices[starNum] * constellationScale;
     endPosition = rotate_vector(endPosition, constellationRotation);
     endPosition = endPosition + constellationPosition;
-    _InstanceDataBuffer[starNum].position = lerp(startPosition, endPosition, _TransitionProgress);
+    _InstanceDataBuffer[starNum].position = 
+        lerp(startPosition, endPosition, _TransitionProgress);
 }
 
 // TODO: Compute Shader will just run calculation to iterate over texture, but does not know about the texture itself
 // The renderer is responsible for reading in the texture and rendering it
+void Twinkle(uint3 id)
+{
+    int starNum = id.x;
+    
+    // TODO: let's just start by changing frames every 1 sec
+    
+    currIndex += _DeltaTime;
+    
+    // one second has passed
+    if ((int) currIndex - 1 >= (int) nextIndex)
+    {
+        nextIndex = currIndex;
+        
+        // calculate current offset (before texture iterates)
+        int uIndexCurr = (int) currIndex % _Columns;
+        int vIndexCurr = (int) currIndex / _Columns;
+        
+        currOffset.x = uIndexCurr * _TileSize.x;
+        currOffset.y = 1.0f - _TileSize.y - vIndexCurr * _TileSize.y; 
+    }
+    
+    _InstanceDataBuffer[starNum].currOffset = currOffset;
+    
+    // calculate index for texture iteration
+    // add random time offset, so stars twinkle at varying rates
+    // Time.time = the time in seconds since the start of the game
+    /*currIndex += _DeltaTime * _TwinkleSpeed; // * delay;
+
+    // Time.deltaTime = The completion time in seconds since the last frame
+    blend += _DeltaTime * _TwinkleSpeed; // * delay;
+
+    // if we've moved on to next frame
+    if ((int) currIndex >= (int) nextIndex)
+    {
+        nextIndex = currIndex + 1.0f;
+        blend = 0;
+
+        // calculate current offset (before texture iterates)
+        int uIndexCurr = (int) currIndex % _Columns;
+        int vIndexCurr = (int) currIndex / _Columns;
+
+        currOffset.x = uIndexCurr * _TileSize.x;
+        currOffset.y = 1.0f - _TileSize.y - vIndexCurr * _TileSize.y;
+
+        _InstanceDataBuffer[starNum].currOffset = currOffset;
+
+        // split into horizontal and vertical indices
+        int uIndexNext = (int) nextIndex % _Columns;
+        int vIndexNext = (int) nextIndex / _Columns;
+
+        // build offset
+        nextOffset.x = uIndexNext * _TileSize.x;
+        nextOffset.y = 1.0f - _TileSize.y - vIndexNext * _TileSize.y;
+
+        _InstanceDataBuffer[starNum].nextOffset = nextOffset;
+    }
+
+    //renderer.material.SetFloat(blendID, blend);*/
+}
+
 
 // This line specifies the dimensions of the thread groups being spawned by our compute shader. 
 // GPUs take advantage of the massive parallel processing powers of the GPU by creating threads that run simultaneously. 
@@ -70,4 +138,10 @@ void SetPosition(uint3 id)
 void Init(uint3 id : SV_DispatchThreadID)
 {
     SetPosition(id);
+    
+    currIndex = _Time;
+    nextIndex = currIndex;
+    blend = 0;
+    
+    Twinkle(id);
 }

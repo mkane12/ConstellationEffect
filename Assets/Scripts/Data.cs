@@ -14,8 +14,7 @@ public class Data : MonoBehaviour {
 
     public float size = 0.5f; // size of a star
 
-    public int twinkleSpeedVertex = 8; // twinkle speed of vertex stars
-    public int twinkleSpeedEdge = 3; // twinkle speed of edge stars
+    public int twinkleSpeed = 8; // twinkle speed of stars
 
     public float lifespan = 5.0f; // number of seconds star lasts
     public float timeToMove = 1.0f; // time for star to mvoe

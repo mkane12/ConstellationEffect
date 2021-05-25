@@ -12,7 +12,7 @@ using UnityEngine;
 // > BUT there can't be one per instance of object - static class applies to all instances, so not helpful here
 public class TextureHelper
 {
-    static public Data data = ConstellationGUI.data;
+    static public Data GUIData = ConstellationGUI.data;
 
     // Rather than have separate tex____ for texture variables, create new class TextureHelper
     // > Adds uniformity to code; can add helper functions to class
@@ -21,7 +21,7 @@ public class TextureHelper
     // Reference: https://www.youtube.com/watch?v=cMiY6svKt-s
     public int columns = 4;
     public int rows = 2;
-    public int twinkleSpeed;
+    public int twinkleSpeed = GUIData.twinkleSpeed;
     private float currIndex;
     private float nextIndex;
 
@@ -29,7 +29,7 @@ public class TextureHelper
 
     // don't necessarily know what columns or rows will be, but this will always return tileSize even if values changed
     // > especially good for relationships between variables
-    private Vector2 tileSize {
+    public Vector2 tileSize {
         get
         {
             return new Vector2(1.0f / columns, 1.0f / rows);
@@ -39,29 +39,27 @@ public class TextureHelper
     private Vector2 currOffset;
     private float delay;
 
-    private Renderer renderer;
     // get cache id for shader properties - slightly more efficient than searching every time
     private int currTexID = Shader.PropertyToID("_CurrTex");
     private int nextTexID = Shader.PropertyToID("_NextTex");
     private int blendID = Shader.PropertyToID("_Blend");
 
     // this method is mostly to set valeus that will not change for a given star over its lifetime
-    public void NewStarTex(Renderer r, float d)
+    public void NewStarTex(Material m, float d)
     {
-        renderer = r;
-        renderer.material.SetTextureScale(currTexID, tileSize);
-        renderer.material.SetTextureScale(nextTexID, tileSize);
+        m.SetTextureScale(currTexID, tileSize);
+        m.SetTextureScale(nextTexID, tileSize);
 
         nextOffset = new Vector2(tileSize.x, tileSize.y);
 
         // start index with random offset so twinkling is scattered
-        delay = d;
+        /*delay = d;
 
         currIndex = (int)(Time.time);
-        nextIndex = currIndex;
+        nextIndex = currIndex;*/
     }
 
-    public void Twinkle(float twinkleSpeed)
+    /*public void Twinkle(Material m)
     {
         // calculate index for texture iteration
         // add random time offset, so stars twinkle at varying rates
@@ -84,7 +82,7 @@ public class TextureHelper
             currOffset.x = uIndexCurr * tileSize.x;
             currOffset.y = 1.0f - tileSize.y - vIndexCurr * tileSize.y;
 
-            renderer.material.SetTextureOffset(currTexID, currOffset);
+            m.SetTextureOffset(currTexID, currOffset);
 
             // split into horizontal and vertical indices
             var uIndexNext = (int)nextIndex % columns;
@@ -94,10 +92,10 @@ public class TextureHelper
             nextOffset.x = uIndexNext * tileSize.x;
             nextOffset.y = 1.0f - tileSize.y - vIndexNext * tileSize.y;
 
-            renderer.material.SetTextureOffset(nextTexID, nextOffset);
+            m.SetTextureOffset(nextTexID, nextOffset);
         }
 
-        renderer.material.SetFloat(blendID, blend);
-    }
+        m.SetFloat(blendID, blend);
+    }*/
 
 }

@@ -1,22 +1,20 @@
 {
     "numVertexStars": 100,
     "numEdgeStars": 50,
-    "size": 0.20000000298023225,
-    "twinkleSpeedVertex": 8,
-    "twinkleSpeedEdge": 3,
+    "size": 1.5045830011367798,
+    "twinkleSpeed": 8,
     "lifespan": 2.0,
     "timeToMove": 1.0,
     "timeToFade": 5.0,
     "constellationNames": [
         0,
         1,
-        2,
-        3
+        2
     ],
     "constellationCount": 1,
     "meshAlpha": 1.0,
     "quality": 0.5,
     "percentEdge": 0.8999999761581421,
-    "color": "#AAFF00FF",
+    "color": "#FFFFFFFF",
     "vertexStarMinDistance": 0.10000000149011612
 }

@@ -55,14 +55,14 @@ public class Star : StateMachine
 
         // helper method called for each star on instantiation
         tex = new TextureHelper();
-        tex.NewStarTex(renderer, delay);
+        tex.NewStarTex(renderer.material, delay);
     }
 
     // called once per frame in StateMachine's Update() function
     protected override void StateUpdateCallback()
     {
         // Twinkle should happen regardless of state
-        tex.Twinkle(starData.twinkleSpeed);
+        //tex.Twinkle(starData.twinkleSpeed);
 
         // call method depending on current state
         switch (GetStateID())

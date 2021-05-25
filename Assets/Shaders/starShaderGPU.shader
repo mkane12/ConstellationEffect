@@ -1,69 +1,128 @@
 ﻿Shader "Custom/starShaderGPU" {
 	
-	// TODO: right now this is just a rainbow, so will need to switch to twinkling star sheet at some point
-
 	Properties {
-		_Smoothness ("Smoothness", Range(0,1)) = 0.5
+		_Color ("Color", Color) = (1,1,1,1)
+		_CurrTex("Albedo", 2D) = "white" {}
+		_NextTex("Albedo", 2D) = "white" {}
 		_Transparency ("Transparency", Range(0,1)) = 1.0
 	}
 	
 	SubShader{
+		Tags {"Queue"="Transparent" "RenderType"="Transparent"}
+		LOD 200
 
-	CGPROGRAM
+		// tells us not to render to Depth Buffer
+		// > drawing semi-transparent object, so switch to off
+		ZWrite Off
+		Lighting Off
+
+		// blend using alpha channel
+		Blend SrcAlpha OneMinusSrcAlpha
+
+
+		CGPROGRAM
 	
-	// compiler directive; instructs shader compiler to generate a surface shader with standard lighting and full support for shadows
-	#pragma surface ConfigureSurface Standard fullforwardshadows addshadow
+		// compiler directive; instructs shader compiler to generate a surface shader with standard lighting and full support for shadows
+		#pragma surface ConfigureSurface Standard fullforwardshadows addshadow
 
-	// indicate surface shader needs to invoke a ConfigureProcedural function per vertex
-	#pragma instancing_options assumeuniformscaling procedural:ConfigureProcedural
+		// indicate surface shader needs to invoke a ConfigureProcedural function per vertex
+		#pragma instancing_options assumeuniformscaling procedural:ConfigureProcedural
 
-	// turn off asynchronous shading so dummy shader isn't made when doing procedural drawing
-	#pragma editor_sync_compilation
+		// turn off asynchronous shading so dummy shader isn't made when doing procedural drawing
+		#pragma editor_sync_compilation
 
+		//#pragma vertex vert
+		//#pragma fragment frag
 
-	// minimum for shader's target level and quality
-	#pragma target 4.5
+		// minimum for shader's target level and quality
+		#pragma target 4.5
 
-	// define input structure for configuration function
-	struct Input {
-		float3 worldPos;
-	};
+		// define input structure for configuration function
+		struct Input {
+			float3 worldPos;
+			// TEXCOORD0 is the first texture coordinate channel
+			half2 texcoord : TEXCOORD0;
+		};
 
-	struct InstanceData {
-		float3 startPosition; // start position (touch position)
-		float3 position; // position of star on mesh
-	};
+		struct InstanceData {
+			float3 startPosition; // start position (touch position)
+			float3 position; // position of star on mesh
+			// offsets for texture
+			float2 currOffset;
+			float2 nextOffset;
+		};
 
-	float _Smoothness;
-	float _Transparency;
-	float _Size;
-	float3 _Color;
+		struct appdata {
+			// black magic universally understood by all operating systems
+			float4 vertex : POSITION;
+			float2 texcoord : TEXCOORD0;
+		};
 
-	#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
-		StructuredBuffer<float3> _Vertices;
-		StructuredBuffer<InstanceData> _InstanceDataBuffer;
-	#endif
+		struct v2f {
+			float4 vertex : SV_POSITION;
+			half2 texcoord : TEXCOORD0;
+		};
 
-	void ConfigureProcedural() 
-	{
+		sampler2D _CurrTex;
+		float4 _CurrTex_ST;
+		float2 _CurrOffset;
+		sampler2D _NextTex;
+		float4 _NextTex_ST;
+		float2 _NextOffset;
+		float _Blend;
+
+		v2f vert (appdata v) {
+			v2f o;
+			o.vertex = UnityObjectToClipPos(v.vertex);
+			o.texcoord = v.texcoord;
+			return o;
+		}
+
+		float _Smoothness;
+		float _Transparency;
+		float _Size;
+		float3 _Color;
+
 		#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
-			float3 position = _InstanceDataBuffer[unity_InstanceID].position;
-
-			unity_ObjectToWorld = 0.0;
-			unity_ObjectToWorld._m03_m13_m23_m33 = float4(position, 1.0); // this is star position
-			unity_ObjectToWorld._m00_m11_m22 = _Size; // this is star scale
+			StructuredBuffer<float3> _Vertices;
+			StructuredBuffer<InstanceData> _InstanceDataBuffer;
 		#endif
-	}
 
-	// define ConfigureSurface method - result indicated by inout
-	void ConfigureSurface (Input input, inout SurfaceOutputStandard surface) 
-	{
-		surface.Albedo = _Color;
-		surface.Alpha = _Transparency;
-		surface.Smoothness = _Smoothness;
-	}
+		void ConfigureProcedural() 
+		{
+			#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
+				float3 position = _InstanceDataBuffer[unity_InstanceID].position;
 
-	ENDCG
+				unity_ObjectToWorld = 0.0;
+				unity_ObjectToWorld._m03_m13_m23_m33 = float4(position, 1.0); // this is star position
+				unity_ObjectToWorld._m00_m11_m22 = _Size; // this is star scale
+
+				_CurrOffset = _InstanceDataBuffer[unity_InstanceID].currOffset;
+				//_NextOffset = _InstanceDataBuffer[unity_InstanceID].nextOffset;
+			#endif
+		}
+
+		// define ConfigureSurface method - result indicated by inout
+		void ConfigureSurface (Input input, inout SurfaceOutputStandard surface) 
+		{
+			// TRANSFORM_TEX scales and offsets texture coordinates; transforms 2D UV by scale/bias property
+			float2 uvCurr = input.texcoord.xy * _CurrTex_ST.xy + _CurrTex_ST.zw;// + _CurrTex;//TRANSFORM_TEX(i.texcoord, _CurrTex);
+			//float2 uvNext = input.texcoord + _NextOffset;// + _NextTex;//TRANSFORM_TEX(i.texcoord, _NextTex);
+
+			float3 currColor = tex2D(_CurrTex, uvCurr) * _Color;
+			//float3 nextColor = tex2D(_NextTex, uvNext) * _Color;
+			float3 input_color = currColor;//lerp(currColor, nextColor, _Blend);
+
+			// make transparent when texture is black (background)
+			//float pct = smoothstep(0, 1, (input_color.r + input_color.g + input_color.b)*2/3);
+			//float trans = lerp(0, _Transparency, pct);
+
+			surface.Albedo = input_color;
+			//surface.Alpha = trans;
+			//surface.Smoothness = _Smoothness;
+		}
+
+		ENDCG
 	
 	}
 

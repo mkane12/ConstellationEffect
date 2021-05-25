@@ -247,6 +247,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: b5352369334707b4fb426b102370a6ee, type: 2}
   instanceMaterial: {fileID: 0}
   starMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  columns: 4
+  rows: 2
 --- !u!1 &1090846442478680
 GameObject:
   m_ObjectHideFlags: 0

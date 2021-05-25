@@ -13,6 +13,8 @@ public class GPUConstellation : MonoBehaviour
     {
         public Vector3 startPosition;
         public Vector3 position;
+        public Vector2 currOffset;
+        public Vector2 nextOffset;
     };
 
     //public GameObject Star;
@@ -47,7 +49,15 @@ public class GPUConstellation : MonoBehaviour
     static readonly int
         verticesId = Shader.PropertyToID("_Vertices"),
         timeId = Shader.PropertyToID("_Time"),
+        deltaTimeId = Shader.PropertyToID("_DeltaTime"),
         transitionProgressId = Shader.PropertyToID("_TransitionProgress"),
+        twinkleProgressId = Shader.PropertyToID("_TwinkleProgress"),
+        twinkleSpeedId = Shader.PropertyToID("_TwinkleSpeed"),
+        columnsId = Shader.PropertyToID("_Columns"),
+        currTexId = Shader.PropertyToID("_CurrTex"),
+        nextTexId = Shader.PropertyToID("_NextTex"),
+        tileSizeId = Shader.PropertyToID("_TileSize"),
+        blendId = Shader.PropertyToID("_Blend"),
         instanceDataId = Shader.PropertyToID("_InstanceDataBuffer");
 
     // get kernel ids for compute shader
@@ -78,6 +88,23 @@ public class GPUConstellation : MonoBehaviour
     Mesh starMesh;
 
     protected InstanceData[] instanceDataArray; // this is the array of InstanceData that will be passed to the shader
+
+    // VALUES FOR TWINKLING TEXTURE MAP //
+    public int columns = 4;
+    public int rows = 2;
+    private float currIndex;
+    private float nextIndex;
+    private float blend = 0f;
+
+    // don't necessarily know what columns or rows will be, but this will always return tileSize even if values changed
+    // > especially good for relationships between variables
+    public Vector2 tileSize
+    {
+        get
+        {
+            return new Vector2(1.0f / columns, 1.0f / rows);
+        }
+    }
 
     private void OnEnable()
     {
@@ -114,12 +141,17 @@ public class GPUConstellation : MonoBehaviour
         instanceDataBuffer = new ComputeBuffer(mesh.vertices.Length, Marshal.SizeOf(typeof(InstanceData)));
 
         computeShader.SetFloat(timeId, Time.time);
+        computeShader.SetFloat(twinkleSpeedId, GUIData.twinkleSpeed);
+        computeShader.SetInt(columnsId, columns);
+        computeShader.SetVector(tileSizeId, tileSize);
 
         instanceMaterial.SetFloat("_Size", GUIData.size);
 
         Color starColor;
         if (ColorUtility.TryParseHtmlString(GUIData.color, out starColor))
             instanceMaterial.SetColor("_Color", starColor);
+
+        NewStarTex();
     }
 
     // invoked when component is disabled (if constellation destroyed and right before hot reload)
@@ -142,6 +174,12 @@ public class GPUConstellation : MonoBehaviour
             argsBuffer.Release();
         }
         argsBuffer = null;
+    }
+
+    private void NewStarTex()
+    {
+        instanceMaterial.SetTextureScale(currTexId, tileSize);
+        instanceMaterial.SetTextureScale(nextTexId, tileSize);
     }
 
     // spawn stars at start
@@ -273,6 +311,8 @@ public class GPUConstellation : MonoBehaviour
     {
         duration += Time.deltaTime;
 
+        computeShader.SetFloat(deltaTimeId, Time.deltaTime);
+
         //UpdatePosition();
         UpdatePositionOnGPU();
 
@@ -328,11 +368,15 @@ public class GPUConstellation : MonoBehaviour
             computeShader.SetVector("constellationScale", this.transform.localScale);
         }
 
-        computeShader.SetFloat(timeId, Time.time);
-
         // update the progress stars are making to end positions
         computeShader.SetFloat(transitionProgressId,
             Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(duration / GUIData.timeToMove))
+        );
+
+        computeShader.SetFloat(timeId, Time.time);
+
+        computeShader.SetFloat(twinkleProgressId,
+            Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(duration / GUIData.twinkleSpeed))
         );
 
         // index count per instance, instance count, start index location, base vertex location, start instance location
