@@ -1,0 +1,602 @@
+/target:library
+/nowarn:0169
+/out:Temp/Assembly-CSharp.dll
+/debug:portable
+/optimize-
+/nostdlib+
+/preferreduilang:en-US
+/langversion:latest
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.AIModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.ARModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.AccessibilityModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.AnimationModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.AssetBundleModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.AudioModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.BaselibModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.ClothModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.ClusterInputModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.CoreModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.CrashReportingModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.DirectorModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.FileSystemHttpModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.GameCenterModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.GridModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.HotReloadModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.IMGUIModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.ImageConversionModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.InputModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.LocalizationModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.PhysicsModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.Physics2DModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.ProfilerModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.StreamingModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.SubstanceModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.TLSModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.TerrainModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.TextCoreModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.TextRenderingModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.TilemapModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.TimelineModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UIModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UIElementsModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UNETModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UmbraModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityConnectModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityTestProtocolModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestAssetBundleModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.VFXModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.VRModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.VehiclesModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.VideoModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.WindModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEngine/UnityEngine.XRModule.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/UnityEditor.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\Managed/Unity.Locator.dll"
+/reference:Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll
+/reference:Library/ScriptAssemblies/Whinarn.UnityMeshSimplifier.Runtime.dll
+/reference:Library/ScriptAssemblies/nobnak.Gist.dll
+/reference:Library/ScriptAssemblies/Whinarn.UnityMeshSimplifier.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.TextMeshPro.dll
+/reference:Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll
+/reference:"C:/Program Files/Unity/Hub/Editor/2018.4.28f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
+/reference:"C:/Program Files/Unity/Hub/Editor/2018.4.28f1/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll"
+/reference:"C:/Program Files/Unity/Hub/Editor/2018.4.28f1/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
+/reference:"C:/Program Files/Unity/Hub/Editor/2018.4.28f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll"
+/reference:"C:/Program Files/Unity/Hub/Editor/2018.4.28f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll"
+/reference:Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/File/Json/Newtonsoft.Json.dll
+/reference:Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/Astrology/DLL/GeoTimeZone.dll
+/reference:Assets/Packages/TeamLabUnityFrameworkDevelop/Scripts/Time/Astrology/DLL/TimeZoneConverter.dll
+/reference:C:/Users/user1/Desktop/repo/ConstellationEffect/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Core.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Runtime.Serialization.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Xml.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Xml.Linq.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Numerics.Vectors.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Net.Http.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Microsoft.CSharp.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\System.Data.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\Microsoft.Win32.Primitives.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\netstandard.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.AppContext.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.Concurrent.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.NonGeneric.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Collections.Specialized.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.Annotations.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.EventBasedAsync.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.Primitives.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ComponentModel.TypeConverter.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Console.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Data.Common.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Contracts.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Debug.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.FileVersionInfo.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Process.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.StackTrace.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.TextWriterTraceListener.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.Tools.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Diagnostics.TraceSource.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Drawing.Primitives.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Dynamic.Runtime.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.Calendars.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Globalization.Extensions.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.Compression.ZipFile.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.DriveInfo.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.Primitives.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.FileSystem.Watcher.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.IsolatedStorage.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.MemoryMappedFiles.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.Pipes.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.IO.UnmanagedMemoryStream.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Expressions.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Parallel.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Linq.Queryable.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Http.Rtc.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.NameResolution.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.NetworkInformation.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Ping.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Primitives.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Requests.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Security.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.Sockets.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebHeaderCollection.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebSockets.Client.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Net.WebSockets.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ObjectModel.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.ILGeneration.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Emit.Lightweight.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Extensions.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Reflection.Primitives.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.Reader.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.ResourceManager.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Resources.Writer.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.CompilerServices.VisualC.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Extensions.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Handles.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.RuntimeInformation.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Numerics.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Formatters.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Json.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Primitives.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Runtime.Serialization.Xml.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Claims.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Algorithms.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Csp.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Encoding.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.Primitives.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Cryptography.X509Certificates.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.Principal.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Security.SecureString.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Duplex.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Http.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.NetTcp.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Primitives.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ServiceModel.Security.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.Encoding.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.Encoding.Extensions.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Text.RegularExpressions.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Overlapped.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Tasks.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Tasks.Parallel.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Thread.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.ThreadPool.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Threading.Timer.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.ValueTuple.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.ReaderWriter.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XDocument.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XmlDocument.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XmlSerializer.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\unityscript\UnityScript.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\unityscript\UnityScript.Lang.dll"
+/reference:"C:\Program Files\Unity\Hub\Editor\2018.4.28f1\Editor\Data\MonoBleedingEdge\lib\mono\unityscript\Boo.Lang.dll"
+/define:UNITY_5_3_OR_NEWER
+/define:UNITY_5_4_OR_NEWER
+/define:UNITY_5_5_OR_NEWER
+/define:UNITY_5_6_OR_NEWER
+/define:UNITY_2017_1_OR_NEWER
+/define:UNITY_2017_2_OR_NEWER
+/define:UNITY_2017_3_OR_NEWER
+/define:UNITY_2017_4_OR_NEWER
+/define:UNITY_2018_1_OR_NEWER
+/define:UNITY_2018_2_OR_NEWER
+/define:UNITY_2018_3_OR_NEWER
+/define:UNITY_2018_4_OR_NEWER
+/define:UNITY_2018_4_28
+/define:UNITY_2018_4
+/define:UNITY_2018
+/define:PLATFORM_ARCH_64
+/define:UNITY_64
+/define:UNITY_INCLUDE_TESTS
+/define:ENABLE_AUDIO
+/define:ENABLE_CACHING
+/define:ENABLE_CLOTH
+/define:ENABLE_DUCK_TYPING
+/define:ENABLE_MICROPHONE
+/define:ENABLE_MULTIPLE_DISPLAYS
+/define:ENABLE_PHYSICS
+/define:ENABLE_SPRITES
+/define:ENABLE_GRID
+/define:ENABLE_TILEMAP
+/define:ENABLE_TERRAIN
+/define:ENABLE_TEXTURE_STREAMING
+/define:ENABLE_DIRECTOR
+/define:ENABLE_UNET
+/define:ENABLE_LZMA
+/define:ENABLE_UNITYEVENTS
+/define:ENABLE_WEBCAM
+/define:ENABLE_WWW
+/define:ENABLE_CLOUD_SERVICES_COLLAB
+/define:ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS
+/define:ENABLE_CLOUD_SERVICES_ADS
+/define:ENABLE_CLOUD_HUB
+/define:ENABLE_CLOUD_PROJECT_ID
+/define:ENABLE_CLOUD_SERVICES_USE_WEBREQUEST
+/define:ENABLE_CLOUD_SERVICES_UNET
+/define:ENABLE_CLOUD_SERVICES_BUILD
+/define:ENABLE_CLOUD_LICENSE
+/define:ENABLE_EDITOR_HUB
+/define:ENABLE_EDITOR_HUB_LICENSE
+/define:ENABLE_WEBSOCKET_CLIENT
+/define:ENABLE_DIRECTOR_AUDIO
+/define:ENABLE_DIRECTOR_TEXTURE
+/define:ENABLE_TIMELINE
+/define:ENABLE_EDITOR_METRICS
+/define:ENABLE_EDITOR_METRICS_CACHING
+/define:ENABLE_MANAGED_JOBS
+/define:ENABLE_MANAGED_TRANSFORM_JOBS
+/define:ENABLE_MANAGED_ANIMATION_JOBS
+/define:INCLUDE_DYNAMIC_GI
+/define:INCLUDE_GI
+/define:ENABLE_MONO_BDWGC
+/define:PLATFORM_SUPPORTS_MONO
+/define:RENDER_SOFTWARE_CURSOR
+/define:INCLUDE_PUBNUB
+/define:ENABLE_VIDEO
+/define:ENABLE_CUSTOM_RENDER_TEXTURE
+/define:ENABLE_LOCALIZATION
+/define:PLATFORM_STANDALONE_WIN
+/define:PLATFORM_STANDALONE
+/define:UNITY_STANDALONE_WIN
+/define:UNITY_STANDALONE
+/define:ENABLE_SUBSTANCE
+/define:ENABLE_RUNTIME_GI
+/define:ENABLE_MOVIES
+/define:ENABLE_NETWORK
+/define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
+/define:ENABLE_UNITYWEBREQUEST
+/define:ENABLE_CLOUD_SERVICES
+/define:ENABLE_CLOUD_SERVICES_ANALYTICS
+/define:ENABLE_CLOUD_SERVICES_PURCHASING
+/define:ENABLE_CLOUD_SERVICES_CRASH_REPORTING
+/define:ENABLE_OUT_OF_PROCESS_CRASH_HANDLER
+/define:ENABLE_EVENT_QUEUE
+/define:ENABLE_CLUSTER_SYNC
+/define:ENABLE_CLUSTERINPUT
+/define:ENABLE_VR
+/define:ENABLE_AR
+/define:ENABLE_WEBSOCKET_HOST
+/define:ENABLE_MONO
+/define:NET_4_6
+/define:ENABLE_PROFILER
+/define:DEBUG
+/define:TRACE
+/define:UNITY_ASSERTIONS
+/define:UNITY_EDITOR
+/define:UNITY_EDITOR_64
+/define:UNITY_EDITOR_WIN
+/define:ENABLE_UNITY_COLLECTIONS_CHECKS
+/define:ENABLE_BURST_AOT
+/define:UNITY_TEAM_LICENSE
+/define:ENABLE_VSTU
+/define:CSHARP_7_OR_LATER
+/define:CSHARP_7_3_OR_NEWER
+Assets\Packages\Osc\MessageEncoder.cs
+Assets\Packages\Osc\Osc.cs
+Assets\Packages\Osc\OscPort.cs
+Assets\Packages\Osc\OscPort\OscPortSocket.cs
+Assets\Packages\Osc\OscPort\OscPortUdpBegin.cs
+Assets\Packages\Osc\OscPort\OscPortUdpSync.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Scripts\CustomImageEffectBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Packages\UVCheckerImageEffect\Assets\UVCheckerImageEffect\Scripts\UVChecker.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Animation\AnimatorSetAvatarFromChild.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Animation\StateMachineBehaviors\RandomAnimSelect.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Animation\StateMachineBehaviors\RandomPlaybackSpeed.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ApplicationSettings\ExhibitSettings.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ApplicationSettings\QuitApplicationHelper.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ApplicationSettings\WindowController.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ApplicationSettings\WindowLayout.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ApplicationSettings\WindowSetting.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\AttributesGeneral\UnityEditor_Property_ReadOnly.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\CommandLine\CommandLineBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ContainersGeneric\ListExtention.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ContainersGeneric\WeightedGenericArray.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\ContainersGeneric\WeightedGenericArraySpecilzation.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectBaseStateMachine.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectBaseStateMachineGlobalSettings.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectSettingsNetworkedBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectSpawnerData.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectTweenHelper.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\EffectTweenHelperNGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\PostEffectAdjsutmentBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\PostEffectSettings.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectDefinition\WaitForEndingEffectsToFinish.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\EffectBaseSystemStateMachine.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\EffectSettingsNTMgr.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\EffectSettingsNTMgrGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\LocalEffectManager.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\LocalEffectManagerSettings.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\LocalEffectUser.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\UniqueEffectAreaManager.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectManagers\UniqueEffectVoter.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectPrefabContainer\EffectPrefabsContiner.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\EffectPrefabContainer\EffectPrefabsPerSurfacePerMonth.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\_Utility\ColorFixed.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\_Utility\ColorPerMonth.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\_Utility\ColorSettingsBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\Effect_Spotlight.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\EffectSettingsGUIBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\SpotlightMaterialUpdate.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\SpotlightSettings.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\Effects\Spotlight\SpotlightSettingsGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\SurfaceType\SceneSurfaceType.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\EffectSystem\SurfaceType\UsableSurface.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\ConfigFileSimple.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\FileUtil.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonConverterVector.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonDataBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\Example\JsonSettingsFileUserBaseClassExample.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\Example\JsonSettingsFileUserDerivedClassExample.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\JsonSettingsFileSystem.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\JsonSettingsFileUserInterface.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\JsonSettingsFileUserMonoBehavior.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\Json\JsonSettingsFileSystem\JsonSettingsFileUserNetworkBehavior.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\PackageAndSceneSpecificPath.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\File\PackageAndSceneSpecificPathCmdLine.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\DestroyParentOnDestroy.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\DestroyWhenNoChildren.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\EnableChildrenOnStart.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\FlagPerPrefabType.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectArray.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectCountGrid.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectCountGridGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectCountGridOSC.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectFactory.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectFactory_Debug.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectFinder_Hierarchy.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectHierarchyByName.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\GameObjectUtil.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\LayerSingle.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\LayersUtil.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\ObjectPool.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\ObjectPoolManager.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\PrefabListByMonth.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\PrefabListByMonthPropertyDrawer.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\PrefabListByString.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\QuadFullScreenStretch.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GameObject\UndestroyableOnSceneLoad.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraAfterEffectAndCapture.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraExtentionConversions.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraOutputCapture.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraSetTargetTextureFromMainCam.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Camera\CameraUtility.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\ColorGradientGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\ColorGradientToTexture.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\ColorGradientToTextureUtil.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\ColorGradientToTextureUVMapping.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\UsageExample\ColorGradientGUIUsageExample.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorGradient\UsageExample\ColorGradientToTextureUsageExample.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ColorHSV.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\GPUMemoryLeakTest\GPUMemoryLeakTest.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\GPUMemoryLeakTest\RenderTextureMemoryLeakTest.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\GPUMemoryLeakTest\Texture2DArrayMemoryLeakTest.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\GPUMemoryLeakTest\Texture2DMemoryLeakTest.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeX\FadeEdgeX.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeEdgeY\FadeEdgeY.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeRects.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\ImageEffects\FadeRectsAllGUIs.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\CopyTextureToMaterials.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\DestroyMaterialOnDestroy.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\MaterialConstants.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetKeywordOnAwake.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetMaterialInAncestor.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetMaterialShaderVariablesOnAwake.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetTextureArrayOnAwakeByReference.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetTextureFromGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetTextureOnAwake.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\SetTextureOnAwakeByReference.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\ShadersToIncludeInReleaseBuild.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\ShaderUtil.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\ShaderVariableGeneric.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Material\StandardShaderUtility.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\OSCProjectionRect.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\PointRendererInVS.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\RenderResolutionBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\RenderResolutionGlobal.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Screenshot\Screenshot.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Screenshot\ScreenshotGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Screenshot\ScreenshotInLayers.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\TemperatureDependentColor.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\ColorTextures.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\DepthBitsEnum.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\FractalGenerator\FractalShaderVariables.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\Texture2DCPU\Texture2DCPU.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\Texture2DCPU\Texture2DCPUAutoSize.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\Texture2DCPU\Texture2DCPUExtentionNobnak.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\ComputeBufferAutoSize.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\RenderTextureAutoSize.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\RenderTextureFixedSize.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\Texture2DAutoSize.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureAutoSize\Texture2DFixedSize.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\Texture\TextureRendererSingleton.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Graphics\TriangleCPURenderContourX.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\ChildMenuList.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUILayoutExt.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIShowTextLabelForXSeconds.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\AbstractVector.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorField.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorFieldRGB.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorScope.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\ColorString.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\DictionaryGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\DropdownList.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\DropdownListHelper.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Field.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Fold.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Folds.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Indent.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\IntButton.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\SelectionGridForEnum.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\GUIUtil\Slider.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\MenuBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\MenuOrShortcutAccessType.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\MenuState.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\GUIGroupFloat.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\GUIGroupVector4.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\GUIGroupVector4Material.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\VariableGroup.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\GUI\VariablesPerGroup\VariableGroupMgr.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Input\MouseDragSS.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Input\MouseUtility.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\BoundsEx.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\DoubleUtility.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\FloatUtility.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\MathTemplateUtility.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\PrimeNumberUtilityForResize.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\Range.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\RangeInt.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\TriangleUtility.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Math\Vector3Utility.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\CallbackOnChange.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\DebugModeBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\EnableOptions.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\GarbageCollectOnStart.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\IncludeMeToo.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\LogMsgEveryXSec.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\OnAwakeDoSomething.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\StringExt.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Misc\UpdateEveryXFramesStaticMgr.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\MultiThreading\UnityMainThreadSingleton.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCMsgAppControl.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCMsgAppControlBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCMsgAppControlPropertyDrawer.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCRecieverAppControl.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCSenderAppControl.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCAppControl\OSCSenderAppControlTest.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgArtworkArea.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgMonth.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgSoundBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgSoundBGMBorderless.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCMsgSoundFXBorderless.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCPointRender.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCSenderMonth.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCSendRecieve.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCTouchAndProximity\OSCMsgTouchBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCTouchAndProximity\OSCMsgTouchBaseDistance.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCTouchAndProximity\OSCReceiverTouch.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCTouchAndProximity\OSCReceiverTouchDebugInput.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\OSC\OSCTouchAndProximity\OSCTouchDebugMode.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\AssetIDSearch.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\ClientSceneUtil.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\ComputerName\ComputerNameBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\ComputerName\ComputerNameSample.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\Listener.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\MsgGeneric.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\MsgTypeCustom.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkAddress.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkClientIsReady.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkConnectionIDAndClientMap.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkManagerCallbackExample.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkManagerCallbackInterface.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkManagerScenesByCmdLine.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkManagerSetOnlineSceneDelay.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkTimeoutHelper.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\NetworkUtil.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\PrintAllNetworkIdentity.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\SyncBool.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Networking\UNET\SyncIntCorS.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Physics\PhysicsUtility.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Physics\Temperature.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneAttribute.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneLoadFromCommandLine\SceneLoadFromCommandLine.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Scene\SceneManagerUtil.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Search\Bisection.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Singleton.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\SingletonMonoBehaviour.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\StateMachine.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\TimeStateMachineDefinition.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\StateMachine\TimeStateMachineInstance.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrame.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrameInput.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrameInputDefaultOrCustom.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrameInputWindows.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimeKeyFrameInputWindowsDTS.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimes.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\SunTimesTest.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\Astrology\TimeOfDayKeyFrame.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\CountdownTimerSimple.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\CountupStopwatchSimple.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\DateTimeSimulation.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\DateTimeSimulationSync.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\FPSCounterAndGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\GeoInfoWindows.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\MonthSelection.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\StartAndLength.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Time\TimeStringUtility.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\FaceCameraApproximatly.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\MovementAnalysis.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\MovementAnalysisManual.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\PositionOffsetOnAwake.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\RotateLocalYRandom.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\RotateLocalYRandomForChild.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\Transform\SetScaleOnAwakeByReference.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\ClientAndNodeMap.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\ConversionUtil.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\MapperTestGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_FileIO.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_FileIOForExtraComponents.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_GUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_Mapper.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_Static.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_Tree.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\Node_Visualize.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\NodeExtra_DebugTextureCustom.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\NodeExtra_ProjectorData.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\NodeExtraComponentBase.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\NodeToClientMap.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\NodeToIPEndPointMap.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\CustomLoadDirectory.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\CustomNodeExample\CustomNodeExample.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\CustomNodeExample\CustomSystemGUIExample.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\NodeExtra_ExampleComponent.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\sample\UVMapExample_CPU.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SelectNodeByName.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SelectNodeByNameBehavior.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SystemGUI.cs
+Assets\Packages\TeamLabUnityFrameworkDevelop\Scripts\UVandRealWorldMapperNT\SystemInstaller.cs
+Assets\Scripts\Constellation.cs
+Assets\Scripts\ConstellationGUI.cs
+Assets\Scripts\Data.cs
+Assets\Scripts\EdgeStar.cs
+Assets\Scripts\GPUConstellation.cs
+Assets\Scripts\MeshHelper.cs
+Assets\Scripts\Sky.cs
+Assets\Scripts\star.cs
+Assets\Scripts\StarData.cs
+Assets\Scripts\StarManager.cs
+Assets\Scripts\TextureHelper.cs

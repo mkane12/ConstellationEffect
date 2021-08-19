@@ -352,7 +352,7 @@
     <Compile Include="Assets\Scripts\GPUConstellation.cs" />
     <Compile Include="Assets\Scripts\MeshHelper.cs" />
     <Compile Include="Assets\Scripts\Sky.cs" />
-    <Compile Include="Assets\Scripts\Star.cs" />
+    <Compile Include="Assets\Scripts\star.cs" />
     <Compile Include="Assets\Scripts\StarData.cs" />
     <Compile Include="Assets\Scripts\StarManager.cs" />
     <Compile Include="Assets\Scripts\TextureHelper.cs" />
