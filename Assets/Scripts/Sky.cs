@@ -192,66 +192,6 @@ public class Sky : MonoBehaviour {
                 var path = "Assets/Meshes/" + data.quality.ToString("F1") + "/" + constellation.name + ".asset";
                 con.GetComponentInChildren<MeshFilter>().sharedMesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
 
-                // generates stars on mesh edge
-                /*meshEdgePositions = edge.GetRandomPointsOnConstellationEdge(c, data.numEdgeStars);
-
-                for (int i = 0; i < meshEdgePositions.Count; i++)
-                {
-                    GameObject s = Instantiate(EdgeStar, hit.point, Quaternion.identity);
-                    s.transform.parent = c.transform;
-                    EdgeStar edgeStar = s.GetComponent<EdgeStar>();
-                    Vector3 edgePos = meshEdgePositions[i];
-
-                    edgeStar.targetPos = edgePos;
-                }
-
-                meshVertexPositions = edge.GetRandomPointsOnConstellationVertices(c, data.numStars, data.vertexStarMinDistance);
-
-                // generate stars on mesh vertices
-                for (int i = 0; i < meshVertexPositions.Count; i++)
-                {
-                    GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
-                    s.transform.parent = c.transform;
-                    Star star = s.GetComponent<Star>();
-
-                    Vector3 vertexPos = meshVertexPositions[i];
-
-                    star.targetPos = vertexPos;
-                }/*
-
-                // This block makes total number of stars on any location given mode
-                /*for (int i = 0; i < data.numStars; i++)
-                {
-                    GameObject s = Instantiate(Star, hit.point, Quaternion.identity);
-                    Star star = s.GetComponent<Star>();
-
-                    switch (data.mode) 
-                    {
-                        case ConstellationMode.Mesh:
-                            {
-                                meshPos = edge.GetRandomPointOnConstellationMesh(c);
-                                break;
-                            }
-                        case ConstellationMode.Edge:
-                            {
-                                meshPos = edge.GetRandomPointOnConstellationEdge(c);
-                                break;
-                            }
-                        case ConstellationMode.Vertex:
-                            {
-                                meshPos = edge.GetRandomPointOnConstellationVertex(c);
-                                break;
-                            }
-                        default: // because might as well?
-                            {
-                                Debug.Log("We're in Default I guess.");
-                                break;
-                            }
-                    }
-
-                    star.targetPos = meshPos;
-                }*/
-
                 // Destroy constellation game object 1 second after stars fade
                 Destroy(c, data.lifespan + data.timeToFade + 1.0f);
             }

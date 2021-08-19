@@ -1,5 +1,4 @@
-﻿// Adapted from Flowers and Animals
-#pragma kernel Init
+﻿#pragma kernel Init
 
 #define BLOCK_SIZE 16
 
@@ -7,6 +6,9 @@ struct InstanceData // data for an instance of a single star
 {
     float3 startPosition; // starting position of stars (touch point)
     float3 position; // position of star on mesh
+    float alpha; // star's transparency
+    float lifespan; // star's lifespan
+    float timeToFade; // time over which star fades
 };
 
 RWStructuredBuffer<InstanceData> _InstanceDataBuffer;
@@ -19,11 +21,14 @@ RWStructuredBuffer<InstanceData> _InstanceDataBuffer;
 
 // Stuctured Buffer =  array of data consisting of a single data type (e.g. all int, or all float)
 RWStructuredBuffer<float3> _Vertices;
-float _Time, _TransitionProgress; 
+float _Time, _TransitionProgress,
+    _Lifespan, _TimeToFade, _Duration; 
 
 float3 constellationPosition;
 float3 constellationScale;
 float4 constellationRotation;
+
+float _Alpha; // star alpha
 
 // Quaternion multiplication
 // http://mathworld.wolfram.com/Quaternion.html
@@ -57,6 +62,20 @@ void SetPosition(uint3 id)
     _InstanceDataBuffer[starNum].position = lerp(startPosition, endPosition, _TransitionProgress);
 }
 
+// checks if fade is needed, then fades (called every Update)
+void Fade(uint3 id)
+{
+    int starNum = id.x;
+    
+    // if it's time to fade, fade over time
+    if (_Duration >= _Lifespan)
+    {
+        _Alpha = lerp(1., 0., clamp((_Duration - _Lifespan) / _TimeToFade, 0., 1.));
+    }
+    
+    _InstanceDataBuffer[starNum].alpha = _Alpha;
+}
+
 // TODO: Compute Shader will just run calculation to iterate over texture, but does not know about the texture itself
 // The renderer is responsible for reading in the texture and rendering it
 
@@ -70,4 +89,5 @@ void SetPosition(uint3 id)
 void Init(uint3 id : SV_DispatchThreadID)
 {
     SetPosition(id);
+    Fade(id);
 }

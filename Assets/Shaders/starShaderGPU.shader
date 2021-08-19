@@ -32,6 +32,9 @@
 	struct InstanceData {
 		float3 startPosition; // start position (touch position)
 		float3 position; // position of star on mesh
+		float alpha; // star transparency
+		float lifespan; // star's lifespan
+		float timeToFade; // time over which star fades
 	};
 
 	float _Smoothness;
@@ -58,8 +61,12 @@
 	// define ConfigureSurface method - result indicated by inout
 	void ConfigureSurface (Input input, inout SurfaceOutputStandard surface) 
 	{
-		surface.Albedo = _Color;
-		surface.Alpha = _Transparency;
+		#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
+			float alpha = _InstanceDataBuffer[unity_InstanceID].alpha;
+			_Transparency = alpha;
+		#endif
+	
+		surface.Albedo = (_Color, _Transparency);
 		surface.Smoothness = _Smoothness;
 	}
 
