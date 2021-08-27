@@ -1,10 +1,11 @@
 ﻿Shader "Custom/starShaderGPU" {
 	
-	// TODO: right now this is just a rainbow, so will need to switch to twinkling star sheet at some point
-
 	Properties {
-		_Smoothness ("Smoothness", Range(0,1)) = 0.5
+		_Color ("Color", Color) = (1,1,1,1)
 		_Transparency ("Transparency", Range(0,1)) = 1.0
+		/*_CurrTex ("Current Tex", 2D) = "white" {}
+		_NextTex ("Next Tex", 2D) = "white" {}*/
+		_MainTex ("Texture", 2D) = "white" {}
 	}
 	
 	SubShader{
@@ -13,6 +14,10 @@
 	
 	// compiler directive; instructs shader compiler to generate a surface shader with standard lighting and full support for shadows
 	#pragma surface ConfigureSurface Standard fullforwardshadows addshadow
+
+	// vertex and fragment shaders to render twinkling
+	/*#pragma vertex vert
+	#pragma fragment frag*/
 
 	// indicate surface shader needs to invoke a ConfigureProcedural function per vertex
 	#pragma instancing_options assumeuniformscaling procedural:ConfigureProcedural
@@ -27,6 +32,7 @@
 	// define input structure for configuration function
 	struct Input {
 		float3 worldPos;
+		float2 uv_MainTex;
 	};
 
 	struct InstanceData {
@@ -37,10 +43,51 @@
 		float timeToFade; // time over which star fades
 	};
 
+	struct appdata {
+		// black magic universally understood by all operating systems
+		float4 vertex : POSITION;
+		float2 texcoord : TEXCOORD0;
+	};
+
+	struct v2f {
+		float4 vertex : SV_POSITION;
+		half2 texcoord : TEXCOORD0;
+	};
+
 	float _Smoothness;
 	float _Transparency;
 	float _Size;
 	float3 _Color;
+
+	sampler2D _MainTex;
+
+	/*sampler2D _CurrTex;
+	float4 _CurrTex_ST;
+	sampler2D _NextTex;
+	float4 _NextTex_ST;
+	float _Blend;*/
+
+	/*v2f vert (appdata v) {
+		v2f o;
+		o.vertex = UnityObjectToClipPos(v.vertex);
+		o.texcoord = v.texcoord;
+		return o;
+	}
+
+	fixed4 frag (v2f i) : SV_Target { // called once for each pixel
+		// TRANSFORM_TEX scales and offsets texture coordinates; transforms 2D UV by scale/bias property
+		float2 uvCurr = TRANSFORM_TEX(i.texcoord, _CurrTex);
+		float2 uvNext = TRANSFORM_TEX(i.texcoord, _NextTex);
+
+		float3 currColor = tex2D(_CurrTex, uvCurr) * _Color;
+		float3 nextColor = tex2D(_NextTex, uvNext) * _Color;
+		float3 input_color = lerp(currColor, nextColor, _Blend);
+
+		// make transparent when texture is black (background)
+		float pct = smoothstep(0, 1, (input_color.r + input_color.g + input_color.b)*2/3);
+		float trans = lerp(0, _Transparency, pct);
+		return float4(input_color, max(trans, 0));
+	}*/
 
 	#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
 		StructuredBuffer<float3> _Vertices;
@@ -66,8 +113,8 @@
 			_Transparency = alpha;
 		#endif
 	
-		surface.Albedo = (_Color, _Transparency);
-		surface.Smoothness = _Smoothness;
+		// TODO: add color in later
+		surface.Albedo = tex2D (_MainTex, input.uv_MainTex).rgb;// + (_Color, _Transparency);
 	}
 
 	ENDCG

@@ -30,6 +30,10 @@ float4 constellationRotation;
 
 float _Alpha; // star alpha
 
+int _CurrTex, _NextTex, _Blend;
+RWTexture2D<float4> _Result;
+Texture2D<float4> _ImageInput;
+
 // Quaternion multiplication
 // http://mathworld.wolfram.com/Quaternion.html
 float4 qmul(float4 q1, float4 q2)
@@ -62,6 +66,14 @@ void SetPosition(uint3 id)
     _InstanceDataBuffer[starNum].position = lerp(startPosition, endPosition, _TransitionProgress);
 }
 
+// causes stars to twinkle (cycle through texture map)
+void Twinkle(uint3 id)
+{
+    int starNum = id.x;
+    
+    //_Result[id.xy] = float4(_ImageInput[0].x, _ImageInput[0].y, _ImageInput[0].z, 1.0);
+}
+
 // checks if fade is needed, then fades (called every Update)
 void Fade(uint3 id)
 {
@@ -89,5 +101,6 @@ void Fade(uint3 id)
 void Init(uint3 id : SV_DispatchThreadID)
 {
     SetPosition(id);
+    Twinkle(id);
     Fade(id);
 }

@@ -356,6 +356,7 @@
     <Compile Include="Assets\Scripts\StarData.cs" />
     <Compile Include="Assets\Scripts\StarManager.cs" />
     <Compile Include="Assets\Scripts\TextureHelper.cs" />
+    <Compile Include="Assets\Scripts\TextureHelperGPU.cs" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\SolidColorNoAlphaBlend.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\TextureViewWithUVMappingOtherNode.shader" />
     <None Include="Assets\Packages\TeamLabUnityFrameworkDevelop\Shaders\LineToCircle.shader" />

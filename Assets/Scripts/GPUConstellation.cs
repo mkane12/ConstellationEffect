@@ -29,20 +29,6 @@ public class GPUConstellation : MonoBehaviour
     // this will measure the amount of time the constellation has been in existence
     float duration;
 
-    //private List<Vector3> meshEdgePositions;
-    //private List<Vector3> meshVertexPositions;
-
-    //private StarData[] vertexStarData;
-    //private StarData[] edgeStarData;
-
-    //private List<Vector3> vertexStarPositions;
-
-    //public int numVertexStars; // this is the original number of vertex stars
-    // the number of vertex stars changes after vertex positions are calculated, so this just stores that value
-
-    //public int numVertexStarsNew; 
-    //public int numEdgeStars;
-
     [SerializeField, Range(10, 1000)]
     public int numStars = 1000;
 
@@ -75,6 +61,9 @@ public class GPUConstellation : MonoBehaviour
 
     [SerializeField]
     ComputeShader computeShader;
+
+    [SerializeField]
+    Texture2D texture;
 
     [SerializeField]
     Material material;
@@ -209,15 +198,6 @@ public class GPUConstellation : MonoBehaviour
         computeShader.SetBuffer(_init_kernel_idx, instanceDataId, instanceDataBuffer);
 
         computeShader.SetFloat(durationId, duration);
-
-        // TEST: what is alpha?
-        /*if (duration >= GUIData.lifespan)
-        {
-            float alpha = Mathf.Lerp(1f, 0f,
-             Mathf.Clamp01((duration - GUIData.lifespan) / GUIData.timeToFade));
-
-            Debug.Log(alpha);
-        }*/
 
         // this actually CALLS the function
         computeShader.Dispatch(_init_kernel_idx, Mathf.CeilToInt(mesh.vertices.Length / 16f), 1, 1);
