@@ -1,7 +1,7 @@
 {
     "numVertexStars": 100,
     "numEdgeStars": 50,
-    "size": 0.20000000298023225,
+    "size": 1.434043049812317,
     "twinkleSpeedVertex": 8,
     "twinkleSpeedEdge": 3,
     "lifespan": 2.0,

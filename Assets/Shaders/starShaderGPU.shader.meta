@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: 99d89a3bce0dc2145a4e50ae38753658
-timeCreated: 1588309794
-licenseType: Free
 ShaderImporter:
   externalObjects: {}
-  defaultTextures: []
+  defaultTextures:
+  - _CurrTex: {fileID: 2800000, guid: 5e7fb4467b7d9ac41b8c421794ad8281, type: 3}
+  - _NextTex: {fileID: 2800000, guid: 5e7fb4467b7d9ac41b8c421794ad8281, type: 3}
+  nonModifiableTextures: []
   userData: 
   assetBundleName: 
   assetBundleVariant: 

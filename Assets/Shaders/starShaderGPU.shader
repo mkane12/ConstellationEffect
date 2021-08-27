@@ -3,8 +3,6 @@
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_Transparency ("Transparency", Range(0,1)) = 1.0
-		/*_CurrTex ("Current Tex", 2D) = "white" {}
-		_NextTex ("Next Tex", 2D) = "white" {}*/
 		_MainTex ("Texture", 2D) = "white" {}
 	}
 	
@@ -41,9 +39,10 @@
 		float alpha; // star transparency
 		float lifespan; // star's lifespan
 		float timeToFade; // time over which star fades
+		int twinkleIndex; // index on sprite sheet for twinkle animation
 	};
 
-	struct appdata {
+	/*struct appdata {
 		// black magic universally understood by all operating systems
 		float4 vertex : POSITION;
 		float2 texcoord : TEXCOORD0;
@@ -52,7 +51,7 @@
 	struct v2f {
 		float4 vertex : SV_POSITION;
 		half2 texcoord : TEXCOORD0;
-	};
+	};*/
 
 	float _Smoothness;
 	float _Transparency;
@@ -61,11 +60,6 @@
 
 	sampler2D _MainTex;
 
-	/*sampler2D _CurrTex;
-	float4 _CurrTex_ST;
-	sampler2D _NextTex;
-	float4 _NextTex_ST;
-	float _Blend;*/
 
 	/*v2f vert (appdata v) {
 		v2f o;
@@ -112,9 +106,8 @@
 			float alpha = _InstanceDataBuffer[unity_InstanceID].alpha;
 			_Transparency = alpha;
 		#endif
-	
-		// TODO: add color in later
-		surface.Albedo = tex2D (_MainTex, input.uv_MainTex).rgb;// + (_Color, _Transparency);
+
+		surface.Albedo = tex2D (_MainTex, input.uv_MainTex).rgb * (_Color, 1.0) + (0.0, 0.0, 0.0, _Transparency);
 	}
 
 	ENDCG

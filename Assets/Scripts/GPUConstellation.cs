@@ -16,6 +16,7 @@ public class GPUConstellation : MonoBehaviour
         public float alpha;
         public float lifespan;
         public float timeToFade;
+        public int twinkleIndex;
     };
 
     //public GameObject Star;
@@ -25,6 +26,8 @@ public class GPUConstellation : MonoBehaviour
     public GameObject constellationShape;
 
     private MeshHelper edge;
+
+    private TextureHelperGPU tex;
 
     // this will measure the amount of time the constellation has been in existence
     float duration;
@@ -80,6 +83,8 @@ public class GPUConstellation : MonoBehaviour
         // Get random position on mesh
         edge = new MeshHelper();
 
+        tex = new TextureHelperGPU();
+
         instanceMaterial = new Material(material);
 
         // Mesh "screenshots" for animated mesh
@@ -120,6 +125,9 @@ public class GPUConstellation : MonoBehaviour
         Color starColor;
         if (ColorUtility.TryParseHtmlString(GUIData.color, out starColor))
             instanceMaterial.SetColor("_Color", starColor);
+
+        // Placeholder 1f for twinkle delay value
+        tex.NewStarTex(instanceMaterial, 1f);
     }
 
     // invoked when component is disabled (if constellation destroyed and right before hot reload)

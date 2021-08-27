@@ -40,23 +40,25 @@ public class TextureHelperGPU
     private float delay;
 
     // get cache id for shader properties - slightly more efficient than searching every time
-    private int currTexID = Shader.PropertyToID("_CurrTex");
+    /*private int currTexID = Shader.PropertyToID("_CurrTex");
     private int nextTexID = Shader.PropertyToID("_NextTex");
-    private int blendID = Shader.PropertyToID("_Blend");
+    private int blendID = Shader.PropertyToID("_Blend");*/
+    private int mainTexID = Shader.PropertyToID("_MainTex");
 
     // this method is mostly to set valeus that will not change for a given star over its lifetime
     public void NewStarTex(Material mat, float d)
     {
-        mat.SetTextureScale(currTexID, tileSize);
-        mat.SetTextureScale(nextTexID, tileSize);
+        /*mat.SetTextureScale(currTexID, tileSize);
+        mat.SetTextureScale(nextTexID, tileSize);*/
+        mat.SetTextureScale(mainTexID, tileSize);
 
-        nextOffset = new Vector2(tileSize.x, tileSize.y);
+        /*nextOffset = new Vector2(tileSize.x, tileSize.y);
 
         // start index with random offset so twinkling is scattered
         delay = d;
 
         currIndex = (int)(Time.time);
-        nextIndex = currIndex;
+        nextIndex = currIndex;*/
     }
 
 

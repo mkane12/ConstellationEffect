@@ -9,6 +9,7 @@ struct InstanceData // data for an instance of a single star
     float alpha; // star's transparency
     float lifespan; // star's lifespan
     float timeToFade; // time over which star fades
+    int twinkleIndex; // index on sprite sheet for twinkle animation
 };
 
 RWStructuredBuffer<InstanceData> _InstanceDataBuffer;
@@ -30,9 +31,7 @@ float4 constellationRotation;
 
 float _Alpha; // star alpha
 
-int _CurrTex, _NextTex, _Blend;
-RWTexture2D<float4> _Result;
-Texture2D<float4> _ImageInput;
+int _TwinkleIndex; // index for sprite map in twinkle animation
 
 // Quaternion multiplication
 // http://mathworld.wolfram.com/Quaternion.html
@@ -71,7 +70,6 @@ void Twinkle(uint3 id)
 {
     int starNum = id.x;
     
-    //_Result[id.xy] = float4(_ImageInput[0].x, _ImageInput[0].y, _ImageInput[0].z, 1.0);
 }
 
 // checks if fade is needed, then fades (called every Update)
