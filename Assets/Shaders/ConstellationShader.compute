@@ -33,8 +33,9 @@ float4 constellationRotation;
 float _Alpha; // star alpha
 
 int _NumTiles; // number of tiles in star texture sheet
-uint _CurrIndex = 2; // index for sprite map in twinkle animation
+uint _CurrIndex = 0; // index for sprite map in twinkle animation
 float _TwinkleSpeed; // rate at which stars twinkle
+float t = 0.0; // placeholder for time when twinkling stars
 
 // Quaternion multiplication
 // http://mathworld.wolfram.com/Quaternion.html
@@ -73,14 +74,11 @@ void Twinkle(uint3 id)
 {
     int starNum = id.x;
     
-    // TODO: for now have twinkle happen every second
-    if (_Time >= 1.0f)
-    {
-        _CurrIndex += 1;
-        _Time -= 1.0f;
-    }
+    // TODO: for now, this should change _CurrIndex every second 
+    _CurrIndex = floor(_Time) % _NumTiles;
     
-    _InstanceDataBuffer[starNum].currIndex = _CurrIndex % _NumTiles;
+    // confirmed: this is the correct way to assign currIndex
+    _InstanceDataBuffer[starNum].currIndex = _CurrIndex;
 }
 
 // checks if fade is needed, then fades (called every Update)
