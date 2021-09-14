@@ -16,7 +16,8 @@ public class GPUConstellation : MonoBehaviour
         public float alpha;
         public float lifespan;
         public float timeToFade;
-        public int twinkleIndex;
+        public int currIndex;
+        public float twinkleSpeed;
     };
 
     //public GameObject Star;
@@ -44,6 +45,7 @@ public class GPUConstellation : MonoBehaviour
         timeToFadeId = Shader.PropertyToID("_TimeToFade"),
         durationId = Shader.PropertyToID("_Duration"),
         alphaId = Shader.PropertyToID("_Alpha"),
+        twinkleSpeedId = Shader.PropertyToID("_TwinkleSpeed"),
         instanceDataId = Shader.PropertyToID("_InstanceDataBuffer");
 
     // get kernel ids for compute shader
@@ -126,8 +128,10 @@ public class GPUConstellation : MonoBehaviour
         if (ColorUtility.TryParseHtmlString(GUIData.color, out starColor))
             instanceMaterial.SetColor("_Color", starColor);
 
+        computeShader.SetInt(twinkleSpeedId, GUIData.twinkleSpeed);
+
         // Placeholder 1f for twinkle delay value
-        tex.NewStarTex(instanceMaterial, 1f);
+        tex.NewStarTex(computeShader, instanceMaterial, 1f);
     }
 
     // invoked when component is disabled (if constellation destroyed and right before hot reload)

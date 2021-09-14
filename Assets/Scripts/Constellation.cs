@@ -94,7 +94,7 @@ public class Constellation : MonoBehaviour
         vertexStarData[i].idx = i;
         //vertexStarData[i].velocity = UnityEngine.Random.Range(GUIData.minVelocity, GUIData.maxVelocity);
         //vertexStarData[i].size = UnityEngine.Random.Range(GUIData.minSizeVertex, GUIData.maxSizeVertex);
-        vertexStarData[i].twinkleSpeed = GUIData.twinkleSpeedVertex;
+        vertexStarData[i].twinkleSpeed = GUIData.twinkleSpeed;
         vertexStarData[i].lifespan = GUIData.lifespan;
         vertexStarData[i].timeToFade = GUIData.timeToFade;
         //vertexStarData[i].color = GUIData.vertexStarColor;
@@ -124,7 +124,7 @@ public class Constellation : MonoBehaviour
         edgeStarData[i].idx = i;
         //edgeStarData[i].velocity = UnityEngine.Random.Range(GUIData.minVelocity, GUIData.maxVelocity);
         //edgeStarData[i].size = UnityEngine.Random.Range(GUIData.minSizeEdge, GUIData.maxSizeEdge);
-        edgeStarData[i].twinkleSpeed = GUIData.twinkleSpeedEdge;
+        edgeStarData[i].twinkleSpeed = GUIData.twinkleSpeed;
         edgeStarData[i].lifespan = GUIData.lifespan;
         edgeStarData[i].timeToFade = GUIData.timeToFade;
         //edgeStarData[i].color = GUIData.edgeStarColor;

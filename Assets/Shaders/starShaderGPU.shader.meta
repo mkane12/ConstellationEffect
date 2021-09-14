@@ -3,8 +3,8 @@ guid: 99d89a3bce0dc2145a4e50ae38753658
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
-  - _CurrTex: {fileID: 2800000, guid: 5e7fb4467b7d9ac41b8c421794ad8281, type: 3}
-  - _NextTex: {fileID: 2800000, guid: 5e7fb4467b7d9ac41b8c421794ad8281, type: 3}
+  - _CurrTex: {fileID: 2800000, guid: 25c160792c682ec4580b336929d33126, type: 3}
+  - _NextTex: {fileID: 2800000, guid: 25c160792c682ec4580b336929d33126, type: 3}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 

@@ -21,6 +21,8 @@ public class TextureHelperGPU
     // Reference: https://www.youtube.com/watch?v=cMiY6svKt-s
     public int columns = 4;
     public int rows = 2;
+    public int numTiles;
+
     public int twinkleSpeed;
     private float currIndex;
     private float nextIndex;
@@ -35,22 +37,33 @@ public class TextureHelperGPU
             return new Vector2(1.0f / columns, 1.0f / rows);
         }
     }
-    private Vector2 nextOffset;
+    
     private Vector2 currOffset;
+    private Vector2 nextOffset;
     private float delay;
 
     // get cache id for shader properties - slightly more efficient than searching every time
     /*private int currTexID = Shader.PropertyToID("_CurrTex");
     private int nextTexID = Shader.PropertyToID("_NextTex");
     private int blendID = Shader.PropertyToID("_Blend");*/
-    private int mainTexID = Shader.PropertyToID("_MainTex");
+    private int numTilesID = Shader.PropertyToID("_NumTiles");
+
+    private int currTexID = Shader.PropertyToID("_CurrTex");
+    private int nextTexID = Shader.PropertyToID("_NextTex");
+
+    private int currIndexID = Shader.PropertyToID("_CurrIndex");
 
     // this method is mostly to set valeus that will not change for a given star over its lifetime
-    public void NewStarTex(Material mat, float d)
+    public void NewStarTex(ComputeShader computeShader, Material mat, float d)
     {
-        /*mat.SetTextureScale(currTexID, tileSize);
-        mat.SetTextureScale(nextTexID, tileSize);*/
-        mat.SetTextureScale(mainTexID, tileSize);
+        numTiles = columns * rows;
+        computeShader.SetInt(numTilesID, numTiles);
+
+        mat.SetTextureScale(currTexID, tileSize);
+        mat.SetTextureScale(nextTexID, tileSize);
+
+        // Placeholder value of 0 for current index
+        computeShader.SetInt(currIndexID, 0);
 
         /*nextOffset = new Vector2(tileSize.x, tileSize.y);
 

@@ -25,8 +25,7 @@ namespace TeamLab.Unity
         public float sliderStarSize;
 
         // twinkle speed of stars
-        public int sliderVertexTwinkleSpeed; // vertex stars
-        public int sliderEdgeTwinkleSpeed; // edge stars
+        public int sliderTwinkleSpeed;
 
         // lifespan of stars
         // for now, let's keep these the same for edge and vertex stars
@@ -82,8 +81,7 @@ namespace TeamLab.Unity
 
             sliderStarSize = data.size;
 
-            sliderVertexTwinkleSpeed = data.twinkleSpeedVertex;
-            sliderEdgeTwinkleSpeed = data.twinkleSpeedEdge;
+            sliderTwinkleSpeed = data.twinkleSpeed;
 
             sliderLifespan = data.lifespan;
             sliderTimeToMove = data.timeToMove;
@@ -141,12 +139,9 @@ namespace TeamLab.Unity
 
             // slider to determine rate at which stars twinkle
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Vertex star twinkle speed:");
-            sliderVertexTwinkleSpeed = GUIUtil.Slider(sliderVertexTwinkleSpeed, 1, 20);
-            data.twinkleSpeedVertex = sliderVertexTwinkleSpeed;
-            GUILayout.Label("Edge star twinkle speed:");
-            sliderEdgeTwinkleSpeed = GUIUtil.Slider(sliderEdgeTwinkleSpeed, 1, 20);
-            data.twinkleSpeedEdge = sliderEdgeTwinkleSpeed;
+            GUILayout.Label("Star twinkle speed:");
+            sliderTwinkleSpeed = GUIUtil.Slider(sliderTwinkleSpeed, 1, 20);
+            data.twinkleSpeed = sliderTwinkleSpeed;
             GUILayout.EndHorizontal();
 
             // slider to determine star lifespan
@@ -253,8 +248,7 @@ namespace TeamLab.Unity
 
             sliderStarSize = data.size;
 
-            sliderVertexTwinkleSpeed = data.twinkleSpeedVertex;
-            sliderEdgeTwinkleSpeed = data.twinkleSpeedEdge;
+            sliderTwinkleSpeed = data.twinkleSpeed;
 
             sliderLifespan = data.lifespan;
             sliderTimeToMove = data.timeToMove;
