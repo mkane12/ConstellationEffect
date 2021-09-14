@@ -60,7 +60,7 @@
 		float _Smoothness;
 		float _Transparency;
 		float _Size;
-		fixed4 _Color;
+		float4 _Color;
 
 		sampler2D _CurrTex;
 		sampler2D _NextTex;
@@ -92,18 +92,18 @@
 			StructuredBuffer<InstanceData> _InstanceDataBuffer;
 		#endif
 
-		/*UNITY_INSTANCING_BUFFER_START(Props)
-			UNITY_DEFINE_INSTANCED_PROP(fixed4, _Color)
-		UNITY_INSTANCING_BUFFER_END(Props)*/
-
 		void ConfigureProcedural() 
 		{
 			#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
+				/// STAR POSITION ///
 				float3 position = _InstanceDataBuffer[unity_InstanceID].position;
 
 				unity_ObjectToWorld = 0.0;
 				unity_ObjectToWorld._m03_m13_m23_m33 = float4(position, 1.0); // this is star position
 				unity_ObjectToWorld._m00_m11_m22 = _Size; // this is star scale
+
+				/// STAR TEXTURE ///
+
 			#endif
 		}
 
@@ -113,10 +113,41 @@
 			#if defined(UNITY_PROCEDURAL_INSTANCING_ENABLED)
 				float alpha = _InstanceDataBuffer[unity_InstanceID].alpha;
 				_Transparency = alpha;
+			
+
+				// TODO: testing iteration through texture by changing color of stars
+				_Color = fixed4 (0.0, 0.0, 0.0, 1.0);
+
+				switch(_InstanceDataBuffer[unity_InstanceID].currIndex) {
+					case 0:
+						_Color.r = 1.0;
+						break;
+					case 1:
+						_Color.g = 1.0;
+						break;
+					case 2:
+						_Color.b = 1.0;
+						break;
+					case 3:
+						_Color.rg = 1.0;
+						break;
+					case 4:
+						_Color.rb = 1.0;
+						break;
+					case 5:
+						_Color.gb = 1.0;
+						break;
+					case 6:
+						_Color.rgb = 1.0;
+						break;
+					case 7:
+						_Color.r = 1.0;
+						_Color.gb = 0.5;
+						break;
+				}
 			#endif
 
-			surface.Albedo = tex2D (_CurrTex, input.uv_CurrTex).rgb * _Color + (0.0, 0.0, 0.0, _Transparency);
-			//surface.Albedo = tex2D (_CurrTex, input.uv_CurrTex).rgb + (0.0, 0.0, 0.0, _Transparency);
+			surface.Albedo = tex2D (_CurrTex, input.uv_CurrTex) * _Color + (0.0, 0.0, 0.0, _Transparency);
 		}
 
 		ENDCG

@@ -33,7 +33,7 @@ float4 constellationRotation;
 float _Alpha; // star alpha
 
 int _NumTiles; // number of tiles in star texture sheet
-int _CurrIndex; // index for sprite map in twinkle animation
+uint _CurrIndex = 2; // index for sprite map in twinkle animation
 float _TwinkleSpeed; // rate at which stars twinkle
 
 // Quaternion multiplication
@@ -77,10 +77,10 @@ void Twinkle(uint3 id)
     if (_Time >= 1.0f)
     {
         _CurrIndex += 1;
-        _InstanceDataBuffer[starNum].currIndex = _CurrIndex % _NumTiles;
-        
         _Time -= 1.0f;
     }
+    
+    _InstanceDataBuffer[starNum].currIndex = _CurrIndex % _NumTiles;
 }
 
 // checks if fade is needed, then fades (called every Update)

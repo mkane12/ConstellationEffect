@@ -2,9 +2,8 @@
     "numVertexStars": 100,
     "numEdgeStars": 50,
     "size": 1.434043049812317,
-    "twinkleSpeedVertex": 8,
-    "twinkleSpeedEdge": 3,
-    "lifespan": 2.0,
+    "twinkleSpeed": 8,
+    "lifespan": 10.0,
     "timeToMove": 1.0,
     "timeToFade": 5.0,
     "constellationNames": [
